@@ -1,4 +1,4 @@
-# p5VideoKit
+# p5videoKit
 
 <!-- https://github.com/jht1493/p5VideoKit -->
 
