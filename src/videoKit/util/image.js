@@ -48,6 +48,7 @@ export function image_scaled_pad(img, urect, flush_right) {
     pw = ph / rr;
   }
   // console.log('urect.width', urect.width, 'iw', iw, 'ih', ih, 'pw', pw, 'ph', ph);
+  // urect.width 270 iw 640 ih 480 pw 270 ph 480
   let dx = urect.x0;
   let dy = urect.y0;
   if (flush_right) {

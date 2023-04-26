@@ -27,7 +27,12 @@ export default class eff_grid {
     this.glayer.background(0, 0, 0, 0);
     this.glayer.noStroke();
     this.xs = w / this.ncell;
+
     this.ys = h / this.ncell;
+    // this.ys = this.xs;
+    console.log('eff_grid w', w, h);
+    console.log('eff_grid xs', this.xs, this.ys);
+
     if (this.xs > this.ys) {
       this.ys = this.xs;
     } else {

@@ -76,6 +76,10 @@ let a_capture_sizes = [
     height: 270,
   },
   {
+    width: 270,
+    height: 480,
+  },
+  {
     width: 640,
     height: 480,
   },
