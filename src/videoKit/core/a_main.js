@@ -109,7 +109,7 @@ p5VideoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
 // videoKit.layerCopyInput(layer, { input, urect })
 // return 1 if input ready
 //
-p5VideoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect }) {
+p5VideoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, fitWidth }) {
   if (imedia !== undefined) {
     let media = this.mediaDivAt(imedia);
     if (!media || !media.ready('layerCopyInput')) {
@@ -131,7 +131,17 @@ p5VideoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect })
   layer.copy(input, sx, sy, 1, 1, x0, y0, width, height);
   let dw = height * (sw / sh);
   let x1 = Math.floor(x0 + (width - dw) / 2);
-  layer.copy(input, sx, sy, sw, sh, x1, y0, dw, height);
+  let dh = height;
+  if (fitWidth) {
+    x1 = x0;
+    dw = width;
+    dh = width * (sh / sw);
+    if (dh > height) {
+      sh = sh * (height / dh);
+      dh = height;
+    }
+  }
+  layer.copy(input, sx, sy, sw, sh, x1, y0, dw, dh);
   return 1;
 };
 
