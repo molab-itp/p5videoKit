@@ -54,10 +54,9 @@
         "ifirst": 2,
         "period": 5,
         "showQRCode": 1,
-        "autoHideQRCode": 1,
+        "autoHideQRCode": 0,
         "image_url": "./effects/maze-spin-guest-v1.png",
         "width_div": 2,
-        "QRCode autoHide": 0,
         "fit": "width"
       }
     }
