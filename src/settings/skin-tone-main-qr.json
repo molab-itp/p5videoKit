@@ -1,7 +1,7 @@
 {
-  "setting": "videoKit/settings/2022-skin-tone/skin-tone-main-qr.json",
-  "hold_create_media_clear": 1,
+  "setting": "settings/skin-tone-main-qr.json",
   "comment": "skin-tone-main-qr",
+  "hold_create_media_clear": 1,
   "back_color": 200,
   "room_name": "VideoKit-SkinTone2",
   "patch_layout": "Single",

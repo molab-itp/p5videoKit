@@ -1,6 +1,7 @@
 {
-  "setting": "skin-tone-main-qr",
+  "setting": "maze-spin-QR",
   "comment": "maze-spin-QR",
+  "hold_create_media_clear": 1,
   "back_color": 200,
   "room_name": "VideoKit-SkinTone2",
   "patch_layout": "Single",
