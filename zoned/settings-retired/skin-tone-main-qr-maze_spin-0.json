@@ -1,7 +1,6 @@
 {
-  "setting": "videoKit/settings/2022-skin-tone/skin-tone-main-qr.json",
-  "hold_create_media_clear": 1,
-  "comment": "skin-tone-main-qr",
+  "setting": "skin-tone-main-qr",
+  "comment": "skin-tone-main-qr-maze_spin",
   "back_color": 200,
   "room_name": "VideoKit-SkinTone2",
   "patch_layout": "Single",
@@ -54,8 +53,11 @@
         "ifirst": 2,
         "period": 5,
         "showQRCode": 1,
-        "autoHideQRCode": 0,
-        "image_url": "./effects/skin-tone-guest-v3.png"
+        "autoHideQRCode": 1,
+        "image_url": "./effects/skin-tone-guest-v3.png",
+        "width_div": 2,
+        "QRCode autoHide": 0,
+        "fit": "width"
       }
     }
   ]
