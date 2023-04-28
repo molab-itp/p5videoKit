@@ -39,6 +39,8 @@ rsync -razO$verbose $excludes $delete $test "$source/" "$rdest/"
 source2="${source}/../stage"
 rdest2="${rdest}/../stage"
 
+verbose=v
+
 echo "rsync from $source2"
 echo "        to $rdest2"
 rsync -razO$verbose $excludes $delete $test "$source2/" "$rdest2/"
