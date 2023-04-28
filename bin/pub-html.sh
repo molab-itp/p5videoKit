@@ -36,6 +36,13 @@ echo "rsync from $source"
 echo "        to $rdest"
 rsync -razO$verbose $excludes $delete $test "$source/" "$rdest/"
 
+source2="${source}/../stage"
+rdest2="${rdest}/../stage"
+
+echo "rsync from $source2"
+echo "        to $rdest2"
+rsync -razO$verbose $excludes $delete $test "$source2/" "$rdest2/"
+
 # Symbolic link external/media to large media files folder
 # ssh $host ln -s /home/bitnami/htdocs/a1/skt/assets $rpath/external/media
 
