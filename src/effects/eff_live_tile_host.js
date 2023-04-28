@@ -7,6 +7,7 @@ export default class eff_live_tile_host {
     // { prop: 'qr_image_index', selection: [-1, 8, 4, 15, 17] },
     // { prop: 'aspect_ratio', selection: ['9x16', '16x9'] },
     { prop: 'period', selection: [5, -1, 0, 0.5, 1, 2, 3, 4, 5, 6, 10, 20, 30, 60] },
+    { prop: 'shift', selection: [1, 0] },
     { prop: 'fit', selection: ['width', 'height'], br: 1 },
     { prop: 'showQRCode', selection: [1, 0] },
     { prop: 'autoHideQRCode', selection: [0, 1] },
@@ -49,7 +50,11 @@ export default class eff_live_tile_host {
     }
     if (this.period_timer.check()) {
       let nstep = n - this.ifirst;
+      let prior = this.show_index;
       this.show_index = (this.show_index + nstep) % nshow;
+      if (prior > this.show_index && this.shift) {
+        this.show_index += 1;
+      }
       if (this.autoHideQRCode && this.show_index == this.qr_image_index) {
         this.showQRCode = 0;
       }
