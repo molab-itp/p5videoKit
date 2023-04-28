@@ -66,13 +66,12 @@ export default class eff_live_tile_host {
   }
   init() {
     this.fitWidth = this.fit == 'width';
-    let videoKit = this.videoKit;
     this.qr_image_index = -1;
     let urmain = this.eff_spec.urect;
     console.log('urmain', urmain);
     this.output = createGraphics(urmain.width, urmain.height);
+    let videoKit = this.videoKit;
     this.period_timer = new videoKit.PeriodTimer(this.period);
-    this.iperiod = 0;
     this.ifirst = videoKit.mediaDivLiveIndex();
     this.imedia = this.ifirst;
     this.effs_all = [];
