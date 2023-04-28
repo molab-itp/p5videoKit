@@ -1,10 +1,11 @@
 {
-  "setting": "maze-spin-guest",
-  "comment": "maze-spin-guest",
+  "setting": "live-tile-3x6-face-mesh",
+  "comment": "live-tile-3x6-face-mesh",
+  "hold_create_media_clear": 1,
   "back_color": 200,
-  "room_name": "VideoKit-MazeSpin",
+  "room_name": "VideoKit-SkinTone2",
   "patch_layout": "Single",
-  "canvas_size": "270x480",
+  "canvas_size": "960x540",
   "capture_size": "default",
   "render_size": "Canvas",
   "chat_name": "jht",
@@ -14,13 +15,9 @@
   "urects_lock": 0,
   "urects_count": 1,
   "canvas_resize_ref": "",
-  "canvas_data_chk": 0,
+  "canvas_data_chk": 1,
   "mediaDiv_states": [
     null,
-    {
-      "vis": 0,
-      "mute": 1
-    },
     {
       "vis": 0,
       "mute": 1
@@ -35,27 +32,22 @@
       "eff_spec": {
         "ipatch": 0,
         "imedia": 1,
-        "eff_label": "maze_spin",
+        "eff_label": "live_tile_host",
         "urect": {
-          "width": 270,
-          "height": 480,
+          "width": 960,
+          "height": 540,
           "x0": 0,
           "y0": 0
         }
       },
       "eff_props": {
-        "ncells": 15,
-        "strokeWeight": 0.66,
-        "delta": 1,
-        "do_spiral": 1,
-        "do_truchet": 0,
-        "do_report": 0,
-        "do_cycle": 1,
-        "step_period": 1,
-        "pause_period": 1,
-        "video_color": 1,
-        "alpha": 255,
-        "clear_period": 0
+        "ncell": 3,
+        "width_div": 2,
+        "period": 5,
+        "fit": "height",
+        "showQRCode": 1,
+        "autoHideQRCode": 0,
+        "image_url": "./effects/qrcode0.png"
       }
     }
   ]

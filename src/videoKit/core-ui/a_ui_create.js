@@ -9,7 +9,7 @@ import { ui_live_selection } from '../core-ui/ui_live.js?v={{vers}}';
 import { ui_chat_pane } from '../core-ui/ui_chat.js?v={{vers}}';
 import { store_restore_from } from '../core/store_url_parse.js?v={{vers}}';
 import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v={{vers}}';
-import { patch_inst_clear } from '../core/patch_inst.js?v={{vers}}';
+import { patch_instances_clear_all } from '../core/patch_inst.js?v={{vers}}';
 import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
 // import { ui_render_size } from '../core-ui/ui_render.js?v={{vers}}';
 
@@ -135,8 +135,9 @@ function present_action() {
 }
 
 export function ui_window_refresh() {
+  console.log('ui_window_refresh');
   pad_layout_update();
-  patch_inst_clear();
+  patch_instances_clear_all();
 }
 
 let a_ifps;

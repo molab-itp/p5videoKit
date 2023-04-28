@@ -1,6 +1,6 @@
 import { a_ } from '../let/a_state.js?v={{vers}}';
 import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
-import { patch_inst_clear } from '../core/patch_inst.js?v={{vers}}';
+import { patch_instances_clear_all } from '../core/patch_inst.js?v={{vers}}';
 
 // a_.mediaDivs = []
 // { imedia, mediaDevice, id, label, div, chk, vis, capture, info, ready, livem }
@@ -101,15 +101,13 @@ export function create_mediaDiv(mediaDevice, options) {
       }
     }
     arr.splice(index, 0, ent);
-    // !!@ for eff_skin_tone_main when don't want to clear
-    // if (!a_.videoKit.pause_patch_inst_clear) {
     if (!a_.ui.hold_create_media_clear) {
-      patch_inst_clear();
+      console.log('a_.ui.hold_create_media_clear OFF');
+      patch_instances_clear_all();
     } else {
-      console.log('a_.ui.hold_create_media_clear');
+      console.log('a_.ui.hold_create_media_clear ON');
     }
   }
-  // a_.mediaDivs.push(ent);
 
   update_info();
 

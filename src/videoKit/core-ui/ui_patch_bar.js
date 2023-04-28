@@ -7,7 +7,7 @@ import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
 import { store_restore_from } from '../core/store_url_parse.js?v={{vers}}';
 import { str_to_width_height } from '../core-ui/ui_canvas.js?v={{vers}}';
 import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js?v={{vers}}';
-import { patch_add, patch_inst_clear, patch_inst_update } from '../core/patch_inst.js?v={{vers}}';
+import { patch_add, patch_instances_clear_all, patch_inst_update } from '../core/patch_inst.js?v={{vers}}';
 
 let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
 let back_color_options = [0, 1, 50, 100, 200, 255, -1];
@@ -52,9 +52,10 @@ export function ui_patch_bar() {
   ilayout.selectedIndex = layout_options.findIndex((ent) => ent === a_.ui.patch_layout);
   ilayout.addEventListener('change', layout_change);
   function layout_change() {
+    console.log('layout_change');
     ui_prop_set('patch_layout', this.value);
     pad_layout_update();
-    patch_inst_clear();
+    patch_instances_clear_all();
   }
 
   // a_.ui.back_color
@@ -210,7 +211,7 @@ function pads_resize_pad(urect) {
 //     // console.log('ui_patch_bar', val);
 //     ui_prop_set('patch_layout', val);
 //     pad_layout_update();
-//     patch_inst_clear();
+//     patch_instances_clear_all();
 //   });
 // }
 // ui_backcolor(div);

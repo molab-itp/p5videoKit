@@ -3,7 +3,7 @@
   "comment": "maze-spin-QR",
   "hold_create_media_clear": 1,
   "back_color": 200,
-  "room_name": "VideoKit-SkinTone2",
+  "room_name": "VideoKit-MazeSpin",
   "patch_layout": "Single",
   "canvas_size": "960x540",
   "capture_size": "default",
@@ -40,7 +40,7 @@
       "eff_spec": {
         "ipatch": 0,
         "imedia": 1,
-        "eff_label": "skin_tone_main",
+        "eff_label": "live_tile_host",
         "urect": {
           "width": 960,
           "height": 540,
@@ -50,14 +50,12 @@
       },
       "eff_props": {
         "ncell": 3,
-        "qr_image_index": 8,
-        "ifirst": 2,
+        "width_div": 2,
         "period": 5,
+        "fit": "width",
         "showQRCode": 1,
         "autoHideQRCode": 0,
-        "image_url": "./effects/maze-spin-guest-v1.png",
-        "width_div": 2,
-        "fit": "width"
+        "image_url": "./effects/qrcode1.png"
       }
     }
   ]

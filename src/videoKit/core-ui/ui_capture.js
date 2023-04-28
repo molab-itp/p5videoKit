@@ -2,7 +2,7 @@ import { a_ } from '../let/a_state.js?v={{vers}}';
 import { init_size_in } from '../core-ui/ui_canvas.js?v={{vers}}';
 import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
 import { media_reset } from '../core/create_mediaDevices.js?v={{vers}}';
-import { patch_inst_clear } from '../core/patch_inst.js?v={{vers}}';
+import { patch_instances_clear_all } from '../core/patch_inst.js?v={{vers}}';
 import { ui_div_append } from '../core-ui/ui_tools.js?v={{vers}}';
 
 export function ui_capture_size(div) {
@@ -27,11 +27,11 @@ export function ui_capture_size(div) {
   icapture_size.addEventListener('change', capture_size_change);
 
   function capture_size_change() {
-    // console.log('capture_size change value', this.value);
+    console.log('capture_size change value', this.value);
     let value = this.value;
     ui_prop_set('capture_size', value);
     media_reset();
-    patch_inst_clear();
+    patch_instances_clear_all();
   }
 }
 
@@ -123,5 +123,5 @@ let a_capture_sizes = [
 //   let se = a_capture_sizes_dict[label];
 //   ui_prop_set('capture_size', se.label);
 //   media_reset();
-//   patch_inst_clear();
+//   patch_instances_clear_all();
 // });

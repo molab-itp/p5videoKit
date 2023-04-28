@@ -110,8 +110,9 @@ export function patch_update_effIndex(aPatch, effIndex) {
   ui_patch_eff_panes();
 }
 
-export function patch_inst_clear() {
+export function patch_instances_clear_all() {
   // All patch instances will be re-created on next draw
+  console.log('patch_instances_clear_all');
   for (let ipatch = 0; ipatch < a_.patch_instances.length; ipatch++) {
     patch_inst_update(ipatch);
   }

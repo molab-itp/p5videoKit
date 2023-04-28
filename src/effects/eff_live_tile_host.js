@@ -1,13 +1,13 @@
 // Show live media in grid with qr code
 //
-export default class eff_skin_tone_main {
+export default class eff_live_tile_host {
   static meta_props = [
     { prop: 'ncell', selection: [3, 2, 3, 4, 5, 6, 7] },
     { prop: 'width_div', selection: [1, 2] },
     // { prop: 'qr_image_index', selection: [-1, 8, 4, 15, 17] },
     // { prop: 'aspect_ratio', selection: ['9x16', '16x9'] },
     { prop: 'period', selection: [5, -1, 0, 0.5, 1, 2, 3, 4, 5, 6, 10, 20, 30, 60] },
-    { prop: 'fit', selection: ['height', 'width'], br: 1 },
+    { prop: 'fit', selection: ['width', 'height'], br: 1 },
     { prop: 'showQRCode', selection: [1, 0] },
     { prop: 'autoHideQRCode', selection: [0, 1] },
     {
@@ -25,10 +25,10 @@ export default class eff_skin_tone_main {
       },
       br: 1,
     },
-    { prop: 'image_url', textInput: './effects/skin-tone-guest-v3.png', style: 'width:40%' },
+    { prop: 'image_url', textInput: './effects/qrcode0.png', style: 'width:40%' },
   ];
   constructor(props) {
-    console.log('eff_skin_tone_main constructor');
+    console.log('eff_live_tile_host constructor');
     Object.assign(this, props);
     this.init();
   }
