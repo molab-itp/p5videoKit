@@ -26,9 +26,8 @@ eff_ticker.prototype.draw_bit = function () {
   let n = 1;
   let rush = this.dot_count_reached();
   if (this.test_fast) {
-    n = this.test_fast_n;
+    n = this.test_fast_n * this.test_fast;
   } else if (rush) {
-    // n = (n + 1) % 11;
     n = this.draw_bit_delay;
   }
   while (n-- > 0) {

@@ -11,7 +11,7 @@ export default class eff_ticker {
       prop: 'start_date',
       selection: [
         '', //
-        '2020-04-16', // 4605, 85
+        '2020-04-16', // 4605, 85 -- USA most lives lost
         '2022-02-08', // 3001, 748
         '2020-11-20', // 2002, 303
         '2020-10-29', // 1002, 281
@@ -33,7 +33,18 @@ export default class eff_ticker {
         console.log('eff_ticker a_run', inst.a_run);
       },
     },
-    { prop: 'test_fast', selection: [0, 1] },
+    {
+      prop: 'toggleJump',
+      button: (inst, aPatch) => {
+        if (inst.day_next < 100) {
+          inst.day_next = inst.a_data.length - 30;
+        } else {
+          inst.day_next = 0;
+        }
+        console.log('eff_ticker day_next', inst.day_next);
+      },
+    },
+    { prop: 'test_fast', selection: [0, 1, 2, 4] },
   ];
   constructor(props) {
     Object.assign(this, props);
