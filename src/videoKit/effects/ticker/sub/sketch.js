@@ -122,14 +122,12 @@ eff_ticker.prototype.clear_per_day = function () {
 eff_ticker.prototype.draw_progress = function () {
   let x = -1;
   let y = this.height - this.pix_len + 1;
-  // let nu = data_index_up - data_index_start;
-  // let de = a_data.length - data_index_start;
-  let nu = this.data_index_up;
+  // let nu = this.data_index_up;
+  // let de = this.a_data.length;
+  // if (this.a_dir === 'down') {
+  // }
+  let nu = this.a_data.length - this.data_index_down;
   let de = this.a_data.length;
-  if (this.a_dir === 'down') {
-    nu = this.a_data.length - this.data_index_down;
-    de = this.a_data.length;
-  }
   let w = (this.width * nu) / de;
   this.output.fill('white');
   this.output.rect(x, y, w, pix_len);

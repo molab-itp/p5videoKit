@@ -26,6 +26,13 @@ export default class eff_ticker {
         inst.dump_action(aPatch);
       },
     },
+    {
+      prop: 'toggleRun',
+      button: (inst, aPatch) => {
+        inst.a_run = !inst.a_run;
+        console.log('eff_ticker a_run', inst.a_run);
+      },
+    },
     { prop: 'test_fast', selection: [0, 1] },
   ];
   constructor(props) {

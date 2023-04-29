@@ -27,8 +27,8 @@ eff_ticker.prototype.load_json = function () {
     // this.data_index_down = 745; // !!@
     // this.data_index_down = 1000; // !!@
     if (this.data_index_offset) this.data_index_down = this.data_index_offset + 1;
-    this.data_index_up = 0;
-    this.data_index_mid = Math.floor(this.data_index_down / 2);
+    // this.data_index_up = 0;
+    // this.data_index_mid = Math.floor(this.data_index_down / 2);
 
     this.select_entry();
   });
