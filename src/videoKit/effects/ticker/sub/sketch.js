@@ -44,11 +44,12 @@ eff_ticker.prototype.prepareOutput = function () {
 };
 
 // jump_action
-eff_ticker.prototype.jump_action = function () {
-  console.log('eff_ticker jump_action');
-  this.data_index_down = 86;
-  this.page_pause_count = -1;
-  this.page_pause_secs = 2;
+eff_ticker.prototype.dump_action = function () {
+  console.log('eff_ticker dump_action');
+  this.download_data();
+  // this.data_index_down = 86;
+  // this.page_pause_count = -1;
+  // this.page_pause_secs = 2;
 };
 
 // 2020-04-16 4607 85
@@ -146,8 +147,9 @@ eff_ticker.prototype.draw_progress = function () {
 eff_ticker.prototype.draw_day_count = function () {
   // str = 'day ' + data_index + '/' + a_data.length + ' ';
   // let str = 'DAY ' + data_index + ' of ' + a_data.length;
-  let str = 'USA COVID DEATHS - DAY ' + this.data_index + ' of ' + this.a_data.length;
-  str += ' - TOTAL DEATHS ' + this.a_data[this.a_data.length - 1].Deaths;
+  let str = 'USA COVID DEATHS - DAY ' + ns(this.data_index) + ' of ' + ns(this.a_data.length);
+  let ds = ns(this.a_data[this.a_data.length - 1].Deaths);
+  str += ' - TOTAL DEATHS ' + ds + '';
   // console.log('draw_day_count ', str);
   let th = this.pix_len * 1.5;
   this.output.textSize(th);
@@ -163,6 +165,10 @@ eff_ticker.prototype.draw_day_count = function () {
   this.output.noErase();
   this.output.fill('white');
   this.output.text(str, x, y);
+
+  function ns(num) {
+    return Number(num).toLocaleString();
+  }
 };
 
 eff_ticker.prototype.draw_count = function (str) {

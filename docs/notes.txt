@@ -7,6 +7,12 @@ bin/build.sh --dev
 
 bin/build.sh --prod
 
+# --
+
+>> display big days
+src/videoKit/effects/ticker/sub/sketch.js
+data_index_down
+
 
 # --
 

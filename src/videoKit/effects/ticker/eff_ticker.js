@@ -1,15 +1,17 @@
 //
 
 export default class eff_ticker {
-  static meta_props = {
-    display_copy_right: [0, 1],
-    window_mode: [0, 1],
-    jump: {
+  static meta_props = [
+    { prop: 'display_copy_right', selection: [0, 1] },
+    { prop: 'window_mode', selection: [0, 1] },
+    { prop: 'start_date', textInput: '2020-04-16' },
+    {
+      prop: 'dump',
       button: (inst, aPatch) => {
-        inst.jump_action(aPatch);
+        inst.dump_action(aPatch);
       },
     },
-  };
+  ];
   constructor(props) {
     Object.assign(this, props);
 

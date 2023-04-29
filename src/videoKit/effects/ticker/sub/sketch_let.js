@@ -73,7 +73,6 @@ eff_ticker.prototype.let_init = function () {
   this.json_loaded = 0;
   this.day_next = 0;
   // data_index_offset = 85;
-  // data_index_offset = 600;
   this.bottom_color = 'white';
   this.panel_len = this.width / 2;
   // console.log('panel_len', this.panel_len);
@@ -104,7 +103,19 @@ eff_ticker.prototype.let_init = function () {
   // console.log('pix_len', this.pix_len);
   // console.log('nlines', nlines);
   this.day_next = 0;
+  // this.data_index_offset = 85;
 };
+
+// 2020-04-16 4607 85
+// 2021-01-20 4442 364
+// 2021-01-12 4389 356
+// 2021-01-08 4189 352
+// 2022-02-04 4154 744 **
+// 2021-01-21 4137 365
+// 2021-01-27 4128 371
+// 2022-01-26 4068 735 **
+// 2021-01-07 4028 351
+// 2021-01-13 4018 357
 
 eff_ticker.prototype.cycle_init = function () {
   this.y_pos = this.y_top;

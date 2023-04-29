@@ -19,8 +19,22 @@ eff_ticker.prototype.load_json = function () {
     this.data_index_up = 0;
     this.data_index_mid = Math.floor(this.data_index_down / 2);
     this.prepare_data();
+    if (this.start_date) {
+      this.data_index_down = this.find_start_date(this.start_date);
+    }
+    if (this.window_mode) {
+      this.a_data = this.sort_data();
+    }
     this.select_entry();
   });
+};
+
+eff_ticker.prototype.find_start_date = function (start_date) {
+  console.log('find_start_date start_date', start_date);
+  let index = this.a_data.findIndex((item) => item.on == start_date);
+  console.log('find_start_date index', index);
+  if (index >= 0) return index + 1;
+  return this.a_data.length;
 };
 
 eff_ticker.prototype.select_entry = function () {
@@ -85,16 +99,20 @@ eff_ticker.prototype.select_entry = function () {
   this.a_date = ent1.on;
   let s = this.a_count > 1 ? 's' : '';
   if (this.day_next == 0 || this.window_mode) {
-    this.a_string = '   COVID-19 Memorial\n\n' + this.a_date + '\n';
+    this.a_string = 'USA COVID-19 Memorial\n\n' + this.a_date + '\n';
     // this.a_string = this.a_date + '\n' + this.a_count + '\n';
     // this.panel_top += this.dot_y + this.char_len + this.y_margin * 2;
     let ydiff = this.dot_y + this.char_len * 2 + this.y_margin * 2;
     if (this.window_mode) {
       this.panel_top = ydiff;
-      this.a_string += '\nUSA Death' + s + '\n' + this.a_postfix;
+      // this.a_string += '\nUSA Death' + s + '\n' + this.a_postfix;
+      this.a_string += '\nLives lost' + '\n' + this.a_postfix;
     } else {
       this.panel_top += ydiff;
     }
+    // if (this.day_next == 0) {
+    //   this.download_data();
+    // }
     this.day_next++;
   } else {
     if (this.day_next == 1) {
@@ -108,7 +126,8 @@ eff_ticker.prototype.select_entry = function () {
     // }
     this.day_next++;
     // this.a_string = this.a_date + '\n' + this.a_count + '\n\nUSA Death' + s + '\n' + this.a_postfix;
-    this.a_string = this.a_date + '\n' + '\nUSA Death' + s + '\n' + this.a_postfix;
+    // this.a_string = this.a_date + '\n' + '\nUSA Death' + s + '\n' + this.a_postfix;
+    this.a_string = this.a_date + '\n' + '\nLives lost' + '\n' + this.a_postfix;
     // a_string = a_date + '\n' + a_count + '\n\n' + a_postfix;
   }
   this.end_index = this.a_string.length - 1;
@@ -157,6 +176,7 @@ eff_ticker.prototype.select_entry = function () {
 // 2021-01-07 4028 351
 // 2021-01-13 4018 357
 
+// set ent.count to number of Deaths for that day
 eff_ticker.prototype.prepare_data = function () {
   let ent0 = { Deaths: 0 };
   for (let index = 0; index < this.a_data.length; index++) {
@@ -171,12 +191,25 @@ eff_ticker.prototype.prepare_data = function () {
 eff_ticker.prototype.sort_data = function () {
   let data = this.a_data.slice();
   data.sort((ent0, ent1) => ent0.count - ent1.count);
-  if (1) {
-    let n = 10;
-    for (let index = 0; index < n; index++) {
-      let ent = data[data.length - 1 - index];
-      console.log(ent.on, ent.count, ent.index);
-    }
+  // data.reverse();
+  let n = 10;
+  for (let index = 0; index < n; index++) {
+    let ent = data[data.length - 1 - index];
+    console.log(ent.on, ent.count, ent.index);
   }
   return data;
+};
+
+eff_ticker.prototype.download_data = function () {
+  let data = this.sort_data();
+  let arr = [];
+  for (let index = 0; index < data.length; index++) {
+    let ent = data[index];
+    arr.push(`${ent.on}, ${ent.count}, ${ent.index}`);
+  }
+  // console.log('arr', arr);
+  console.log('download_data arr.length', arr.length);
+  // saveStrings(arr, 'covid-19-lost.txt');
+  // saveJSON(data, 'covid-19-lost.json');
+  // saveStrings(list, filename, [extension], [isCRLF])
 };
