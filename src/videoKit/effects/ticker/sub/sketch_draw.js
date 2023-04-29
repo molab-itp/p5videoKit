@@ -25,8 +25,8 @@ eff_ticker.prototype.draw_char_start = function () {
 eff_ticker.prototype.draw_bit = function () {
   let n = 1;
   let rush = this.dot_count_reached();
-  if (this.a_fast) {
-    n = this.a_fast_n;
+  if (this.test_fast) {
+    n = this.test_fast_n;
   } else if (rush) {
     // n = (n + 1) % 11;
     n = this.draw_bit_delay;

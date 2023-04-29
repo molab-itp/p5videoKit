@@ -15,7 +15,7 @@ eff_ticker.prototype.load_json = function () {
     this.a_data = data;
     this.prepare_data();
     if (this.most_lost_ndays) {
-      // this.window_mode) {
+      // this.display_single_date) {
       this.a_data = this.sort_data(this.most_lost_ndays);
     }
     this.data_index_down = this.a_data.length;
@@ -109,12 +109,12 @@ eff_ticker.prototype.select_entry = function () {
   }
   this.a_date = ent1.on;
   let s = this.a_count > 1 ? 's' : '';
-  if (this.day_next == 0 || this.window_mode) {
+  if (this.day_next == 0 || this.display_single_date) {
     this.a_string = 'USA COVID-19 Memorial\n\n' + this.a_date + '\n';
     // this.a_string = this.a_date + '\n' + this.a_count + '\n';
     // this.panel_top += this.dot_y + this.char_len + this.y_margin * 2;
     let ydiff = this.dot_y + this.char_len * 2; // + this.y_margin * 2;
-    if (this.window_mode) {
+    if (this.display_single_date) {
       let ydiff = this.char_len * 2;
       this.panel_top = this.y_margin + this.char_len;
       this.panel_top += ydiff;

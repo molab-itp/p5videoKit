@@ -1,5 +1,5 @@
 eff_ticker.prototype.draw_dots_fast = function () {
-  let n = this.a_fast ? this.a_fast_n : 1;
+  let n = this.test_fast ? this.test_fast_n : 1;
   // attempt at dot rhythm
   // n = random([0, 1]);
   while (n-- > 0) {

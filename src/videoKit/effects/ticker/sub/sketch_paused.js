@@ -1,10 +1,10 @@
 // let page_pause_count;
 
 eff_ticker.prototype.page_pause_start = function () {
-  // page_pause_count = a_fast ? 1 : page_pause_frames;
-  // page_pause_count = a_fast ? page_pause_frames / 2 : page_pause_frames;
+  // page_pause_count = test_fast ? 1 : page_pause_frames;
+  // page_pause_count = test_fast ? page_pause_frames / 2 : page_pause_frames;
   // console.log('page_pause_start day_next', this.day_next);
-  let n = this.a_fast ? 0 : this.page_pause_secs;
+  let n = this.test_fast ? 0 : this.page_pause_secs;
   // if (this.day_next == 1) n = 0;
   this.page_pause_count = n * frameRate();
   this.a_state = 'page_pause';

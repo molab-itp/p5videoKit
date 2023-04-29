@@ -16,8 +16,6 @@ eff_ticker.prototype.init = function () {
   // let parent = document.getElementsByTagName('body')[0];
   // parent.insertBefore(my_canvas.elt, title.elt);
   console.log('eff_ticker init');
-  // this.output.noStroke();
-  // ui_create();
   this.let_init();
   this.fresh_canvas();
   this.begin_day();
@@ -46,7 +44,7 @@ eff_ticker.prototype.prepareOutput = function () {
 // jump_action
 eff_ticker.prototype.dump_action = function () {
   console.log('eff_ticker dump_action');
-  this.download_data();
+  this.download_data(this.locale);
   // this.data_index_down = 86;
   // this.page_pause_count = -1;
   // this.page_pause_secs = 2;
@@ -109,7 +107,7 @@ eff_ticker.prototype.clear_per_day = function () {
   // console.log('clear_per_day this.day_next', this.day_next);
   let yLeft = 0;
   let yRight = 0;
-  if (this.day_next >= 1 && !this.window_mode) {
+  if (this.day_next >= 1 && !this.display_single_date) {
     yLeft = this.y_top;
     yRight = this.panel_top;
     // console.log('clear_per_day yRight', yRight, 'yLeft', yLeft, 'day_next', day_next);
@@ -153,8 +151,6 @@ eff_ticker.prototype.draw_day_count = function () {
   // console.log('draw_day_count ', str);
   let th = this.pix_len * 1.5;
   this.output.textSize(th);
-  // let th = textAscent() + textDescent() + textLeading();
-  // th = pix_len * 1.5;
   let tw = this.output.textWidth(str);
   // let x = width - tw - 1;
   let x = 1;
@@ -172,18 +168,14 @@ eff_ticker.prototype.draw_day_count = function () {
 };
 
 eff_ticker.prototype.draw_count = function (str) {
-  // let x = x_margin + (char_len * (nchars_wide - str.length)) / 2;
   let boxwidth = this.char_len * 5;
-  // let xedge = panel_right;
   let xedge = this.width;
   let x = xedge - this.x_margin - boxwidth;
-  // let y = y_margin;
   let y = this.panel_top - this.char_len;
   this.output.erase();
   this.output.fill(0);
   this.output.rect(x, y, boxwidth, this.char_len);
   this.output.noErase();
-  // x = panel_right - x_margin - char_len * str.length;
   x = xedge - this.char_len * str.length;
   for (let ch of str) {
     this.draw_char(x, y, ch);
