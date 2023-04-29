@@ -46,8 +46,6 @@ eff_ticker.prototype.dot_next = function () {
 eff_ticker.prototype.cycle_start_init = function () {
   // console.log('cycle_start_init a_dir', a_dir);
   this.let_init();
-  // !!@ 2-day
-  // a_dir = a_dir === 'up' ? 'down' : 'up';
   this.fresh_canvas();
   this.load_json();
 };
