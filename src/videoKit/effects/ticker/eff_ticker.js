@@ -3,7 +3,7 @@
 export default class eff_ticker {
   static meta_props = [
     { prop: 'display_copy_right', selection: [0, 1] },
-    { prop: 'locale', selection: ['USA', 'NY', 'BKYN', 'JA', 'GY'] },
+    { prop: 'locale', selection: ['USA', 'NY', 'NYC', 'BKYN', 'JA', 'GY'] },
     { prop: 'display_single_date', selection: [0, 1] },
     { prop: 'most_lost_ndays', selection: [0, 31, 100, -1], br: 1 },
     // { prop: 'start_date', textInput: '2020-04-16' },

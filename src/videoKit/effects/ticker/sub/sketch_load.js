@@ -40,6 +40,7 @@ let c19_series = {
   JA: 'world/c_series/Jamaica.json',
   GY: 'world/c_series/Guyana.json',
   NY: 'world/c_subs/United_States/c_series/New_York.json',
+  NYC: 'nyc/c_series/_totals.json',
   BKYN: 'nyc/c_series/Brooklyn.json',
 };
 
@@ -161,13 +162,13 @@ eff_ticker.prototype.sort_data = function (ndays) {
   if (ndays > 0) {
     // Remove low entries to leave top ndays
     data.splice(0, data.length - ndays);
-    // Remove top most entry if recorded on first day
-    // to exclude NYC 2020-05-18 start date
-    let ent = data[data.length - 1];
-    if (ent.index == 0) {
-      console.log('Excluding ', ent.on, ent.count, 'index', ent.index);
-      data.splice(data.length - 1, 1);
-    }
+  }
+  // Remove top most entry if recorded on first day
+  // to exclude NYC 2020-05-18 start date
+  let ent = data[data.length - 1];
+  if (ent.index == 0) {
+    console.log('Excluding ', ent.on, ent.count, 'index', ent.index);
+    data.splice(data.length - 1, 1);
   }
   return data;
 };
@@ -177,7 +178,9 @@ eff_ticker.prototype.download_data = function (locale) {
   let arr = [];
   for (let index = 0; index < data.length; index++) {
     let ent = data[index];
-    arr.push(`${ent.on}, ${ent.count}, ${ent.index}`);
+    if (ent.on) {
+      arr.push(`${ent.on}, ${ent.count}, ${ent.index}`);
+    }
   }
   // console.log('arr', arr);
   console.log('download_data arr.length', arr.length);
