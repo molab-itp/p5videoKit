@@ -142,6 +142,7 @@ eff_ticker.prototype.prepare_data = function () {
   let ent0 = { Deaths: 0 };
   for (let index = 0; index < this.a_data.length; index++) {
     let ent1 = this.a_data[index];
+    if (!ent1.Deaths) ent1.Deaths = 0;
     let count = ent1.Deaths - ent0.Deaths;
     ent1.count = count;
     ent1.index = index;
@@ -174,7 +175,8 @@ eff_ticker.prototype.sort_data = function (ndays) {
 };
 
 eff_ticker.prototype.download_data = function (locale) {
-  let data = this.sort_data();
+  // let data = this.sort_data();
+  let data = this.a_data;
   let arr = [];
   for (let index = 0; index < data.length; index++) {
     let ent = data[index];
