@@ -11,13 +11,13 @@ excludes="--exclude-from to-public-exclude.txt"
 
 delete=--delete
 test=
-# test=--dry-run
 verbose=
+# test=--dry-run
 # verbose=v
 
 start_time=`date +%s`
 
-host=bitnami@34.236.53.81
+host=jhtitp@jht1493.net
 siteroot=/home/bitnami/htdocs
 homepage=p5VideoKit/demo
 rpath="${siteroot}/${homepage}"

@@ -1,5 +1,6 @@
 .DS_Store
 .git
+build
 node_modules
 external/media
 external/media-1

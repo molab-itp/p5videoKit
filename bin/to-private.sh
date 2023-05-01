@@ -1,19 +1,19 @@
 #!/bin/bash
 cd ${0%/*}
 
-# rsync folder public to covid19-dashboard-public
+# rsync to private p5videoKit folder
 
 delete=--delete
 test=
 verbose=
-# test=--dry-runs
+# test=--dry-run
 # verbose=v
 
 excludes="--exclude-from to-public-exclude.txt"
 
 source=../
 
-destRepo=p5VideoKit-private
+destRepo=p5VideoKit
 rpath=../../$destRepo
 
 echo $verbose $delete $test
