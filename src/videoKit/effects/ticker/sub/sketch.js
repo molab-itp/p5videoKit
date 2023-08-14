@@ -89,16 +89,15 @@ eff_ticker.prototype.setup_period_reload = function () {
 };
 
 eff_ticker.prototype.begin_day = function () {
-  // console.log('begin_day day_next', day_next);
+  // console.log('-- begin_day day_next', this.day_next);
   this.clear_per_day();
   this.cycle_init();
   this.day_start = millis();
   this.bit_count = 0;
-  this.string_index = this.start_index;
+  this.a_string_index = this.start_index;
   this.y_pos = this.y_top;
   this.draw_char_start();
   // console.log('begin_day dot_count', dot_count, 'bit_count', bit_count);
-  // !!@ 2-day
   this.dot_y = 0;
   this.dot_x = 0;
 };
@@ -144,7 +143,7 @@ eff_ticker.prototype.draw_day_count = function () {
   // str = 'day ' + data_index + '/' + a_data.length + ' ';
   // let str = 'DAY ' + data_index + ' of ' + a_data.length;
   let str = 'USA COVID DEATHS - DAY ' + ns(this.data_index) + ' of ' + ns(this.a_data.length);
-  let ds = ns(this.a_data[this.a_data.length - 1].Deaths);
+  let ds = ns(this.total_deaths);
   str += ' - TOTAL DEATHS ' + ds + '';
   // console.log('draw_day_count ', str);
   let th = this.pix_len * 1.5;
@@ -170,10 +169,16 @@ eff_ticker.prototype.draw_count = function (str) {
   let xedge = this.width;
   let x = xedge - this.x_margin - boxwidth;
   let y = this.panel_top - this.char_len;
+
   this.output.erase();
   this.output.fill(0);
   this.output.rect(x, y, boxwidth, this.char_len);
   this.output.noErase();
+
+  if (this.a_string_index < this.a_string_date_end_index) {
+    return;
+  }
+
   x = xedge - this.char_len * str.length;
   for (let ch of str) {
     this.draw_char(x, y, ch);

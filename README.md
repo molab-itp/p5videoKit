@@ -5,7 +5,7 @@
 [p5videoKit - a dashboard for mixing video in the browser.](https://jht1493.net/p5VideoKit/demo/)
 You can apply visual effects
 to live video from connected cameras or streaming from other devices on the internet.
-p5ViewKit is designed to be re-usable and extended
+p5videoKit is designed to be re-usable and extended
 with your own p5js code for visual effects and interaction.
 
 The code and documentation is in development.
@@ -17,7 +17,7 @@ We welcome your feedback and help to improve the user interface and documentatio
   [DICE mobile app](http://www.johnhenrythompson.com/3-dice) and
   [NYU-ITP ICM course](https://github.com/ITPNYU/ICM-2021-Code)
 - [video overview](https://youtu.be/6t9aiVLL9OQ)
-- contact me: [create an github issue for this repo](https://github.com/jht1493/p5VideoKit/issues)
+- contact me: [create an github issue for this repo](https://github.com/jht9629-nyu/p5videoKit/issues)
 
 ## Announcements
 

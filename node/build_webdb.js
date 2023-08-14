@@ -1,11 +1,15 @@
 import pkg from 'fs-extra';
-const { readdirSync } = pkg;
+const { readdirSync, existsSync } = pkg;
 import { join } from 'path';
 
 import { writeSrcBuildFile } from './enum_files.js';
 
 export default function build_webdb(src_path, webdbPath, imagesOutPath) {
   webdbPath = join(src_path, webdbPath);
+  if (!existsSync(webdbPath)) {
+    console.log('No webdbPath', webdbPath);
+    return;
+  }
   // imagesOutPath = join(src_path, imagesOutPath);
   let dirs = readdirSync(webdbPath);
   dirs = dirs.filter((item) => item.substring(0, 1) !== '.');

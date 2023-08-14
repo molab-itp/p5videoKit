@@ -16,7 +16,6 @@ for (let index = 0; index < process.argv.length; index++) {
   }
 }
 
-// const build_index = require('./build_index');
 import build_webdb from './build_webdb.js';
 import build_settings from './build_settings.js';
 import build_effectMetas from './build_effectMetas.js';
@@ -38,7 +37,6 @@ let settingMetas;
 let effectsMetas;
 
 {
-  // src_path, settings, settingIndexPath, settingMetasPath, indexPrefix
   let args = {
     src_path,
     settings: 'videoKit/settings',
@@ -46,19 +44,14 @@ let effectsMetas;
     settingMetasPath: 'videoKit/let/a_settingMetas.js',
     indexPrefix: '../index.html',
   };
-  // build_settings(src_path, 'videoKit/settings', settingIndexPath, settingMetasPath, '../index.html');
   build_settings(args);
 }
 
 {
-  // const settingIndexPath = './gen/settings.html';
-  // const settingMetasPath = './gen/settings.js';
-  // build_settings(src_path, 'settings', settingIndexPath, settingMetasPath, '../index.html');
   let args = {
     src_path,
     settings: 'settings',
     settingIndexPath: 'gen/settings.html',
-    // settingMetasPath: 'gen/settings.js',
     indexPrefix: '../index.html',
   };
   build_settings(args);
@@ -79,11 +72,8 @@ let effectsMetas;
 {
   let args = {
     src_path,
-    // effectMetasPath: 'gen/effects.js',
     mods: 'effects',
   };
-  // const effectMetasPath = './gen/effects.js';
-  // build_effectMetas(src_path, effectMetasPath, 'effects');
   build_effectMetas(args);
   effectsMetas = args.metas;
 }

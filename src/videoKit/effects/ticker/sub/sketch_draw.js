@@ -1,11 +1,13 @@
 eff_ticker.prototype.draw_char_start = function () {
-  this.a_char = this.a_string[this.string_index];
+  // console.log('draw_char_start');
+  this.a_char = this.a_string[this.a_string_index];
   while (this.a_char === '\n') {
+    // console.log('-- draw_char_start draw_next_line');
     this.draw_next_line();
     this.next_string_index();
     if (this.a_paused) return;
-    this.a_char = this.a_string[this.string_index];
-    // print('string_index', string_index, 'a_char', a_char);
+    this.a_char = this.a_string[this.a_string_index];
+    // console.log('a_string_index', this.a_string_index, 'a_char', this.a_char);
   }
   this.a_bytes = this.font8x8_dict[this.a_char];
   if (!this.a_bytes) {
@@ -66,6 +68,7 @@ eff_ticker.prototype.draw_bit_one = function (rush) {
       if (this.byte_index < 8) {
         this.a_byte = this.a_bytes[this.byte_index];
       } else {
+        // console.log('draw_bit_one draw_next_char', this.bit_count);
         this.draw_next_char();
         if (this.a_paused) return;
       }
@@ -83,33 +86,42 @@ eff_ticker.prototype.draw_shape = function (a_x, a_y, len_x, len_y) {
 };
 
 eff_ticker.prototype.draw_next_char = function () {
+  // console.log('draw_next_char');
   this.next_string_index();
   if (this.a_paused) return;
-  this.x_pos += this.char_len;
-  if (this.x_pos + this.char_len - this.x_margin > this.width) {
+  let ch = this.a_string[this.a_string_index];
+  if (ch == '\n') {
+    // console.log('draw_next_char ch newline');
+  } else {
+    this.x_pos += this.char_len;
+  }
+  // if (this.x_pos + this.char_len - this.x_margin > this.width) {
+  if (this.x_pos + this.char_len - this.x_margin * 2 > this.width) {
+    // console.log('-- draw_next_char draw_next_line');
     this.draw_next_line();
   }
   this.draw_char_start();
 };
 
 eff_ticker.prototype.next_string_index = function () {
-  this.string_index += 1;
-  if (this.string_index > this.end_index) {
+  this.a_string_index += 1;
+  if (this.a_string_index > this.end_index) {
     this.set_paused();
   }
 };
 
 eff_ticker.prototype.message_done = function () {
-  return this.string_index > this.end_index;
+  return this.a_string_index > this.end_index;
 };
 
 eff_ticker.prototype.draw_next_line = function () {
+  // console.log('draw_next_line x_pos', this.x_pos, 'y_pos', this.y_pos);
   this.x_pos = this.x_margin;
   this.y_pos += this.char_len;
-  if (this.y_pos + this.char_len > this.height - this.y_margin) {
-    this.y_pos = this.y_top;
-    this.string_index = this.start_index;
-  }
+  // if (this.y_pos + this.char_len > this.height - this.y_margin) {
+  //   // this.y_pos = this.y_top;
+  //   // this.a_string_index = this.start_index;
+  // }
 };
 
 eff_ticker.prototype.set_last = function () {

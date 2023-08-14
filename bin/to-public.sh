@@ -1,7 +1,8 @@
 #!/bin/bash
 cd ${0%/*}
 
-# rsync folder public to covid19-dashboard-public
+# rsync folder to public 
+destRepo=p5VideoKit
 
 delete=--delete
 test=

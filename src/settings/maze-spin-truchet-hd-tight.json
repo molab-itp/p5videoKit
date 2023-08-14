@@ -1,12 +1,11 @@
 {
-  "setting": "covid-ticker",
-  "comment": "covid-ticker",
-  "hold_capture": 1,
-  "back_color": -1,
+  "setting": "",
+  "comment": "maze-spin-truchet-hd-tight",
+  "back_color": 200,
   "room_name": "VideoKit-Room-1",
   "patch_layout": "Single",
   "canvas_size": "960x540",
-  "capture_size": "default",
+  "capture_size": "1920x1080",
   "render_size": "Canvas",
   "chat_name": "jht",
   "chat_chk": 0,
@@ -27,8 +26,8 @@
     {
       "eff_spec": {
         "ipatch": 0,
-        "imedia": 0,
-        "eff_label": "ticker",
+        "imedia": 1,
+        "eff_label": "maze_spin",
         "urect": {
           "width": 960,
           "height": 540,
@@ -37,7 +36,18 @@
         }
       },
       "eff_props": {
-        "display_copy_right": 0
+        "ncells": 32,
+        "strokeWeight": 0.5,
+        "delta": 1,
+        "do_spiral": 1,
+        "do_truchet": 1,
+        "do_report": 0,
+        "do_cycle": 0,
+        "step_period": 1,
+        "pause_period": 1,
+        "video_color": 1,
+        "alpha": 255,
+        "clear_period": 0
       }
     }
   ]

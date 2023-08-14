@@ -26,7 +26,11 @@ p5VideoKit.prototype.vk_setup = function (effects, settings, resolve) {
 
     ui_create();
 
-    media_enum();
+    console.log('a_.ui.hold_capture', a_.ui.hold_capture);
+    if (!a_.ui.hold_capture) {
+      console.log('a_.ui.hold_capture media_enum', a_.ui.hold_capture);
+      media_enum();
+    }
 
     livem_restore();
 

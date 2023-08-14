@@ -7,6 +7,9 @@ eff_ticker.prototype.draw_dots_fast = function () {
   }
 };
 eff_ticker.prototype.draw_dots = function () {
+  if (this.a_string_index < this.a_string_date_end_index) {
+    return;
+  }
   if (this.dot_count_reached()) {
     return;
   }
@@ -28,10 +31,7 @@ eff_ticker.prototype.draw_dots = function () {
 
 eff_ticker.prototype.dot_next = function () {
   // console.log('dot_next dot_cindex', dot_cindex);
-  // dot_cindex ^= 1;
   this.dot_cindex = 1;
-  // !!@ 2-day
-  // dot_count_total += dot_count;
   this.dot_count = 0;
   this.select_entry();
   if (this.dot_count_total + this.a_count > this.dot_panel_max) {

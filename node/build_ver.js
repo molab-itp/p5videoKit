@@ -1,10 +1,13 @@
 import pkg from 'fs-extra';
-const { readFileSync } = pkg;
+const { readFileSync, existsSync } = pkg;
 import { join } from 'path';
 
 import { enum_files, writeBuildFile, writeSrcBuildFile } from './enum_files.js';
 
-let updateBuild = 1;
+// default to dev build
+let updateBuild = 0;
+// --prod --> 1
+// --dev  --> 0
 
 export function set_updateBuild(flag) {
   console.log('set_updateBuild flag', flag);
@@ -13,10 +16,12 @@ export function set_updateBuild(flag) {
 
 export function get_build_vers(src_path, buildnum_path) {
   buildnum_path = join(src_path, buildnum_path);
-  const str = readFileSync(buildnum_path, 'utf8');
-  if (!str) {
+  let str = '0';
+  if (existsSync(buildnum_path)) {
+    str = readFileSync(buildnum_path, 'utf8');
+  } else {
     console.log('read failed buildnum_path', buildnum_path);
-    return;
+    // return;
   }
   let current = parseFloat(str);
   let next = current + 1;

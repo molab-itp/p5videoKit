@@ -4,8 +4,8 @@ import MazeSpin from './MazeSpin.js?v={{vers}}';
 
 export default class eff_maze_spin {
   static meta_props = [
-    { prop: 'ncells', selection: [9, 13, 15, 31, 63, 127, 8, 16, 32, 64, 128] },
-    { prop: 'strokeWeight', selection: [0.5, 0.1, 0.25, 0.33, 0.66, 0.75] },
+    { prop: 'ncells', selection: [31, 9, 13, 15, 31, 63, 127, 8, 16, 32, 64, 128] },
+    { prop: 'strokeWeight', selection: [0.5, 0.1, 0.2, 0.25, 0.3, 0.33, 0.4, 0.5, 0.66, 0.75] },
     { prop: 'delta', selection: [1, -1] },
     { prop: 'do_spiral', selection: [1, 0] },
     { prop: 'do_truchet', selection: [0, 1] },

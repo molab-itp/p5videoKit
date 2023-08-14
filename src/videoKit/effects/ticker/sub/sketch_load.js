@@ -1,3 +1,15 @@
+//
+//
+let c19_url_root = 'https://jht1493.net/COVID-19-Impact/Dashboard/a0/c_data/';
+let c19_series = {
+  USA: 'world/c_series/United_States.json',
+  JA: 'world/c_series/Jamaica.json',
+  GY: 'world/c_series/Guyana.json',
+  NY: 'world/c_subs/United_States/c_series/New_York.json',
+  NYC: 'nyc/c_series/_totals.json',
+  BKLYN: 'nyc/c_series/Brooklyn.json',
+};
+
 eff_ticker.prototype.load_json = function () {
   this.json_loaded = 0;
   // let url = 'https://epvisual.com/COVID-19-Impact/Dashboard/a0/c_data/world/c_series/United_States.json';
@@ -15,33 +27,24 @@ eff_ticker.prototype.load_json = function () {
     this.cycle_done = 0;
     this.a_data = data;
     this.prepare_data();
+
+    this.total_deaths = this.a_data[this.a_data.length - 1].Deaths;
+
     if (this.most_lost_ndays) {
-      // this.display_single_date) {
       this.a_data = this.sort_data(this.most_lost_ndays);
     }
+
     this.data_index_down = this.a_data.length;
+
     if (this.start_date) {
       this.data_index_down = this.find_start_date(this.start_date);
     }
-    // this.data_index_down = 1100; // 2023-01-25 1368
-    // this.data_index_down = 745; // !!@
-    // this.data_index_down = 1000; // !!@
-    if (this.data_index_offset) this.data_index_down = this.data_index_offset + 1;
-    // this.data_index_up = 0;
-    // this.data_index_mid = Math.floor(this.data_index_down / 2);
+    if (this.data_index_offset) {
+      this.data_index_down = this.data_index_offset + 1;
+    }
 
     this.select_entry();
   });
-};
-
-let c19_url_root = 'https://jht1493.net/COVID-19-Impact/Dashboard/a0/c_data/';
-let c19_series = {
-  USA: 'world/c_series/United_States.json',
-  JA: 'world/c_series/Jamaica.json',
-  GY: 'world/c_series/Guyana.json',
-  NY: 'world/c_subs/United_States/c_series/New_York.json',
-  NYC: 'nyc/c_series/_totals.json',
-  BKYN: 'nyc/c_series/Brooklyn.json',
 };
 
 eff_ticker.prototype.find_start_date = function (start_date) {
@@ -63,6 +66,7 @@ eff_ticker.prototype.select_entry = function () {
       this.data_index = this.data_index_down;
       ent1 = this.a_data[this.data_index];
       this.a_count = ent1.count;
+      // console.log('select_entry data_index', this.data_index, ent1);
     } while (this.a_count < 1);
   };
   let ent1, ent0;
@@ -73,16 +77,18 @@ eff_ticker.prototype.select_entry = function () {
   // } else {
   //   select_up_down();
   // }
+  console.log('select_entry', ent1.on, new Date());
   this.a_date = ent1.on;
   let s = this.a_count > 1 ? 's' : '';
   if (this.day_next == 0 || this.display_single_date) {
     let title = this.locale + ' COVID-19 Memorial';
     let lineEnd = '\n\n';
-    if (title.length >= this.nchars_wide * 2) {
-      lineEnd = '\n';
-    }
+    // if (title.length >= this.nchars_wide * 2) {
+    //   lineEnd = '\n';
+    // }
     // console.log('select_entry title', title, title.length);
     this.a_string = title + lineEnd + this.a_date + '\n';
+    this.a_string_date_end_index = this.a_string.length - 1;
     // this.a_string = 'USA COVID-19 Memorial\n\n' + this.a_date + '\n';
     // this.a_string = this.a_date + '\n' + this.a_count + '\n';
     // this.panel_top += this.dot_y + this.char_len + this.y_margin * 2;
@@ -98,17 +104,21 @@ eff_ticker.prototype.select_entry = function () {
     } else {
       this.panel_top += ydiff;
     }
-    this.day_next++;
   } else {
     if (this.day_next == 1) {
       this.panel_top += this.dot_y + this.char_len + this.y_margin * 2;
       this.y_top = this.char_len * 4;
     }
-    this.day_next++;
     // this.a_string = this.a_date + '\n' + this.a_count + '\n\nUSA Death' + s + '\n' + this.a_postfix;
     // this.a_string = this.a_date + '\n' + '\nUSA Death' + s + '\n' + this.a_postfix;
-    this.a_string = this.a_date + '\n' + '\nLives lost' + '\n' + this.a_postfix;
+    this.a_string = this.a_date + '\n';
+    this.a_string_date_end_index = this.a_string.length - 1;
+    this.a_string += '\nLives lost' + '\n' + this.a_postfix;
+    if (this.display_tall) {
+      this.y_top = this.panel_top - this.char_len;
+    }
   }
+  this.day_next++;
   this.end_index = this.a_string.length - 1;
   this.begin_day();
 };

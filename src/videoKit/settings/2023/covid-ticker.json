@@ -1,7 +1,8 @@
 {
   "setting": "covid-ticker",
-  "comment": "",
-  "back_color": 1,
+  "comment": "covid-ticker",
+  "hold_capture": 1,
+  "back_color": -1,
   "room_name": "VideoKit-Room-1",
   "patch_layout": "Single",
   "canvas_size": "960x540",

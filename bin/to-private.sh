@@ -1,13 +1,15 @@
 #!/bin/bash
 cd ${0%/*}
 
-# rsync to private p5videoKit folder
+echo rsync to private p5videoKit folder
+echo "!!@ Disabled"
+exit
 
 delete=--delete
 test=
 verbose=
-# test=--dry-run
-# verbose=v
+test=--dry-run
+verbose=v
 
 excludes="--exclude-from to-public-exclude.txt"
 

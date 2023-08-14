@@ -5,6 +5,7 @@ eff_ticker.prototype.page_pause_start = function () {
   // page_pause_count = test_fast ? page_pause_frames / 2 : page_pause_frames;
   // console.log('page_pause_start day_next', this.day_next);
   let n = this.test_fast ? 0 : this.page_pause_secs;
+  if (this.test_skip_pause) n = 0;
   // if (this.day_next == 1) n = 0;
   this.page_pause_count = n * frameRate();
   this.a_state = 'page_pause';
@@ -30,21 +31,6 @@ eff_ticker.prototype.set_paused = function () {
 };
 
 eff_ticker.prototype.draw_paused = function () {
-  // if (0) {
-  //   a_x += pix_len;
-  //   if (a_x + x_margin > width) {
-  //     a_x = x_margin;
-  //     a_y += pix_len;
-  //     if (a_y + y_margin > height) {
-  //       a_y = y_top;
-  //       bottom_color = bottom_color == 'white' ? 'gray' : 'white';
-  //     }
-  //   }
-  //   fill(bottom_color);
-  //   draw_shape(a_x, a_y, pix_len, pix_len);
-  //   bit_count++;
-  //   return;
-  // }
   if (this.message_done()) {
     this.page_pause_start();
   }

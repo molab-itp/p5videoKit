@@ -1,6 +1,6 @@
 {
-  "setting": "covid-ticker",
-  "comment": "covid-ticker",
+  "setting": "covid-ticker-bklyn",
+  "comment": "covid-ticker-bklyn",
   "hold_capture": 1,
   "back_color": -1,
   "room_name": "VideoKit-Room-1",
@@ -37,7 +37,14 @@
         }
       },
       "eff_props": {
-        "display_copy_right": 0
+        "display_copy_right": 0,
+        "locale": "BKLYN",
+        "display_tall": 0,
+        "display_single_date": 0,
+        "most_lost_ndays": 0,
+        "start_date": "",
+        "test_fast": 0,
+        "test_skip_pause": 0
       }
     }
   ]

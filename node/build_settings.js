@@ -28,7 +28,7 @@ function gen_a_settingMetas(src_path, settingMetasPath, args) {
     if (fparts.ext !== '.json') continue;
     let label = fparts.name;
     let import_path = afile;
-    let mstr = `{ label: '${label}', import_path: '${import_path}' },`;
+    let mstr = `    { label: '${label}', import_path: '${import_path}' },`;
 
     settingMetas.push(mstr);
   }

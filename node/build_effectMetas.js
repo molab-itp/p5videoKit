@@ -48,7 +48,7 @@ export default function build_effectMetas(args) {
     // let pos = ent.npath.indexOf('_');
     let { label, ui_label, import_path } = ent;
     // return `{ label: '${label}', import_path: '${import_path}', ui_label: '${ui_label}'},`;
-    return `{ label: '${label}', import_path: '${import_path}'},`;
+    return `    { label: '${label}', import_path: '${import_path}' },`;
   });
   // console.log('ents', ents);
   let str = `// !!@ Generated File

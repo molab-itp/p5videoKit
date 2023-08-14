@@ -9,14 +9,11 @@ eff_ticker.prototype.let_init = function () {
   this.a_paused;
   this.page_pause_secs = 10;
   this.a_string = this.a_count + ' USA\nDeaths on\n2020-12-30\n';
-  this.nchars_wide = 11;
+  this.nchars_wide = 12;
   this.a_data;
   this.data_index;
   // to heal we must remember
-  // this.a_postfix = '"to heal\nwe must\nremember"';
-  // this.a_postfix = '\nto heal\nwe remember';
   this.a_postfix = '\nto heal\nwe must\nremember';
-  // this.a_prefix = 'Covid19 Memorial';
   this.n_lines = 6;
   this.cycle_time;
   this.last_count;
@@ -24,7 +21,7 @@ eff_ticker.prototype.let_init = function () {
   this.day_start;
   this.start_index = 0;
   this.end_index = this.a_string.length - 1;
-  this.string_index = this.start_index;
+  this.a_string_index = this.start_index;
   this.pix_len;
   this.char_len;
   this.x_margin;
@@ -68,12 +65,9 @@ eff_ticker.prototype.let_init = function () {
   this.data_index_offset = 0;
   this.data_index_end;
   this.data_index_down;
-  // this.data_index_up;
-  // this.data_index_mid;
   this.load_count = 0;
   this.json_loaded = 0;
   this.day_next = 0;
-  // data_index_offset = 85;
   this.bottom_color = 'white';
   this.panel_len = this.width / 2;
   // console.log('panel_len', this.panel_len);
@@ -82,7 +76,6 @@ eff_ticker.prototype.let_init = function () {
   this.x_margin = this.pix_len;
   this.y_margin = this.pix_len;
   this.x_pos = this.x_margin;
-  // y_top = y_margin + (height - n_lines * char_len) / 2;
   this.y_top = this.y_margin;
   this.y_pos = this.y_top;
   this.panel_right = this.panel_len + this.x_margin;
@@ -103,8 +96,8 @@ eff_ticker.prototype.let_init = function () {
   // console.log('panel_height', this.panel_height);
   // console.log('pix_len', this.pix_len);
   // console.log('nlines', nlines);
+  // console.log('let_init char_len', this.char_len);
   this.day_next = 0;
-  // this.data_index_offset = 85;
 };
 
 // 2020-04-16 4607 85

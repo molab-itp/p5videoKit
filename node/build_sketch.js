@@ -39,6 +39,6 @@ function str_replace(str, prefix, suffix, ents) {
   }
   // console.log('str_replace prefix|', prefix, '| ipos', ipos, 'iend', iend);
   ipos += prefix.length;
-  str = str.substring(0, ipos) + ents.join('\n') + '\n' + str.substring(iend);
+  str = str.substring(0, ipos) + ents.join('\n') + '\n  ' + str.substring(iend);
   return str;
 }
