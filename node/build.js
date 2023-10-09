@@ -22,7 +22,7 @@ import build_effectMetas from './build_effectMetas.js';
 import build_sketch from './build_sketch.js';
 
 // source files that will have ?v=<buildnumber> updated
-const buildnum_files = ['./index.html', './videoKit/'];
+const buildnum_files = ['./index.html', './effects/', './videoKit/'];
 
 const root_path = join(__dirname, '..');
 const src_path = join(root_path, 'src');

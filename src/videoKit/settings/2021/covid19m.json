@@ -1,5 +1,6 @@
 {
   "setting": "covid19m",
+  "hold_capture": 1,
   "back_color": 200,
   "room_name": "Dice-Play-1",
   "patch_layout": "Single",
@@ -13,7 +14,7 @@
     {
       "eff_spec": {
         "ipatch": 0,
-        "imedia": 1,
+        "imedia": 0,
         "eff_label": "image",
         "urect": {
           "width": 960,

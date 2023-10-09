@@ -4,7 +4,7 @@ export function report_1ofn(my) {
   if (!my.do_report) return;
   let bnum = 2n ** BigInt(my.now.length);
   let bstr = ' 0x' + bnum.toString(16).toUpperCase();
-  let str = '1 of ' + bnum.toLocaleString('en-US') + bstr + '<br/> ';
+  let str = '1 of ' + bnum.toLocaleString('en-US') + bstr + '<br/> ' + parseFloat(bnum) + '<br/> ';
   let div = createP('<code style="font-size:16px">' + str + '</code>');
   // div.style('margin-left:2px');
 }
