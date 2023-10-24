@@ -28,7 +28,8 @@ export default class eff_image_url {
     layer_image_scaled_pad(this.output, this.img, this.eff_spec.urect, centered);
   }
   load_image() {
-    let imageUrl = this.image_url;
+    // add version for cache busting
+    let imageUrl = this.image_url + '?v={{vers}}';
     loadImage(imageUrl, (img) => {
       console.log('eff_image_url img.width', img.width, 'height', img.height);
       // console.log('eff_image_url output width', this.output.width, 'height', this.output.height);

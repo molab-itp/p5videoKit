@@ -12,10 +12,13 @@ dest=../src/external/lib
 # /*! p5.js v1.4.0 June 29, 2021 */
 # curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js -o $dest/p5.min.js
 # curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js -o $dest/p5.sound.min.js
-
 # /*! p5.js v1.6.0 February 22, 2023 */
-curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js -o $dest/p5.min.js
-curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js -o $dest/p5.sound.min.js
+# curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js -o $dest/p5.min.js
+# curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js -o $dest/p5.sound.min.js
+
+# /*! p5.js v1.7.0 July 10, 2023 */
+curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js -o $dest/p5.min.js
+curl https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js -o $dest/p5.sound.min.js
 
 curl https://p5livemedia.itp.io/simplepeer.min.js -o $dest/simplepeer.min.js
 curl https://p5livemedia.itp.io/socket.io.js -o $dest/socket.io.js
@@ -26,6 +29,8 @@ curl https://p5livemedia.itp.io/socket.io.js -o $dest/socket.io.js
 # curl https://p5livemedia.itp.io/p5livemedia.js -o $dest/p5livemedia.js
 curl https://raw.githubusercontent.com/vanevery/p5LiveMedia/master/public/p5livemedia.js  -o $dest/p5livemedia.js
 
+# https://github.com/ml5js/ml5-library/releases
+# 0.12.2 Apr 25, 2022 
 # curl https://unpkg.com/ml5@latest/dist/ml5.min.js -o $dest/ml5.min.js
 # https://unpkg.com/ml5@latest/dist/ml5.min.js
 # https://unpkg.com/ml5@0.12.2/dist/ml5.min.js

@@ -43,6 +43,11 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
   for (let afile of nfiles) {
     // skip directory enteries
     if (!afile) continue;
+    // only modify text files
+    if (!(afile.endsWith('.js') || afile.endsWith('.html'))) {
+      continue;
+    }
+    // console.log('build_ver_run afile', afile);
     const fpath = join(src_path, afile);
     const str = readFileSync(fpath, 'utf8');
     if (!str) {

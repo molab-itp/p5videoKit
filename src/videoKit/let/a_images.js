@@ -288,7 +288,8 @@ export let a_images = {
     "IMG_6946.JPEG",
     "IMG_7146.JPEG",
     "IMG_7436.JPEG",
-    "IMG_7555.JPEG"
+    "IMG_7555.JPEG",
+    "skin-tone-guest-v3.png"
   ],
   "male": [
     "068.jpg",
