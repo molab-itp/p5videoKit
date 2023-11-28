@@ -7,14 +7,15 @@ export class FFT_analyser {
   }
 
   init_analyser() {
-    console.log('FFT_analyser media', this.media);
-    let a_audioCtx = getAudioContext();
-    a_audioCtx.resume();
+    // console.log('FFT_analyser media', this.media);
+    let aAudioContext = getAudioContext();
+    aAudioContext.resume();
+    // sound_AudioContext_resume();
     if (!this.media.mediaDevice) return;
     let stream = this.media.mediaDevice.stream;
-    this.analyser = a_audioCtx.createAnalyser();
+    this.analyser = aAudioContext.createAnalyser();
     try {
-      let source = a_audioCtx.createMediaStreamSource(stream);
+      let source = aAudioContext.createMediaStreamSource(stream);
       source.connect(this.analyser);
     } catch (err) {
       console.log('createMediaStreamSource err', err);
@@ -27,5 +28,12 @@ export class FFT_analyser {
     if (!this.analyser) return [];
     this.analyser.getByteFrequencyData(this.spectrum_arr);
     return this.spectrum_arr;
+  }
+}
+
+export function sound_AudioContext_resume() {
+  console.log('getAudioContext().state', getAudioContext().state);
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
   }
 }

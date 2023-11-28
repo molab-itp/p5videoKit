@@ -1,4 +1,3 @@
-import { image_scaled_pad } from '../../util/image.js?v={{vers}}';
 import { FFT_analyser } from '../../util/FFT_analyser.js?v={{vers}}';
 
 export default class eff_fft_graph {
@@ -12,7 +11,7 @@ export default class eff_fft_graph {
     this.draw_fft();
   }
   init() {
-    console.log('eff_fft_graph init', this);
+    // console.log('eff_fft_graph init', this);
     let { width, height } = this.eff_spec.urect;
     this.output = createGraphics(width, height);
     this.output.noStroke();
