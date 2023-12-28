@@ -14,7 +14,7 @@ excludes="--exclude-from to-public-exclude.txt"
 
 source=../
 
-destRepo=p5videoKit-jht9629-nyu
+destRepo=p5videoKit-molab
 rpath=../../$destRepo
 
 echo $verbose $delete $test

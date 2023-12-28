@@ -2,6 +2,15 @@ notes.txt
 
 # --
 
+2023-12-27 22:00:13
+
+>> Setup for run
+run/run-black-facts.sh
+
+bin/install-electron.sh
+
+# --
+
 bin/build.sh --dev
 # dont update build number
 

@@ -26,7 +26,7 @@ export default class eff_pose_net {
     if (this.poseNet) {
       this.poseNet.video = this.video;
     }
-    a_poses = this.poses;
+    window.a_poses = this.poses;
     if (this.points) this.drawKeypoints(this.poses);
     if (this.skel) this.drawSkeleton(this.poses);
     this.drawFigure(this.poses);
@@ -129,6 +129,7 @@ export default class eff_pose_net {
       ellipse(0, -2 * h, fw, fh);
     }
 
+    // Neck
     let x4 = 0 - w;
     let y4 = 0 - h;
     let x5 = 0 + w;
