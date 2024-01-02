@@ -1,5 +1,5 @@
 //
-// Run p5VideoKet as electron process to allow for restart and other options
+// Run p5videoKet as electron process to allow for restart and other options
 
 // npm run start -- --screen 2 --restart_time 18:09:00
 // --restart_time
