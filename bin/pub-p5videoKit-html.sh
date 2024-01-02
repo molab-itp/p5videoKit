@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ${0%/*}
 
-# Publish html app to jht1493.net
+# Publish p5VideoKit/demo html app to jht1493.net
 
 # external/media
 #   is managed manually

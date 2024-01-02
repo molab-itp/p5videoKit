@@ -42,7 +42,7 @@ function ui_top_pane() {
   <span id="imsg" style="font-size: 5vw; display: none; float: right"></span>
   <span>
     <span style="float: right; margin-right: 5px">
-      <a href="https://github.com/jht1493/p5VideoKit/" target="github" >
+      <a href="https://github.com/jht9629-nyu/p5videoKit/" target="github" >
         GitHub
       </a>
     </span>

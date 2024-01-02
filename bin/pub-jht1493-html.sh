@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ${0%/*}
 
-# Publish html app to jht1493.net
+# Publish html head to jht1493.net
 
 excludes="--exclude-from to-public-exclude.txt"
 
