@@ -19,15 +19,11 @@ We welcome your feedback and help to improve the user interface and documentatio
 - [video overview](https://youtu.be/6t9aiVLL9OQ)
 - contact me: [create an github issue for this repo](https://github.com/jht9629-nyu/p5videoKit/issues)
 
-## Announcements
-
-### (Interactive)(Multi)Screens Club presentation
-
-![IM-Screens-Flyer](docs/media/IM-Screens-Flyer-1.jpg)
-
 ## Screen shots
 
 Screen shots of p5VideoKit in action:
+
+![live-tile face-mesh_2024](docs/media/live-tile-3x6-face-mesh_2024-01-03.png)
 
 ![face-tile](docs/media/0-face-tile-1-test_2022-05-03-2.jpg)
 
@@ -46,6 +42,8 @@ p5VideoKit runs best in modern desktop browsers. I've tested primarily in Google
 ![grid1](docs/media/grid1.jpg)
 
 [4 effects demo](https://jht1493.net/p5VideoKit/demo/?d=videoKit/settings/demo/effects4.json) - four effects and be seen in a 2 by 2 layout. Use the Effect drop down to select an effect.
+
+[live-tile-3x6-face-mesh](https://jht1493.net/p5VideoKit/demo/index.html?u=7&d=settings/live-tile-3x6-face-mesh.json) - 3x6 live tiling of images from mobile devices
 
 [live1](https://jht1493.net/p5VideoKit/demo/?d=videoKit/settings/baked/live1.json) - joint the VideoKit-Play-1 live streaming room.
 
@@ -95,3 +93,11 @@ Built using
 [![creative-energy-2017-11](docs/media/creative-energy-2017-11.jpg)](https://en.wikipedia.org/wiki/Neri_Oxman)
 ![Imagine-Create-Play-Share-Reflect](docs/media/Imagine-Create-Play-Share-Reflect.png)
 ![Vision-Explore-Create-Reflect](docs/media/Vision-Explore-Create-Reflect.png)
+
+# archived from 2020
+
+## Announcements -- archived
+
+### (Interactive)(Multi)Screens Club presentation -- archived
+
+![IM-Screens-Flyer](docs/media/IM-Screens-Flyer-1.jpg)
