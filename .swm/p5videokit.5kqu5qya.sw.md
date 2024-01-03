@@ -4,28 +4,28 @@ title: p5videoKit
 
 <SwmPath>[src/index.html](/src/index.html)</SwmPath> open with live server to run locally
 
-<SwmSnippet path="/src/index.html" line="49">
+<SwmSnippet path="src/index.html" line="49">
 
 ---
 
 videoKit folder contains the entry point to videoKit library
 
-```html
-<script src="videoKit/p5VideoKit.js?v={{vers}}"></script>
+```
+    <script src="videoKit/p5VideoKit.js?v={{vers}}"></script>
 ```
 
 ---
 
 </SwmSnippet>
 
-<SwmSnippet path="/src/sketch.js" line="22">
+<SwmSnippet path="src/sketch.js" line="22">
 
 ---
 
 p5videoKit is initialized using the configuration settings
 
-```javascript
-videoKit = new p5VideoKit(a_config);
+```
+  videoKit = new p5VideoKit(a_config);
 ```
 
 ---
