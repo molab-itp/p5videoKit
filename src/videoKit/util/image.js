@@ -1,7 +1,18 @@
-export function image_copy(image, src) {
-  image.copy(src, 0, 0, src.width, src.height, 0, 0, image.width, image.height);
+//
+// copies the image to the src at full dimensions
+export function image_copy(to, from) {
+  to.copy(from, 0, 0, from.width, from.height, 0, 0, to.width, to.height);
 }
-// image.copy(srcImage, sx, sy, sw, sh, dx, dy, dw, dh)
+// image.copy(fromImage, sx, sy, sw, sh, dx, dy, dw, dh)
+
+export function image_copy_from(img, fromImg) {
+  img.copy(fromImg, 0, 0, fromImg.width, fromImg.height, 0, 0, img.width, img.height);
+}
+
+// Is this more descriptive?
+export function image_copy_spread({ to, from }) {
+  to.copy(from, 0, 0, from.width, from.height, 0, 0, to.width, to.height);
+}
 
 // Copy the pixels from src to dest.
 // Use when src has alpha that you want to preserve in dest

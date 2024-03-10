@@ -1,6 +1,9 @@
 import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
 import { image_copy } from '../../util/image.js?v={{vers}}';
 
+// properties setup by the caller:
+//  input
+//
 export default class eff_circle {
   static meta_props = {
     per_frame: [5, 10, 50, 100, 200, 1000],
