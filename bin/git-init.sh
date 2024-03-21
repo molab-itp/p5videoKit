@@ -1,11 +1,11 @@
 #!/bin/bash
 cd ${0%/*}
 
-# /Users/jht2/Documents/projects/dice_face_aa/p5VideoKit-private
-# https://github.com/jht1493/p5VideoKit-private.git
+# /Users/jht2/Documents/projects/dice_face_aa/p5videoKit-private
+# https://github.com/jht1493/p5videoKit-private.git
 
-repo_name=p5VideoKit-private
-repo_dir=p5VideoKit-private
+repo_name=p5videoKit-private
+repo_dir=p5videoKit-private
 # repo=covid19-dashboard-private
 
 dest=../$repo_dir

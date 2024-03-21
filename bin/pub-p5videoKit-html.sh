@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ${0%/*}
 
-# Publish p5VideoKit/demo html app to jht1493.net
+# Publish p5videoKit/demo html app to jht1493.net
 
 # external/media
 #   is managed manually
@@ -19,7 +19,7 @@ start_time=`date +%s`
 
 host=jhtitp@jht1493.net
 siteroot=/home/bitnami/htdocs
-homepage=p5VideoKit/demo
+homepage=p5videoKit/demo
 rpath="${siteroot}/${homepage}"
 rdest=$host:${rpath}
 

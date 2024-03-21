@@ -1,26 +1,26 @@
-// p5VideoKit main class
+// p5videoKit main class
 //  Must be include in html as
-//    <script src="videoKit/p5VideoKit.js?v=94"></script>
+//    <script src="videoKit/p5videoKit.js?v=94"></script>
 //
 
-class p5VideoKit {
+class p5videoKit {
   //
   // let effects = [
   //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
 
   constructor(config, p5_instance = p5.instance) {
-    // console.log('p5VideoKit p5_instance', p5_instance);
+    // console.log('p5videoKit p5_instance', p5_instance);
     // To work in p5 instance mode we need to use this.p5_instance on all p5 globals
     //
     this.room_name_prefix = '';
     // this.room_name_prefix = 'dev-';
     if (!p5_instance) {
-      console.log('p5VideoKit !!@ no p5_instance');
+      console.log('p5videoKit !!@ no p5_instance');
     }
     this.p5_instance = p5_instance;
     this.my_canvas = p5_instance._renderer;
     if (!this.my_canvas) {
-      console.log('p5VideoKit !!@ no my_canvas');
+      console.log('p5videoKit !!@ no my_canvas');
     }
     this.init(config).then(() => {
       console.log('videoKit.init done');
@@ -37,18 +37,18 @@ class p5VideoKit {
     return new Promise((resolve, reject) => {
       import(inpath)
         .then((module) => {
-          // console.log('p5VideoKit module', module);
+          // console.log('p5videoKit module', module);
           this.vk_setup(effects, settings, resolve);
         })
         .catch((err) => {
-          console.log('p5VideoKit err', err, '\n inpath', inpath);
+          console.log('p5videoKit err', err, '\n inpath', inpath);
           reject();
         });
     });
   }
 
   draw() {
-    console.log('p5VideoKit draw stub');
+    console.log('p5videoKit draw stub');
   }
 }
 

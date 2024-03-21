@@ -2,7 +2,7 @@
 cd ${0%/*}
 
 # rsync folder to public 
-destRepo=p5VideoKit
+destRepo=p5videoKit
 
 delete=--delete
 test=

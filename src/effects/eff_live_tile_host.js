@@ -112,4 +112,4 @@ export default class eff_live_tile_host {
   }
 }
 
-// p5VideoKit.prototype.createEffect = function ({eff_label, imedia, urect, props}) {
+// p5videoKit.prototype.createEffect = function ({eff_label, imedia, urect, props}) {

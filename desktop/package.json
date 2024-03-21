@@ -1,7 +1,7 @@
 {
   "name": "electron",
   "version": "1.0.1",
-  "description": "A minimal p5VideoKit Electron application",
+  "description": "A minimal p5videoKit Electron application",
   "main": "electron-main",
   "scripts": {
     "start": "electron electron-main"

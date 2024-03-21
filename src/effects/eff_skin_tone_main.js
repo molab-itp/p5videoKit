@@ -108,4 +108,4 @@ export default class eff_skin_tone_main {
   }
 }
 
-// p5VideoKit.prototype.createEffect = function ({eff_label, imedia, urect, props}) {
+// p5videoKit.prototype.createEffect = function ({eff_label, imedia, urect, props}) {

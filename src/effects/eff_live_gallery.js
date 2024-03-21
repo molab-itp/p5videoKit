@@ -1,5 +1,5 @@
 // live_gallery Show recorded media in grid from folder
-//    p5VideoKit-gallery-yoyo
+//    p5videoKit-gallery-yoyo
 //
 
 export default class eff_live_gallery {
@@ -28,7 +28,7 @@ export default class eff_live_gallery {
     _movie_play: [0, 1],
     movie_url: {
       style: 'width:40%',
-      text_input: './external/media/p5VideoKit-gallery-yoyo/live_gallery',
+      text_input: './external/media/p5videoKit-gallery-yoyo/live_gallery',
     },
   };
   constructor(props) {
@@ -286,8 +286,8 @@ export default class eff_live_gallery {
 Uncaught TypeError: Cannot read properties of undefined (reading 'toBlob')
     at k.default.saveCanvas (p5.min.js:3:552605)
     at eff_live_gallery.prepareOutput (eff_live_gallery.js?v={{vers}}:34:19)
-    at p5VideoKit.draw_patch (apex.js?v={{vers}}:218:8)
-    at p5VideoKit.draw (apex.js?v={{vers}}:47:18)
+    at p5videoKit.draw_patch (apex.js?v={{vers}}:218:8)
+    at p5videoKit.draw (apex.js?v={{vers}}:47:18)
     at draw (sketch.js?v={{vers}}:47:12)
     at o.default.redraw (p5.min.js:3:487659)
     at _draw (p5.min.js:3:424542)

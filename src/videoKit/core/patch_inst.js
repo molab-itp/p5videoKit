@@ -4,7 +4,7 @@ import { ui_div_empty } from '../core-ui/ui_tools.js?v={{vers}}';
 import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v={{vers}}';
 import { effectMeta_find } from './effectMeta.js?v={{vers}}';
 
-p5VideoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
+p5videoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
   let effMeta = effectMeta_find(eff_label);
   if (!effMeta) {
     console.log('patch_inst_create !!@ No eff_label', eff_label);
@@ -67,7 +67,7 @@ p5VideoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, ef
   return inst;
 };
 
-// p5VideoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
+// p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
 
 export function patch_add(aPatch) {
   aPatch.eff_spec.ipatch = a_.ui.patches.length;

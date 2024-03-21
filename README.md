@@ -1,8 +1,8 @@
 # [p5videoKit](https://github.com/molab-itp/p5videoKit.git)
 
-<!-- https://github.com/jht1493/p5VideoKit -->
+<!-- https://github.com/jht1493/p5videoKit -->
 
-[p5videoKit - a dashboard for mixing video in the browser.](https://jht1493.net/p5VideoKit/demo/)
+[p5videoKit - a dashboard for mixing video in the browser.](https://jht1493.net/p5videoKit/demo/)
 You can apply visual effects
 to live video from connected cameras or streaming from other devices on the internet.
 p5videoKit is designed to be re-usable and extended
@@ -21,7 +21,7 @@ We welcome your feedback and help to improve the user interface and documentatio
 
 ## Screen shots
 
-Screen shots of p5VideoKit in action:
+Screen shots of p5videoKit in action:
 
 ![live-tile face-mesh_2024](docs/media/live-tile-3x6-face-mesh_2024-01-03.png)
 
@@ -33,21 +33,21 @@ Screen shots of p5VideoKit in action:
 
 ## Demo
 
-p5VideoKit runs best in modern desktop browsers. I've tested primarily in Google Chrome and second on Apple Safari on MacOS desktop computers. On mobile devices (iPhone and Android) things are flaky - landscape mode is best here.
+p5videoKit runs best in modern desktop browsers. I've tested primarily in Google Chrome and second on Apple Safari on MacOS desktop computers. On mobile devices (iPhone and Android) things are flaky - landscape mode is best here.
 
-[demo](https://jht1493.net/p5VideoKit/demo/) - Opens a new browser window to with videokit interface that shows local camera.Your browser should ask you for permission to use the camera and microphone. Hit the Reset button if you don't see any video. Use the Effect drop down to select an effect to apply to the camera video.
+[demo](https://jht1493.net/p5videoKit/demo/) - Opens a new browser window to with videokit interface that shows local camera.Your browser should ask you for permission to use the camera and microphone. Hit the Reset button if you don't see any video. Use the Effect drop down to select an effect to apply to the camera video.
 
-[Grid demo](https://jht1493.net/p5VideoKit/demo/?d=videoKit/settings/demo/grid1.json) - pixelized video effect.
+[Grid demo](https://jht1493.net/p5videoKit/demo/?d=videoKit/settings/demo/grid1.json) - pixelized video effect.
 
 ![grid1](docs/media/grid1.jpg)
 
-[4 effects demo](https://jht1493.net/p5VideoKit/demo/?d=videoKit/settings/demo/effects4.json) - four effects and be seen in a 2 by 2 layout. Use the Effect drop down to select an effect.
+[4 effects demo](https://jht1493.net/p5videoKit/demo/?d=videoKit/settings/demo/effects4.json) - four effects and be seen in a 2 by 2 layout. Use the Effect drop down to select an effect.
 
-[live-tile-3x6-face-mesh](https://jht1493.net/p5VideoKit/demo/index.html?u=7&d=settings/live-tile-3x6-face-mesh.json) - 3x6 live tiling of images from mobile devices
+[live-tile-3x6-face-mesh](https://jht1493.net/p5videoKit/demo/index.html?u=7&d=settings/live-tile-3x6-face-mesh.json) - 3x6 live tiling of images from mobile devices
 
-[live1](https://jht1493.net/p5VideoKit/demo/?d=videoKit/settings/baked/live1.json) - joint the VideoKit-Play-1 live streaming room.
+[live1](https://jht1493.net/p5videoKit/demo/?d=videoKit/settings/baked/live1.json) - joint the VideoKit-Play-1 live streaming room.
 
-[archive of settings ](https://jht1493.net/p5VideoKit/demo/videoKit/settings.html) - not every settings work
+[archive of settings ](https://jht1493.net/p5videoKit/demo/videoKit/settings.html) - not every settings work
 
 ## The interface
 
@@ -74,7 +74,7 @@ p5VideoKit runs best in modern desktop browsers. I've tested primarily in Google
 
 ## History
 
-- p5VideoKit is based of the code used to create the interactive installation at [NYU-ITP in 2021](https://jht1493.github.io/2021-NYU-ITP-Installation/)
+- p5videoKit is based of the code used to create the interactive installation at [NYU-ITP in 2021](https://jht1493.github.io/2021-NYU-ITP-Installation/)
 
 - Keeping in the groove of my [DICE video art app](http://www.johnhenrythompson.com/3-dice)
 

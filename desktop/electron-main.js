@@ -50,7 +50,7 @@ function print_process_argv() {
 
 // bin/run-gallery.sh
 // npm run start electron-main -- --ddebug --download_path Documents/projects/daily
-// 0: /Users/jht2/Documents/projects/dice_face_aa/p5VideoKit-private/desktop/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron
+// 0: /Users/jht2/Documents/projects/dice_face_aa/p5videoKit-private/desktop/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron
 // 1: electron-main
 // 2: --ddebug
 // 3: --download_path

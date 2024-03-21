@@ -12,9 +12,9 @@ import './record_video.js?v={{vers}}';
 import { patch_inst_deinit } from '../core/patch_inst.js?v={{vers}}';
 import { PeriodTimer } from '../util/PeriodTimer.js?v={{vers}}';
 
-p5VideoKit.prototype.PeriodTimer = PeriodTimer;
+p5videoKit.prototype.PeriodTimer = PeriodTimer;
 
-p5VideoKit.prototype.vk_setup = function (effects, settings, resolve) {
+p5videoKit.prototype.vk_setup = function (effects, settings, resolve) {
   ui_message('loading...');
   a_.videoKit = this;
   a_.my_canvas = this.my_canvas;
@@ -42,10 +42,10 @@ p5VideoKit.prototype.vk_setup = function (effects, settings, resolve) {
   });
 };
 
-p5VideoKit.prototype.draw = function () {
-  // console.log('p5VideoKit draw');
+p5videoKit.prototype.draw = function () {
+  // console.log('p5videoKit draw');
   if (!this.a_initDone) {
-    console.log('p5VideoKit draw init not done');
+    console.log('p5videoKit draw init not done');
     return;
   }
   this.set_background();
@@ -70,7 +70,7 @@ p5VideoKit.prototype.draw = function () {
 
 // let eff = videoKit.createEffect( 'bestill', 1, urect, {factor: 20} )
 //  imedia is mediaDiv indext or effect.output
-p5VideoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
+p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
   if (!eff_spec) eff_spec = { eff_label, imedia, urect };
   let media;
   let input;
@@ -98,7 +98,7 @@ p5VideoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
 };
 
 // videoKit.updateEffect(eff, { imedia, urect });
-// p5VideoKit.prototype.updateEffect = function (eff, { imedia, urect }) {
+// p5videoKit.prototype.updateEffect = function (eff, { imedia, urect }) {
 //   // console.log('updateEffect eff', eff, 'imedia', imedia, 'urect', urect);
 //   let media = this.mediaDivAt(imedia);
 //   if (media) {
@@ -113,7 +113,7 @@ p5VideoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
 // videoKit.layerCopyInput(layer, { input, urect })
 // return 1 if input ready
 //
-p5VideoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, fitWidth }) {
+p5videoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, fitWidth }) {
   if (imedia !== undefined) {
     let media = this.mediaDivAt(imedia);
     if (!media || !media.ready('layerCopyInput')) {
@@ -150,7 +150,7 @@ p5VideoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, f
 };
 
 // videoKit.layerCopyEffect( layer, eff  )
-p5VideoKit.prototype.layerCopyEffect = function (layer, eff) {
+p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
   // console.log('layerCopyEffect eff', eff);
   eff.prepareOutput();
   if (!eff.output) return;
@@ -165,7 +165,7 @@ p5VideoKit.prototype.layerCopyEffect = function (layer, eff) {
   layer.copy(input, sx, sy, sw, sh, x1, y0, dw, height);
 };
 
-// p5VideoKit.patch_inst_create(eff_label, imedia, ipatch, eff_spec, eff_props)
+// p5videoKit.patch_inst_create(eff_label, imedia, ipatch, eff_spec, eff_props)
 
 // "eff_spec": {
 //   "ipatch": 0,
@@ -178,7 +178,7 @@ p5VideoKit.prototype.layerCopyEffect = function (layer, eff) {
 //     "y0": 0
 //   }
 
-// p5VideoKit.prototype.factoryPropInits = function (eff_label, init_props = {}) {
+// p5videoKit.prototype.factoryPropInits = function (eff_label, init_props = {}) {
 //   let effMeta = effectMeta_find(eff_label);
 //   if (!effMeta) {
 //     console.log('factory_prop_inits no effMeta');
@@ -190,35 +190,35 @@ p5VideoKit.prototype.layerCopyEffect = function (layer, eff) {
 
 // process input --> output
 // videoKit.prepareOutput(eff)
-p5VideoKit.prototype.prepareOutput = function (eff) {
+p5videoKit.prototype.prepareOutput = function (eff) {
   eff.prepareOutput();
 };
 
 // videoKit.deinitEffect
-p5VideoKit.prototype.deinitEffect = function (eff) {
+p5videoKit.prototype.deinitEffect = function (eff) {
   patch_inst_deinit(eff);
 };
 
 // videoKit.ouputToCanvas( eff  )
-p5VideoKit.prototype.ouputToCanvas = function (eff) {
+p5videoKit.prototype.ouputToCanvas = function (eff) {
   if (eff.output) {
     image_scaled_pad(eff.output, eff.eff_spec.urect);
   }
 };
 
 // let n = videoKit.mediaDivCount()
-p5VideoKit.prototype.mediaDivCount = function () {
+p5videoKit.prototype.mediaDivCount = function () {
   return a_.mediaDivs.length;
 };
 
 // videoKit.mediaDivLiveIndex()
-p5VideoKit.prototype.mediaDivLiveIndex = function () {
+p5videoKit.prototype.mediaDivLiveIndex = function () {
   console.log('mediaDivLiveIndex lastMediaDivIndex', a_.lastMediaDivIndex);
   return a_.lastMediaDivIndex || 0;
 };
 
 // mediaDiv = videoKit.mediaDeviceAt(index)
-p5VideoKit.prototype.mediaDivAt = function (index) {
+p5videoKit.prototype.mediaDivAt = function (index) {
   return a_.mediaDivs[index];
 };
 
@@ -240,7 +240,7 @@ p5VideoKit.prototype.mediaDivAt = function (index) {
 //   }
 // }
 
-p5VideoKit.prototype.draw_patch = function (ipatch, prior) {
+p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   let uiPatch = a_.ui.patches[ipatch];
   // console.log('draw ipatch', ipatch, 'uiPatch', uiPatch);
   let eff_spec = uiPatch.eff_spec;
@@ -264,7 +264,7 @@ p5VideoKit.prototype.draw_patch = function (ipatch, prior) {
   return inst;
 };
 
-p5VideoKit.prototype.set_background = function () {
+p5videoKit.prototype.set_background = function () {
   let bg = a_.ui.back_color;
   // console.log('set_background a_.ui.back_color', a_.ui.back_color);
   if (!bg) {
@@ -280,7 +280,7 @@ p5VideoKit.prototype.set_background = function () {
   background(bg);
 };
 
-p5VideoKit.prototype.mouse_event_check = function (inst) {
+p5videoKit.prototype.mouse_event_check = function (inst) {
   if (inst.mouseDragged) {
     this.mouseDragged_inst = inst;
   }
@@ -289,13 +289,13 @@ p5VideoKit.prototype.mouse_event_check = function (inst) {
   }
 };
 
-p5VideoKit.prototype.mouseDragged = function () {
+p5videoKit.prototype.mouseDragged = function () {
   if (this.mouseDragged_inst) {
     this.mouseDragged_inst.mouseDragged();
   }
 };
 
-p5VideoKit.prototype.mouseReleased = function () {
+p5videoKit.prototype.mouseReleased = function () {
   if (this.mouseReleased_inst) {
     this.mouseReleased_inst.mouseReleased();
   }

@@ -38,7 +38,7 @@
       "eff_props": {
         "ncell": 3,
         "nmovie": 10,
-        "movie_url": "./external/media/p5VideoKit-gallery-yoyo/live_gallery"
+        "movie_url": "./external/media/p5videoKit-gallery-yoyo/live_gallery"
       }
     }
   ]

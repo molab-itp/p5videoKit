@@ -1,5 +1,5 @@
 // p5LiveVideo example dashboard
-// https://github.com/jht1493/p5VideoKit
+// https://github.com/jht1493/p5videoKit
 //
 let videoKit; // home for library routines
 
@@ -18,9 +18,9 @@ function setup() {
   // Make it small, size will get adjusted by UI (user interface) later in startup
   createCanvas(100, 100);
 
-  // must call createCanvas before new p5VideoKit
+  // must call createCanvas before new p5videoKit
 
-  videoKit = new p5VideoKit(a_config);
+  videoKit = new p5videoKit(a_config);
 }
 
 function draw() {

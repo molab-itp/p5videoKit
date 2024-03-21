@@ -1,6 +1,6 @@
 electron-install-notes.txt
 
-/Users/jht2/Documents/projects/dice_face_aa/p5VideoKit/src
+/Users/jht2/Documents/projects/dice_face_aa/p5videoKit/src
 
 jht2@jht2-mbp-m1 src % npm install
 

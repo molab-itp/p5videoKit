@@ -22,7 +22,7 @@ import { div_break } from '../core-ui/ui_patch_eff.js?v={{vers}}';
 // _movie_url: {
 //   style: 'width:80%',
 //   // text_input: './external/media/webdb/jht/IMG_4491.JPEG',
-//   text_input: './external/media/p5VideoKit-gallery-yoyo/live_gallery',
+//   text_input: './external/media/p5videoKit-gallery-yoyo/live_gallery',
 // },
 
 // slider1_prop: {

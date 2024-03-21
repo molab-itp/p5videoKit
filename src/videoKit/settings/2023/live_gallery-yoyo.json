@@ -54,7 +54,7 @@
         "tile_inputs": 0,
         "center_input": 1,
         "movie_play": 1,
-        "movie_url": "./external/media/p5VideoKit-gallery-yoyo/live_gallery",
+        "movie_url": "./external/media/p5videoKit-gallery-yoyo/live_gallery",
         "live_center": 0,
         "live_top_left": 1
       }

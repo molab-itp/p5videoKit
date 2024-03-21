@@ -2,7 +2,7 @@
 import { ui_message } from '../core-ui/a_ui_create.js?v={{vers}}';
 
 // props { save_name, fps, duration }
-p5VideoKit.prototype.recordVideo = function (props) {
+p5videoKit.prototype.recordVideo = function (props) {
   //
   // console.log('recordVideo props', props, 'recVideoInst', this.recVideoInst);
   if (this.recVideoInst) {
@@ -14,7 +14,7 @@ p5VideoKit.prototype.recordVideo = function (props) {
   this.recVideoInst.videoKit = this;
   this.recVideoInst.record_start();
 };
-// p5VideoKit.prototype.recordVideoStop = function (props) {
+// p5videoKit.prototype.recordVideoStop = function (props) {
 // }
 
 class RecordVideo {
