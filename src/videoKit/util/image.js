@@ -1,6 +1,7 @@
 //
 // copies the image to the src at full dimensions
 export function image_copy(to, from) {
+  // console.log('image_copy to', to, 'from', from);
   to.copy(from, 0, 0, from.width, from.height, 0, 0, to.width, to.height);
 }
 // image.copy(fromImage, sx, sy, sw, sh, dx, dy, dw, dh)
