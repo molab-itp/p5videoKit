@@ -104,3 +104,4 @@ export default class eff_bestill {
     }
   }
 }
+// window.eff_bestill = eff_bestill;

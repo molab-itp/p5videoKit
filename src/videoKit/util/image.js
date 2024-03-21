@@ -20,14 +20,14 @@ export function image_copy_spread({ to, from }) {
 
 // Copy the pixels from src to dest.
 // Use when src has alpha that you want to preserve in dest
-export function image_move(dest, src) {
+export function image_move_to(dest, src) {
   dest.loadPixels();
   src.loadPixels();
   let dpixels = dest.pixels;
   let spixels = src.pixels;
   let n = dpixels.length;
   if (n != spixels.length) {
-    console.log('image_move !!@ lengths differ', n, spixels.length);
+    console.log('image_move_to !!@ lengths differ', n, spixels.length);
     return;
   }
   while (n-- > 0) dpixels[n] = spixels[n];

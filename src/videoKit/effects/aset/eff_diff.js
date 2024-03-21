@@ -1,5 +1,6 @@
 import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
-import { image_copy, image_move } from '../../util/image.js?v={{vers}}';
+import { image_copy_to, image_move_to } from '../../util/image.js?v={{vers}}';
+import eff_bestill from '../../effects/aset/eff_bestill.js?v={{vers}}';
 
 export default class eff_diff {
   static meta_props = {
@@ -98,7 +99,7 @@ export default class eff_diff {
       // console.log('diff_render r', r, 'hold_level', this.hold_level);
       if (r > this.hold_level) {
         // image_copy_to(this.output, this.diffimage);
-        image_move(this.output, this.diffimage);
+        image_move_to(this.output, this.diffimage);
       }
     }
     if (this.smooth) {
