@@ -1,5 +1,5 @@
 import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
-import { image_copy } from '../../util/image.js?v={{vers}}';
+import { image_copy_to } from '../../util/image.js?v={{vers}}';
 
 // properties setup by the caller:
 //  input
@@ -15,7 +15,7 @@ export default class eff_circle {
     this.init();
   }
   prepareOutput() {
-    image_copy(this.src, this.input);
+    image_copy_to(this.src, this.input);
     this.output.clear();
     this.period_timer.check(() => {
       this.full = this.fullPending;

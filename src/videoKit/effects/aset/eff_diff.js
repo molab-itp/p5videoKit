@@ -58,7 +58,7 @@ export default class eff_diff {
     }
     // console.log('diff_render iimage', this.iimage);
     let image1 = this.images[this.iimage];
-    image_copy(image1, this.input);
+    image_copy_to(image1, this.input);
     this.iimage = (this.iimage + 1) % 2;
     let image2 = this.images[this.iimage];
     let diffimage = this.diffimage;
@@ -97,7 +97,7 @@ export default class eff_diff {
       let r = round(ndiff / this.maxdiff, 4);
       // console.log('diff_render r', r, 'hold_level', this.hold_level);
       if (r > this.hold_level) {
-        // image_copy(this.output, this.diffimage);
+        // image_copy_to(this.output, this.diffimage);
         image_move(this.output, this.diffimage);
       }
     }
@@ -109,7 +109,7 @@ export default class eff_diff {
     this.inited = 1;
     let image2 = this.images[(this.iimage + 1) % 2];
     // console.log('image_init iimage', this.iimage, 'image2', image2);
-    image_copy(image2, this.input);
+    image_copy_to(image2, this.input);
   }
   // -- smooth --
   smooth_init() {
@@ -122,6 +122,6 @@ export default class eff_diff {
   }
   smooth_prepareOutput() {
     this.bestill.bestill_prepareOutput();
-    image_copy(this.output, this.bestill.output);
+    image_copy_to(this.output, this.bestill.output);
   }
 }

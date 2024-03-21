@@ -62,7 +62,7 @@ export default class eff_face_band {
     let layer = this.output;
     let img = this.img;
     if (!this.frozen) {
-      image_copy(img, this.input);
+      image_copy_to(img, this.input);
     }
 
     let urect = this.eff_spec.urect;

@@ -1,7 +1,10 @@
 //
 // copies the image to the src at full dimensions
-export function image_copy(to, from) {
+export function image_copy_to(to, from) {
   // console.log('image_copy to', to, 'from', from);
+  // !!@ post p5js 1.8.0 in src/image/pixels.js/_copyHelper
+  //
+  from.loadPixels();
   to.copy(from, 0, 0, from.width, from.height, 0, 0, to.width, to.height);
 }
 // image.copy(fromImage, sx, sy, sw, sh, dx, dy, dw, dh)
