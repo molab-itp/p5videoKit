@@ -1,9 +1,7 @@
-// p5videoKit main class
-//  Must be include in html as
-//    <script src="videoKit/p5videoKit.js?v=94"></script>
 //
+// import './core/a_main.js?v={{vers}}';
 
-class p5videoKit {
+export class p5videoKit {
   //
   // let effects = [
   //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
@@ -34,6 +32,8 @@ class p5videoKit {
 
   // init({ effects, settings }) {
   init(options) {
+    // this.vk_setup(options, resolve);
+    //
     let inpath = './core/a_main.js?v={{vers}}';
     return new Promise((resolve, reject) => {
       import(inpath)
@@ -53,8 +53,12 @@ class p5videoKit {
     console.log('p5videoKit draw stub');
   }
 }
+window.p5videoKit = p5videoKit;
 
-var dice = { warning: 1 };
+// --
+
+let dice = { warning: 1 };
+window.dice = dice;
 
 dice.dapi = function (arg, arg2, result) {
   if (dice.debug) console.log('dice arg=' + arg + ' arg2=' + JSON.stringify(arg2));

@@ -14,17 +14,22 @@ import { PeriodTimer } from '../util/PeriodTimer.js?v={{vers}}';
 
 p5videoKit.prototype.PeriodTimer = PeriodTimer;
 
-p5videoKit.prototype.vk_setup = function (effects, settings, resolve) {
+// p5videoKit.prototype.vk_setup = function (effects, settings, resolve) {
+p5videoKit.prototype.vk_setup = function (options, resolve) {
   ui_message('loading...');
   a_.videoKit = this;
   a_.my_canvas = this.my_canvas;
-  ui_restore_store(effects, settings, (sizeResult) => {
+  // ui_restore_store(effects, settings, (sizeResult) => {
+  ui_restore_store(options, (sizeResult) => {
     console.log('vk_setup sizeResult', sizeResult);
     resizeCanvas(sizeResult.width, sizeResult.height);
 
     init_mediaDivs();
 
-    ui_create();
+    // a_.hide_ui_option = 0;
+    if (!a_.hide_ui_option) {
+      ui_create();
+    }
 
     console.log('a_.ui.hold_capture', a_.ui.hold_capture);
     if (!a_.ui.hold_capture) {

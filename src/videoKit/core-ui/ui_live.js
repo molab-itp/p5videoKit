@@ -4,6 +4,9 @@ import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
 import { liveMedia_attach, liveMedia_detach } from '../core/liveMedia_attach.js?v={{vers}}';
 
 export function ui_live_selection() {
+  //
+  if (a_.hide_ui_option) return;
+
   let div = ui_div_empty('live_selection');
 
   let chk = createCheckbox('Live ', a_.ui.live_chk);
