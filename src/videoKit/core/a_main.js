@@ -31,9 +31,9 @@ p5videoKit.prototype.vk_setup = function (options, resolve) {
       ui_create();
     }
 
-    console.log('a_.ui.hold_capture', a_.ui.hold_capture);
+    // console.log('a_.ui.hold_capture', a_.ui.hold_capture);
     if (!a_.ui.hold_capture) {
-      console.log('a_.ui.hold_capture media_enum', a_.ui.hold_capture);
+      // console.log('a_.ui.hold_capture media_enum', a_.ui.hold_capture);
       media_enum();
     }
 

@@ -20,7 +20,7 @@ export function effectMeta_init(donef) {
 
 export function effectMeta_import(effMeta) {
   if (!effMeta.import_path) {
-    console.log('effectMeta_import no import_path', effMeta);
+    // console.log('effectMeta_import no import_path', effMeta);
     return null;
   }
   let import_path = effMeta.import_path;

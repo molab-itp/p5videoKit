@@ -16,11 +16,11 @@ import { ui_present_window } from '../core-ui/a_ui_create.js?v={{vers}}';
 // Restore a_.ui settings from local storage
 export function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
   //
-  if (!effects || !settings) {
-    console.log('ui_restore_store INVALID args');
-    console.log('ui_restore_store effects', effects);
-    console.log('ui_restore_store settings', settings);
-  }
+  // if (!effects || !settings) {
+  //   console.log('ui_restore_store INVALID args');
+  //   console.log('ui_restore_store effects', effects);
+  //   console.log('ui_restore_store settings', settings);
+  // }
   effects = effects || [];
   settings = settings || [];
 

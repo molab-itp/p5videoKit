@@ -57,7 +57,7 @@ window.p5videoKit = p5videoKit;
 
 // --
 
-let dice = { warning: 1 };
+let dice = { warning: 0 };
 window.dice = dice;
 
 dice.dapi = function (arg, arg2, result) {

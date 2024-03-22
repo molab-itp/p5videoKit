@@ -23,7 +23,7 @@ export default class eff_bright {
     this.output = createGraphics(width, height);
     this.xstep = Math.floor(width / this.ncell);
     this.ystep = this.xstep;
-    console.log('eff_bright xstep', this.xstep, this.ystep);
+    // console.log('eff_bright xstep', this.xstep, this.ystep);
   }
   draw_it() {
     image_copy_to(this.src, this.input);
