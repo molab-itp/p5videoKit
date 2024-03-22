@@ -23,8 +23,19 @@ export function effectMeta_import(effMeta) {
     console.log('effectMeta_import no import_path', effMeta);
     return null;
   }
-  let inpath = '../../' + effMeta.import_path;
-  // console.log('effectMeta_import', inpath);
+  let import_path = effMeta.import_path;
+  // console.log('effectMeta_import import_path', import_path);
+  let inpath;
+  let videoKitPrefix = 'videoKit/';
+  if (import_path.startsWith(videoKitPrefix)) {
+    // effectMeta_import ../../videoKit/effects/aset/eff_bestill.js
+    inpath = '../' + import_path.substring(videoKitPrefix.length);
+  } else {
+    // effectMeta_import ../../effects/eff_a_example_props.js
+    // let inpath = '../../' + effMeta.import_path;
+    inpath = '../../' + import_path;
+  }
+  // console.log('effectMeta_import inpath', inpath);
   return new Promise((resolve, reject) => {
     import(inpath + '?v={{vers}}')
       .then((module) => {
