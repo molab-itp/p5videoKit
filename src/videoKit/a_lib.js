@@ -1,5 +1,7 @@
 //
-// import './core/a_main.js?v={{vers}}';
+// for lib reference
+// https://molab-itp.github.io/p5moRelease/videoKit/368/a_lib.js
+// <script type="module" src="./videoKit/a_lib.js?v={{vers}}"></script>
 
 export class p5videoKit {
   //
@@ -96,3 +98,5 @@ dice.result_rvalue = function (rtag, value) {
 };
 
 dice.startTime = window.performance.now();
+
+// import './core/a_main.js?v={{vers}}';
