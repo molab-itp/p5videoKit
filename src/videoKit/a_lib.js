@@ -34,15 +34,13 @@ export class p5videoKit {
 
   // init({ effects, settings }) {
   init(options) {
-    // this.vk_setup(options, resolve);
     //
     let inpath = './core/a_main.js?v={{vers}}';
     return new Promise((resolve, reject) => {
       import(inpath)
         .then((module) => {
           // console.log('p5videoKit module', module);
-          // this.vk_setup(effects, settings, resolve);
-          this.vk_setup(options, resolve);
+          this.setup(options, resolve);
         })
         .catch((err) => {
           console.log('p5videoKit err', err, '\n inpath', inpath);

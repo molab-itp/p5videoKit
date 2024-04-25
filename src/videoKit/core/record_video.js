@@ -14,8 +14,6 @@ p5videoKit.prototype.recordVideo = function (props) {
   this.recVideoInst.videoKit = this;
   this.recVideoInst.record_start();
 };
-// p5videoKit.prototype.recordVideoStop = function (props) {
-// }
 
 class RecordVideo {
   // props { save_name, fps, duration, doneFunc, sourceElt }
