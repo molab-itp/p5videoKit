@@ -45,6 +45,7 @@ export default class eff_slit_scan {
     let y = this.y;
     let s = this.step;
     if (this.xdir) {
+      this.input.loadPixels();
       this.output.copy(this.input, w / 2, 0, s, h, x, 0, s, h);
       //          copy(     video,    sx,sy,sw,sh,dx,dy,dw,dh)
       this.x = this.x + this.step;
@@ -54,6 +55,7 @@ export default class eff_slit_scan {
         this.check_flip();
       }
     } else {
+      this.input.loadPixels();
       this.output.copy(this.input, 0, h / 2, w, s, 0, y, w, s);
       //         copy(      video, sx,   sy,sw,sh,dx,dy,dw,dh)
       this.y = this.y + this.step;
