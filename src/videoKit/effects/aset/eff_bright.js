@@ -1,9 +1,9 @@
-import { image_copy } from '../../util/image.js?v={{vers}}';
+import { image_copy_to } from '../../util/image.js?v={{vers}}';
 
 export default class eff_bright {
   static meta_props = {
-    // ncell: [32, 64, 128, 256, 512],
-    scale: [16, 8, 16, 32, 64],
+    ncell: [16, 32, 64, 128, 256, 512],
+    // scale: [16, 8, 16, 32, 64],
     back_color: [0, 51, 255, -1],
     src_color: [255, 0],
     fill: [1, 0],
@@ -18,13 +18,15 @@ export default class eff_bright {
     this.draw_it();
   }
   init() {
-    this.src = createImage(this.input.width, this.input.height);
-    this.output = createGraphics(this.input.width, this.input.height);
-    this.xstep = this.scale;
-    this.ystep = this.scale;
+    let { width, height } = this.input;
+    this.src = createImage(width, height);
+    this.output = createGraphics(width, height);
+    this.xstep = Math.floor(width / this.ncell);
+    this.ystep = this.xstep;
+    // console.log('eff_bright xstep', this.xstep, this.ystep);
   }
   draw_it() {
-    image_copy(this.src, this.input);
+    image_copy_to(this.src, this.input);
     let layer = this.output;
     if (this.back_color < 0) {
       layer.clear();
@@ -32,19 +34,18 @@ export default class eff_bright {
       layer.background(this.back_color);
     }
     layer.noStroke();
-    let w = this.src.width;
-    let h = this.src.height;
+    let doRect = this.shape == 'rect';
+    let doCircle = this.shape == 'circle';
+    let { width, height } = this.src;
     if (!this.fill) {
       layer.fill(this.src_color);
     }
-    let doRect = this.shape == 'rect';
-    let doCircle = this.shape == 'circle';
-    for (let y = 0; y < h; y += this.ystep) {
-      for (let x = 0; x < w; x += this.xstep) {
+    for (let y = 0; y < height; y += this.ystep) {
+      for (let x = 0; x < width; x += this.xstep) {
         let col = this.src.get(x, y);
         let bright = (col[0] + col[1] + col[2]) / 3;
         if (this.invert) bright = 255 - bright;
-        let mbright = map(bright, 0, 255, 0, this.scale);
+        let mbright = map(bright, 0, 255, 0, this.xstep);
         if (this.fill) {
           layer.fill(col);
         }

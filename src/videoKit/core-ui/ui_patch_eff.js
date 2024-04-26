@@ -6,6 +6,9 @@ import { patch_remove_ipatch, patch_update_effIndex } from '../core/patch_inst.j
 import { patch_create_other } from '../core-ui/ui_patch_create.js?v={{vers}}';
 
 export function ui_patch_eff_panes() {
+  //
+  if (a_.hide_ui_option) return;
+
   let droot = ui_div_empty('ipatch_eff');
   for (let ipatch = 0; ipatch < a_.ui.patches.length; ipatch++) {
     create_patch(ipatch);

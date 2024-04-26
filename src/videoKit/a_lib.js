@@ -1,9 +1,9 @@
-// p5videoKit main class
-//  Must be include in html as
-//    <script src="videoKit/p5videoKit.js?v=94"></script>
 //
+// for lib reference
+// https://molab-itp.github.io/p5moRelease/videoKit/368/a_lib.js
+// <script type="module" src="./videoKit/a_lib.js?v={{vers}}"></script>
 
-class p5videoKit {
+export class p5videoKit {
   //
   // let effects = [
   //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
@@ -32,13 +32,15 @@ class p5videoKit {
     });
   }
 
-  init({ effects, settings }) {
+  // init({ effects, settings }) {
+  init(options) {
+    //
     let inpath = './core/a_main.js?v={{vers}}';
     return new Promise((resolve, reject) => {
       import(inpath)
         .then((module) => {
           // console.log('p5videoKit module', module);
-          this.vk_setup(effects, settings, resolve);
+          this.setup(options, resolve);
         })
         .catch((err) => {
           console.log('p5videoKit err', err, '\n inpath', inpath);
@@ -51,8 +53,12 @@ class p5videoKit {
     console.log('p5videoKit draw stub');
   }
 }
+window.p5videoKit = p5videoKit;
 
-var dice = { warning: 1 };
+// --
+
+let dice = { warning: 0 };
+window.dice = dice;
 
 dice.dapi = function (arg, arg2, result) {
   if (dice.debug) console.log('dice arg=' + arg + ' arg2=' + JSON.stringify(arg2));
@@ -90,3 +96,5 @@ dice.result_rvalue = function (rtag, value) {
 };
 
 dice.startTime = window.performance.now();
+
+// import './core/a_main.js?v={{vers}}';

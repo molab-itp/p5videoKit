@@ -1,4 +1,4 @@
-import { image_copy } from '../../util/image.js?v={{vers}}';
+import { image_copy_to } from '../../util/image.js?v={{vers}}';
 
 export default class eff_slant_scan {
   static meta_props = {
@@ -16,7 +16,7 @@ export default class eff_slant_scan {
   }
   prepareOutput() {
     strokeWeight(this.scan.xstep / 2);
-    image_copy(this.image, this.input);
+    image_copy_to(this.image, this.input);
     if (this.dir_up) {
       this.draw_scan_up();
     } else {

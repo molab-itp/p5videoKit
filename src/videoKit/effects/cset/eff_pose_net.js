@@ -1,5 +1,5 @@
 import { ui_message } from '../../core-ui/a_ui_create.js?v={{vers}}';
-import { image_copy } from '../../util/image.js?v={{vers}}';
+import { image_copy_to } from '../../util/image.js?v={{vers}}';
 
 export default class eff_pose_net {
   static meta_props = {
@@ -58,7 +58,7 @@ export default class eff_pose_net {
   }
   drawFigure(poses) {
     if (this.figure_color) {
-      image_copy(this.img, this.init_input);
+      image_copy_to(this.img, this.init_input);
     }
     // noFill();
     strokeWeight(this.stroke_weight);

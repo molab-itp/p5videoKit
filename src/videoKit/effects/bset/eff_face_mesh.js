@@ -1,6 +1,6 @@
 import { ui_message } from '../../core-ui/a_ui_create.js?v={{vers}}';
 import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
-import { image_copy } from '../../util/image.js?v={{vers}}';
+import { image_copy_to } from '../../util/image.js?v={{vers}}';
 import { face_mesh_draw } from '../../core/face_mesh_draw.js?v={{vers}}';
 
 export default class eff_face_mesh {
@@ -137,7 +137,7 @@ export default class eff_face_mesh {
   }
   drawKeypoints() {
     if (!this.frozen) {
-      image_copy(this.img, this.init_input);
+      image_copy_to(this.img, this.init_input);
     } else {
       // No face detected
       // Display nothing if enabled

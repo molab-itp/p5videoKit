@@ -25,7 +25,7 @@ export function create_mediaDiv(mediaDevice, options) {
   let div = createDiv();
   capture.elt.parentNode.insertBefore(div.elt, capture.elt);
 
-  if (a_.hideui) {
+  if (a_.hideui || a_.hide_ui_option) {
     div.hide();
   }
 

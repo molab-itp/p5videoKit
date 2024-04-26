@@ -30,11 +30,16 @@ export default class eff_image_url {
   load_image() {
     // add version for cache busting
     let imageUrl = this.image_url + '?v={{vers}}';
-    loadImage(imageUrl, (img) => {
-      console.log('eff_image_url img.width', img.width, 'height', img.height);
-      // console.log('eff_image_url output width', this.output.width, 'height', this.output.height);
-      // console.log('eff_image_url pad width', this.eff_spec.urect.width, 'height', this.eff_spec.urect.height);
-      this.img = img;
-    });
+    loadImage(
+      imageUrl,
+      (img) => {
+        console.log('eff_image_url loaded image_url', this.image_url);
+        console.log('eff_image_url img.width', img.width, 'height', img.height);
+        this.img = img;
+      },
+      () => {
+        console.log('eff_image_url load failed image_url', this.image_url);
+      }
+    );
   }
 }

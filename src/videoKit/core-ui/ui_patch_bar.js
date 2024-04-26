@@ -98,7 +98,7 @@ export function ui_patch_buttons() {
 
 // Rebuild dynamic elements of ui
 export function ui_refresh() {
-  if (a_.hideui) return;
+  if (a_.hideui || a_.hide_ui_option) return;
   ui_live_selection();
   ui_patch_eff_panes();
 }

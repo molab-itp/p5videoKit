@@ -1,4 +1,4 @@
-import { image_scaled_pad, image_copy } from '../../util/image.js?v={{vers}}';
+import { image_scaled_pad, image_copy_to } from '../../util/image.js?v={{vers}}';
 import { ui_message } from '../../core-ui/a_ui_create.js?v={{vers}}';
 import { FFT_analyser } from '../../util/FFT_analyser.js?v={{vers}}';
 
@@ -62,7 +62,7 @@ export default class eff_face_band {
     let layer = this.output;
     let img = this.img;
     if (!this.frozen) {
-      image_copy(img, this.input);
+      image_copy_to(img, this.input);
     }
 
     let urect = this.eff_spec.urect;

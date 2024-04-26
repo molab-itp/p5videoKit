@@ -14,15 +14,18 @@ import { ui_present_window } from '../core-ui/a_ui_create.js?v={{vers}}';
 //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
 
 // Restore a_.ui settings from local storage
-export function ui_restore_store(effects, settings, sizeResult) {
+export function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
   //
-  if (!effects || !settings) {
-    console.log('ui_restore_store INVALID args');
-    console.log('ui_restore_store effects', effects);
-    console.log('ui_restore_store settings', settings);
-  }
+  // if (!effects || !settings) {
+  //   console.log('ui_restore_store INVALID args');
+  //   console.log('ui_restore_store effects', effects);
+  //   console.log('ui_restore_store settings', settings);
+  // }
   effects = effects || [];
   settings = settings || [];
+
+  a_.hide_ui_option = hide_ui;
+  // effects.length == 0 && settings.length == 0;
 
   let start = window.performance.now();
 
