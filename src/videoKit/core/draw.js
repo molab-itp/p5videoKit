@@ -6,6 +6,7 @@ import { media_enum } from './create_mediaDevices.js?v={{vers}}';
 import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v={{vers}}';
 import { livem_restore } from '../core-ui/ui_live.js?v={{vers}}';
 import { patch_index1 } from '../core-ui/ui_patch_eff.js?v={{vers}}';
+import { image_scaled_pad } from '../util/image.js?v={{vers}}';
 
 p5videoKit.prototype.setup = function (options, resolve) {
   ui_message('loading...');
