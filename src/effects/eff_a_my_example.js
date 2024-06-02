@@ -14,16 +14,18 @@ export default class eff_a_my_example {
     {
       prop: 'button1',
       button: (inst, aPatch) => {
-        console.log('button1_prop inst', inst, 'aPatch', aPatch);
+        // console.log('button1_prop inst', inst, 'aPatch', aPatch);
         inst.xspeed = (inst.xspeed + 1) % 5;
+        console.log('eff_a_my_example button1_prop inst.xspeed', inst.xspeed);
       },
       style: 'width:40%',
     },
     {
       label: 'button2',
       button: (inst, aPatch) => {
-        console.log('button2_prop inst', inst, 'aPatch', aPatch);
+        // console.log('button2_prop inst', inst, 'aPatch', aPatch);
         inst.yspeed = (inst.yspeed + 1) % 5;
+        console.log('eff_a_my_example button2_prop inst.xspeed', inst.xspeed);
       },
       style: 'width:40%',
     },

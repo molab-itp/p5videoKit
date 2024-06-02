@@ -23,16 +23,18 @@ export default class eff_a_example_props {
     {
       prop: 'button1',
       button: (inst, aPatch) => {
-        console.log('button1_prop inst', inst, 'aPatch', aPatch);
+        // console.log('button1_prop inst', inst, 'aPatch', aPatch);
         inst.xspeed = 1;
+        console.log('eff_a_example_props button1_prop inst.xspeed', inst.xspeed);
       },
       style: 'width:40%',
     },
     {
       label: 'button2',
       button: (inst, aPatch) => {
-        console.log('button2_prop inst', inst, 'aPatch', aPatch);
+        // console.log('button2_prop inst', inst, 'aPatch', aPatch);
         inst.xspeed = 0;
+        console.log('eff_a_example_props button2_prop inst.xspeed', inst.xspeed);
       },
       style: 'width:40%',
     },
