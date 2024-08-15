@@ -377,3 +377,5 @@ let mesh_nits = [
 //   let dh = y2 - y1;
 //   layer.copy(pimg, 0, 0, pw, ph, x1, y1, dw, dh);
 // }
+
+// https://archive-docs.ml5js.org/#/reference/facemesh
