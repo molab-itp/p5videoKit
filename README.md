@@ -14,7 +14,7 @@ We welcome your feedback and help to improve the user interface and documentatio
 - started as code for interactive installation at [NYU-ITP Brooklyn 2021](https://jht1493.github.io/2021-NYU-ITP-Installation)
 
 - re-mixing effects code from
-  [DICE mobile app](http://www.johnhenrythompson.com/3-dice) and
+  [DICE mobile app](https://jht1493.net/johnhenrythompson/3-dice.html) and
   [NYU-ITP ICM course](https://github.com/ITPNYU/ICM-2021-Code)
 - [video overview](https://youtu.be/6t9aiVLL9OQ)
 - contact me: [create an github issue for this repo](https://github.com/jht9629-nyu/p5videoKit/issues)
@@ -76,7 +76,7 @@ p5videoKit runs best in modern desktop browsers. I've tested primarily in Google
 
 - p5videoKit is based of the code used to create the interactive installation at [NYU-ITP in 2021](https://jht1493.github.io/2021-NYU-ITP-Installation/)
 
-- Keeping in the groove of my [DICE video art app](http://www.johnhenrythompson.com/3-dice)
+- Keeping in the groove of my [DICE video art app](https://jht1493.net/johnhenrythompson/3-dice.html)
 
   - **Distributed Instruments for Computed Expression**
 
