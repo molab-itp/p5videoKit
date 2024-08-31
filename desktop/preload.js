@@ -13,33 +13,47 @@ window.addEventListener('DOMContentLoaded', () => {
   setup_scroll();
 });
 
-let scrollYTop = 506.5;
+let scrollYTop = 564;
+let scrollYBottom = 3466;
 let lastScrollY;
 let lastScrollMatchTime = 0;
-let matchDiff = 1000;
+let matchDiff = 5000;
 
 function setup_scroll() {
   //
   console.log('setup_scroll');
+
+  let et = document.querySelector('.field--title');
+  let nb = document.querySelector('.navbar-brand');
+  nb.innerHTML = nb.textContent + '<br/>' + et.textContent;
+
+  nb.style.fontSize = 'xx-large';
+
   let scrollPeriod = 0.1;
   let period = scrollPeriod * 1000;
   setInterval(scroll_track, period);
 
-  let et = document.querySelector('.field--title');
-  let nb = document.querySelector('.navbar-brand');
-  nb.innerHTML = et.textContent;
-
-  window.scrollY = scrollYTop - 1;
+  window.scrollTo(0, scrollYTop);
 }
 
 function scroll_track() {
+  lastScrollY = window.scrollY;
+  window.scrollBy(0, 1);
+  // console.log(' lastScrollY', lastScrollY);
+  if (window.scrollY > scrollYBottom) {
+    window.scrollTo(0, scrollYTop);
+  }
+}
+
+function scroll_track_timecheck() {
   if (lastScrollY && lastScrollY == window.scrollY) {
-    console.log('match lastScrollY', lastScrollY);
     if (!lastScrollMatchTime) {
       lastScrollMatchTime = Date.now();
     } else {
       let now = Date.now();
-      if (now - lastScrollMatchTime > matchDiff) {
+      let nowDiff = now - lastScrollMatchTime;
+      console.log('match lastScrollY', lastScrollY, 'nowDiff', nowDiff, 'matchDiff', matchDiff);
+      if (nowDiff > matchDiff) {
         window.scrollTo(0, scrollYTop);
         lastScrollY = 0;
         lastScrollMatchTime = 0;

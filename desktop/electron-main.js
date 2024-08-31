@@ -143,10 +143,15 @@ app.whenReady().then(() => {
 
   // Create a window that fills the sceen's available work area.
   // const primaryDisplay = screen.getPrimaryDisplay();
+
+  // Adjust width and position for debugging
   if (width_trim) {
     console.log('width_trim', width_trim);
-    width = Math.floor(width * width_trim);
+    let nwidth = Math.floor(width * width_trim);
+    x = width - nwidth;
+    width = nwidth;
   }
+
   mainWindow = new BrowserWindow({
     x,
     y,
