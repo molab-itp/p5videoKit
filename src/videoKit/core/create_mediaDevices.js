@@ -28,12 +28,13 @@ function create_mediaDevices() {
       vcap.video.width = { exact: dim.width };
       vcap.video.height = { exact: dim.height };
     }
-    // console.log('create_mediaDevices dim', dim);
+    console.log('create_mediaDevices dim', dim);
     console.log('create_mediaDevices vcap', vcap);
     let capture = createCapture(vcap, function (stream) {
       mediaDevice.stream = stream;
       livem_restore();
     });
+    console.log('create_mediaDevices capture width height', capture.width, capture.height);
     capture.elt.muted = true;
     mediaDevice.capture = capture;
   }

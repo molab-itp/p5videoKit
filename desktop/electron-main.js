@@ -41,22 +41,10 @@ console.log('download_path', download_path);
 
 let download_limit = -1;
 
-function print_process_argv() {
-  process.argv.forEach((val, index) => {
-    console.log(`${index}: ${val}`);
-  });
-}
-// print_process_argv();
-
-// bin/run-gallery.sh
-// npm run start electron-main -- --ddebug --download_path Documents/projects/daily
-// 0: /Users/jht2/Documents/projects/dice_face_aa/p5videoKit-private/desktop/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron
-// 1: electron-main
-// 2: --ddebug
-// 3: --download_path
-// 4: Documents/projects/daily
-
 let opt = { h: 1 };
+
+let scrollPeriod;
+let width_trim;
 
 function parse_argv(argv) {
   for (let index = 2; index < argv.length; index++) {
@@ -118,6 +106,14 @@ function parse_argv(argv) {
         console.log('download_limit', download_limit);
         index++;
         break;
+      case '--scroll':
+        scrollPeriod = parseFloat(argv[index + 1]);
+        index++;
+        break;
+      case '--width_trim':
+        width_trim = parseFloat(argv[index + 1]);
+        index++;
+        break;
       default:
         console.log('Unknown arg val', val);
         break;
@@ -143,15 +139,14 @@ app.whenReady().then(() => {
   if (index < 0) index = 0;
   if (index >= screens.length) index = screens.length - 1;
   const primaryDisplay = screens[index];
-  const { x, y, width, height } = primaryDisplay.workArea;
-
-  // console.log('index', index);
-  // console.log('primaryDisplay', primaryDisplay);
+  let { x, y, width, height } = primaryDisplay.workArea;
 
   // Create a window that fills the sceen's available work area.
   // const primaryDisplay = screen.getPrimaryDisplay();
-  // const { width, height } = primaryDisplay.workAreaSize;
-
+  if (width_trim) {
+    console.log('width_trim', width_trim);
+    width = Math.floor(width * width_trim);
+  }
   mainWindow = new BrowserWindow({
     x,
     y,
@@ -159,7 +154,7 @@ app.whenReady().then(() => {
     height,
     webPreferences: {
       nodeIntegration: true,
-      // preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
@@ -187,6 +182,8 @@ app.whenReady().then(() => {
   setup_download();
 
   setup_restart();
+
+  setup_scroll();
 
   // console.log('main screen', screen);
   // console.log('main screens', screens);
@@ -322,6 +319,32 @@ function pad(n) {
   return n.padStart(4, '0');
 }
 
+function setup_scroll() {
+  if (!scrollPeriod) return;
+  console.log('scrollPeriod', scrollPeriod);
+  return;
+  let period = scrollPeriod * 1000;
+  let str = 'window.scrollBy(0, 1)';
+  setInterval(function () {
+    mainWindow.webContents.executeJavaScript(str);
+  }, period);
+}
+
 // Retrieve information about screen size, displays, cursor position, etc.
 // For more info, see:
 // https://electronjs.org/docs/api/screen
+
+// function print_process_argv() {
+//   process.argv.forEach((val, index) => {
+//     console.log(`${index}: ${val}`);
+//   });
+// }
+// print_process_argv();
+
+// bin/run-gallery.sh
+// npm run start electron-main -- --ddebug --download_path Documents/projects/daily
+// 0: /Users/jht2/Documents/projects/dice_face_aa/p5videoKit-private/desktop/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron
+// 1: electron-main
+// 2: --ddebug
+// 3: --download_path
+// 4: Documents/projects/daily
