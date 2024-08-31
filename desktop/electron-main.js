@@ -146,10 +146,11 @@ app.whenReady().then(() => {
 
   // Adjust width and position for debugging
   if (width_trim) {
-    console.log('width_trim', width_trim);
+    console.log('width_trim', width_trim, 'width', width);
     let nwidth = Math.floor(width * width_trim);
-    x = width - nwidth;
+    x += width - nwidth;
     width = nwidth;
+    console.log('x', x, 'width', width);
   }
 
   mainWindow = new BrowserWindow({
@@ -160,6 +161,7 @@ app.whenReady().then(() => {
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
+      zoomFactor: 1.8,
     },
   });
 
