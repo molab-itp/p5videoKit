@@ -13,6 +13,12 @@ window.addEventListener('DOMContentLoaded', () => {
   setup_scroll();
 });
 
+let my = {};
+window.my = my;
+
+my.scrollEnabled = 1;
+
+let scrollYTopMargin = 100;
 let scrollYTop = 564;
 let scrollYBottom = 3466;
 let lastScrollY;
@@ -21,7 +27,8 @@ let matchDiff = 5000;
 
 function setup_scroll() {
   //
-  console.log('setup_scroll');
+  console.log('setup_scroll my', my);
+  console.log('setup_scroll window.location.href', window.location.href);
 
   let et = document.querySelector('.field--title');
   let nb = document.querySelector('.navbar-brand');
@@ -38,9 +45,14 @@ function setup_scroll() {
 
 function scroll_track() {
   lastScrollY = window.scrollY;
+  if (!my.scrollEnabled) return;
+
   window.scrollBy(0, 1);
   // console.log(' lastScrollY', lastScrollY);
   if (window.scrollY > scrollYBottom) {
+    window.scrollTo(0, scrollYTop);
+  }
+  if (window.scrollY < scrollYTopMargin) {
     window.scrollTo(0, scrollYTop);
   }
 }
