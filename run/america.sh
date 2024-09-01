@@ -10,7 +10,7 @@ cd ../desktop
 # npm run start -- --screen 1 --root "https://poets.org/poem/let-america-be-america-again"
 # npm run start -- --ddebug --width_trim 0.40
 # npm run start -- --portrait 1.0 --zoom_factor 1.0 --screen 1 --root "https://poets.org/poem/let-america-be-america-again"
-npm run start -- --ddebug --portrait 1.0 --screen 1 --root "https://poets.org/poem/let-america-be-america-again"
+npm run start -- --portrait 1.0 --screen 1 --root "https://poets.org/poem/let-america-be-america-again"
 
 # https://poets.org/poem/let-america-be-america-again
 

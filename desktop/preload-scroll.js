@@ -14,26 +14,33 @@ let my = {};
 window.my = my;
 
 let scrollYTopMargin = 100;
+let scrollYTop = 580;
 // let scrollYTop = 465;
-let scrollYTop = 635;
-let scrollYBottom = 3769;
+// let scrollYTop = 635;
+let scrollYBottom = 4800; // 3769 * 2;
 let lastScrollY;
 
 function setup_scroll() {
   //
   console.log('setup_scroll my', my);
   console.log('setup_scroll window.location.href', window.location.href);
+
+  let nt = document.querySelector('.navbar-toggler');
+  nt.remove();
+
   let et = document.querySelector('.field--title');
   let nb = document.querySelector('.navbar-brand');
   nb.innerHTML = nb.textContent + '<br/>' + et.textContent;
   nb.style.fontSize = 'xx-large';
 
-  my.elines = document.querySelectorAll('.long-line');
+  let ar = document.querySelector('article');
+  my.elines = ar.querySelectorAll('.long-line');
+  // my.elines = document.querySelectorAll('.long-line');
   my.elineIndex = 0;
   // el[0].style.backgroundColor = 'gold'
   // console.log('my.elines.length', my.elines.length);
-  my.elineCount = 0;
-  my.elineCountPeriod = 30;
+  my.elineDelayCount = 0;
+  my.elineDelayPeriod = 30;
 
   let scrollPeriod = 0.1;
   let period = scrollPeriod * 1000;
@@ -61,6 +68,7 @@ function scroll_track() {
     window.scrollTo(0, scrollYTop);
     start_scroll_pause();
     my.elineIndex = 0;
+    my.elineDelayCount = 0;
   }
   // if (window.scrollY < scrollYTopMargin) {
   //   window.scrollTo(0, scrollYTop);
@@ -69,16 +77,24 @@ function scroll_track() {
 
 function check_line_hilite() {
   if (!my.scrollEnabled) return;
-  my.elineCount = (my.elineCount + 1) % my.elineCountPeriod;
-  if (my.elineCount != 1) return;
-  // el[0].style.backgroundColor = 'gold'
-  // my.elines = document.querySelectorAll('.long-line')
-  // my.elineIndex = 0;
+  my.elineDelayCount = (my.elineDelayCount + 1) % my.elineDelayPeriod;
+  if (my.elineDelayCount != 1) return;
+
+  let el = my.elines[my.elineIndex];
+  // console.log('check_line_hilite elineIndex', my.elineIndex, 'el', el);
+
+  // delay new hilite until upper half of window
+  let rt = el.getBoundingClientRect();
+  if (rt.y > window.innerHeight / 2) {
+    // console.log('delayed my.elineIndex', my.elineIndex);
+    my.elineDelayCount = 0;
+    return;
+  }
+  // remove last hilite
   if (my.last_elineIndex) {
     my.elines[my.last_elineIndex - 1].style.backgroundColor = '';
   }
-  let el = my.elines[my.elineIndex];
-  console.log('check_line_hilite el', el);
+  // new hilite at elineIndex
   el.style.backgroundColor = 'gold';
   my.last_elineIndex = my.elineIndex + 1;
   my.elineIndex = (my.elineIndex + 1) % my.elines.length;
