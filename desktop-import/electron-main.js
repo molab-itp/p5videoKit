@@ -15,7 +15,8 @@ import { parse_argv } from './lib/parse_argv.js';
 import { setup_download } from './lib/setup_download.js';
 import { setup_restart } from './lib/setup_restart.js';
 
-import { stub } from '../../p5moLibrary/src/lib/dbase/a_dbase.js';
+// import { stub } from './lib/p5moLibrary/src/lib/dbase/a_dbase.js';
+import './lib/lib/dbase/a_dbase.js';
 
 let my = {};
 
@@ -36,12 +37,6 @@ parse_argv(my, process.argv);
 console.log('opt', my.opt);
 
 app.whenReady().then(() => {
-  // path.join(__dirname, 'preload.js'),
-
-  // We cannot require the screen module
-  // until the app is ready
-  // const { screen } = require('electron');
-
   const screens = screen.getAllDisplays();
   let index = my.opt.index || '1';
   index = parseFloat(index) - 1;

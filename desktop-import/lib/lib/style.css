@@ -1,0 +1,23 @@
+/* make the buttons bigger on small screens */
+@media only screen and (max-width: 600px) {
+  body,
+  button,
+  select,
+  input {
+    font-size: 5vw;
+  }
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+* {
+  font-family: monospace;
+}
