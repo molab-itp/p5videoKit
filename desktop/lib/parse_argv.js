@@ -33,6 +33,18 @@ function parse_argv(my, argv) {
   for (let index = 2; index < argv.length; index++) {
     let val = argv[index];
     switch (val) {
+      // case '--zoom_level':
+      //   my.zoom_level = parseFloat(argv[index + 1]);
+      //   index++;
+      //   break;
+      case '--portrait':
+        my.portrait = parseFloat(argv[index + 1]);
+        index++;
+        break;
+      case '--width_trim':
+        my.width_trim = parseFloat(argv[index + 1]);
+        index++;
+        break;
       case '--restart_time':
         my.opt.restart_time = argv[index + 1];
         index++;
@@ -87,14 +99,6 @@ function parse_argv(my, argv) {
       case '--download-limit':
         my.download_limit = parseFloat(argv[index + 1]);
         console.log('download_limit', my.download_limit);
-        index++;
-        break;
-      // case '--scroll':
-      //   my.scrollPeriod = parseFloat(argv[index + 1]);
-      //   index++;
-      //   break;
-      case '--width_trim':
-        my.width_trim = parseFloat(argv[index + 1]);
         index++;
         break;
       default:

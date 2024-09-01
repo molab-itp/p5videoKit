@@ -17,6 +17,7 @@ my.download_limit = -1;
 my.opt = { h: 1 };
 // my.width_trim;
 // my.mainWindow;
+my.zoom_factor = 1.0;
 
 console.log('download_path', my.download_path);
 
@@ -49,8 +50,16 @@ app.whenReady().then(() => {
     // Make window flush right
     x += width - nwidth;
     width = nwidth;
-    // console.log('x', x, 'width', width);
+    console.log('width_trim x', x, 'width', width);
+  } else if (my.portrait) {
+    let nwidth = 1080 * my.portrait;
+    height = 1920 * my.portrait;
+    // Make window flush right
+    x += width - nwidth;
+    width = nwidth;
+    console.log('x', x, 'width', width);
   }
+  // console.log('my.zoom_level', my.zoom_level);
 
   mainWindow = new BrowserWindow({
     x,
@@ -60,7 +69,7 @@ app.whenReady().then(() => {
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload-scroll.js'),
-      zoomFactor: 1.8,
+      // zoomLevel: my.zoom_factor, // 1.8,
     },
   });
 
