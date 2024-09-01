@@ -19,6 +19,8 @@ let scrollYTop = 580;
 // let scrollYTop = 635;
 let scrollYBottom = 4800; // 3769 * 2;
 let lastScrollY;
+let scrollPeriod = 0.1 * 0.75;
+my.elineDelayPeriod = 30 * 0.75;
 
 function setup_scroll() {
   //
@@ -40,9 +42,8 @@ function setup_scroll() {
   // el[0].style.backgroundColor = 'gold'
   // console.log('my.elines.length', my.elines.length);
   my.elineDelayCount = 0;
-  my.elineDelayPeriod = 30;
+  // my.elineDelayPeriod = 30;
 
-  let scrollPeriod = 0.1;
   let period = scrollPeriod * 1000;
   setInterval(scroll_track, period);
 
@@ -90,6 +91,12 @@ function check_line_hilite() {
     my.elineDelayCount = 0;
     return;
   }
+
+  // Keep up last hilite until starting from the top
+  // if (my.last_elineIndex - 1 == my.elines.length - 1) {
+  //   return;
+  // }
+
   // remove last hilite
   if (my.last_elineIndex) {
     my.elines[my.last_elineIndex - 1].style.backgroundColor = '';
