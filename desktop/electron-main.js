@@ -20,6 +20,8 @@ my.opt = { h: 1 };
 my.zoom_factor = 1.0;
 
 console.log('download_path', my.download_path);
+// console.log('globalThis', globalThis);
+// console.log('window', window);
 
 parse_argv(my, process.argv);
 
@@ -57,7 +59,7 @@ app.whenReady().then(() => {
     // Make window flush right
     x += width - nwidth;
     width = nwidth;
-    console.log('x', x, 'width', width);
+    console.log('x', x, 'width', width, 'height', height);
   }
   // console.log('my.zoom_level', my.zoom_level);
 
