@@ -1,13 +1,19 @@
 //
 // Run p5videoKet as electron process to allow for restart and other options
 
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const fs = require('fs');
+import { app, BrowserWindow, screen } from 'electron';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const { parse_argv } = require('./lib/parse_argv.js');
-const { setup_download } = require('./lib/setup_download.js');
-const { setup_restart } = require('./lib/setup_restart.js');
+// Needed for __dirname with ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+console.log('__dirname', __dirname);
+
+import { parse_argv } from './lib/parse_argv.js';
+import { setup_download } from './lib/setup_download.js';
+import { setup_restart } from './lib/setup_restart.js';
 
 let my = {};
 
@@ -32,7 +38,7 @@ app.whenReady().then(() => {
 
   // We cannot require the screen module
   // until the app is ready
-  const { screen } = require('electron');
+  // const { screen } = require('electron');
 
   const screens = screen.getAllDisplays();
   let index = my.opt.index || '1';
@@ -63,20 +69,20 @@ app.whenReady().then(() => {
   }
   // console.log('my.zoom_level', my.zoom_level);
 
-  mainWindow = new BrowserWindow({
+  my.mainWindow = new BrowserWindow({
     x,
     y,
     width,
     height,
     webPreferences: {
-      nodeIntegration: true,
+      // nodeIntegration: true,
       preload: path.join(__dirname, 'preload-scroll.js'),
       // zoomLevel: my.zoom_factor, // 1.8,
     },
   });
 
   if (my.opt.debug) {
-    mainWindow.webContents.openDevTools();
+    my.mainWindow.webContents.openDevTools();
   }
 
   // opt.u = opt.u || '';
@@ -86,14 +92,14 @@ app.whenReady().then(() => {
   // const url_options = { query: { u: opt.u, s: opt.s, d: opt.d, h: opt.h } };
   const url_options = { query: my.opt };
   if (my.root_index_path.startsWith('http')) {
-    mainWindow.loadURL(my.root_index_path);
+    my.mainWindow.loadURL(my.root_index_path);
   } else {
-    mainWindow.loadFile(my.root_index_path, url_options);
+    my.mainWindow.loadFile(my.root_index_path, url_options);
   }
 
   // mainWindow.fullScreen = opt.fullScreen;
   setTimeout(function () {
-    mainWindow.fullScreen = my.opt.fullScreen;
+    my.mainWindow.fullScreen = my.opt.fullScreen;
   }, 5 * 1000);
 
   setup_download(my);
@@ -114,18 +120,3 @@ app.on('window-all-closed', function () {
 // Retrieve information about screen size, displays, cursor position, etc.
 // For more info, see:
 // https://electronjs.org/docs/api/screen
-
-// function print_process_argv() {
-//   process.argv.forEach((val, index) => {
-//     console.log(`${index}: ${val}`);
-//   });
-// }
-// print_process_argv();
-
-// bin/run-gallery.sh
-// npm run start electron-main -- --ddebug --download_path Documents/projects/daily
-// 0: /Users/jht2/Documents/projects/dice_face_aa/p5videoKit-private/desktop/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron
-// 1: electron-main
-// 2: --ddebug
-// 3: --download_path
-// 4: Documents/projects/daily

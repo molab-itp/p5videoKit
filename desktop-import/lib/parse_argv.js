@@ -1,5 +1,5 @@
 //
-const path = require('path');
+import path from 'path';
 
 // npm run start -- --screen 2 --restart_time 18:09:00
 // --restart_time
@@ -29,7 +29,7 @@ const path = require('path');
 //
 // Ref: src/videoKit/core/store_url_parse.js
 //
-function parse_argv(my, argv) {
+export function parse_argv(my, argv) {
   for (let index = 2; index < argv.length; index++) {
     let val = argv[index];
     switch (val) {
@@ -107,5 +107,3 @@ function parse_argv(my, argv) {
     }
   }
 }
-
-module.exports.parse_argv = parse_argv;

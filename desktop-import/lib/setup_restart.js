@@ -1,7 +1,7 @@
 //
 
 // --restart_period n
-function setup_restart(my) {
+export function setup_restart(my) {
   let per = 0;
   if (my.opt.restart_period) {
     per = parse_period(my.opt.restart_period);
@@ -59,5 +59,3 @@ function parse_restart_time(restart_time) {
   console.log('parse_restart_time per', per);
   return per;
 }
-
-module.exports.setup_restart = setup_restart;

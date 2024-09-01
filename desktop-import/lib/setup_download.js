@@ -1,9 +1,9 @@
 //
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 
-function setup_download(my) {
-  mainWindow.webContents.session.on('will-download', (event, item, webContents) => {
+export function setup_download(my) {
+  my.mainWindow.webContents.session.on('will-download', (event, item, webContents) => {
     // Set the save path, making Electron not to prompt a save dialog.
     let fn = item.getFilename();
     // console.log('fn', fn);
@@ -64,5 +64,3 @@ function pad(n) {
   n = n + '';
   return n.padStart(4, '0');
 }
-
-module.exports.setup_download = setup_download;
