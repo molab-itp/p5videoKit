@@ -2,7 +2,7 @@
   "name": "desktop-import",
   "version": "1.0.0",
   "description": "electron basic",
-  "main": "main.mjs",
+  "main": "main.js",
   "directories": {
     "lib": "lib"
   },
