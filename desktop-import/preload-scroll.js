@@ -82,8 +82,6 @@ function scroll_track() {
 }
 
 function check_line_hilite() {
-  if (!my.scrollEnabled) return;
-
   // Keep up last hilite until starting from the top
   if (my.last_elineIndex == my.elines.length - 1) {
     let rt = my.elines[0].getBoundingClientRect();
@@ -105,6 +103,8 @@ function check_line_hilite() {
     my.elineDelayCount = 0;
     return;
   }
+
+  if (!my.scrollEnabled) return;
 
   my.last_elineIndex = my.elineIndex;
   my.elineIndex = (my.elineIndex + 1) % my.elines.length;
