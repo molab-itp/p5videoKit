@@ -15,6 +15,8 @@ import { parse_argv } from './lib/parse_argv.js';
 import { setup_download } from './lib/setup_download.js';
 import { setup_restart } from './lib/setup_restart.js';
 
+import { stub } from '../../p5moLibrary/src/lib/dbase/a_dbase.js';
+
 let my = {};
 
 my.root_index_path = '../src/index.html';
