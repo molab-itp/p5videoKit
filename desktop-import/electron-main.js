@@ -15,10 +15,14 @@ import { parse_argv } from './lib/parse_argv.js';
 import { setup_download } from './lib/setup_download.js';
 import { setup_restart } from './lib/setup_restart.js';
 
-// import { stub } from './lib/p5moLibrary/src/lib/dbase/a_dbase.js';
 import './lib/lib/dbase/a_dbase.js';
+import { dbase_init } from './lib/dbase.js';
 
 let my = {};
+
+globalThis.my = my;
+
+dbase_init(my);
 
 my.root_index_path = '../src/index.html';
 my.download_path = path.resolve(process.env.HOME, 'Downloads');
