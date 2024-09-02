@@ -14,15 +14,15 @@ console.log('__dirname', __dirname);
 import { parse_argv } from './lib/parse_argv.js';
 import { setup_download } from './lib/setup_download.js';
 import { setup_restart } from './lib/setup_restart.js';
-
-import './lib/lib/dbase/a_dbase.js';
 import { dbase_init } from './lib/dbase.js';
 
 let my = {};
 
 globalThis.my = my;
 
-dbase_init(my);
+if (my.room) {
+  dbase_init(my);
+}
 
 my.root_index_path = '../src/index.html';
 my.download_path = path.resolve(process.env.HOME, 'Downloads');
@@ -30,7 +30,6 @@ my.download_limit = -1;
 my.opt = { h: 1 };
 // my.width_trim;
 // my.mainWindow;
-my.zoom_factor = 1.0;
 
 console.log('download_path', my.download_path);
 // console.log('globalThis', globalThis);

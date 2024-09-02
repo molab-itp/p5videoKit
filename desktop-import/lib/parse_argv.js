@@ -1,5 +1,6 @@
 //
 import path from 'path';
+import fs from 'fs';
 
 // npm run start -- --screen 2 --restart_time 18:09:00
 // --restart_time
@@ -33,42 +34,36 @@ export function parse_argv(my, argv) {
   for (let index = 2; index < argv.length; index++) {
     let val = argv[index];
     switch (val) {
-      // case '--zoom_level':
-      //   my.zoom_level = parseFloat(argv[index + 1]);
-      //   index++;
-      //   break;
+      case '--mo_app':
+        my.mo_app = parseFloat(argv[++index]);
+        break;
+      case '--room':
+        my.room = parseFloat(argv[++index]);
+        break;
       case '--portrait':
-        my.portrait = parseFloat(argv[index + 1]);
-        index++;
+        my.portrait = parseFloat(argv[++index]);
         break;
       case '--width_trim':
-        my.width_trim = parseFloat(argv[index + 1]);
-        index++;
+        my.width_trim = parseFloat(argv[++index]);
         break;
       case '--restart_time':
-        my.opt.restart_time = argv[index + 1];
-        index++;
+        my.opt.restart_time = argv[++index];
         break;
       case '--restart_period':
-        my.opt.restart_period = argv[index + 1];
-        index++;
+        my.opt.restart_period = argv[++index];
         break;
       case '--h':
-        my.opt.h = argv[index + 1];
-        index++;
+        my.opt.h = argv[++index];
         break;
       case '--d':
-        my.opt.d = argv[index + 1];
-        index++;
+        my.opt.d = argv[++index];
         break;
       case '--u':
-        my.opt.u = argv[index + 1];
-        index++;
+        my.opt.u = argv[++index];
         break;
       case '--s':
         // select settings and hide ui
-        my.opt.s = argv[index + 1];
-        index++;
+        my.opt.s = argv[++index];
         break;
       case '--ddebug':
         my.opt.debug = true;
@@ -78,28 +73,24 @@ export function parse_argv(my, argv) {
         my.opt.fullScreen = true;
         break;
       case '--screen':
-        my.opt.index = argv[index + 1];
-        index++;
+        my.opt.index = argv[++index];
         break;
       case '--root':
-        my.root_index_path = argv[index + 1];
+        my.root_index_path = argv[++index];
         my.root_index_path = decodeURIComponent(my.root_index_path);
         console.log('root_index_path:', my.root_index_path);
-        index++;
         break;
       case '--download_path':
-        my.download_path = argv[index + 1];
+        my.download_path = argv[++index];
         my.download_path = decodeURIComponent(my.download_path);
         my.download_path = path.resolve(process.env.HOME, my.download_path);
         console.log('download_path: ', my.download_path);
         let res = fs.mkdirSync(my.download_path, { recursive: true });
         console.log('download_path res', res);
-        index++;
         break;
       case '--download-limit':
-        my.download_limit = parseFloat(argv[index + 1]);
+        my.download_limit = parseFloat(argv[++index]);
         console.log('download_limit', my.download_limit);
-        index++;
         break;
       default:
         console.log('Unknown arg val', val);

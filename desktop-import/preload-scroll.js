@@ -13,7 +13,7 @@ window.addEventListener('mouseup', function (event) {
 let my = {};
 window.my = my;
 my.margin = 32;
-my.overlayColor = 'rgba(255, 205, 50, 0.5)';
+my.overlayColor = 'rgba(255, 205, 50, 1.0)';
 
 let scrollYTopMargin = 100;
 let scrollYTop = 580;
@@ -41,13 +41,13 @@ function setup_scroll() {
   nb.style.fontSize = 'xx-large';
 
   let ar = document.querySelector('article');
+  let fb = ar.querySelector('.field--body');
+  my.fieldBody = fb.querySelector('p');
+
   my.elines = ar.querySelectorAll('.long-line');
-  // my.elines = document.querySelectorAll('.long-line');
+
   my.elineIndex = 0;
-  // el[0].style.backgroundColor = 'gold'
-  // console.log('my.elines.length', my.elines.length);
   my.elineDelayCount = 0;
-  // my.elineDelayPeriod = 30;
 
   let period = scrollPeriod * 1000;
   setInterval(scroll_track, period);
@@ -92,7 +92,7 @@ function check_line_hilite() {
 
   let el = my.elines[my.elineIndex];
   let rt = el.getBoundingClientRect();
-  overlayAtPosition(rt);
+  overlayElement(el);
 
   my.elineDelayCount = (my.elineDelayCount + 1) % my.elineDelayPeriod;
   if (my.elineDelayCount != 1) return;
@@ -120,23 +120,42 @@ function check_scroll_pause() {
   }
 }
 
-// https://chatgpt.com/
-// create a DOM element that overlays a transparent color at a specified location on the window
-
-// overlay a transparent color at a specified location on the window
-function overlayAtPosition({ x, y, width, height }) {
+function overlayElement(elt) {
   // Create a new div element for the overlay
   if (!my.overlay) {
     my.overlay = document.createElement('div');
-    document.body.appendChild(my.overlay);
+    my.fieldBody.appendChild(my.overlay);
     my.overlay.style.position = 'fixed';
     my.overlay.style.backgroundColor = my.overlayColor;
     my.overlay.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
   }
+  if (!my.cloned) {
+    my.cloned = elt.cloneNode(true);
+    my.fieldBody.appendChild(my.cloned);
+    my.cloned.style.position = 'fixed';
+    my.cloned.style.pointerEvents = 'none';
+  }
+  my.cloned.textContent = elt.textContent;
+
+  let { x, y, width, height } = elt.getBoundingClientRect();
   x -= my.margin;
   width += my.margin;
+
   my.overlay.style.top = `${y}px`;
   my.overlay.style.left = `${x}px`;
   my.overlay.style.width = `${width}px`;
   my.overlay.style.height = `${height}px`;
+
+  my.cloned.style.top = `${y}px`;
+  my.cloned.style.left = `${x}px`;
+  my.cloned.style.width = `${width}px`;
+  my.cloned.style.height = `${height}px`;
+}
+
+// https://chatgpt.com/
+// create a DOM element that overlays a transparent color at a specified location on the window
+// overlay a transparent color at a specified location on the window
+function overlayAtPosition({ x, y, width, height }) {
+  // Create a new div element for the overlay
+  // ...
 }
