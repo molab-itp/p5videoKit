@@ -75,8 +75,8 @@ app.whenReady().then(() => {
     width,
     height,
     webPreferences: {
-      // nodeIntegration: true,
-      preload: path.join(__dirname, 'preload-scroll.js'),
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload-scroll.cjs'),
       // zoomLevel: my.zoom_factor, // 1.8,
     },
   });
