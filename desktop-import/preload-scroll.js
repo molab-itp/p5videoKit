@@ -13,7 +13,8 @@ window.addEventListener('mouseup', function (event) {
 let my = {};
 window.my = my;
 my.margin = 32;
-my.overlayColor = 'rgba(255, 205, 50, 1.0)';
+my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'red', 'green'];
+my.overlayColorsIndex = 0;
 
 let scrollYTopMargin = 100;
 let scrollYTop = 580;
@@ -75,6 +76,7 @@ function scroll_track() {
     start_scroll_pause();
     my.elineIndex = 0;
     my.elineDelayCount = 0;
+    my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
   }
   // if (window.scrollY < scrollYTopMargin) {
   //   window.scrollTo(0, scrollYTop);
@@ -108,6 +110,7 @@ function check_line_hilite() {
 
   my.last_elineIndex = my.elineIndex;
   my.elineIndex = (my.elineIndex + 1) % my.elines.length;
+  my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
 }
 
 function check_scroll_pause() {
@@ -126,7 +129,6 @@ function overlayElement(elt) {
     my.overlay = document.createElement('div');
     my.fieldBody.appendChild(my.overlay);
     my.overlay.style.position = 'fixed';
-    my.overlay.style.backgroundColor = my.overlayColor;
     my.overlay.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
   }
   if (!my.cloned) {
@@ -135,6 +137,7 @@ function overlayElement(elt) {
     my.cloned.style.position = 'fixed';
     my.cloned.style.pointerEvents = 'none';
   }
+  my.overlay.style.backgroundColor = my.overlayColors[my.overlayColorsIndex];
   my.cloned.textContent = elt.textContent;
 
   let { x, y, width, height } = elt.getBoundingClientRect();
