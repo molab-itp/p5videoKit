@@ -152,7 +152,7 @@ function overlayElement(elt) {
     my.cloned.style.pointerEvents = 'none';
   }
   my.overlay.style.backgroundColor = my.overlayColors[my.overlayColorsIndex];
-  my.cloned.textContent = elt.textContent;
+  my.cloned.innerHTML = elt.innerHTML;
 
   let { x, y, width, height } = elt.getBoundingClientRect();
   x -= my.margin;
