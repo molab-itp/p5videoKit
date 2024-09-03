@@ -20,10 +20,10 @@ function dbase_app_init({ completed }) {
 
       dbase_site_observe();
 
-      if (globalThis.navigator) {
-        // Send initial ping
-        dbase_update_props({}, { count: 1 });
-      }
+      // if (globalThis.navigator) {
+      // Send initial ping
+      dbase_update_props({}, { count: 1 });
+      // }
 
       if (completed) completed();
     })

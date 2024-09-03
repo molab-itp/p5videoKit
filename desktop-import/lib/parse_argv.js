@@ -38,7 +38,7 @@ export function parse_argv(my, argv) {
         my.mo_app = parseFloat(argv[++index]);
         break;
       case '--room':
-        my.room = parseFloat(argv[++index]);
+        my.room = argv[++index];
         break;
       case '--portrait':
         my.portrait = parseFloat(argv[++index]);

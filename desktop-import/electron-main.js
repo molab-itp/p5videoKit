@@ -20,10 +20,6 @@ let my = {};
 
 globalThis.my = my;
 
-if (my.room) {
-  dbase_init(my);
-}
-
 my.root_index_path = '../src/index.html';
 my.download_path = path.resolve(process.env.HOME, 'Downloads');
 my.download_limit = -1;
@@ -106,8 +102,18 @@ app.whenReady().then(() => {
 
   setup_restart(my);
 
-  // console.log('main screen', screen);
-  // console.log('main screens', screens);
+  // Send ipc event to preload
+  // setInterval(function () {
+  //   my.mainWindow.webContents.send('rewind', 1);
+  // }, 7 * 1000);
+  my.rewind_action = () => {
+    my.mainWindow.webContents.send('rewind', 1);
+  };
+
+  console.log('my.room', my.room);
+  if (my.room) {
+    dbase_init(my);
+  }
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

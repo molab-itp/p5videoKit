@@ -2,6 +2,8 @@
 
 function dbase_devices_observe({ observed_key, removed_key, observed_item, all }) {
   //
+  console.log('dbase_devices_observe my.a_device_values', my.a_device_values);
+
   if (!my.a_device_values) my.a_device_values = {};
 
   // 'mo-paint/a_device'

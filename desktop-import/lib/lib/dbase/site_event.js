@@ -41,9 +41,10 @@ function dbase_site_updates(updates, keys) {
   if (globalThis.navigator) {
     userAgent = globalThis.navigator.userAgent;
   } else {
-    console.log('dbase_site_updates EXIT');
+    // updated needed to catch actions
+    // console.log('dbase_site_updates EXIT');
     // !!@ to avoid filling up nodejs events
-    return;
+    // return;
   }
 
   if (!updates) updates = {};

@@ -1,8 +1,18 @@
 //
+const { ipcRenderer } = require('electron');
+
 window.addEventListener('DOMContentLoaded', () => {
-  // show_versions();
   setTimeout(setup_scroll, 1000);
+
+  setup_responder();
 });
+
+function setup_responder() {
+  ipcRenderer.on('rewind', (_event, value) => {
+    console.log('ipcRenderer.on rewind', value);
+    play_from_top();
+  });
+}
 
 window.addEventListener('mouseup', function (event) {
   // console.log('mouseup clientX', event.clientX, 'clientY', event.clientY);
@@ -16,7 +26,7 @@ my.margin = 32;
 my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'red', 'green'];
 my.overlayColorsIndex = 0;
 
-let scrollYTopMargin = 100;
+// let scrollYTopMargin = 100;
 let scrollYTop = 580;
 // let scrollYTop = 465;
 // let scrollYTop = 635;
@@ -72,15 +82,19 @@ function scroll_track() {
   window.scrollBy(0, 1);
   // console.log(' lastScrollY', lastScrollY);
   if (window.scrollY > scrollYBottom) {
-    window.scrollTo(0, scrollYTop);
-    start_scroll_pause();
-    my.elineIndex = 0;
-    my.elineDelayCount = 0;
-    my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
+    play_from_top();
   }
   // if (window.scrollY < scrollYTopMargin) {
   //   window.scrollTo(0, scrollYTop);
   // }
+}
+
+function play_from_top() {
+  window.scrollTo(0, scrollYTop);
+  start_scroll_pause();
+  my.elineIndex = 0;
+  my.elineDelayCount = 0;
+  my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
 }
 
 function check_line_hilite() {
