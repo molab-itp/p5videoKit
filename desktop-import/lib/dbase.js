@@ -4,55 +4,48 @@ import './lib/dbase/a_dbase.js';
 
 export function dbase_init(my) {
   my.fireb_config = 'jht9629';
+  // my.fireb_config = 'jht1493';
+  // my.fireb_config = 'jhtitp';
+
   my.dbase_rootPath = 'm0-@r-@w-';
-  my.mo_app = my.mo_app || 'mo-america';
-  my.roomName = my.roomName || 'room0';
-  my.nameDevice = 'nodejs';
+  my.roomName = 'room0';
+  my.nameDevice = '';
 
-  dbase_app_init({
-    completed: () => {
-      app_init_completed(my);
-    },
-  });
+  my.mo_app = 'mo-america-rewind';
+  my.group = 's0';
 
-  // test_my();
+  my.rewind_action_count = 0;
+
+  dbase_app_init({ completed: app_init_completed });
 }
-
-// function test_my() {
-//   console.log('test_my', my);
-// }
 
 function app_init_completed() {
-  console.log('app_init_completed');
+  console.log('app_init_completed ');
+  // console.log('app_init_completed my', my);
   //
-  setInterval(() => {
-    app_poll(my);
-  }, 1000);
+  dbase_app_observe({ observed_item });
 
-  dbase_devices_observe({ observed_key, observed_item, all: 1 });
+  function observed_item(item) {
+    let rewind_action_count = item.rewind_action_count;
+    if (rewind_action_count != null && rewind_action_count != my.rewind_action_count) {
+      // rewind action triggered
+      console.log('rewind action triggered my.rewind_action_count', my.rewind_action_count);
+      console.log('rewind_action_count', rewind_action_count);
+      my.rewind_action_count = rewind_action_count;
 
-  function observed_key(key, device) {
-    // console.log('observed_a_device key', key, 'uid', my.uid, 'device', device);
-    console.log('observed_a_device key', key, 'device.vote_count', device && device.vote_count);
-  }
-
-  function observed_item(device) {
-    console.log('observed_item device.vote_count', device.vote_count);
-    if (device.vote_count != undefined) {
-      my.vote_count = device.vote_count;
+      my.rewind_action();
     }
   }
-}
-
-function app_poll(my) {
-  // console.log('app_poll');
-  if (dbase_actions_issued(my.uid, { rewind_action: 1 })) {
-    my.rewind_action();
-  }
-  dbase_poll();
 }
 
 function ui_log(...args) {
   console.log(...args);
 }
 globalThis.ui_log = ui_log;
+
+function ui_error(...args) {
+  ui_log(...args);
+  // !!@ not available in nodejs
+  // alert(...args);
+}
+globalThis.ui_error = ui_error;

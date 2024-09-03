@@ -157,10 +157,15 @@ function overlayElement(elt) {
   let { x, y, width, height } = elt.getBoundingClientRect();
   x -= my.margin;
   width += my.margin;
+  // !!@ some text lines go beyond rect
 
+  let x1 = 0;
+  let w1 = window.innerWidth;
   my.overlay.style.top = `${y}px`;
-  my.overlay.style.left = `${x}px`;
-  my.overlay.style.width = `${width}px`;
+  // my.overlay.style.left = `${x}px`;
+  // my.overlay.style.width = `${width}px`;
+  my.overlay.style.left = `${x1}px`;
+  my.overlay.style.width = `${w1}px`;
   my.overlay.style.height = `${height}px`;
 
   my.cloned.style.top = `${y}px`;
