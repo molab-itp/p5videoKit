@@ -23,7 +23,10 @@ window.addEventListener('mouseup', function (event) {
 let my = {};
 window.my = my;
 my.margin = 32;
-my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'red', 'green'];
+// my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'red', 'green'];
+// my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)'];
+// Apple Finder window close-hide-max
+my.overlayColors = ['rgba(255, 80, 80, 1.0)', 'rgba(255, 180, 60, 1.0)', 'rgba(60, 190, 70, 1.0)'];
 my.overlayColorsIndex = 0;
 
 // let scrollYTopMargin = 100;
