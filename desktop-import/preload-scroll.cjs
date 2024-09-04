@@ -35,8 +35,8 @@ let scrollYTop = 580;
 // let scrollYTop = 635;
 let scrollYBottom = 4800; // 3769 * 2;
 let lastScrollY;
-let scrollPeriod = 0.1 * 0.75;
-my.elineDelayPeriod = 30 * 0.75;
+let scrollPeriod = 0.1; // * 0.75;
+my.elineDelayPeriod = 30; // * 0.75;
 
 function setup_scroll() {
   //
