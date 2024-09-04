@@ -53,6 +53,7 @@ function setup_scroll() {
   let nb = document.querySelector('.navbar-brand');
   nb.innerHTML = nb.textContent + '<br/>' + et.textContent;
   nb.style.fontSize = 'xx-large';
+  my.topBox = nb;
 
   let ar = document.querySelector('article');
   let fb = ar.querySelector('.field--body');
@@ -78,6 +79,7 @@ function start_scroll_pause() {
 }
 
 function scroll_track() {
+  displayStatus();
   lastScrollY = window.scrollY;
   check_scroll_pause();
   check_line_hilite();
@@ -87,9 +89,6 @@ function scroll_track() {
   if (window.scrollY > scrollYBottom) {
     play_from_top();
   }
-  // if (window.scrollY < scrollYTopMargin) {
-  //   window.scrollTo(0, scrollYTop);
-  // }
 }
 
 function play_from_top() {
@@ -183,4 +182,43 @@ function overlayElement(elt) {
 function overlayAtPosition({ x, y, width, height }) {
   // Create a new div element for the overlay
   // ...
+}
+
+function createStatusDiv() {
+  if (!my.statusDiv) {
+    let w = window.innerWidth;
+    let h = 32;
+
+    let x = window.innerWidth - w;
+    let y = window.innerHeight - h;
+    let width = w;
+    let height = h;
+
+    my.statusDiv = document.createElement('div');
+    // document.body.appendChild(my.statusDiv);
+    // my.topBox.appendChild(my.statusDiv);
+
+    // my.statusDiv.style.top = `${y}px`;
+    my.statusDiv.style.left = `${x}px`;
+    my.statusDiv.style.width = `${width}px`;
+    my.statusDiv.style.height = `${height}px`;
+
+    my.statusDiv.style.zIndex = 10;
+    my.statusDiv.style.backgroundColor = 'black';
+    my.statusDiv.style.color = 'white';
+    my.statusDiv.style.fontSize = `${h}px`;
+    // my.statusDiv.style.textAlign = 'right';
+    my.statusDiv.textContent = 'Starting...';
+
+    console.log('window.scrollY', window.scrollY);
+    console.log('my.statusDiv', my.statusDiv);
+  }
+}
+
+function displayStatus() {
+  //
+  createStatusDiv();
+  // my.statusDiv.textContent = window.scrollY + '';
+  // my.topBox.innerHTML += window.scrollY + '';
+  my.topBox.innerHTML = window.scrollY + '';
 }
