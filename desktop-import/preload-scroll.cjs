@@ -220,5 +220,5 @@ function displayStatus() {
   createStatusDiv();
   // my.statusDiv.textContent = window.scrollY + '';
   // my.topBox.innerHTML += window.scrollY + '';
-  my.topBox.innerHTML = window.scrollY + '';
+  // my.topBox.innerHTML = window.scrollY + '';
 }
