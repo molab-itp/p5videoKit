@@ -1,7 +1,7 @@
 //
 // Run p5videoKet as electron process to allow for restart and other options
 
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -37,6 +37,11 @@ parse_argv(my, process.argv);
 console.log('opt', my.opt);
 
 app.whenReady().then(() => {
+  ipcMain.on('set-line-info', (event, line) => {
+    // dbase_update_item({ num, text });
+    dbase_update_item({ line });
+  });
+
   const screens = screen.getAllDisplays();
   let index = my.opt.index || '1';
   index = parseFloat(index) - 1;
@@ -127,3 +132,7 @@ app.on('window-all-closed', function () {
 // Retrieve information about screen size, displays, cursor position, etc.
 // For more info, see:
 // https://electronjs.org/docs/api/screen
+
+// https://www.electronjs.org/docs/latest/tutorial/ipc
+
+// dbase_update_item({ num, text });

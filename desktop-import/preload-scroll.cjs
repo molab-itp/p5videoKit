@@ -1,11 +1,32 @@
 //
-const { ipcRenderer } = require('electron');
+const { webFrame, ipcRenderer } = require('electron');
 
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(setup_scroll, 1000);
 
   setup_responder();
+
+  let zoomFactorInit = 2.18;
+  webFrame.setZoomFactor(zoomFactorInit);
+
+  let zoomFactor = webFrame.getZoomFactor();
+  console.log('zoomFactor', zoomFactor);
+  // zoomFactor 2.0736
+  // zoomFactor 2.2715149904854246
 });
+
+// ipcRenderer.send('asynchronous-message', 'ping')
+// set-line-info
+/*
+ipcMain.on('set-line-info', (event, lineInfo) => {
+  // dbase_update_item({ num, text });
+  dbase_update_item(lineInfo);
+*/
+
+// lineInfo = { num, text }
+function send_lineInfo(lineInfo) {
+  ipcRenderer.send('set-line-info', lineInfo);
+}
 
 function setup_responder() {
   ipcRenderer.on('rewind', (_event, value) => {
@@ -33,17 +54,18 @@ my.overlayColorsIndex = 0;
 let scrollYTop = 580;
 // let scrollYTop = 465;
 // let scrollYTop = 635;
-// let scrollYBottom = 4800; // 3769 * 2;
-let scrollYBottom = 3800; // 3769 * 2;
 // window.innerWidth 520
-let lastScrollY;
-let scrollPeriod = 0.1; // * 0.75;
+my.lastScrollY;
+my.scrollPeriod = 0.1; // * 0.75;
 my.elineDelayPeriod = 30; // * 0.75;
 
 function setup_scroll() {
   //
   console.log('setup_scroll my', my);
   console.log('setup_scroll window.location.href', window.location.href);
+
+  let fi = document.querySelector('.field--field_image');
+  my.authorImageDiv = fi;
 
   let nt = document.querySelector('.navbar-toggler');
   nt.remove();
@@ -66,12 +88,14 @@ function setup_scroll() {
   my.elineIndex = 0;
   my.elineDelayCount = 0;
 
-  let period = scrollPeriod * 1000;
+  let period = my.scrollPeriod * 1000;
   setInterval(scroll_track, period);
 
   window.scrollTo(0, scrollYTop);
 
   start_scroll_pause();
+
+  send_current_line();
 }
 
 function start_scroll_pause() {
@@ -82,13 +106,16 @@ function start_scroll_pause() {
 
 function scroll_track() {
   displayStatus();
-  lastScrollY = window.scrollY;
+  my.lastScrollY = window.scrollY;
   check_scroll_pause();
   check_line_hilite();
   if (!my.scrollEnabled) return;
   window.scrollBy(0, 1);
   // console.log(' lastScrollY', lastScrollY);
-  if (window.scrollY > scrollYBottom) {
+  // if (window.scrollY > scrollYBottom) {
+  //   play_from_top();
+  // }
+  if (my.authorImageDiv.getBoundingClientRect().y < 0) {
     play_from_top();
   }
 }
@@ -99,6 +126,8 @@ function play_from_top() {
   my.elineIndex = 0;
   my.elineDelayCount = 0;
   my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
+
+  send_current_line();
 }
 
 function check_line_hilite() {
@@ -118,10 +147,26 @@ function check_line_hilite() {
   if (my.elineDelayCount != 1) return;
 
   // delay new hilite until upper half of window
-  if (rt.y > window.innerHeight / 2) {
+  let midWindow = window.innerHeight / 2;
+  if (rt.y > midWindow) {
     // console.log('delayed my.elineIndex', my.elineIndex);
     my.elineDelayCount = 0;
     return;
+  }
+  if (rt.y < 0) {
+    // Hilite scroll off top of screen
+    let lastLine = my.elineIndex;
+    my.offscreen = 1;
+    while (rt.y < midWindow) {
+      my.elineIndex = (my.elineIndex + 1) % my.elines.length;
+      el = my.elines[my.elineIndex];
+      rt = el.getBoundingClientRect();
+      if (lastLine > my.elineIndex) {
+        break;
+      }
+    }
+  } else {
+    my.offscreen = 0;
   }
 
   if (!my.scrollEnabled) return;
@@ -129,6 +174,19 @@ function check_line_hilite() {
   my.last_elineIndex = my.elineIndex;
   my.elineIndex = (my.elineIndex + 1) % my.elines.length;
   my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
+
+  if (my.elineIndex) {
+    send_current_line();
+  }
+}
+
+function send_current_line() {
+  let eln = my.elines[my.elineIndex];
+  let num = my.elineIndex + 1;
+  let text = eln.textContent;
+  if (!my.offscreen) {
+    send_lineInfo({ num, text });
+  }
 }
 
 function check_scroll_pause() {
