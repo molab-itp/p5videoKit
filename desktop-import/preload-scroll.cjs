@@ -132,16 +132,19 @@ function scroll_track() {
   check_line_hilite();
   if (!my.scrollEnabled) return;
   window.scrollBy(0, 1);
-  // console.log(' lastScrollY', lastScrollY);
-  // if (window.scrollY > scrollYBottom) {
-  //   play_from_top();
-  // }
+
+  // the author image moving off top of screen triggers play from top
+  // in short read when view is two column this is line 8 of poem
+  // in full read this the image is below the last line of poem
+
   if (my.authorImageDiv.getBoundingClientRect().y < 0) {
     // play_from_top();
     pause_at_bottom();
   }
 }
 
+// pause at bottom of screen before playing from top
+//
 function pause_at_bottom() {
   console.log('pause_at_bottom', my.paused_at_bottom);
   if (my.paused_at_bottom) {
