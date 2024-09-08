@@ -184,8 +184,11 @@ function send_current_line() {
   let eln = my.elines[my.elineIndex];
   let num = my.elineIndex + 1;
   let text = eln.textContent;
+  // my.overlayColors[my.overlayColorsIndex];
+  // let color = my.overlay.style.backgroundColor;
+  let color = my.overlayColors[my.overlayColorsIndex];
   if (!my.offscreen) {
-    send_lineInfo({ num, text });
+    send_lineInfo({ num, text, color });
   }
 }
 
