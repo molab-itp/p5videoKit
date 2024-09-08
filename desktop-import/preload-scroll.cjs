@@ -1,13 +1,23 @@
 //
 const { webFrame, ipcRenderer } = require('electron');
 
+let my = {};
+my.margin = 32;
+my.overlayColors = ['rgba(255, 80, 80, 1.0)', 'rgba(255, 180, 60, 1.0)', 'rgba(60, 190, 70, 1.0)'];
+my.overlayColorsIndex = 0;
+my.scrollYTop = 580;
+my.scrollPeriod = 0.1; // * 0.75;
+my.elineDelayPeriod = 30; // * 0.75;
+my.zoomFactorLong = 2.18;
+my.zoomFactorShort = 1.4;
+
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(setup_scroll, 1000);
-
   setup_responder();
-
-  let zoomFactorInit = 2.18;
-  webFrame.setZoomFactor(zoomFactorInit);
+  // let zoomFactorInit = 2.18;
+  // let zoomFactorInit = 1.3819851566681276;
+  // let zoomFactorInit = 1.4;
+  webFrame.setZoomFactor(my.zoomFactorShort);
 
   let zoomFactor = webFrame.getZoomFactor();
   console.log('zoomFactor', zoomFactor);
@@ -28,36 +38,47 @@ function send_lineInfo(lineInfo) {
   ipcRenderer.send('set-line-info', lineInfo);
 }
 
+function send_current_line() {
+  if (!my.elines) return;
+  let eln = my.elines[my.elineIndex];
+  let num = my.elineIndex + 1;
+  let text = eln.textContent;
+  let color = my.overlayColors[my.overlayColorsIndex];
+  if (!my.offscreen) {
+    send_lineInfo({ num, text, color });
+  }
+}
+
 function setup_responder() {
   ipcRenderer.on('rewind', (_event, value) => {
     console.log('ipcRenderer.on rewind', value);
-    play_from_top();
+    play_from_top_short();
   });
+  ipcRenderer.on('full-read', (_event, value) => {
+    console.log('ipcRenderer.on full-read', value);
+    play_from_top_long();
+  });
+}
+
+function play_from_top_short() {
+  play_from_top();
+  webFrame.setZoomFactor(my.zoomFactorShort);
+  my.full_read_enabled = 0;
+}
+
+function play_from_top_long() {
+  play_from_top();
+  webFrame.setZoomFactor(my.zoomFactorLong);
+  my.full_read_enabled = 1;
 }
 
 window.addEventListener('mouseup', function (event) {
   // console.log('mouseup clientX', event.clientX, 'clientY', event.clientY);
+  let zoomFactor = webFrame.getZoomFactor();
   console.log('mouseup window.scrollY', window.scrollY, 'my.scrollEnabled', my.scrollEnabled);
+  console.log('zoomFactor', zoomFactor);
   my.scrollEnabled = !my.scrollEnabled;
 });
-
-let my = {};
-window.my = my;
-my.margin = 32;
-// my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'red', 'green'];
-// my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)'];
-// Apple Finder window close-hide-max
-my.overlayColors = ['rgba(255, 80, 80, 1.0)', 'rgba(255, 180, 60, 1.0)', 'rgba(60, 190, 70, 1.0)'];
-my.overlayColorsIndex = 0;
-
-// let scrollYTopMargin = 100;
-let scrollYTop = 580;
-// let scrollYTop = 465;
-// let scrollYTop = 635;
-// window.innerWidth 520
-my.lastScrollY;
-my.scrollPeriod = 0.1; // * 0.75;
-my.elineDelayPeriod = 30; // * 0.75;
 
 function setup_scroll() {
   //
@@ -91,7 +112,7 @@ function setup_scroll() {
   let period = my.scrollPeriod * 1000;
   setInterval(scroll_track, period);
 
-  window.scrollTo(0, scrollYTop);
+  window.scrollTo(0, my.scrollYTop);
 
   start_scroll_pause();
 
@@ -116,12 +137,28 @@ function scroll_track() {
   //   play_from_top();
   // }
   if (my.authorImageDiv.getBoundingClientRect().y < 0) {
-    play_from_top();
+    // play_from_top();
+    pause_at_bottom();
   }
 }
 
+function pause_at_bottom() {
+  console.log('pause_at_bottom', my.paused_at_bottom);
+  if (my.paused_at_bottom) {
+    check_scroll_pause();
+    if (my.scrollEnabled) {
+      // play_from_top();
+      play_from_top_short();
+      my.paused_at_bottom = 0;
+    }
+    return;
+  }
+  my.paused_at_bottom = 1;
+  start_scroll_pause();
+}
+
 function play_from_top() {
-  window.scrollTo(0, scrollYTop);
+  window.scrollTo(0, my.scrollYTop);
   start_scroll_pause();
   my.elineIndex = 0;
   my.elineDelayCount = 0;
@@ -177,18 +214,6 @@ function check_line_hilite() {
 
   if (my.elineIndex) {
     send_current_line();
-  }
-}
-
-function send_current_line() {
-  let eln = my.elines[my.elineIndex];
-  let num = my.elineIndex + 1;
-  let text = eln.textContent;
-  // my.overlayColors[my.overlayColorsIndex];
-  // let color = my.overlay.style.backgroundColor;
-  let color = my.overlayColors[my.overlayColorsIndex];
-  if (!my.offscreen) {
-    send_lineInfo({ num, text, color });
   }
 }
 
@@ -285,3 +310,11 @@ function displayStatus() {
   // my.topBox.innerHTML += window.scrollY + '';
   // my.topBox.innerHTML = window.scrollY + '';
 }
+
+// my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'red', 'green'];
+// my.overlayColors = ['rgba(255, 205, 50, 1.0)', 'rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)'];
+// Apple Finder window close-hide-max
+// let my.scrollYTop = 465;
+// let my.scrollYTop = 635;
+// window.innerWidth 520
+// my.lastScrollY;

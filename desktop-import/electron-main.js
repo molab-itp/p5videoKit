@@ -115,6 +115,9 @@ app.whenReady().then(() => {
   my.rewind_action = () => {
     my.mainWindow.webContents.send('rewind', 1);
   };
+  my.full_read_action = () => {
+    my.mainWindow.webContents.send('full-read', 1);
+  };
 
   console.log('my.room', my.room);
   if (my.room) {

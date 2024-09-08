@@ -14,7 +14,8 @@ export function dbase_init(my) {
   my.mo_app = 'mo-america-rewind';
   my.group = 's0';
 
-  my.rewind_action_count = 0;
+  my.rewind_count = 0;
+  my.full_read = 0;
 
   dbase_app_init({ completed: app_init_completed });
 }
@@ -26,14 +27,25 @@ function app_init_completed() {
   dbase_app_observe({ observed_item });
 
   function observed_item(item) {
-    let rewind_action_count = item.rewind_action_count;
-    if (rewind_action_count != null && rewind_action_count != my.rewind_action_count) {
-      // rewind action triggered
-      console.log('rewind action triggered my.rewind_action_count', my.rewind_action_count);
-      console.log('rewind_action_count', rewind_action_count);
-      my.rewind_action_count = rewind_action_count;
-
-      my.rewind_action();
+    let rewind_count = item.rewind_count;
+    if (rewind_count != null) {
+      if (my.rewind_count && rewind_count != my.rewind_count) {
+        // rewind action triggered
+        console.log('rewind action triggered my.rewind_count', my.rewind_count);
+        console.log('rewind_count', rewind_count);
+        my.rewind_action();
+      }
+      my.rewind_count = rewind_count;
+    }
+    let full_read = item.full_read;
+    if (full_read != null) {
+      if (my.full_read && full_read != my.full_read) {
+        // full_read action triggered
+        console.log('full_read action triggered my.full_read', my.full_read);
+        console.log('full_read', full_read);
+        my.full_read_action();
+      }
+      my.full_read = full_read;
     }
   }
 }
