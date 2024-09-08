@@ -31,8 +31,7 @@ function app_init_completed() {
     if (rewind_count != null) {
       if (my.rewind_count && rewind_count != my.rewind_count) {
         // rewind action triggered
-        console.log('rewind action triggered my.rewind_count', my.rewind_count);
-        console.log('rewind_count', rewind_count);
+        console.log('rewind action triggered my.rewind_count', my.rewind_count, 'rewind_count', rewind_count);
         my.rewind_action();
       }
       my.rewind_count = rewind_count;
@@ -41,12 +40,24 @@ function app_init_completed() {
     if (full_read != null) {
       if (my.full_read && full_read != my.full_read) {
         // full_read action triggered
-        console.log('full_read action triggered my.full_read', my.full_read);
-        console.log('full_read', full_read);
+        console.log('full_read action triggered my.full_read', my.full_read, 'full_read', full_read);
         my.full_read_action();
       }
       my.full_read = full_read;
     }
+  }
+}
+
+// dbase_if_action(item.rewind_count, 'rewind_count', my.rewind_action)
+//
+function dbase_if_action(count, prop, action) {
+  if (count != null) {
+    if (my[prop] && count != my[prop]) {
+      // trigger action
+      console.log('triggering action', prop, 'old count', my[prop], 'new count', count);
+      action();
+    }
+    my[prop] = count;
   }
 }
 
