@@ -12,10 +12,8 @@ export function dbase_init(my) {
   my.nameDevice = '';
 
   my.mo_app = 'mo-america-rewind';
+  // set group so all devices share items values
   my.group = 's0';
-
-  my.rewind_count = 0;
-  my.full_read = 0;
 
   dbase_app_init({ completed: app_init_completed });
 }
@@ -27,39 +25,30 @@ function app_init_completed() {
   dbase_app_observe({ observed_item });
 
   function observed_item(item) {
-    let rewind_count = item.rewind_count;
-    if (rewind_count != null) {
-      if (my.rewind_count && rewind_count != my.rewind_count) {
-        // rewind action triggered
-        console.log('rewind action triggered my.rewind_count', my.rewind_count, 'rewind_count', rewind_count);
-        my.rewind_action();
-      }
-      my.rewind_count = rewind_count;
-    }
-    let full_read = item.full_read;
-    if (full_read != null) {
-      if (my.full_read && full_read != my.full_read) {
-        // full_read action triggered
-        console.log('full_read action triggered my.full_read', my.full_read, 'full_read', full_read);
-        my.full_read_action();
-      }
-      my.full_read = full_read;
-    }
+    //
+    dbase_if_action({ item, prop: 'action_rewind', actionFunc: my.rewind_action });
+
+    dbase_if_action({ item, prop: 'action_full_read', actionFunc: my.full_read_action });
   }
 }
 
-// dbase_if_action(item.rewind_count, 'rewind_count', my.rewind_action)
-//
-function dbase_if_action(count, prop, action) {
+// dbase_if_action(item.action_rewind, 'action_rewind', my.rewind_action)
+// !!@ dbase_if_action --> p5moLibrary
+function dbase_if_action({ item, prop, actionFunc }) {
+  let count = item[prop];
   if (count != null) {
     if (my[prop] && count != my[prop]) {
       // trigger action
       console.log('triggering action', prop, 'old count', my[prop], 'new count', count);
-      action();
+      actionFunc();
     }
     my[prop] = count;
   }
 }
+// !!@ dbase_issue_action to p5moLibrary
+// function dbase_issue_action(prop) {
+// dbase_issue_action is complement by dbase_if_action
+//
 
 function ui_log(...args) {
   console.log(...args);
