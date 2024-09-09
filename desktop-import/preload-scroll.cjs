@@ -2,14 +2,14 @@
 const { webFrame, ipcRenderer } = require('electron');
 
 let my = {};
+window.my = my;
 my.margin = 32;
 my.overlayColors = ['rgba(255, 80, 80, 1.0)', 'rgba(255, 180, 60, 1.0)', 'rgba(60, 190, 70, 1.0)'];
 my.overlayColorsIndex = 0;
-my.scrollYTop = 580;
-my.scrollYTopShort = 580;
-my.scrollYTopLong = 460;
-// my.scrollYTop = 380;
-// 460 for long zoom
+my.scrollYTopShort = 760;
+// my.scrollYTopShort = 580;
+my.scrollYTopLong = 616;
+// my.scrollYTopLong = 460;
 
 // my.scrollPeriod = 0.1; // * 0.75;
 // my.elineDelayPeriod = 30; // * 0.75;

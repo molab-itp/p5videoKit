@@ -8,6 +8,7 @@ How to fix following electron error: FATAL ERROR: Oilpan: Large allocation. Ran 
 3. Use node --max-old-space-size Flag:
 The V8 JavaScript engine, used by Electron, has a default memory limit for heap allocation 
 (around 1.5GB on 64-bit systems). You can increase this limit by using the --max-old-space-size flag.
+
 Modify the start script for your Electron app like this:
 bash
 Copy code
