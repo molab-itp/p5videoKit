@@ -3,6 +3,7 @@ const { webFrame, ipcRenderer } = require('electron');
 
 let my = {};
 window.my = my;
+my.gcCount = 0;
 my.margin = 32;
 my.overlayColors = ['rgba(255, 80, 80, 1.0)', 'rgba(255, 180, 60, 1.0)', 'rgba(60, 190, 70, 1.0)'];
 my.overlayColorsIndex = 0;
@@ -87,7 +88,11 @@ function play_from_top_long() {
 
 function play_from_top(ytop) {
   //
-  // window.scrollTo(0, my.scrollYTop);
+
+  gc();
+  my.gcCount++;
+  console.log('my.gcCount', my.gcCount);
+
   window.scrollTo(0, ytop);
 
   start_scroll_pause();
@@ -174,7 +179,7 @@ function scroll_track() {
 // pause at bottom of screen before playing from top
 //
 function pause_at_bottom() {
-  console.log('pause_at_bottom', my.paused_at_bottom);
+  // console.log('pause_at_bottom', my.paused_at_bottom);
   if (my.paused_at_bottom) {
     check_scroll_pause();
     if (my.scrollEnabled) {
@@ -215,13 +220,14 @@ function check_line_hilite() {
     // Hilite scroll off top of screen
     let lastLine = my.elineIndex;
     my.offscreen = 1;
+    let n = my.elines.length;
     while (rt.y < midWindow) {
       my.elineIndex = (my.elineIndex + 1) % my.elines.length;
       el = my.elines[my.elineIndex];
       rt = el.getBoundingClientRect();
-      if (lastLine > my.elineIndex) {
-        break;
-      }
+      if (lastLine > my.elineIndex) break;
+      n--;
+      if (n < 0) break;
     }
   } else {
     my.offscreen = 0;

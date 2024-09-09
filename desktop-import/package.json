@@ -9,7 +9,8 @@
   },
   "type": "module",
   "scripts": {
-    "start": "electron . ",
+    "start": "electron . --js-flags=\"--expose-gc\"",
+    "startX1": "electron . ",
     "startX": "electron . --js-flags=\"--max-old-space-size=4096\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
