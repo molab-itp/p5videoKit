@@ -1,0 +1,16 @@
+
+https://chatgpt.com/c/66de4cab-d85c-8002-b923-f0a0c9323092
+
+How to fix following electron error: FATAL ERROR: Oilpan: Large allocation. Ran out of reservation Allocation failed - process out of memory
+
+
+
+3. Use node --max-old-space-size Flag:
+The V8 JavaScript engine, used by Electron, has a default memory limit for heap allocation 
+(around 1.5GB on 64-bit systems). You can increase this limit by using the --max-old-space-size flag.
+Modify the start script for your Electron app like this:
+bash
+Copy code
+electron --js-flags="--max-old-space-size=4096" .
+This sets the maximum heap memory size to 4GB. Adjust the number according to your machine's capacity.
+

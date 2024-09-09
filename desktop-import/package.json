@@ -9,7 +9,8 @@
   },
   "type": "module",
   "scripts": {
-    "start": "electron .",
+    "start": "electron . ",
+    "startX": "electron . --js-flags=\"--max-old-space-size=4096\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "John Henry Thompson",

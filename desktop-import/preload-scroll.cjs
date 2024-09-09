@@ -6,23 +6,32 @@ my.margin = 32;
 my.overlayColors = ['rgba(255, 80, 80, 1.0)', 'rgba(255, 180, 60, 1.0)', 'rgba(60, 190, 70, 1.0)'];
 my.overlayColorsIndex = 0;
 my.scrollYTop = 580;
-my.scrollPeriod = 0.1; // * 0.75;
-my.elineDelayPeriod = 30; // * 0.75;
+my.scrollYTopShort = 580;
+my.scrollYTopLong = 460;
+// my.scrollYTop = 380;
+// 460 for long zoom
+
+// my.scrollPeriod = 0.1; // * 0.75;
+// my.elineDelayPeriod = 30; // * 0.75;
+
+// my.scrollPeriod = 0.1 * 0.75;
+// my.elineDelayPeriod = 30 * 0.75;
+
+my.scrollPeriod = 0.1;
+my.elineDelayPeriod = 30 * 0.5;
+
 my.zoomFactorLong = 2.18;
 my.zoomFactorShort = 1.4;
 
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(setup_scroll, 1000);
   setup_responder();
-  // let zoomFactorInit = 2.18;
-  // let zoomFactorInit = 1.3819851566681276;
-  // let zoomFactorInit = 1.4;
+
   webFrame.setZoomFactor(my.zoomFactorShort);
+  // webFrame.setZoomFactor(my.zoomFactorLong);
 
   let zoomFactor = webFrame.getZoomFactor();
   console.log('zoomFactor', zoomFactor);
-  // zoomFactor 2.0736
-  // zoomFactor 2.2715149904854246
 });
 
 // ipcRenderer.send('asynchronous-message', 'ping')
@@ -61,15 +70,33 @@ function setup_responder() {
 }
 
 function play_from_top_short() {
-  play_from_top();
-  webFrame.setZoomFactor(my.zoomFactorShort);
+  if (my.full_read_enabled) {
+    webFrame.setZoomFactor(my.zoomFactorShort);
+  }
+  play_from_top(my.scrollYTopShort);
   my.full_read_enabled = 0;
 }
 
 function play_from_top_long() {
-  play_from_top();
-  webFrame.setZoomFactor(my.zoomFactorLong);
+  if (!my.full_read_enabled) {
+    webFrame.setZoomFactor(my.zoomFactorLong);
+  }
+  play_from_top(my.scrollYTopLong);
   my.full_read_enabled = 1;
+}
+
+function play_from_top(ytop) {
+  //
+  // window.scrollTo(0, my.scrollYTop);
+  window.scrollTo(0, ytop);
+
+  start_scroll_pause();
+
+  my.elineIndex = 0;
+  my.elineDelayCount = 0;
+  my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
+
+  send_current_line();
 }
 
 window.addEventListener('mouseup', function (event) {
@@ -112,7 +139,7 @@ function setup_scroll() {
   let period = my.scrollPeriod * 1000;
   setInterval(scroll_track, period);
 
-  window.scrollTo(0, my.scrollYTop);
+  window.scrollTo(0, my.scrollYTopShort);
 
   start_scroll_pause();
 
@@ -134,10 +161,11 @@ function scroll_track() {
   window.scrollBy(0, 1);
 
   // the author image moving off top of screen triggers play from top
-  // in short read when view is two column this is line 8 of poem
-  // in full read this the image is below the last line of poem
+  // in short read, when view is two column, this is line 8 of poem
+  // in full read the image is below the last line of poem
 
-  if (my.authorImageDiv.getBoundingClientRect().y < 0) {
+  let rt = my.authorImageDiv.getBoundingClientRect();
+  if (rt.y < 0) {
     // play_from_top();
     pause_at_bottom();
   }
@@ -158,16 +186,6 @@ function pause_at_bottom() {
   }
   my.paused_at_bottom = 1;
   start_scroll_pause();
-}
-
-function play_from_top() {
-  window.scrollTo(0, my.scrollYTop);
-  start_scroll_pause();
-  my.elineIndex = 0;
-  my.elineDelayCount = 0;
-  my.overlayColorsIndex = (my.overlayColorsIndex + 1) % my.overlayColors.length;
-
-  send_current_line();
 }
 
 function check_line_hilite() {
