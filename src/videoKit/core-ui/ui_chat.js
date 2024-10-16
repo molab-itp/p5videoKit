@@ -6,6 +6,9 @@ import { livem_send } from '../core/liveMedia_attach.js?v={{vers}}';
 export function ui_chat_pane() {
   // ichat_blk
   let blk = createSpan('').id('ichat_blk');
+  if (a_.top_dash_div) {
+    a_.top_dash_div.child(blk);
+  }
   blk.style(a_.ui.live_chk ? 'display:inline' : 'display:none');
   let elm;
   elm = createSpan(' Chat name: ');

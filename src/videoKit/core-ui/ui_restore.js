@@ -24,7 +24,7 @@ export function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
   effects = effects || [];
   settings = settings || [];
 
-  a_.hide_ui_option = hide_ui;
+  // a_.hide_ui_option = hide_ui;
   // effects.length == 0 && settings.length == 0;
 
   let start = window.performance.now();

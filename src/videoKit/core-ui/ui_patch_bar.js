@@ -1,5 +1,5 @@
 import { a_ } from '../let/a_state.js?v={{vers}}';
-import { ui_div_empty, ui_div_append } from '../core-ui/ui_tools.js?v={{vers}}';
+import { ui_div_empty, ui_div_append, ui_createButton, ui_createElement } from '../core-ui/ui_tools.js?v={{vers}}';
 import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v={{vers}}';
 import { ui_live_selection } from '../core-ui/ui_live.js?v={{vers}}';
 import { PadLayout } from '../util/PadLayout.js?v={{vers}}';
@@ -89,16 +89,17 @@ export function ui_patch_bar() {
 }
 
 export function ui_patch_buttons() {
-  createButton('Add Effect').mousePressed(function () {
+  ui_createButton('Add Effect').mousePressed(function () {
     let newPatch = { eff_spec: { ipatch: 0, imedia: 1, eff_label: 'show' } };
     patch_add(newPatch);
   });
-  createElement('br');
+  ui_createElement('br');
 }
 
 // Rebuild dynamic elements of ui
 export function ui_refresh() {
-  if (a_.hideui || a_.hide_ui_option) return;
+  // if (a_.hideui || a_.hide_ui_option) return;
+  if (a_.hideui) return;
   ui_live_selection();
   ui_patch_eff_panes();
 }

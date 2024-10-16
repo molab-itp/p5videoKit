@@ -2,7 +2,7 @@ import { a_ } from '../let/a_state.js?v={{vers}}';
 import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js?v={{vers}}';
 import { ui_capture_size } from '../core-ui/ui_capture.js?v={{vers}}';
 import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js?v={{vers}}';
-import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide } from '../core-ui/ui_tools.js?v={{vers}}';
+import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js?v={{vers}}';
 import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v={{vers}}';
 import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js?v={{vers}}';
 import { ui_live_selection } from '../core-ui/ui_live.js?v={{vers}}';
@@ -14,19 +14,26 @@ import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
 // import { ui_render_size } from '../core-ui/ui_render.js?v={{vers}}';
 
 export function ui_create() {
+  console.log('ui_create a_.hide_ui_option', a_.hide_ui_option);
+  a_.top_dash_div = ui_div_empty('id_top_dash');
+  if (a_.hide_ui_option) {
+    a_.top_dash_div.style('display:none');
+  }
   ui_top_pane();
   ui_size_pane();
   ui_patch_bar();
   ui_create_comment_field();
-  createElement('br');
+  ui_createElement('br');
 
   ui_patch_eff_panes();
   ui_patch_buttons();
-  createElement('br');
+  ui_createElement('br');
 
   ui_live_selection();
   ui_chat_pane();
-  createElement('br');
+  ui_createElement('br');
+
+  a_.top_dash_div = null;
 }
 
 function ui_top_pane() {

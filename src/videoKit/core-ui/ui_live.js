@@ -5,7 +5,7 @@ import { liveMedia_attach, liveMedia_detach } from '../core/liveMedia_attach.js?
 
 export function ui_live_selection() {
   //
-  if (a_.hide_ui_option) return;
+  // if (a_.hide_ui_option) return;
 
   let div = ui_div_empty('live_selection');
 

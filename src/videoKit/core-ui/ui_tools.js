@@ -1,5 +1,20 @@
 import { a_ } from '../let/a_state.js?v={{vers}}';
 
+export function ui_createButton(txt) {
+  let elm = createButton(txt);
+  if (a_.top_dash_div) {
+    a_.top_dash_div.child(elm);
+  }
+  return elm;
+}
+export function ui_createElement(tag) {
+  let elm = createElement('tag');
+  if (a_.top_dash_div) {
+    a_.top_dash_div.child(elm);
+  }
+  return elm;
+}
+
 export function ui_div_append(div, str) {
   let ndiv = document.createElement('div');
   // window.ndiv = ndiv;
@@ -22,6 +37,9 @@ export function ui_div_empty(id) {
   // console.log('ui_device_selection div', div);
   if (!div) {
     div = createDiv().id(id);
+    if (a_.top_dash_div) {
+      a_.top_dash_div.child(div);
+    }
   } else {
     let children = div.child();
     for (let index = children.length - 1; index >= 0; index--) {

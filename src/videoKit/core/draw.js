@@ -20,9 +20,9 @@ p5videoKit.prototype.setup = function (options, resolve) {
     init_mediaDivs();
 
     // a_.hide_ui_option = 0;
-    if (!a_.hide_ui_option) {
-      ui_create();
-    }
+    // if (!a_.hide_ui_option) {
+    ui_create();
+    // }
 
     // console.log('a_.ui.hold_capture', a_.ui.hold_capture);
     if (!a_.ui.hold_capture) {

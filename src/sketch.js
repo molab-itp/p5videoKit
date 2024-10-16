@@ -28,6 +28,10 @@ function draw() {
 }
 
 let a_config = {
+  //
+
+  // hide_ui: 1,
+
   // effects for import, will appear at top of the effect menu
 
   // an EFFECT can have many PROPERTIES specific to the effect
