@@ -24,7 +24,7 @@ export function store_url_parse(urlResult) {
 
     let hide_option = params.hide;
     if (hide_option) {
-      a_.hide_ui_option = 1;
+      a_.hide_ui_option = parseFloat(hide_option);
     }
     // settings encoded as json string, if present return true to avoid other settings init
     let a_str = params['a'];
