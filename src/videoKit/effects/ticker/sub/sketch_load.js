@@ -35,12 +35,15 @@ eff_ticker.prototype.load_json = function () {
     }
 
     this.data_index_down = this.a_data.length;
+    this.data_index_up = -1;
 
     if (this.start_date) {
       this.data_index_down = this.find_start_date(this.start_date);
+      this.data_index_up = this.data_index_down;
     }
     if (this.data_index_offset) {
       this.data_index_down = this.data_index_offset + 1;
+      this.data_index_up = this.data_index_down;
     }
 
     this.select_entry();
@@ -56,6 +59,7 @@ eff_ticker.prototype.find_start_date = function (start_date) {
 };
 
 eff_ticker.prototype.select_entry = function () {
+  let ent1;
   let select_down = () => {
     do {
       this.data_index_down--;
@@ -69,17 +73,26 @@ eff_ticker.prototype.select_entry = function () {
       // console.log('select_entry data_index', this.data_index, ent1);
     } while (this.a_count < 1);
   };
-  let ent1, ent0;
-  // if (this.a_dir === 'down') {
-  select_down();
-  // } else if (this.a_dir === 'up') {
-  //   select_up();
-  // } else {
-  //   select_up_down();
-  // }
-  console.log('select_entry', ent1.on, new Date());
+  let select_up = () => {
+    do {
+      this.data_index_up++;
+      if (this.data_index_up >= this.a_data.length) {
+        this.data_index_up = 0;
+        this.cycle_done = 1;
+      }
+      this.data_index = this.data_index_up;
+      ent1 = this.a_data[this.data_index];
+      this.a_count = ent1.count;
+      // console.log('select_entry data_index', this.data_index, ent1);
+    } while (this.a_count < 1);
+  };
+  if (this.day_next == 0) select_down();
+  else select_up();
+  console.log('select_entry day_next', this.day_next, 'data_index_up', this.data_index_up);
+  console.log('select_entry ent1.on', ent1.on);
+  // console.log('select_entry', ent1.on, new Date());
   this.a_date = ent1.on;
-  let s = this.a_count > 1 ? 's' : '';
+  // let s = this.a_count > 1 ? 's' : '';
   if (this.day_next == 0 || this.display_single_date) {
     let title = this.locale + ' COVID-19 Memorial';
     let lineEnd = '\n\n';

@@ -142,7 +142,7 @@ eff_ticker.prototype.draw_progress = function () {
 eff_ticker.prototype.draw_day_count = function () {
   // str = 'day ' + data_index + '/' + a_data.length + ' ';
   // let str = 'DAY ' + data_index + ' of ' + a_data.length;
-  let str = 'USA COVID DEATHS - DAY ' + ns(this.data_index) + ' of ' + ns(this.a_data.length);
+  let str = this.locale + ' COVID DEATHS - DAY ' + ns(this.data_index) + ' of ' + ns(this.a_data.length);
   let ds = ns(this.total_deaths);
   str += ' - TOTAL DEATHS ' + ds + '';
   // console.log('draw_day_count ', str);

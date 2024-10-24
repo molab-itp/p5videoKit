@@ -65,6 +65,7 @@ eff_ticker.prototype.let_init = function () {
   this.data_index_offset = 0;
   this.data_index_end;
   this.data_index_down;
+  this.data_index_up;
   this.load_count = 0;
   this.json_loaded = 0;
   this.day_next = 0;
