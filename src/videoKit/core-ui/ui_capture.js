@@ -92,6 +92,10 @@ let a_capture_sizes = [
     height: 1080,
   },
   {
+    width: 3840,
+    height: 2160,
+  },
+  {
     width: 20,
     height: 15,
   },
