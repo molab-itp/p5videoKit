@@ -1,10 +1,10 @@
-import { a_ } from '../let/a_state.js?v=403';
-import { pad_layout_update, ui_refresh, ui_patch_update } from '../core-ui/ui_patch_bar.js?v=403';
-import { ui_div_empty } from '../core-ui/ui_tools.js?v=403';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=403';
-import { effectMeta_find } from './effectMeta.js?v=403';
+import { a_ } from '../let/a_state.js?v=405';
+import { pad_layout_update, ui_refresh, ui_patch_update } from '../core-ui/ui_patch_bar.js?v=405';
+import { ui_div_empty } from '../core-ui/ui_tools.js?v=405';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=405';
+import { effectMeta_find } from './effectMeta.js?v=405';
 
-import { p5videoKit } from '../p5videoKit.js?v=403';
+import { p5videoKit } from '../p5videoKit.js?v=405';
 
 p5videoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
   let effMeta = effectMeta_find(eff_label);

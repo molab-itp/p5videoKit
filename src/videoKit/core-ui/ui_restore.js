@@ -1,16 +1,16 @@
-import { a_ } from '../let/a_state.js?v=403';
-import { a_effectMetas } from '../let/a_effectMetas.js?v=403';
-import { a_settingMetas } from '../let/a_settingMetas.js?v=403';
-import { effectMeta_init } from '../core/effectMeta.js?v=403';
-import { ui_capture_init } from '../core-ui/ui_capture.js?v=403';
-import { ui_canvas_init } from '../core-ui/ui_canvas.js?v=403';
-import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js?v=403';
-import { canvas_size_default } from '../core-ui/ui_canvas.js?v=403';
-import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=403';
-import { ui_present_window } from '../core-ui/a_ui_create.js?v=403';
-import { ui_prop_set, store_set, store_get } from '../core-ui/ui_prop.js?v=403';
+import { a_ } from '../let/a_state.js?v=405';
+import { a_effectMetas } from '../let/a_effectMetas.js?v=405';
+import { a_settingMetas } from '../let/a_settingMetas.js?v=405';
+import { effectMeta_init } from '../core/effectMeta.js?v=405';
+import { ui_capture_init } from '../core-ui/ui_capture.js?v=405';
+import { ui_canvas_init } from '../core-ui/ui_canvas.js?v=405';
+import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js?v=405';
+import { canvas_size_default } from '../core-ui/ui_canvas.js?v=405';
+import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=405';
+import { ui_present_window } from '../core-ui/a_ui_create.js?v=405';
+import { store_set, store_get, store_remove } from '../core-ui/ui_prop.js?v=405';
 
-// import { ui_render_size_init } from '../core-ui/ui_render.js?v=403';
+// import { ui_render_size_init } from '../core-ui/ui_render.js?v=405';
 //
 // let effects = [
 //   { label: 'example', import_path: 'module/eff_example', menu: 1 },

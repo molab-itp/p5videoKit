@@ -32,11 +32,11 @@ export function store_get(prop) {
   return localStorage.getItem(store_ref(prop));
 }
 
-function store_remove(prop) {
+export function store_remove(prop) {
   return localStorage.removeItem(store_ref(prop));
 }
 
-function store_clear_all() {
+export function store_clear_all() {
   localStorage.clear();
 }
 
