@@ -1,12 +1,9 @@
 //
 
-let my;
-
-export async function setup_dbase(amy) {
-  console.log('setup_dbase amy', amy);
-  my = amy;
-
-  my.imageQuality = 1;
+async function setup_dbase() {
+  //
+  // my.imageQuality = 1;
+  my.imageQuality = 0.1;
   my.imageExt = '.jpg';
 
   my.fireb_config = 'jht9629';
@@ -42,7 +39,13 @@ function observe_item(my) {
   }
 }
 
-export async function add_photo() {
+async function save_canvas_handler() {
+  console.log('save_canvas_handler my.canvas', my.canvas);
+  let layer = my.canvas;
+  await add_photo(layer);
+}
+
+async function add_photo(layer) {
   console.log('add_photo my', my);
   // console.log('add_photo my.dbase', my.dbase);
 
@@ -57,7 +60,6 @@ export async function add_photo() {
   let path = photo_path_entry(entry);
   my.dbase.update_item('photo_store/' + key, { path });
 
-  let layer = my.canvas;
   let imageQuality = my.imageQuality;
   try {
     //

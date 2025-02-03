@@ -24,6 +24,10 @@ function setup() {
   // must call createCanvas before new p5videoKit
 
   videoKit = new p5videoKit(a_config);
+
+  videoKit.save_canvas_handler = save_canvas_handler;
+
+  setup_dbase();
 }
 
 function draw() {

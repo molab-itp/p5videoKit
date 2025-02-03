@@ -13,21 +13,21 @@ import { patch_instances_clear_all } from '../core/patch_inst.js?v={{vers}}';
 import { ui_prop_set, store_set } from '../core-ui/ui_restore.js?v={{vers}}';
 // import { ui_render_size } from '../core-ui/ui_render.js?v={{vers}}';
 
-import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js?v={{vers}}';
+// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js?v={{vers}}';
 
-async function mo_store_prepare() {
-  // console.log('mo_store_prepare globalThis.my', globalThis.my);
-  let my = globalThis.my;
-  if (!my.dbase) {
-    await setup_dbase(my);
-  }
-}
+// async function mo_store_prepare() {
+//   // console.log('mo_store_prepare globalThis.my', globalThis.my);
+//   let my = globalThis.my;
+//   if (!my.dbase) {
+//     await setup_dbase(my);
+//   }
+// }
 
-async function mo_store_add_photo() {
-  console.log('mo_store_add_photo');
-  await mo_store_prepare();
-  await add_photo();
-}
+// async function mo_store_add_photo() {
+//   console.log('mo_store_add_photo');
+//   await mo_store_prepare();
+//   await add_photo();
+// }
 
 export function ui_create() {
   console.log('ui_create a_.hide_ui_option', a_.hide_ui_option);
@@ -59,10 +59,6 @@ function ui_top_pane() {
   <button id="ihideui">HideUI</button>
   <button id="ireset">Reset</button>
   <button id="isave">Save</button>
-  <div style="display: inline">
-    <input type="checkbox" id="imo_dbase" />
-    <label for="imo_dbase">mo_dbase</label>
-  </div>
   <button id="ireload">Reload</button>
   <span id="iu"></span>
   <span id="ifps"></span>
@@ -86,19 +82,23 @@ function ui_top_pane() {
   ui_div_append(div, html);
 
   {
-    let imo_dbase = window.imo_dbase;
-    imo_dbase.checked = a_.mo_dbase_flag;
-    imo_dbase.addEventListener('change', mo_dbase_change);
-    if (a_.mo_dbase_flag) {
-      mo_store_prepare();
-    }
-    function mo_dbase_change() {
-      console.log('mo_dbase_change change this', this);
-      let state = this.checked;
-      a_.mo_dbase_flag = state ? 1 : 0;
-      store_set('a_.mo_dbase_flag', a_.mo_dbase_flag + '');
-      // store_set('a_.canvas_size_lock', a_.canvas_size_lock + '');
-    }
+    //   <div style="display: inline">
+    //   <input type="checkbox" id="imo_dbase" />
+    //   <label for="imo_dbase">mo_dbase</label>
+    // </div>
+    // let imo_dbase = window.imo_dbase;
+    // imo_dbase.checked = a_.mo_dbase_flag;
+    // imo_dbase.addEventListener('change', mo_dbase_change);
+    // if (a_.mo_dbase_flag) {
+    //   mo_store_prepare();
+    // }
+    // function mo_dbase_change() {
+    //   console.log('mo_dbase_change change this', this);
+    //   let state = this.checked;
+    //   a_.mo_dbase_flag = state ? 1 : 0;
+    //   store_set('a_.mo_dbase_flag', a_.mo_dbase_flag + '');
+    //   // store_set('a_.canvas_size_lock', a_.canvas_size_lock + '');
+    // }
     // store_restore_mo_dbase_flag
     // window.isave
   }
@@ -116,12 +116,17 @@ function ui_top_pane() {
   });
 
   window.isave.addEventListener('mousedown', function () {
-    if (a_.mo_dbase_flag) {
-      mo_store_add_photo();
+    // if (a_.mo_dbase_flag) {
+    //   mo_store_add_photo();
+    // } else {
+    if (videoKit.save_canvas_handler) {
+      console.log('videoKit.save_canvas_handler');
+      videoKit.save_canvas_handler();
     } else {
       let fn = ui_save_fn();
       saveCanvas(fn, 'png');
     }
+    // }
     // save_others(fn);
   });
 
