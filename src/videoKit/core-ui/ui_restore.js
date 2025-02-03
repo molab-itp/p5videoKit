@@ -51,6 +51,7 @@ export function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
       store_url_parse((urlResult) => {
         if (!urlResult.uiSet) {
           store_restore_ver();
+          store_restore_mo_dbase_flag();
           store_restore_canvas_lock();
           store_restore_ui(urlResult.settings);
         }
@@ -99,6 +100,14 @@ function setting_import(sete, index) {
       }
     );
   });
+}
+
+function store_restore_mo_dbase_flag() {
+  let val = store_get('a_.mo_dbase_flag');
+  if (val) {
+    a_.mo_dbase_flag = parseFloat(val);
+    console.log('store_restore_mo_dbase_flag ', a_.mo_dbase_flag);
+  }
 }
 
 function store_restore_canvas_lock() {

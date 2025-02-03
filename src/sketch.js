@@ -5,6 +5,9 @@ let videoKit; // home for library routines
 
 p5.disableFriendlyErrors = true; // disables FES to improve performance
 
+let my = {};
+globalThis.my = my;
+
 function setup() {
   // Report startup time for debugging
   let lapse = window.performance.now() - a_start_now;
@@ -16,7 +19,7 @@ function setup() {
 
   // Need some starting dimensions for canvas.
   // Make it small, size will get adjusted by UI (user interface) later in startup
-  createCanvas(100, 100);
+  my.canvas = createCanvas(100, 100);
 
   // must call createCanvas before new p5videoKit
 
@@ -88,3 +91,11 @@ let a_config = {
 // https://editor.p5js.org/shawn/sketches/jZQ64AMJc
 // p5LiveMedia Test Video
 // https://github.com/vanevery/p5LiveMedia
+
+function ui_log(...args) {
+  console.log(...args);
+}
+
+function ui_verbose(...args) {
+  // console.log(...args);
+}

@@ -4,6 +4,7 @@ export let a_ = {
   store_name: 'Store-A',
   store_prefix: '',
   canvas_size_lock: 0,
+  mo_dbase_flag: 0,
   hideui: 0, // Default is to hide using with s= settings
   chat_name: '', // chat name from url param c
   ui: {

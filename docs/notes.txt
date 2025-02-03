@@ -1,6 +1,17 @@
 notes.txt
 
 # --
+2025-02-02 21:14:39
+
+/Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/src/external
+ln -s ../../../../2023/p5videoKit-external_media media
+ls -la
+-rw-r--r--@  1 jht2  staff  8196 Feb  2 21:11 .DS_Store
+drwxr-xr-x  11 jht2  staff   352 Mar 20  2024 lib
+lrwxr-xr-x   1 jht2  staff    42 Feb  2 21:13 media -> ../../../../2023/p5videoKit-external_media
+pwd
+
+# --
 
 2023-12-27 22:00:13
 
