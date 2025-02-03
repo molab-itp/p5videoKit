@@ -1,5 +1,5 @@
-import { PeriodTimer } from '../../util/PeriodTimer.js?v=405';
-import { image_copy_to } from '../../util/image.js?v=405';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v=406';
+import { image_copy_to } from '../../util/image.js?v=406';
 
 // properties setup by the caller:
 //  input

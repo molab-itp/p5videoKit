@@ -1,6 +1,6 @@
-import { PeriodTimer } from '../../util/PeriodTimer.js?v=405';
-import { image_copy_to } from '../../util/image.js?v=405';
-import * as DelaunayStub from '../../util/delaunay.js?v=405';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v=406';
+import { image_copy_to } from '../../util/image.js?v=406';
+import * as DelaunayStub from '../../util/delaunay.js?v=406';
 
 export default class eff_delaunay {
   static meta_props = {
