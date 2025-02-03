@@ -1,7 +1,7 @@
-import { a_ } from '../let/a_state.js?v=400';
-import { ui_prop_set } from '../core-ui/ui_prop.js?v=400';
-import { attach_media_nlabel } from '../core/create_mediaDiv.js?v=400';
-import { livem_send } from '../core/liveMedia_attach.js?v=400';
+import { a_ } from '../let/a_state.js?v=403';
+import { ui_prop_set } from '../core-ui/ui_prop.js?v=403';
+import { attach_media_nlabel } from '../core/create_mediaDiv.js?v=403';
+import { livem_send } from '../core/liveMedia_attach.js?v=403';
 
 export function ui_chat_pane() {
   // ichat_blk

@@ -1,8 +1,8 @@
 import pkg from 'fs-extra';
-const { readFileSync, existsSync } = pkg;
+const { readFileSync, writeFileSync, existsSync } = pkg;
 import { join } from 'path';
 
-import { enum_files, writeBuildFile, writeSrcBuildFile } from './enum_files.js';
+import { enum_files, writeSourceFile } from './enum_files.js';
 
 // default to prod build
 let updateBuild = 1;
@@ -40,11 +40,14 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
   let nfiles = enum_files(src_path, buildnum_files);
   // console.log('nfiles', nfiles);
   console.log('build_ver_run nfiles', nfiles.length);
+  let writeCount = 0;
+  let skipCount = 0;
   for (let afile of nfiles) {
     // skip directory enteries
     if (!afile) continue;
     // only modify text files
     if (!(afile.endsWith('.js') || afile.endsWith('.html'))) {
+      skipCount++;
       continue;
     }
     // console.log('build_ver_run afile', afile);
@@ -55,8 +58,23 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
       continue;
     }
     const nstr = str.replace(re, to_str);
-    if (updateBuild) writeBuildFile(src_path, afile, nstr);
+    if (updateBuild) {
+      // console.log('build_ver_run afile', afile, 'nstr.length', nstr.length, 'str.length', str.length, nstr == str);
+      // if (afile == 'videoKit/a_lib.js') {
+      //   console.log('src_path', src_path);
+      //   console.log('nstr=', nstr);
+      // }
+      // writeBuildFile(src_path, afile, nstr);
+      if (nstr != str) {
+        // writeBuildFile(src_path, afile, nstr);
+        writeSourceFile(src_path, afile, nstr);
+        writeCount++;
+      }
+    }
   }
-  if (updateBuild) writeSrcBuildFile(src_path, buildnum_path, build_ver.next + '');
-  console.log('build_ver.next', build_ver.next);
+  if (updateBuild) {
+    writeSourceFile(src_path, buildnum_path, build_ver.next + '');
+  }
+  console.log('writeCount', writeCount, 'skipCount', skipCount, 'next', build_ver.next);
+  // console.log('build_ver.next', build_ver.next);
 }

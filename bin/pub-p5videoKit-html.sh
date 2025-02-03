@@ -29,7 +29,7 @@ ssh $host mkdir -p $rpath
 # Remove server directory external/media, establish symbolic link later
 # ssh $host rm -rf $rpath/external/media
 
-source=../build
+source=../src
 # echo $verbose $delete $test
 echo -razO$verbose $excludes $delete $test
 echo "rsync from $source"
@@ -50,7 +50,7 @@ rsync -razO$verbose $excludes $delete $test "$source2/" "$rdest2/"
 
 echo
 echo Lapse $(expr `date +%s` - $start_time) 
-echo build_ver `cat ../build/gen/build_ver.txt`
+echo build_ver `cat ../src/gen/build_ver.txt`
 echo "open https://jht1493.net/${homepage}"
 
 

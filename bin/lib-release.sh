@@ -28,7 +28,7 @@ rdest=$dest/videoKit/$buildnum
 
 mkdir -p $rdest
 
-source=../build/videoKit
+source=../src/videoKit
 # echo $verbose $delete $test
 # echo -razO$verbose $excludes $delete $test
 # echo "rsync from $source"

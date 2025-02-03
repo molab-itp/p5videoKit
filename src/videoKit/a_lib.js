@@ -3,9 +3,9 @@
 // https://molab-itp.github.io/p5moRelease/videoKit/368/a_lib.js
 // <script type="module" src="./videoKit/a_lib.js"></script>
 
-import { p5videoKit } from './p5videoKit.js?v=400';
+import { p5videoKit } from './p5videoKit.js?v=403';
 
-import './core/a_main.js?v=400';
+import './core/a_main.js?v=403';
 
 //
 // my.dbase = await mo_dbase_init(my)

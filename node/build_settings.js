@@ -1,6 +1,6 @@
 import { parse } from 'path';
 
-import { enum_files, writeSrcBuildFile } from './enum_files.js';
+import { enum_files, writeSourceFile } from './enum_files.js';
 
 // { src_path, settings, settingIndexPath, settingMetasPath, indexPrefix }
 export default function build_settings(args) {
@@ -39,7 +39,7 @@ ${settingMetas.join('\n')}
 ];
 `;
   if (settingMetasPath) {
-    writeSrcBuildFile(src_path, settingMetasPath, strm);
+    writeSourceFile(src_path, settingMetasPath, strm);
     console.log('settingMetas.length', settingMetas.length);
   }
 
@@ -67,5 +67,5 @@ ${files.join('\n')}
   </body>
 </html>
 `;
-  writeSrcBuildFile(src_path, settingIndexPath, str);
+  writeSourceFile(src_path, settingIndexPath, str);
 }

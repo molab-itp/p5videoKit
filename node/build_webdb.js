@@ -2,7 +2,7 @@ import pkg from 'fs-extra';
 const { readdirSync, existsSync } = pkg;
 import { join } from 'path';
 
-import { writeSrcBuildFile } from './enum_files.js';
+import { writeSourceFile } from './enum_files.js';
 
 export default function build_webdb(src_path, webdbPath, imagesOutPath) {
   webdbPath = join(src_path, webdbPath);
@@ -43,7 +43,7 @@ export default function build_webdb(src_path, webdbPath, imagesOutPath) {
   let str = '// !!@ Generated File\nexport let a_images = ';
   str += JSON.stringify(files, null, 2);
 
-  writeSrcBuildFile(src_path, imagesOutPath, str);
+  writeSourceFile(src_path, imagesOutPath, str);
 }
 
 function filter_out_json(item) {

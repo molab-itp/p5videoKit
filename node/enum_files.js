@@ -43,14 +43,19 @@ export function enum_files(root_path, files) {
   return nfiles;
 }
 
-export function writeBuildFile(src_path, afile, str) {
-  const buildpath = join(src_path, '../build', afile);
-  writeFileSync(buildpath, str);
+export function writeSourceFile(src_path, afile, str) {
+  const apath = join(src_path, afile);
+  writeFileSync(apath, str);
 }
 
-export function writeSrcBuildFile(src_path, afile, str) {
-  const apath = join(src_path, afile);
-  const buildpath = join(src_path, '../build', afile);
-  writeFileSync(apath, str);
-  writeFileSync(buildpath, str);
-}
+// export function writeBuildFile(src_path, afile, str) {
+//   const buildpath = join(src_path, '../build', afile);
+//   writeFileSync(buildpath, str);
+// }
+
+// export function writeSourceFile(src_path, afile, str) {
+//   const apath = join(src_path, afile);
+//   const buildpath = join(src_path, '../build', afile);
+//   writeFileSync(apath, str);
+//   writeFileSync(buildpath, str);
+// }
