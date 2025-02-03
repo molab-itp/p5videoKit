@@ -58,36 +58,23 @@ export async function store_url_parse() {
     let d_str = params['d'];
     if (d_str) {
       let url = './' + d_str;
-      let settings = {};
+      settings = {};
       try {
         settings = await loadJSONAsync(url);
-        console.log('d_str settings', settings);
         if (!settings.setting) {
           settings.setting = d_str;
         }
       } catch (err) {
         console.log('loadJSON err', err);
       }
-      // loadJSON(
-      //   url,
-      //   (settings) => {
-      //     console.log('d_str settings', settings);
-      //     if (!settings.setting) {
-      //       settings.setting = d_str;
-      //     }
-      //     return { uiSet, settings };
-      //   },
-      //   (err) => {
-      //     console.log('loadJSON err', err);
-      //     return { uiSet };
-      //   }
-      // );
     }
   }
+  // console.log('store_url_parse returning settings', settings);
   return { uiSet, settings };
 }
 
-function loadJSONAsync(url) {
+async function loadJSONAsync(url) {
+  console.log('loadJSONAsync url', url);
   return new Promise((resolve, reject) => {
     loadJSON(url, resolve, reject);
   });
