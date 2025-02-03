@@ -11,7 +11,8 @@ import { ui_save_fn } from '../core-ui/ui_tools.js?v={{vers}}';
 //  al/d = settings from json file
 //  h = 0/1, explicit setting for hide ui
 //
-export function store_url_parse(urlResult) {
+export async function store_url_parse() {
+  // export async function store_url_parse(urlResult) {
   let uiSet = 0;
   let settings;
   let loc = window.location.href;
@@ -56,30 +57,40 @@ export function store_url_parse(urlResult) {
     // ?d=settings-sound/face-posenet.json
     let d_str = params['d'];
     if (d_str) {
-      // console.log('store_url_parse d_str', d_str);
-      // if (d_str.startsWith('settings/')) {
-      //   d_str = d_str.substring('settings/'.length);
-      // }
-      // let url = './settings/' + d_str;
       let url = './' + d_str;
-      loadJSON(
-        url,
-        (settings) => {
-          console.log('d_str settings', settings);
-          if (!settings.setting) {
-            settings.setting = d_str;
-          }
-          urlResult({ uiSet, settings });
-        },
-        (err) => {
-          console.log('loadJSON err', err);
-          urlResult({ uiSet });
+      let settings = {};
+      try {
+        settings = await loadJSONAsync(url);
+        console.log('d_str settings', settings);
+        if (!settings.setting) {
+          settings.setting = d_str;
         }
-      );
-      return;
+      } catch (err) {
+        console.log('loadJSON err', err);
+      }
+      // loadJSON(
+      //   url,
+      //   (settings) => {
+      //     console.log('d_str settings', settings);
+      //     if (!settings.setting) {
+      //       settings.setting = d_str;
+      //     }
+      //     return { uiSet, settings };
+      //   },
+      //   (err) => {
+      //     console.log('loadJSON err', err);
+      //     return { uiSet };
+      //   }
+      // );
     }
   }
-  urlResult({ uiSet, settings });
+  return { uiSet, settings };
+}
+
+function loadJSONAsync(url) {
+  return new Promise((resolve, reject) => {
+    loadJSON(url, resolve, reject);
+  });
 }
 
 function url_a_restore(str) {

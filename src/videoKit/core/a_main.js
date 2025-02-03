@@ -6,6 +6,8 @@ import { patch_inst_deinit } from '../core/patch_inst.js?v={{vers}}';
 import { PeriodTimer } from '../util/PeriodTimer.js?v={{vers}}';
 import '../core/draw.js?v={{vers}}';
 
+import { p5videoKit } from '../p5videoKit.js';
+
 p5videoKit.prototype.PeriodTimer = PeriodTimer;
 
 // "urect": {

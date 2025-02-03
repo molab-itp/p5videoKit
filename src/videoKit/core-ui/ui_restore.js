@@ -14,7 +14,8 @@ import { ui_present_window } from '../core-ui/a_ui_create.js?v={{vers}}';
 //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
 
 // Restore a_.ui settings from local storage
-export function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
+export async function ui_restore_store({ effects, settings, hide_ui }) {
+  // export  function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
   //
   // if (!effects || !settings) {
   //   console.log('ui_restore_store INVALID args');
@@ -36,35 +37,39 @@ export function ui_restore_store({ effects, settings, hide_ui }, sizeResult) {
     reset_video_clear_locals(a_.store_name);
     return;
   }
-
   // a_.effectMetas = effects.concat(a_effectMetas);
   a_.effectMetas = effects.concat([{ label: '----' }], a_effectMetas);
 
   // a_.settingMetas = settings.concat(a_settingMetas);
   a_.settingMetas = settings;
 
-  effectMeta_init(() => {
-    settingMetas_init(() => {
-      ui_capture_init();
-      ui_canvas_init();
-      // ui_render_size_init();
-      store_url_parse((urlResult) => {
-        if (!urlResult.uiSet) {
-          store_restore_ver();
-          // store_restore_mo_dbase_flag();
-          store_restore_canvas_lock();
-          store_restore_ui(urlResult.settings);
-        }
-        sizeResult(canvas_size_default());
+  await effectMeta_init();
 
-        let lapse = window.performance.now() - start;
-        console.log('ui_restore lapse', lapse);
-      });
-    });
-  });
+  await settingMetas_init();
+
+  ui_capture_init();
+
+  ui_canvas_init();
+
+  // ui_render_size_init();
+
+  let urlResult = await store_url_parse();
+
+  if (!urlResult.uiSet) {
+    store_restore_ver();
+    // store_restore_mo_dbase_flag();
+    store_restore_canvas_lock();
+    store_restore_ui(urlResult.settings);
+  }
+  let sizeResult = canvas_size_default();
+
+  let lapse = window.performance.now() - start;
+  console.log('ui_restore lapse', lapse);
+
+  return sizeResult;
 }
 
-function settingMetas_init(donef) {
+async function settingMetas_init() {
   a_.settings = [{ setting: '' }];
   let imports = [];
   let index = 1;
@@ -73,9 +78,7 @@ function settingMetas_init(donef) {
     index++;
   }
   // console.log('settingMetas_init imports', imports);
-  Promise.allSettled(imports).then(() => {
-    donef();
-  });
+  await Promise.allSettled(imports);
 }
 
 // set = { label: '0-club', import_path: 'settings/baked/0-club.json' }

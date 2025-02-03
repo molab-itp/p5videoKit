@@ -3,59 +3,21 @@
 // https://molab-itp.github.io/p5moRelease/videoKit/368/a_lib.js
 // <script type="module" src="./videoKit/a_lib.js?v={{vers}}"></script>
 
-export class p5videoKit {
-  //
-  // let effects = [
-  //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
+import { p5videoKit } from './p5videoKit.js';
 
-  constructor(config, p5_instance = p5.instance) {
-    // console.log('p5videoKit p5_instance', p5_instance);
-    // To work in p5 instance mode we need to use this.p5_instance on all p5 globals
-    //
-    this.room_name_prefix = '';
-    // this.room_name_prefix = 'dev-';
-    if (!p5_instance) {
-      console.log('p5videoKit !!@ no p5_instance');
-    }
-    this.p5_instance = p5_instance;
-    this.my_canvas = p5_instance._renderer;
-    if (!this.my_canvas) {
-      console.log('p5videoKit !!@ no my_canvas');
-    }
-    this.init(config).then(() => {
-      console.log('videoKit.init done');
+import './core/a_main.js?v={{vers}}';
 
-      // Report startup lapse time
-      let init_lapse = window.performance.now() - dice.startTime;
-      dice.dapi('stats', { init_lapse });
-      //
-    });
-  }
-
-  // init({ effects, settings }) {
-  init(options) {
-    //
-    let inpath = './core/a_main.js?v={{vers}}';
-    return new Promise((resolve, reject) => {
-      import(inpath)
-        .then((module) => {
-          // console.log('p5videoKit module', module);
-          this.setup(options, resolve);
-        })
-        .catch((err) => {
-          console.log('p5videoKit err', err, '\n inpath', inpath);
-          reject();
-        });
-    });
-  }
-
-  draw() {
-    console.log('p5videoKit draw stub');
-  }
+//
+// my.dbase = await mo_dbase_init(my)
+//
+export async function p5videoKit_init(config, p5_instance = p5.instance) {
+  console.log('p5videoKit_init config', config, 'p5_instance', p5_instance);
+  let vk = new p5videoKit(config, p5_instance);
+  await vk.init(config);
+  return vk;
 }
-window.p5videoKit = p5videoKit;
-
-// --
+globalThis.p5videoKit_init = p5videoKit_init;
+// explict global needed for browser non-module reference
 
 let dice = { warning: 0 };
 window.dice = dice;
@@ -96,5 +58,3 @@ dice.result_rvalue = function (rtag, value) {
 };
 
 dice.startTime = window.performance.now();
-
-// import './core/a_main.js?v={{vers}}';

@@ -8,36 +8,42 @@ import { livem_restore } from '../core-ui/ui_live.js?v={{vers}}';
 import { patch_index1 } from '../core-ui/ui_patch_eff.js?v={{vers}}';
 import { image_scaled_pad } from '../util/image.js?v={{vers}}';
 
-p5videoKit.prototype.setup = function (options, resolve) {
+import { p5videoKit } from '../p5videoKit.js';
+
+//
+// videoKit.setup(options)
+//
+p5videoKit.prototype.setup = async function (options) {
+  //
   ui_message('loading...');
+  //
   a_.videoKit = this;
   a_.my_canvas = this.my_canvas;
+  //
   // ui_restore_store(effects, settings, (sizeResult) => {
-  ui_restore_store(options, (sizeResult) => {
-    console.log('videoKit setup sizeResult', sizeResult);
-    resizeCanvas(sizeResult.width, sizeResult.height);
+  let sizeResult = await ui_restore_store(options);
 
-    init_mediaDivs();
+  console.log('videoKit setup sizeResult', sizeResult);
+  resizeCanvas(sizeResult.width, sizeResult.height);
 
-    // a_.hide_ui_option = 0;
-    // if (!a_.hide_ui_option) {
-    ui_create();
-    // }
+  init_mediaDivs();
 
-    // console.log('a_.ui.hold_capture', a_.ui.hold_capture);
-    if (!a_.ui.hold_capture) {
-      // console.log('a_.ui.hold_capture media_enum', a_.ui.hold_capture);
-      media_enum();
-    }
+  // a_.hide_ui_option = 0;
+  // if (!a_.hide_ui_option) {
+  ui_create();
+  // }
 
-    livem_restore();
+  // console.log('a_.ui.hold_capture', a_.ui.hold_capture);
+  if (!a_.ui.hold_capture) {
+    // console.log('a_.ui.hold_capture media_enum', a_.ui.hold_capture);
+    media_enum();
+  }
 
-    ui_message('');
+  livem_restore();
 
-    this.a_initDone = 1;
+  ui_message('');
 
-    resolve();
-  });
+  this.a_initDone = 1;
 };
 
 p5videoKit.prototype.draw = function () {

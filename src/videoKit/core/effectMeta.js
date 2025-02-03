@@ -3,7 +3,7 @@ import { a_ } from '../let/a_state.js?v={{vers}}';
 let a_effectMetaDict;
 let a_import_err;
 
-export function effectMeta_init(donef) {
+export async function effectMeta_init() {
   a_effectMetaDict = {};
   let imports = [];
   let index = 0;
@@ -15,10 +15,10 @@ export function effectMeta_init(donef) {
     }
     index++;
   }
-  Promise.allSettled(imports).then(donef);
+  await Promise.allSettled(imports);
 }
 
-export function effectMeta_import(effMeta) {
+export async function effectMeta_import(effMeta) {
   if (!effMeta.import_path) {
     // console.log('effectMeta_import no import_path', effMeta);
     return null;

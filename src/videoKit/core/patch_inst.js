@@ -4,6 +4,8 @@ import { ui_div_empty } from '../core-ui/ui_tools.js?v={{vers}}';
 import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v={{vers}}';
 import { effectMeta_find } from './effectMeta.js?v={{vers}}';
 
+import { p5videoKit } from '../p5videoKit.js';
+
 p5videoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
   let effMeta = effectMeta_find(eff_label);
   if (!effMeta) {

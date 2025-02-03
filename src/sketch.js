@@ -23,7 +23,13 @@ function setup() {
 
   // must call createCanvas before new p5videoKit
 
-  videoKit = new p5videoKit(a_config);
+  // videoKit = new p5videoKit(a_config);
+
+  setup_videoKit();
+}
+
+async function setup_videoKit() {
+  videoKit = await p5videoKit_init(a_config);
 
   videoKit.save_canvas_handler = save_canvas_handler;
 
@@ -31,7 +37,9 @@ function setup() {
 }
 
 function draw() {
-  videoKit.draw();
+  if (videoKit) {
+    videoKit.draw();
+  }
 }
 
 let a_config = {
