@@ -1,15 +1,15 @@
 //
-import { ui_restore_store } from '../core-ui/ui_restore.js?v=406';
-import { init_mediaDivs } from './create_mediaDiv.js?v=406';
-import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=406';
-import { media_enum } from './create_mediaDevices.js?v=406';
-import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=406';
-import { livem_restore } from '../core-ui/ui_live.js?v=406';
-import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=406';
-import { image_scaled_pad } from '../util/image.js?v=406';
-import { ui_message } from '../core-ui/ui_prop.js?v=406';
+import { ui_restore_store } from '../core-ui/ui_restore.js?v=407';
+import { init_mediaDivs } from './create_mediaDiv.js?v=407';
+import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=407';
+import { media_enum } from './create_mediaDevices.js?v=407';
+import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=407';
+import { livem_restore } from '../core-ui/ui_live.js?v=407';
+import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=407';
+import { image_scaled_pad } from '../util/image.js?v=407';
+import { ui_message } from '../core-ui/ui_prop.js?v=407';
 
-import { p5videoKit } from '../p5videoKit.js?v=406';
+import { p5videoKit } from '../p5videoKit.js?v=407';
 
 //
 // videoKit.setup(options)

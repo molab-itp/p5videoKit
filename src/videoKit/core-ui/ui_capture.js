@@ -1,9 +1,9 @@
-import { a_ } from '../let/a_state.js?v=406';
-import { init_size_in } from '../core-ui/ui_canvas.js?v=406';
-import { ui_prop_set } from '../core-ui/ui_prop.js?v=406';
-import { media_reset } from '../core/create_mediaDevices.js?v=406';
-import { patch_instances_clear_all } from '../core/patch_inst.js?v=406';
-import { ui_div_append } from '../core-ui/ui_tools.js?v=406';
+import { a_ } from '../let/a_state.js?v=407';
+import { init_size_in } from '../core-ui/ui_canvas.js?v=407';
+import { ui_prop_set } from '../core-ui/ui_prop.js?v=407';
+import { media_reset } from '../core/create_mediaDevices.js?v=407';
+import { patch_instances_clear_all } from '../core/patch_inst.js?v=407';
+import { ui_div_append } from '../core-ui/ui_tools.js?v=407';
 
 export function ui_capture_size(div) {
   let html = `

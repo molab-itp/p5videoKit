@@ -1,7 +1,7 @@
-import { a_ } from '../let/a_state.js?v=406';
-import { ui_div_empty } from '../core-ui/ui_tools.js?v=406';
-import { ui_prop_set } from '../core-ui/ui_prop.js?v=406';
-import { liveMedia_attach, liveMedia_detach } from '../core/liveMedia_attach.js?v=406';
+import { a_ } from '../let/a_state.js?v=407';
+import { ui_div_empty } from '../core-ui/ui_tools.js?v=407';
+import { ui_prop_set } from '../core-ui/ui_prop.js?v=407';
+import { liveMedia_attach, liveMedia_detach } from '../core/liveMedia_attach.js?v=407';
 
 export function ui_live_selection() {
   //
