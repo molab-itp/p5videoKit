@@ -1,0 +1,21 @@
+_rollup.txt
+
+
+# --
+
+2024-moSalon/libTest/notes/rollup-chatg.txt
+
+// 7. Build the Library
+
+npm run build
+
+// 8. Publish the Library to npm
+
+npm login
+
+npm publish
+
+// 9. Usage of the Library
+
+npm install my-library
+

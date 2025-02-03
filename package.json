@@ -1,0 +1,29 @@
+{
+  "name": "p5-video-kit",
+  "version": "0.0.1",
+  "description": "Library and dashboard for mixing video in the browser",
+  "homepage": "https://github.com/molab-itp/p5videoKit.git#readme",
+  "repository": {
+    "url": "git+https://github.com/molab-itp/p5videoKit.git"
+  },
+  "type": "module",
+  "main": "dist/p5videoKit.cjs.js",
+  "module": "dist/p5videoKit.esm.js",
+  "unpkg": "dist/p5videoKit.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.22.4"
+  }
+}

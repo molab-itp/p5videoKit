@@ -5,3 +5,4 @@ node_modules
 /src/external/media-1
 /build
 desktop-import/lib/p5moLibrary
+/dist

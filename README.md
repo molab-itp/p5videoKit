@@ -2,11 +2,13 @@
 
 <!-- https://github.com/jht1493/p5videoKit -->
 
-[p5videoKit - a dashboard for mixing video in the browser.](https://jht1493.net/p5videoKit/demo/)
-You can apply visual effects
-to live video from connected cameras or streaming from other devices on the internet.
-p5videoKit is designed to be re-usable and extended
-with your own p5js code for visual effects and interaction.
+p5videoKit - a Library and dashboard for mixing video in the browser.
+
+- [demo](https://jht1493.net/p5videoKit/demo/)
+- You can apply visual effects
+  to live video from connected cameras or streaming from other devices on the internet.
+  p5videoKit is designed to be re-usable and extended
+  with your own p5js code for visual effects and interaction.
 
 The code and documentation is in development.
 We welcome your feedback and help to improve the user interface and documentation.
