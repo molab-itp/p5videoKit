@@ -1,6 +1,6 @@
-import { image_scaled_pad } from '../../util/image.js';
-import { PeriodTimer } from '../../util/PeriodTimer.js';
-import { FFT_analyser } from '../../util/FFT_analyser.js';
+import { image_scaled_pad } from '../../util/image.js?v=400';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v=400';
+import { FFT_analyser } from '../../util/FFT_analyser.js?v=400';
 
 export default class eff_fft_polar {
   static meta_props = {

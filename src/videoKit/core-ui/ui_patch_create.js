@@ -1,6 +1,6 @@
-import { a_ } from '../let/a_state.js';
-import { ui_patch_update } from '../core-ui/ui_patch_bar.js';
-import { div_break } from '../core-ui/ui_patch_eff.js';
+import { a_ } from '../let/a_state.js?v=400';
+import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=400';
+import { div_break } from '../core-ui/ui_patch_eff.js?v=400';
 // static meta_props = {
 
 // style:

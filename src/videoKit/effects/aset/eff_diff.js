@@ -1,6 +1,6 @@
-import { PeriodTimer } from '../../util/PeriodTimer.js';
-import { image_copy_to, image_move_to } from '../../util/image.js';
-import eff_bestill from '../../effects/aset/eff_bestill.js';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v=400';
+import { image_copy_to, image_move_to } from '../../util/image.js?v=400';
+import eff_bestill from '../../effects/aset/eff_bestill.js?v=400';
 
 export default class eff_diff {
   static meta_props = {

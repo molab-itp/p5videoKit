@@ -1,6 +1,6 @@
-import { a_ } from '../let/a_state.js';
-import { ui_prop_set } from '../core-ui/ui_restore.js';
-import { patch_instances_clear_all } from '../core/patch_inst.js';
+import { a_ } from '../let/a_state.js?v=400';
+import { ui_prop_set } from '../core-ui/ui_prop.js?v=400';
+import { patch_instances_clear_all } from '../core/patch_inst.js?v=400';
 
 // a_.mediaDivs = []
 // { imedia, mediaDevice, id, label, div, chk, vis, capture, info, ready, livem }

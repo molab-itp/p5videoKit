@@ -1,14 +1,16 @@
-import { a_ } from '../let/a_state.js';
-import { a_effectMetas } from '../let/a_effectMetas.js';
-import { a_settingMetas } from '../let/a_settingMetas.js';
-import { effectMeta_init } from '../core/effectMeta.js';
-import { ui_capture_init } from '../core-ui/ui_capture.js';
-import { ui_canvas_init } from '../core-ui/ui_canvas.js';
-import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js';
-import { canvas_size_default } from '../core-ui/ui_canvas.js';
-import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js';
-import { ui_present_window } from '../core-ui/a_ui_create.js';
-// import { ui_render_size_init } from '../core-ui/ui_render.js';
+import { a_ } from '../let/a_state.js?v=400';
+import { a_effectMetas } from '../let/a_effectMetas.js?v=400';
+import { a_settingMetas } from '../let/a_settingMetas.js?v=400';
+import { effectMeta_init } from '../core/effectMeta.js?v=400';
+import { ui_capture_init } from '../core-ui/ui_capture.js?v=400';
+import { ui_canvas_init } from '../core-ui/ui_canvas.js?v=400';
+import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js?v=400';
+import { canvas_size_default } from '../core-ui/ui_canvas.js?v=400';
+import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=400';
+import { ui_present_window } from '../core-ui/a_ui_create.js?v=400';
+import { ui_prop_set, store_set, store_get } from '../core-ui/ui_prop.js?v=400';
+
+// import { ui_render_size_init } from '../core-ui/ui_render.js?v=400';
 //
 // let effects = [
 //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
@@ -170,28 +172,4 @@ function store_restore_ver() {
       store_remove(prop);
     }
   }
-}
-
-// Return prefixed property name
-// eg.
-function store_ref(prop) {
-  // Store-A
-  // 0123456
-  return a_.store_prefix + a_.store_name.substring(6, 7) + prop.substring(1);
-}
-
-export function store_set(prop, value) {
-  localStorage.setItem(store_ref(prop), value);
-}
-
-function store_get(prop) {
-  return localStorage.getItem(store_ref(prop));
-}
-
-function store_remove(prop) {
-  return localStorage.removeItem(store_ref(prop));
-}
-
-function store_clear_all() {
-  localStorage.clear();
 }

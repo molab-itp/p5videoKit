@@ -1,13 +1,13 @@
-import { a_ } from '../let/a_state.js';
-import { ui_div_empty, ui_div_append, ui_createButton, ui_createElement } from '../core-ui/ui_tools.js';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
-import { ui_live_selection } from '../core-ui/ui_live.js';
-import { PadLayout } from '../util/PadLayout.js';
-import { ui_prop_set } from '../core-ui/ui_restore.js';
-import { store_restore_from } from '../core/store_url_parse.js';
-import { str_to_width_height } from '../core-ui/ui_canvas.js';
-import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js';
-import { patch_add, patch_instances_clear_all, patch_inst_update } from '../core/patch_inst.js';
+import { a_ } from '../let/a_state.js?v=400';
+import { ui_div_empty, ui_div_append, ui_createButton, ui_createElement } from '../core-ui/ui_tools.js?v=400';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=400';
+import { ui_live_selection } from '../core-ui/ui_live.js?v=400';
+import { PadLayout } from '../util/PadLayout.js?v=400';
+import { ui_prop_set } from '../core-ui/ui_prop.js?v=400';
+import { store_restore_from } from '../core/store_url_parse.js?v=400';
+import { str_to_width_height } from '../core-ui/ui_canvas.js?v=400';
+import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js?v=400';
+import { patch_add, patch_instances_clear_all, patch_inst_update } from '../core/patch_inst.js?v=400';
 
 let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
 let back_color_options = [0, 1, 50, 100, 200, 255, -1];
@@ -178,105 +178,3 @@ function pads_resize_pad(urect) {
     urect[prop] = Math.floor(urect[prop] * a_.ui.urects_scale);
   }
 }
-
-// let store_options = ['Store-A', 'Store-B', 'Store-C', 'Store-D'];
-// <span> Store: </span>
-// <select id="istore">
-//   <option value="Store-A">Store-A</option>
-//   ${sel_store_options()}
-// </select>
-// function sel_store_options() {
-//   let html = store_options.map((ent) => `<option value="${ent}">${ent}</option>`);
-//   return html.join('');
-// }
-
-// jsDom style for ui creation.
-// pretty concise, but hides html
-
-// div.child(createSpan('Layout: '));
-// {
-//   let aSel = createSelect();
-//   div.child(aSel);
-//   aSel.option('Single');
-//   aSel.option('2x1');
-//   aSel.option('2x2');
-//   aSel.option('2x3');
-//   aSel.option('3x2');
-//   aSel.option('3x3');
-//   aSel.option('3x1');
-//   aSel.option('4x4');
-//   aSel.option('1x4');
-//   aSel.selected(a_.ui.patch_layout);
-//   aSel.changed(function () {
-//     let val = this.value();
-//     // console.log('ui_patch_bar', val);
-//     ui_prop_set('patch_layout', val);
-//     pad_layout_update();
-//     patch_instances_clear_all();
-//   });
-// }
-// ui_backcolor(div);
-
-// div.child(createSpan(' Store: '));
-// {
-//   let aSel = createSelect();
-//   div.child(aSel);
-//   aSel.option('Store-A');
-//   aSel.option('Store-B');
-//   aSel.option('Store-C');
-//   aSel.option('Store-D');
-//   aSel.selected(a_.store_name);
-//   aSel.changed(function () {
-//     let val = this.value();
-//     store_name_update(val);
-//   });
-// }
-// {
-//   let aBtn = createButton('Export').mousePressed(function () {
-//     store_export_json();
-//   });
-//   div.child(aBtn);
-// }
-// {
-//   let aBtn = createButton('URL').mousePressed(function () {
-//     store_export_url();
-//   });
-//   div.child(aBtn);
-// }
-// div.child(createSpan(' Setting: '));
-// {
-//   let aSel = createSelect();
-//   div.child(aSel);
-//   // console.log('a_.ui.setting', a_.ui.setting);
-//   let sii = 0;
-//   for (let ii = 0; ii < a_.settings.length; ii++) {
-//     let ent = a_.settings[ii];
-//     aSel.option(ent.setting, ii);
-//     // console.log('ii', ii, 'label', ent.label);
-//     if (ent.setting === a_.ui.setting) {
-//       sii = ii;
-//     }
-//   }
-//   aSel.selected(sii);
-//   aSel.changed(function () {
-//     let ii = parseFloat(this.value());
-//     let ent = a_.settings[ii];
-//     store_restore_from(ent);
-//   });
-// }
-
-// let a_back_color_options = [200, 0, 1, 50, 100, 200, 255, -1];
-// function ui_backcolor(div) {
-//   div.child(createSpan(' Back: '));
-//   let aSel = createSelect();
-//   div.child(aSel);
-//   let back_colors = a_back_color_options;
-//   for (let index = 0; index < back_colors.length; index++) {
-//     aSel.option(back_colors[index]);
-//   }
-//   aSel.selected(a_.ui.back_color);
-//   aSel.changed(function () {
-//     let valu = parseFloat(this.value());
-//     ui_prop_set('back_color', valu);
-//   });
-// }

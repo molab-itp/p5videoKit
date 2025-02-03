@@ -1,4 +1,4 @@
-import { a_ } from '../let/a_state.js';
+import { a_ } from '../let/a_state.js?v=400';
 
 export function ui_createButton(txt) {
   let elm = createButton(txt);

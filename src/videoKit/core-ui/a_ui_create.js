@@ -1,19 +1,19 @@
-import { a_ } from '../let/a_state.js';
-import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js';
-import { ui_capture_size } from '../core-ui/ui_capture.js';
-import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js';
-import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
-import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js';
-import { ui_live_selection } from '../core-ui/ui_live.js';
-import { ui_chat_pane } from '../core-ui/ui_chat.js';
-import { store_restore_from } from '../core/store_url_parse.js';
-import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js';
-import { patch_instances_clear_all } from '../core/patch_inst.js';
-import { ui_prop_set, store_set } from '../core-ui/ui_restore.js';
-// import { ui_render_size } from '../core-ui/ui_render.js';
+import { a_ } from '../let/a_state.js?v=400';
+import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js?v=400';
+import { ui_capture_size } from '../core-ui/ui_capture.js?v=400';
+import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js?v=400';
+import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js?v=400';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=400';
+import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js?v=400';
+import { ui_live_selection } from '../core-ui/ui_live.js?v=400';
+import { ui_chat_pane } from '../core-ui/ui_chat.js?v=400';
+import { store_restore_from } from '../core/store_url_parse.js?v=400';
+import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=400';
+import { patch_instances_clear_all } from '../core/patch_inst.js?v=400';
+import { ui_prop_set, store_set } from '../core-ui/ui_prop.js?v=400';
+// import { ui_render_size } from '../core-ui/ui_render.js?v=400';
 
-// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js';
+// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js?v=400';
 
 // async function mo_store_prepare() {
 //   // console.log('mo_store_prepare globalThis.my', globalThis.my);
@@ -203,45 +203,6 @@ export function update_ui() {
   if (a_ifps) {
     a_ifps.html(' [fps=' + round(frameRate(), 2) + '] ');
   }
-}
-
-let msgIntervalId = -1;
-let msgIntervalPeriod = 100;
-let msgText;
-
-export function ui_message(msg, opt) {
-  if (opt && opt.initTimer) {
-    dice.startTime = window.performance.now();
-  }
-  let imsg = select('#imsg');
-  if (!imsg) return;
-  if (msg) {
-    msg = ' [ ' + msg + ' ] ';
-    msgText = msg;
-    if (msgIntervalId > 0) {
-      clearInterval(msgIntervalId);
-    }
-    msgIntervalId = setInterval(report_message, msgIntervalPeriod);
-  } else {
-    if (msgIntervalId > 0) {
-      clearInterval(msgIntervalId);
-      msgIntervalId = -1;
-    }
-  }
-  imsg.html(msg);
-  imsg.style(msg ? 'display:inline' : 'display:none');
-}
-
-// Lapse time as seconds since dice.startTime
-function report_message() {
-  let imsg = select('#imsg');
-  if (!imsg) return;
-  let lapse = window.performance.now() - dice.startTime;
-  lapse = lapse / 1000;
-  lapse = Math.floor(lapse * 100) / 100;
-  let msg = lapse + ' ' + msgText;
-  imsg.html(msg);
-  imsg.style(msg ? 'display:inline' : 'display:none');
 }
 
 // Can't move window across monitors
