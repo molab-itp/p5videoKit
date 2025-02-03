@@ -1,4 +1,4 @@
-import { image_copy_to } from '../../util/image.js?v={{vers}}';
+import { image_copy_to } from '../../util/image.js';
 
 export default class eff_grid {
   static meta_props = {

@@ -32,7 +32,7 @@ export class p5videoKit {
 
   // init_promise(options) {
   //   //
-  //   let inpath = './core/a_main.js?v={{vers}}';
+  //   let inpath = './core/a_main.js';
   //   return new Promise((resolve, reject) => {
   //     import(inpath)
   //       .then((module) => {

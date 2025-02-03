@@ -1,19 +1,19 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
-import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js?v={{vers}}';
-import { ui_capture_size } from '../core-ui/ui_capture.js?v={{vers}}';
-import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js?v={{vers}}';
-import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js?v={{vers}}';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v={{vers}}';
-import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js?v={{vers}}';
-import { ui_live_selection } from '../core-ui/ui_live.js?v={{vers}}';
-import { ui_chat_pane } from '../core-ui/ui_chat.js?v={{vers}}';
-import { store_restore_from } from '../core/store_url_parse.js?v={{vers}}';
-import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v={{vers}}';
-import { patch_instances_clear_all } from '../core/patch_inst.js?v={{vers}}';
-import { ui_prop_set, store_set } from '../core-ui/ui_restore.js?v={{vers}}';
-// import { ui_render_size } from '../core-ui/ui_render.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
+import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js';
+import { ui_capture_size } from '../core-ui/ui_capture.js';
+import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js';
+import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
+import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js';
+import { ui_live_selection } from '../core-ui/ui_live.js';
+import { ui_chat_pane } from '../core-ui/ui_chat.js';
+import { store_restore_from } from '../core/store_url_parse.js';
+import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js';
+import { patch_instances_clear_all } from '../core/patch_inst.js';
+import { ui_prop_set, store_set } from '../core-ui/ui_restore.js';
+// import { ui_render_size } from '../core-ui/ui_render.js';
 
-// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js?v={{vers}}';
+// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js';
 
 // async function mo_store_prepare() {
 //   // console.log('mo_store_prepare globalThis.my', globalThis.my);
@@ -55,7 +55,7 @@ export function ui_create() {
 function ui_top_pane() {
   let div = ui_div_empty('itop_bar');
   let html = `
-  <button id="ipresent">Present?v={{vers}}</button>
+  <button id="ipresent">Present</button>
   <button id="ihideui">HideUI</button>
   <button id="ireset">Reset</button>
   <button id="isave">Save</button>

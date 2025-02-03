@@ -59,7 +59,7 @@ export default class eff_ticker {
     // this.display_single_date = this.most_lost_ndays != 0;
 
     // dynamic import - so we don't take a import hit until actually used.
-    import('./sub/sketch.js?v={{vers}}')
+    import('./sub/sketch.js')
       .then((module) => {
         // console.log('eff_ticker module', module);
         this.init();

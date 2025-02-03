@@ -1,5 +1,5 @@
 //
-import { ui_message } from '../core-ui/a_ui_create.js?v={{vers}}';
+import { ui_message } from '../core-ui/a_ui_create.js';
 
 import { p5videoKit } from '../p5videoKit.js';
 

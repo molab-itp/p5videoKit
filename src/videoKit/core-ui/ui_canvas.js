@@ -1,8 +1,8 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
-import { ui_prop_set } from '../core-ui/ui_restore.js?v={{vers}}';
-import { store_set } from '../core-ui/ui_restore.js?v={{vers}}';
-import { ui_window_refresh } from '../core-ui/a_ui_create.js?v={{vers}}';
-import { ui_div_append } from '../core-ui/ui_tools.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
+import { ui_prop_set } from '../core-ui/ui_restore.js';
+import { store_set } from '../core-ui/ui_restore.js';
+import { ui_window_refresh } from '../core-ui/a_ui_create.js';
+import { ui_div_append } from '../core-ui/ui_tools.js';
 
 export function ui_canvas_div(div) {
   let html = `

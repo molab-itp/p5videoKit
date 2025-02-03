@@ -1,4 +1,4 @@
-import { FFT_analyser } from '../../util/FFT_analyser.js?v={{vers}}';
+import { FFT_analyser } from '../../util/FFT_analyser.js';
 
 export default class eff_fft_graph {
   static meta_props = { max: [5, 6, 7, 2, 4, 8, 9, 10] };

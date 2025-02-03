@@ -1,7 +1,7 @@
-import { effectMeta_find, factory_prop_inits } from '../../core/effectMeta.js?v={{vers}}';
-import { image_scaled_pad } from '../../util/image.js?v={{vers}}';
-import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
-import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v={{vers}}';
+import { effectMeta_find, factory_prop_inits } from '../../core/effectMeta.js';
+import { image_scaled_pad } from '../../util/image.js';
+import { PeriodTimer } from '../../util/PeriodTimer.js';
+import { patch_index1 } from '../../core-ui/ui_patch_eff.js';
 
 export default class eff_loop {
   static meta_props = {
@@ -26,16 +26,7 @@ export default class eff_loop {
       text_input: 'bright,delaunay,grid,maze,sketchy,slant_scan,slit_scan',
     },
   };
-  static eff_names = [
-    'bright',
-    'delaunay',
-    'grid',
-    'bright',
-    'maze',
-    'sketchy',
-    'slant_scan',
-    'slit_scan',
-  ];
+  static eff_names = ['bright', 'delaunay', 'grid', 'bright', 'maze', 'sketchy', 'slant_scan', 'slit_scan'];
   constructor(props) {
     Object.assign(this, props);
     this.basic_props = Object.assign({}, props);

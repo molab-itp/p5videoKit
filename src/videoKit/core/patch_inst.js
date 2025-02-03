@@ -1,8 +1,8 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
-import { pad_layout_update, ui_refresh, ui_patch_update } from '../core-ui/ui_patch_bar.js?v={{vers}}';
-import { ui_div_empty } from '../core-ui/ui_tools.js?v={{vers}}';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v={{vers}}';
-import { effectMeta_find } from './effectMeta.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
+import { pad_layout_update, ui_refresh, ui_patch_update } from '../core-ui/ui_patch_bar.js';
+import { ui_div_empty } from '../core-ui/ui_tools.js';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
+import { effectMeta_find } from './effectMeta.js';
 
 import { p5videoKit } from '../p5videoKit.js';
 

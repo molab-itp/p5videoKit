@@ -1,9 +1,9 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
-import { ui_div_empty } from '../core-ui/ui_tools.js?v={{vers}}';
-import { effectMeta_find } from '../core/effectMeta.js?v={{vers}}';
-import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v={{vers}}';
-import { patch_remove_ipatch, patch_update_effIndex } from '../core/patch_inst.js?v={{vers}}';
-import { patch_create_other } from '../core-ui/ui_patch_create.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
+import { ui_div_empty } from '../core-ui/ui_tools.js';
+import { effectMeta_find } from '../core/effectMeta.js';
+import { ui_patch_update } from '../core-ui/ui_patch_bar.js';
+import { patch_remove_ipatch, patch_update_effIndex } from '../core/patch_inst.js';
+import { patch_create_other } from '../core-ui/ui_patch_create.js';
 
 export function ui_patch_eff_panes() {
   //

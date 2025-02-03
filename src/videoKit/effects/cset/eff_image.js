@@ -1,9 +1,9 @@
-// import { image_scaled_pad } from '../../util/image.js?v={{vers}}';
-import { ui_message } from '../../core-ui/a_ui_create.js?v={{vers}}';
-import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
-import { ui_patch_update } from '../../core-ui/ui_patch_bar.js?v={{vers}}';
-import { a_images } from '../../let/a_images.js?v={{vers}}';
-import { layer_image_scaled_pad } from '../../util/image.js?v={{vers}}';
+// import { image_scaled_pad } from '../../util/image.js';
+import { ui_message } from '../../core-ui/a_ui_create.js';
+import { PeriodTimer } from '../../util/PeriodTimer.js';
+import { ui_patch_update } from '../../core-ui/ui_patch_bar.js';
+import { a_images } from '../../let/a_images.js';
+import { layer_image_scaled_pad } from '../../util/image.js';
 
 let g_image_groups = [
   'group',

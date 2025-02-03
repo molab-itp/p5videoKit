@@ -1,5 +1,5 @@
 export let a_ = {
-  app_ver: 'Present?v={{vers}} ',
+  app_ver: 'Present ',
   store_ver: '6',
   store_name: 'Store-A',
   store_prefix: '',

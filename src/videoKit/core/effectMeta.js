@@ -1,4 +1,4 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
 
 let a_effectMetaDict;
 let a_import_err;
@@ -37,7 +37,7 @@ export async function effectMeta_import(effMeta) {
   }
   // console.log('effectMeta_import inpath', inpath);
   return new Promise((resolve, reject) => {
-    import(inpath + '?v={{vers}}')
+    import(inpath + '')
       .then((module) => {
         // console.log('effectMeta_import module', module, '\n effMeta.import_path', effMeta.import_path);
         // console.log('effMeta.import_path', effMeta.import_path);

@@ -1,14 +1,14 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
-import { a_effectMetas } from '../let/a_effectMetas.js?v={{vers}}';
-import { a_settingMetas } from '../let/a_settingMetas.js?v={{vers}}';
-import { effectMeta_init } from '../core/effectMeta.js?v={{vers}}';
-import { ui_capture_init } from '../core-ui/ui_capture.js?v={{vers}}';
-import { ui_canvas_init } from '../core-ui/ui_canvas.js?v={{vers}}';
-import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js?v={{vers}}';
-import { canvas_size_default } from '../core-ui/ui_canvas.js?v={{vers}}';
-import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v={{vers}}';
-import { ui_present_window } from '../core-ui/a_ui_create.js?v={{vers}}';
-// import { ui_render_size_init } from '../core-ui/ui_render.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
+import { a_effectMetas } from '../let/a_effectMetas.js';
+import { a_settingMetas } from '../let/a_settingMetas.js';
+import { effectMeta_init } from '../core/effectMeta.js';
+import { ui_capture_init } from '../core-ui/ui_capture.js';
+import { ui_canvas_init } from '../core-ui/ui_canvas.js';
+import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js';
+import { canvas_size_default } from '../core-ui/ui_canvas.js';
+import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js';
+import { ui_present_window } from '../core-ui/a_ui_create.js';
+// import { ui_render_size_init } from '../core-ui/ui_render.js';
 //
 // let effects = [
 //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
@@ -84,7 +84,7 @@ async function settingMetas_init() {
 // set = { label: '0-club', import_path: 'settings/baked/0-club.json' }
 //
 function setting_import(sete, index) {
-  let url = './' + sete.import_path + '?v={{vers}}';
+  let url = './' + sete.import_path + '';
   // console.log('setting_import url', url);
   return new Promise((resolve, reject) => {
     loadJSON(
@@ -169,24 +169,6 @@ function store_restore_ver() {
     for (let prop in a_.ui) {
       store_remove(prop);
     }
-  }
-}
-
-// Set a ui property that's stored into local storage
-export function ui_prop_set(prop, value) {
-  a_.ui[prop] = value;
-  let str = JSON.stringify([value]);
-  store_set('a_.ui_' + prop, str);
-}
-
-// Get or set a ui property that's stored into local storage
-function ui_prop_ref(prop, value) {
-  if (value === undefined) {
-    return a_.ui[prop];
-  } else {
-    a_.ui[prop] = value;
-    let str = JSON.stringify([value]);
-    store_set('a_.ui_' + prop, str);
   }
 }
 

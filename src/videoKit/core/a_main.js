@@ -1,10 +1,10 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
-import { effectMeta_find, factory_prop_inits } from './effectMeta.js?v={{vers}}';
-import { image_scaled_pad } from '../util/image.js?v={{vers}}';
-import './record_video.js?v={{vers}}';
-import { patch_inst_deinit } from '../core/patch_inst.js?v={{vers}}';
-import { PeriodTimer } from '../util/PeriodTimer.js?v={{vers}}';
-import '../core/draw.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
+import { effectMeta_find, factory_prop_inits } from './effectMeta.js';
+import { image_scaled_pad } from '../util/image.js';
+import './record_video.js';
+import { patch_inst_deinit } from '../core/patch_inst.js';
+import { PeriodTimer } from '../util/PeriodTimer.js';
+import '../core/draw.js';
 
 import { p5videoKit } from '../p5videoKit.js';
 

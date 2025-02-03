@@ -1,4 +1,4 @@
-import { a_ } from '../let/a_state.js?v={{vers}}';
+import { a_ } from '../let/a_state.js';
 
 export function ui_createButton(txt) {
   let elm = createButton(txt);

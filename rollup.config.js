@@ -8,17 +8,17 @@ export default {
   input: 'src/videoKit/a_lib.js', // Entry point of your library
   output: [
     {
-      file: 'dist/moLib.cjs.js',
+      file: 'dist/p5videoKit.cjs.js',
       format: 'cjs', // CommonJS for Node.js
       sourcemap: true,
     },
     {
-      file: 'dist/moLib.esm.js',
+      file: 'dist/p5videoKit.esm.js',
       format: 'es', // ES Module for modern bundlers
       sourcemap: true,
     },
     {
-      file: 'dist/moLib.umd.js',
+      file: 'dist/p5videoKit.umd.js',
       format: 'umd', // UMD for browsers and Node.js
       name: 'moLib_', // Global variable name when used in browsers
       sourcemap: true,
