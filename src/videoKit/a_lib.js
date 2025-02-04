@@ -1,16 +1,13 @@
 //
-// for lib reference
-// https://molab-itp.github.io/p5moRelease/videoKit/368/a_lib.js
-// <script type="module" src="./videoKit/a_lib.js"></script>
-
-import { p5videoKit } from './p5videoKit.js?v=407';
+import { p5videoKit } from './a_p5videoKit.js?v=407';
 
 import './core/a_main.js?v=407';
 
 //
-// my.dbase = await mo_dbase_init(my)
+// videoKit = await p5videoKit_init(config, p5_instance)
 //
 export async function p5videoKit_init(config, p5_instance = p5.instance) {
+  //
   console.log('p5videoKit_init config', config, 'p5_instance', p5_instance);
   let vk = new p5videoKit(config, p5_instance);
   await vk.init(config);

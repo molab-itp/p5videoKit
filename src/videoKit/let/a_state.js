@@ -33,4 +33,4 @@ export let a_ = {
   mediaDivs: [],
 };
 // !!@ For debugging
-window.a_ = a_;
+// globalThis.a_ = a_;
