@@ -10,7 +10,7 @@ import { ui_live_selection } from '../core-ui/ui_live.js?v=407';
 import { ui_chat_pane } from '../core-ui/ui_chat.js?v=407';
 import { store_restore_from } from '../core/store_url_parse.js?v=407';
 import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=407';
-import { patch_instances_clear_all } from '../core/patch_inst.js?v=407';
+import { patch_instances_clear_all } from '../a/patch_inst.js?v=407';
 import { ui_prop_set, store_set } from '../core-ui/ui_prop.js?v=407';
 // import { ui_render_size } from '../core-ui/ui_render.js?v=407';
 

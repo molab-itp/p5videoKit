@@ -1,5 +1,5 @@
 //
-import { p5videoKit } from '../a_p5videoKit.js?v=407';
+import { p5videoKit } from '../a/p5videoKit.js?v=407';
 
 import { ui_message } from '../core-ui/ui_prop.js?v=407';
 

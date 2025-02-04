@@ -1,11 +1,11 @@
 //
-import { p5videoKit } from '../a_p5videoKit.js?v=407';
+import { p5videoKit } from '../a/p5videoKit.js?v=407';
 
 import { a_ } from '../let/a_state.js?v=407';
 import { ui_restore_store } from '../core-ui/ui_restore.js?v=407';
-import { init_mediaDivs } from './create_mediaDiv.js?v=407';
+import { init_mediaDivs } from '../core/create_mediaDiv.js?v=407';
 import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=407';
-import { media_enum } from './create_mediaDevices.js?v=407';
+import { media_enum } from '../core/create_mediaDevices.js?v=407';
 import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=407';
 import { livem_restore } from '../core-ui/ui_live.js?v=407';
 import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=407';

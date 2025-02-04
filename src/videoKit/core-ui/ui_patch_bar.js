@@ -7,7 +7,7 @@ import { ui_prop_set } from '../core-ui/ui_prop.js?v=407';
 import { store_restore_from } from '../core/store_url_parse.js?v=407';
 import { str_to_width_height } from '../core-ui/ui_canvas.js?v=407';
 import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js?v=407';
-import { patch_add, patch_instances_clear_all, patch_inst_update } from '../core/patch_inst.js?v=407';
+import { patch_add, patch_instances_clear_all, patch_inst_update } from '../a/patch_inst.js?v=407';
 
 let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
 let back_color_options = [0, 1, 50, 100, 200, 255, -1];

@@ -1,6 +1,5 @@
 //
-import { p5videoKit } from './a_p5videoKit.js?v=407';
-
+import { p5videoKit } from './a/p5videoKit.js?v=407';
 import './core/a_main.js?v=407';
 
 //
