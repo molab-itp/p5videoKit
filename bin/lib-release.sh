@@ -36,7 +36,7 @@ source=../src/videoKit
 rsync -razO$verbose $excludes $delete $test "$source/" "$rdest/"
 
 echo
-echo lib $buildnum
+echo lib $buildnum $rdest 
 
 cd $dest
 

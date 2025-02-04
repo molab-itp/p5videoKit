@@ -1,13 +1,13 @@
-import { a_ } from '../let/a_state.js?v=410';
-import { ui_div_empty, ui_div_append, ui_createButton, ui_createElement } from '../core-ui/ui_tools.js?v=410';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=410';
-import { ui_live_selection } from '../core-ui/ui_live.js?v=410';
-import { PadLayout } from '../util/PadLayout.js?v=410';
-import { ui_prop_set } from '../core-ui/ui_prop.js?v=410';
-import { store_restore_from } from '../core/store_url_parse.js?v=410';
-import { str_to_width_height } from '../core-ui/ui_canvas.js?v=410';
-import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js?v=410';
-import { patch_add, patch_instances_clear_all, patch_inst_update } from '../a/patch_inst.js?v=410';
+import { a_ } from '../let/a_state.js?v=412';
+import { ui_div_empty, ui_div_append, ui_createButton, ui_createElement } from '../core-ui/ui_tools.js?v=412';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=412';
+import { ui_live_selection } from '../core-ui/ui_live.js?v=412';
+import { PadLayout } from '../util/PadLayout.js?v=412';
+import { ui_prop_set } from '../core-ui/ui_prop.js?v=412';
+import { store_restore_from } from '../core/store_url_parse.js?v=412';
+import { str_to_width_height } from '../core-ui/ui_canvas.js?v=412';
+import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js?v=412';
+import { patch_add, patch_instances_clear_all, patch_inst_update } from '../a/patch_inst.js?v=412';
 
 let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
 let back_color_options = [0, 1, 50, 100, 200, 255, -1];

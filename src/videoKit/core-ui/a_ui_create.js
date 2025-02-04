@@ -1,20 +1,20 @@
 //
-import { a_ } from '../let/a_state.js?v=410';
-import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js?v=410';
-import { ui_capture_size } from '../core-ui/ui_capture.js?v=410';
-import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js?v=410';
-import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js?v=410';
-import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=410';
-import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js?v=410';
-import { ui_live_selection } from '../core-ui/ui_live.js?v=410';
-import { ui_chat_pane } from '../core-ui/ui_chat.js?v=410';
-import { store_restore_from } from '../core/store_url_parse.js?v=410';
-import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=410';
-import { patch_instances_clear_all } from '../a/patch_inst.js?v=410';
-import { ui_prop_set, store_set } from '../core-ui/ui_prop.js?v=410';
-// import { ui_render_size } from '../core-ui/ui_render.js?v=410';
+import { a_ } from '../let/a_state.js?v=412';
+import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js?v=412';
+import { ui_capture_size } from '../core-ui/ui_capture.js?v=412';
+import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js?v=412';
+import { ui_div_empty, ui_div_append, ui_save_fn, ui_hide, ui_createElement } from '../core-ui/ui_tools.js?v=412';
+import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=412';
+import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js?v=412';
+import { ui_live_selection } from '../core-ui/ui_live.js?v=412';
+import { ui_chat_pane } from '../core-ui/ui_chat.js?v=412';
+import { store_restore_from } from '../core/store_url_parse.js?v=412';
+import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=412';
+import { patch_instances_clear_all } from '../a/patch_inst.js?v=412';
+import { ui_prop_set, store_set } from '../core-ui/ui_prop.js?v=412';
+// import { ui_render_size } from '../core-ui/ui_render.js?v=412';
 
-// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js?v=410';
+// import { setup_dbase, add_photo } from '../mo_store/setup_dbase.js?v=412';
 
 // async function mo_store_prepare() {
 //   // console.log('mo_store_prepare globalThis.my', globalThis.my);

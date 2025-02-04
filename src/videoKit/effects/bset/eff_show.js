@@ -1,5 +1,5 @@
-import { image_scaled_pad } from '../../util/image.js?v=410';
-import { ui_message } from '../../core-ui/ui_prop.js?v=410';
+import { image_scaled_pad } from '../../util/image.js?v=412';
+import { ui_message } from '../../core-ui/ui_prop.js?v=412';
 
 export default class eff_show_pad {
   //

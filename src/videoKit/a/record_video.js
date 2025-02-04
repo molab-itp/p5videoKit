@@ -1,7 +1,7 @@
 //
-import { p5videoKit } from '../a/p5videoKit.js?v=410';
+import { p5videoKit } from '../a/p5videoKit.js?v=412';
 
-import { ui_message } from '../core-ui/ui_prop.js?v=410';
+import { ui_message } from '../core-ui/ui_prop.js?v=412';
 
 // props { save_name, fps, duration }
 p5videoKit.prototype.recordVideo = function (props) {
