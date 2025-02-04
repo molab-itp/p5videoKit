@@ -12,18 +12,6 @@ import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=409';
 import { image_scaled_pad } from '../util/image.js?v=409';
 import { ui_message } from '../core-ui/ui_prop.js?v=409';
 
-//
-// videoKit.init()
-//
-p5videoKit.prototype.init = async function () {
-  //
-  await this.setup(this.config);
-
-  // Report startup lapse time
-  let init_lapse = window.performance.now() - dice.startTime;
-  dice.dapi('stats', { init_lapse });
-};
-
 // called by init
 // videoKit.setup(options)
 //

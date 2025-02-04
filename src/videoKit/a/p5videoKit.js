@@ -1,9 +1,5 @@
 //
 export class p5videoKit {
-  //
-  // let effects = [
-  //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
-
   constructor(config, p5_instance) {
     // console.log('p5videoKit p5_instance', p5_instance);
     // To work in p5 instance mode we need to use this.p5_instance on all p5 globals

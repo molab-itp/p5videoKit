@@ -12,11 +12,11 @@ import '../a/record_video.js?v=409';
 export function p5videoKit_init(config, p5_instance = p5.instance) {
   //
   console.log('p5videoKit_init config', config, 'p5_instance', p5_instance);
-  let vk = new p5videoKit(config, p5_instance);
-  return vk;
+  let videoKit = new p5videoKit(config, p5_instance);
+  return videoKit;
 }
 globalThis.p5videoKit_init = p5videoKit_init;
-// explict global needed for browser non-module reference
+// p5videoKit_init explict global needed for browser non-module reference
 
 let dice = { warning: 0 };
 window.dice = dice;
@@ -57,3 +57,15 @@ dice.result_rvalue = function (rtag, value) {
 };
 
 dice.startTime = window.performance.now();
+
+// called by videoKit.draw once only based on this.a_initStarted
+// videoKit.init()
+//
+p5videoKit.prototype.init = async function () {
+  //
+  await this.setup(this.config);
+
+  // Report startup lapse time
+  let init_lapse = window.performance.now() - dice.startTime;
+  dice.dapi('stats', { init_lapse });
+};
