@@ -1,7 +1,7 @@
-import { image_scaled_pad } from '../../util/image.js?v=409';
-import { PeriodTimer } from '../../util/PeriodTimer.js?v=409';
-import { ui_patch_update } from '../../core-ui/ui_patch_bar.js?v=409';
-import { a_images } from '../../let/a_images.js?v=409';
+import { image_scaled_pad } from '../../util/image.js?v=410';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v=410';
+import { ui_patch_update } from '../../core-ui/ui_patch_bar.js?v=410';
+import { a_images } from '../../let/a_images.js?v=410';
 
 export default class eff_mov_show {
   static meta_props = {
