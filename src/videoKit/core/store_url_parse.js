@@ -166,6 +166,7 @@ export function store_restore_from(ent) {
   console.log('store_restore_from loc', loc);
   window.location = loc;
 }
+globalThis.store_restore_from = store_restore_from;
 
 export function store_save_ent(ent) {
   if (a_.canvas_size_lock) {

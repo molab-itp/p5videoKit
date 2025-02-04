@@ -8,6 +8,8 @@ export default class eff_bestill_mo {
     factor: [10, 1, 5, 10, 20, 40, 50, 100, 200, 500, 1000, 2000, 3000, 5000, 10000],
     mirror: [0, 1],
     report: [0, 1],
+    frameCountMod: [20, 1],
+    activitySumLevel: [1, 2, 3, 4],
   };
 
   constructor(props) {
@@ -70,14 +72,19 @@ export default class eff_bestill_mo {
       }
     }
     output.updatePixels();
-    if (frameCount % 20 == 0) {
+    if (frameCount % this.frameCountMod == 0) {
+      // 20
       image_copy_to(srcimage2, srcimage);
     }
-    globalThis.sum = sum;
-    globalThis.bestillThis = this;
+    // globalThis.bestillThis = this;
     sum *= msum;
-    if (this.report && abs(sum) > 1) {
-      console.log('sum', sum, 'frameCount', frameCount);
+    if (abs(sum) > this.activitySumLevel) {
+      globalThis.eff_bestill_mo_activitySum = sum;
+      if (this.report) {
+        console.log('sum', sum, 'frameCount', frameCount);
+      }
+    } else {
+      globalThis.eff_bestill_mo_activitySum = 0;
     }
   }
   bestill_render_mirror() {

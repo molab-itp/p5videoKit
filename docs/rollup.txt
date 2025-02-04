@@ -7,6 +7,12 @@ rollup is not appropriate for videoKit
 due to dynamic imports of effects and settings
 and Circular dependencies
 
+>> remove imports
+>> add videoKit.register_effect
+>> add videoKit.register_settings
+  settings json can be stored in code
+
+
 # --
 
 2024-moSalon/libTest/notes/rollup-chatg.txt
