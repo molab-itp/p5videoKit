@@ -81,7 +81,7 @@ export default class eff_bestill_mo {
     if (abs(sum) > this.activitySumLevel) {
       globalThis.eff_bestill_mo_activitySum = sum;
       if (this.report) {
-        console.log('sum', sum, 'frameCount', frameCount);
+        console.log('eff_bestill_mo sum', sum, 'frameCount', frameCount);
       }
     } else {
       globalThis.eff_bestill_mo_activitySum = 0;
