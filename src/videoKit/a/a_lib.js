@@ -18,6 +18,10 @@ export function p5videoKit_init(config, p5_instance = p5.instance) {
 globalThis.p5videoKit_init = p5videoKit_init;
 // p5videoKit_init explict global needed for browser non-module reference
 
+//
+// dice.dapi
+//  used on mobile device to communicate with native code
+//
 let dice = { warning: 0 };
 window.dice = dice;
 
@@ -58,6 +62,7 @@ dice.result_rvalue = function (rtag, value) {
 
 dice.startTime = window.performance.now();
 
+//
 // called by videoKit.draw once only based on this.a_initStarted
 // videoKit.init()
 //

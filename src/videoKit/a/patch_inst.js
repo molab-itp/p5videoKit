@@ -7,6 +7,9 @@ import { ui_div_empty } from '../core-ui/ui_tools.js?v=409';
 import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=409';
 import { effectMeta_find } from '../core/effectMeta.js?v=409';
 
+//
+// videoKit.patch_inst_create(eff_label, imedia, ipatch, eff_spec, eff_props)
+//
 p5videoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
   let effMeta = effectMeta_find(eff_label);
   if (!effMeta) {

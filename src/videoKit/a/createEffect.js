@@ -16,8 +16,11 @@ p5videoKit.prototype.PeriodTimer = PeriodTimer;
 //   "y0": 0
 // }
 
+//
 // let eff = videoKit.createEffect( 'bestill', 1, urect, {factor: 20} )
-//  imedia is mediaDiv indext or effect.output
+// imedia is mediaDiv indext or effect.output
+// videoKit.createEffect({ eff_label, imedia, urect, props, eff_spec })
+//
 p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
   if (!eff_spec) eff_spec = { eff_label, imedia, urect };
   let media;
@@ -45,6 +48,7 @@ p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
   return new effMeta.factory(init);
 };
 
+//
 // videoKit.updateEffect(eff, { imedia, urect });
 // p5videoKit.prototype.updateEffect = function (eff, { imedia, urect }) {
 //   // console.log('updateEffect eff', eff, 'imedia', imedia, 'urect', urect);
@@ -56,10 +60,13 @@ p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
 //   }
 //   eff.eff_spec.urect = urect;
 // };
+//
 
+//
+// return 1 if input ready
 // videoKit.layerCopyInput(layer, { imedia, urect })
 // videoKit.layerCopyInput(layer, { input, urect })
-// return 1 if input ready
+// videoKit.layerCopyInput(layer, { imedia, input, urect, fitWidth })
 //
 p5videoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, fitWidth }) {
   if (imedia !== undefined) {
@@ -97,7 +104,9 @@ p5videoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, f
   return 1;
 };
 
+//
 // videoKit.layerCopyEffect( layer, eff  )
+//
 p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
   // console.log('layerCopyEffect eff', eff);
   eff.prepareOutput();
@@ -136,8 +145,10 @@ p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
 //   return factory_prop_inits(effMeta.factory, init_props);
 // };
 
+//
 // process input --> output
 // videoKit.prepareOutput(eff)
+//
 p5videoKit.prototype.prepareOutput = function (eff) {
   eff.prepareOutput();
 };
@@ -147,25 +158,33 @@ p5videoKit.prototype.deinitEffect = function (eff) {
   patch_inst_deinit(eff);
 };
 
+//
 // videoKit.ouputToCanvas( eff  )
+//
 p5videoKit.prototype.ouputToCanvas = function (eff) {
   if (eff.output) {
     image_scaled_pad(eff.output, eff.eff_spec.urect);
   }
 };
 
+//
 // let n = videoKit.mediaDivCount()
+//
 p5videoKit.prototype.mediaDivCount = function () {
   return a_.mediaDivs.length;
 };
 
+//
 // videoKit.mediaDivLiveIndex()
+//
 p5videoKit.prototype.mediaDivLiveIndex = function () {
   console.log('mediaDivLiveIndex lastMediaDivIndex', a_.lastMediaDivIndex);
   return a_.lastMediaDivIndex || 0;
 };
 
+//
 // mediaDiv = videoKit.mediaDeviceAt(index)
+//
 p5videoKit.prototype.mediaDivAt = function (index) {
   return a_.mediaDivs[index];
 };

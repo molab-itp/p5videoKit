@@ -12,6 +12,7 @@ import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=409';
 import { image_scaled_pad } from '../util/image.js?v=409';
 import { ui_message } from '../core-ui/ui_prop.js?v=409';
 
+//
 // called by init
 // videoKit.setup(options)
 //
@@ -45,6 +46,10 @@ p5videoKit.prototype.setup = async function (options) {
   this.a_initDone = 1;
 };
 
+//
+// called by main sketch.js draw function
+// videoKit.draw()
+//
 p5videoKit.prototype.draw = function () {
   // console.log('p5videoKit draw');
   if (!this.a_initStarted) {
@@ -86,6 +91,9 @@ p5videoKit.prototype.draw = function () {
 //   }
 // }
 
+//
+// videoKit.draw_patch(ipatch, prior)
+//
 p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   let uiPatch = a_.ui.patches[ipatch];
   // console.log('draw ipatch', ipatch, 'uiPatch', uiPatch);
@@ -110,6 +118,9 @@ p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   return inst;
 };
 
+//
+// videoKit.set_background()
+//
 p5videoKit.prototype.set_background = function () {
   let bg = a_.ui.back_color;
   // console.log('set_background a_.ui.back_color', a_.ui.back_color);
