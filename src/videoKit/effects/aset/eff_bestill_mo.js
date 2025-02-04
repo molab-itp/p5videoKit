@@ -1,6 +1,6 @@
 //
 
-import { image_copy_to } from '../../util/image.js?v=412';
+import { image_copy_to } from '../../util/image.js?v=413';
 
 export default class eff_bestill_mo {
   static meta_props = {
@@ -30,6 +30,7 @@ export default class eff_bestill_mo {
     this.srcimage = createImage(this.output.width, this.output.height);
     this.srcimage2 = createImage(this.output.width, this.output.height);
     this.buf = [];
+    this.msum = 1 / (this.srcimage.width * this.srcimage.height);
     // console.log('eff_bestill stillf', this.stillf);
   }
   bestill_prepareOutput() {
@@ -43,13 +44,6 @@ export default class eff_bestill_mo {
     srcimage.loadPixels();
     output.loadPixels();
     srcimage2.loadPixels();
-    // let rf = this.stillf[0];
-    // let bf = this.stillf[1];
-    // let gf = this.stillf[2];
-    // let rm = rf - 1;
-    // let bm = bf - 1;
-    // let gm = gf - 1;
-    let msum = 1 / (srcimage.width * srcimage.height);
     let sum = 0;
     let ff = this.factor;
     let fm = ff - 1;
@@ -77,7 +71,7 @@ export default class eff_bestill_mo {
       image_copy_to(srcimage2, srcimage);
     }
     // globalThis.bestillThis = this;
-    sum *= msum;
+    sum *= this.msum;
     if (abs(sum) > this.activitySumLevel) {
       globalThis.eff_bestill_mo_activitySum = sum;
       if (this.report) {
@@ -93,31 +87,46 @@ export default class eff_bestill_mo {
       this.buf_init();
       return;
     }
-    let { output, srcimage, buf } = this;
+    let { output, srcimage, buf, srcimage2 } = this;
     image_copy_to(srcimage, this.input);
     srcimage.loadPixels();
     output.loadPixels();
-    let rf = this.stillf[0];
-    let bf = this.stillf[1];
-    let gf = this.stillf[2];
-    let rm = rf - 1;
-    let bm = bf - 1;
-    let gm = gf - 1;
+    srcimage2.loadPixels();
+    let sum = 0;
+    let ff = this.factor;
+    let fm = ff - 1;
     let w = srcimage.width;
     let h = srcimage.height;
     for (let y = 0; y < h; y += 1) {
       for (let x = 0; x < w; x += 1) {
         let ii = (w * y + x) * 4;
         let jj = (w * y + (w - 1 - x)) * 4;
-        buf[ii + 0] = (buf[ii + 0] * rm + srcimage.pixels[ii + 0]) / rf;
-        buf[ii + 1] = (buf[ii + 1] * bm + srcimage.pixels[ii + 1]) / bf;
-        buf[ii + 2] = (buf[ii + 2] * gm + srcimage.pixels[ii + 2]) / gf;
+        buf[ii] = (buf[ii] * fm + srcimage.pixels[ii]) / ff;
+        buf[ii + 1] = (buf[ii + 1] * fm + srcimage.pixels[ii + 1]) / ff;
+        buf[ii + 2] = (buf[ii + 2] * fm + srcimage.pixels[ii + 2]) / ff;
         output.pixels[jj + 0] = buf[ii + 0];
         output.pixels[jj + 1] = buf[ii + 1];
         output.pixels[jj + 2] = buf[ii + 2];
+        sum +=
+          srcimage2.pixels[ii] -
+          srcimage.pixels[ii] +
+          (srcimage2.pixels[ii + 1] - srcimage.pixels[ii + 1]) +
+          (srcimage2.pixels[ii + 2] - srcimage.pixels[ii + 2]);
       }
     }
     output.updatePixels();
+    if (frameCount % this.frameCountMod == 0) {
+      image_copy_to(srcimage2, srcimage);
+    }
+    sum *= this.msum;
+    if (abs(sum) > this.activitySumLevel) {
+      globalThis.eff_bestill_mo_activitySum = sum;
+      if (this.report) {
+        console.log('eff_bestill_mo sum', sum, 'frameCount', frameCount);
+      }
+    } else {
+      globalThis.eff_bestill_mo_activitySum = 0;
+    }
   }
   buf_init() {
     this.inited = 1;

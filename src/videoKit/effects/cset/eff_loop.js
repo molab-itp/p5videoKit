@@ -1,7 +1,7 @@
-import { effectMeta_find, factory_prop_inits } from '../../core/effectMeta.js?v=412';
-import { image_scaled_pad } from '../../util/image.js?v=412';
-import { PeriodTimer } from '../../util/PeriodTimer.js?v=412';
-import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=412';
+import { effectMeta_find, factory_prop_inits } from '../../core/effectMeta.js?v=413';
+import { image_scaled_pad } from '../../util/image.js?v=413';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v=413';
+import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
 
 export default class eff_loop {
   static meta_props = {

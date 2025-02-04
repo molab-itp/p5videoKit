@@ -150,8 +150,10 @@ let aSettings = {
       },
       eff_props: {
         factor: 10,
-        mirror: 0,
+        mirror: 1,
         report: 1,
+        frameCountMod: 20,
+        activitySumLevel: 1,
       },
     },
     {
