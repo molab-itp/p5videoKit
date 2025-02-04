@@ -19,15 +19,7 @@ export class p5videoKit {
     if (!this.my_canvas) {
       console.log('p5videoKit !!@ no my_canvas');
     }
-  }
-
-  async init(config) {
-    //
-    await this.setup(config);
-
-    // Report startup lapse time
-    let init_lapse = window.performance.now() - dice.startTime;
-    dice.dapi('stats', { init_lapse });
+    this.config = config;
   }
 
   draw() {

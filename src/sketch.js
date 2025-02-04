@@ -25,11 +25,7 @@ function setup() {
 
   // videoKit = new p5videoKit(a_config);
 
-  setup_videoKit();
-}
-
-async function setup_videoKit() {
-  videoKit = await p5videoKit_init(a_config);
+  videoKit = p5videoKit_init(a_config);
 
   videoKit.save_canvas_handler = save_canvas_handler;
 
@@ -37,16 +33,10 @@ async function setup_videoKit() {
 }
 
 function draw() {
-  if (videoKit) {
-    videoKit.draw();
-  }
+  videoKit.draw();
 }
 
 let a_config = {
-  //
-
-  // hide_ui: 1,
-
   // effects for import, will appear at top of the effect menu
 
   // an EFFECT can have many PROPERTIES specific to the effect

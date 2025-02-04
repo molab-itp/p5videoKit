@@ -1,18 +1,30 @@
 //
-import { p5videoKit } from '../a/p5videoKit.js?v=407';
+import { p5videoKit } from '../a/p5videoKit.js?v=409';
 
-import { a_ } from '../let/a_state.js?v=407';
-import { ui_restore_store } from '../core-ui/ui_restore.js?v=407';
-import { init_mediaDivs } from '../core/create_mediaDiv.js?v=407';
-import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=407';
-import { media_enum } from '../core/create_mediaDevices.js?v=407';
-import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=407';
-import { livem_restore } from '../core-ui/ui_live.js?v=407';
-import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=407';
-import { image_scaled_pad } from '../util/image.js?v=407';
-import { ui_message } from '../core-ui/ui_prop.js?v=407';
+import { a_ } from '../let/a_state.js?v=409';
+import { ui_restore_store } from '../core-ui/ui_restore.js?v=409';
+import { init_mediaDivs } from '../core/create_mediaDiv.js?v=409';
+import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=409';
+import { media_enum } from '../core/create_mediaDevices.js?v=409';
+import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=409';
+import { livem_restore } from '../core-ui/ui_live.js?v=409';
+import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=409';
+import { image_scaled_pad } from '../util/image.js?v=409';
+import { ui_message } from '../core-ui/ui_prop.js?v=409';
 
 //
+// videoKit.init()
+//
+p5videoKit.prototype.init = async function () {
+  //
+  await this.setup(this.config);
+
+  // Report startup lapse time
+  let init_lapse = window.performance.now() - dice.startTime;
+  dice.dapi('stats', { init_lapse });
+};
+
+// called by init
 // videoKit.setup(options)
 //
 p5videoKit.prototype.setup = async function (options) {
@@ -30,10 +42,7 @@ p5videoKit.prototype.setup = async function (options) {
 
   init_mediaDivs();
 
-  // a_.hide_ui_option = 0;
-  // if (!a_.hide_ui_option) {
   ui_create();
-  // }
 
   // console.log('a_.ui.hold_capture', a_.ui.hold_capture);
   if (!a_.ui.hold_capture) {
@@ -50,6 +59,10 @@ p5videoKit.prototype.setup = async function (options) {
 
 p5videoKit.prototype.draw = function () {
   // console.log('p5videoKit draw');
+  if (!this.a_initStarted) {
+    this.a_initStarted = 1;
+    this.init();
+  }
   if (!this.a_initDone) {
     console.log('p5videoKit draw init not done');
     return;

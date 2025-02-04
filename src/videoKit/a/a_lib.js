@@ -1,19 +1,18 @@
 //
-import { p5videoKit } from '../a/p5videoKit.js?v=407';
+import { p5videoKit } from '../a/p5videoKit.js?v=409';
 
-import '../a/a_setup.js?v=407';
-import '../a/createEffect.js?v=407';
-import '../a/patch_inst.js?v=407';
-import '../a/record_video.js?v=407';
+import '../a/a_setup.js?v=409';
+import '../a/createEffect.js?v=409';
+import '../a/patch_inst.js?v=409';
+import '../a/record_video.js?v=409';
 
 //
 // videoKit = await p5videoKit_init(config, p5_instance)
 //
-export async function p5videoKit_init(config, p5_instance = p5.instance) {
+export function p5videoKit_init(config, p5_instance = p5.instance) {
   //
   console.log('p5videoKit_init config', config, 'p5_instance', p5_instance);
   let vk = new p5videoKit(config, p5_instance);
-  await vk.init(config);
   return vk;
 }
 globalThis.p5videoKit_init = p5videoKit_init;

@@ -1,4 +1,4 @@
-import { ui_message } from '../../core-ui/ui_prop.js?v=407';
+import { ui_message } from '../../core-ui/ui_prop.js?v=409';
 
 export default class eff_bodypix {
   static meta_props = {
