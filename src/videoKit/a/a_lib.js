@@ -1,6 +1,10 @@
 //
-import { p5videoKit } from './a/p5videoKit.js?v=407';
-import './core/a_main.js?v=407';
+import { p5videoKit } from '../a/p5videoKit.js?v=407';
+
+import '../a/a_setup.js?v=407';
+import '../a/createEffect.js?v=407';
+import '../a/patch_inst.js?v=407';
+import '../a/record_video.js?v=407';
 
 //
 // videoKit = await p5videoKit_init(config, p5_instance)

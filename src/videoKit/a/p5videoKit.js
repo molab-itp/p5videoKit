@@ -30,22 +30,6 @@ export class p5videoKit {
     dice.dapi('stats', { init_lapse });
   }
 
-  // init_promise(options) {
-  //   //
-  //   let inpath = './core/a_main.js?v=407';
-  //   return new Promise((resolve, reject) => {
-  //     import(inpath)
-  //       .then((module) => {
-  //         // console.log('p5videoKit module', module);
-  //         this.setup(options, resolve);
-  //       })
-  //       .catch((err) => {
-  //         console.log('p5videoKit err', err, '\n inpath', inpath);
-  //         reject();
-  //       });
-  //   });
-  // }
-
   draw() {
     console.log('p5videoKit draw stub');
   }
