@@ -1,5 +1,11 @@
 _rollup.txt
 
+# --
+2025-02-04 00:15:35
+
+rollup is not appropriate for videoKit
+due to dynamic imports of effects and settings
+and Circular dependencies
 
 # --
 

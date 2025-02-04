@@ -33,3 +33,11 @@ export default {
 
 // !!@ must be at top level
 // https://firebase.google.com/docs/web/module-bundling?authuser=0&hl=en#using_firebase_with_rollup
+
+/*
+
+rollup is not appropriate for videoKit
+due to dynamic imports of effects and settings
+and Circular dependencies
+
+*/
