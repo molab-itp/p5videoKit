@@ -1,5 +1,4 @@
 //
-//
 let c19_url_root = 'https://jht1493.net/COVID-19-Impact/Dashboard/a0/c_data/';
 let c19_series = {
   USA: 'world/c_series/United_States.json',

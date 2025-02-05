@@ -1,3 +1,5 @@
+//
+
 export default class eff_slit_scan {
   static meta_props = {
     xdir: [1, 0],

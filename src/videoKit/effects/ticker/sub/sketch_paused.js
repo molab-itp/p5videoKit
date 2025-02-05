@@ -1,5 +1,4 @@
-// let page_pause_count;
-
+//
 eff_ticker.prototype.page_pause_start = function () {
   // page_pause_count = test_fast ? 1 : page_pause_frames;
   // page_pause_count = test_fast ? page_pause_frames / 2 : page_pause_frames;

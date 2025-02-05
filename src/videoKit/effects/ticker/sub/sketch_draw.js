@@ -1,3 +1,4 @@
+//
 eff_ticker.prototype.draw_char_start = function () {
   // console.log('draw_char_start');
   this.a_char = this.a_string[this.a_string_index];

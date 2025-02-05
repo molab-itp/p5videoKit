@@ -1,9 +1,4 @@
-// let a_width = 1280;
-// let a_height = 720;
-// let a_width = 960;
-// let a_height = 540;
-// let my_canvas;
-
+//
 import './sketch_draw_dots.js?v=413';
 import './sketch_draw.js?v=413';
 import './sketch_font8.js?v=413';

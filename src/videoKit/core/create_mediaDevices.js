@@ -1,3 +1,6 @@
+//
+//
+
 import { a_ } from '../let/a_state.js?v=413';
 import { create_mediaDiv, remove_mediaDivs } from '../core/create_mediaDiv.js?v=413';
 import { get_capture_size } from '../core-ui/ui_capture.js?v=413';
@@ -8,37 +11,6 @@ export let a_mediaDevices = [];
 
 // mediaDevice
 //  { label, deviceId, capture, stream }
-
-function create_mediaDevices() {
-  for (let mediaDevice of a_mediaDevices) {
-    init_device_capture(mediaDevice);
-    create_mediaDiv(mediaDevice, { live: 0 });
-  }
-  ui_refresh();
-
-  function init_device_capture(mediaDevice) {
-    let vcap = {
-      audio: true,
-      video: {
-        deviceId: { exact: mediaDevice.deviceId },
-      },
-    };
-    let dim = get_capture_size();
-    if (dim && dim.width && dim.height) {
-      vcap.video.width = { exact: dim.width };
-      vcap.video.height = { exact: dim.height };
-    }
-    console.log('create_mediaDevices dim', dim);
-    console.log('create_mediaDevices vcap', vcap);
-    let capture = createCapture(vcap, function (stream) {
-      mediaDevice.stream = stream;
-      livem_restore();
-    });
-    console.log('create_mediaDevices capture width height', capture.width, capture.height);
-    capture.elt.muted = true;
-    mediaDevice.capture = capture;
-  }
-}
 
 export function media_enum() {
   a_mediaDevices = [];
@@ -77,6 +49,37 @@ export function media_reset() {
   console.log('media_reset');
   remove_mediaDivs();
   media_enum();
+}
+
+function create_mediaDevices() {
+  for (let mediaDevice of a_mediaDevices) {
+    init_device_capture(mediaDevice);
+    create_mediaDiv(mediaDevice, { live: 0 });
+  }
+  ui_refresh();
+
+  function init_device_capture(mediaDevice) {
+    let vcap = {
+      audio: true,
+      video: {
+        deviceId: { exact: mediaDevice.deviceId },
+      },
+    };
+    let dim = get_capture_size();
+    if (dim && dim.width && dim.height) {
+      vcap.video.width = { exact: dim.width };
+      vcap.video.height = { exact: dim.height };
+    }
+    console.log('create_mediaDevices dim', dim);
+    console.log('create_mediaDevices vcap', vcap);
+    let capture = createCapture(vcap, function (stream) {
+      mediaDevice.stream = stream;
+      livem_restore();
+    });
+    console.log('create_mediaDevices capture width height', capture.width, capture.height);
+    capture.elt.muted = true;
+    mediaDevice.capture = capture;
+  }
 }
 
 // Save image of each media device = camera or live stream

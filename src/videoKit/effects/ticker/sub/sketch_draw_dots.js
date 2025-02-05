@@ -1,3 +1,4 @@
+//
 eff_ticker.prototype.draw_dots_fast = function () {
   let n = this.test_fast ? this.test_fast_n : 1;
   // attempt at dot rhythm

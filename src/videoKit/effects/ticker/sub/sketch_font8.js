@@ -1,3 +1,4 @@
+//
 // 8 bit by 8 bit font
 
 eff_ticker.prototype.font8x8_dict = {

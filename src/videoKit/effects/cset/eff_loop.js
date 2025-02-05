@@ -1,3 +1,6 @@
+//
+//
+
 import { effectMeta_find, factory_prop_inits } from '../../core/effectMeta.js?v=413';
 import { image_scaled_pad } from '../../util/image.js?v=413';
 import { PeriodTimer } from '../../util/PeriodTimer.js?v=413';
