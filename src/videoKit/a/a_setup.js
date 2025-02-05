@@ -1,5 +1,5 @@
 //
-import { p5videoKit } from '../a/p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
 import { a_ } from '../let/a_state.js?v=413';
 import { ui_restore_store } from '../core-ui/ui_restore.js?v=413';

@@ -1,5 +1,5 @@
 //
-import { p5videoKit } from '../a/p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 import { patch_inst_deinit } from '../a/patch_inst.js?v=413';
 
 import { a_ } from '../let/a_state.js?v=413';
