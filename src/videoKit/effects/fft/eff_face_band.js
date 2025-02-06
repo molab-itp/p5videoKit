@@ -41,7 +41,7 @@ export default class eff_face_band {
       return;
     }
     this.videoKit.ui_message('loading model...');
-    this.facemesh = ml5.facemesh(this.video, function () {
+    this.facemesh = ml5.facemesh(this.video, () => {
       // console.log('eff_facemesh Model ready!');
       this.videoKit.ui_message('');
     });

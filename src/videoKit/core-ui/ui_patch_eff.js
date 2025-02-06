@@ -112,7 +112,7 @@ p5videoKit.prototype.create_settings = function (aPatch, div) {
   // console.log('create_settings aPatch', aPatch);
   let effMeta = this.effectMeta_find(aPatch.eff_spec.eff_label);
   if (effMeta.factory) {
-    this.create_ui_for_meta(div, effMeta.factory.meta_props);
+    this.create_ui_for_meta(aPatch, div, effMeta.factory.meta_props);
   } else {
     console.log('create_settings MISSING factory effMeta', effMeta);
   }
@@ -125,15 +125,15 @@ p5videoKit.prototype.create_settings = function (aPatch, div) {
   this.div_break(div);
 };
 
-p5videoKit.prototype.create_ui_for_meta = function (div, meta) {
+p5videoKit.prototype.create_ui_for_meta = function (aPatch, div, meta) {
   if (Array.isArray(meta)) {
-    this.create_ui_for_meta_arr(div, meta);
+    this.create_ui_for_meta_arr(aPatch, div, meta);
   } else {
-    this.create_ui_for_meta_dict(div, meta);
+    this.create_ui_for_meta_dict(aPatch, div, meta);
   }
 };
 
-p5videoKit.prototype.create_ui_for_meta_arr = function (div, arr) {
+p5videoKit.prototype.create_ui_for_meta_arr = function (aPatch, div, arr) {
   let issueBreak = 1;
   for (let ent of arr) {
     if (issueBreak) {
@@ -158,7 +158,7 @@ p5videoKit.prototype.create_ui_for_meta_dict = function (aPatch, div, dict) {
     }
     if (Array.isArray(items)) {
       // eg. items = factor: [10, 50, 100 ... ]
-      patch_create_selection(aPatch, div, prop, items, issueBreak);
+      this.patch_create_selection(aPatch, div, prop, items, issueBreak);
       issueBreak = 0;
     } else {
       // eg: _next: { button: next_action }

@@ -150,7 +150,7 @@ p5videoKit.prototype.remove_mediaDivs = function () {
   // Remove all but first
   for (let index = this.a_.mediaDivs.length - 1; index > 0; index--) {
     let ent = this.a_.mediaDivs[index];
-    remove_mediaDiv(ent.id);
+    this.remove_mediaDiv(ent.id);
   }
 };
 

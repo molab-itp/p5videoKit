@@ -9,7 +9,7 @@ import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 // import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
 // import { livem_restore } from '../core-ui/ui_live.js?v=413';
 // import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=413';
-// import { image_scaled_pad } from '../util/image.js?v=413';
+import { image_scaled_pad } from '../util/image.js?v=413';
 
 //
 // called by init
@@ -112,7 +112,7 @@ p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   }
   inst.prepareOutput();
   if (!eff_spec.ihide && inst.output) {
-    this.image_scaled_pad(inst.output, eff_spec.urect);
+    image_scaled_pad(inst.output, eff_spec.urect);
   }
   return inst;
 };

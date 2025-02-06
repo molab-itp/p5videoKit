@@ -73,7 +73,8 @@ p5videoKit.prototype.effectMeta_find = function (label) {
 p5videoKit.prototype.factory_prop_inits = function (factory, init_props = {}) {
   let dict = factory.meta_props;
   // console.log('factory_prop_inits dict', dict);
-  let inits = Object.assign({}, init_props);
+  let videoKit = this;
+  let inits = Object.assign({}, init_props, { videoKit });
   for (let prop in dict) {
     // eg. items = factor: [10, 50, 100 ... ]
     let items = dict[prop];

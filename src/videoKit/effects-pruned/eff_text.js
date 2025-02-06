@@ -1,4 +1,7 @@
 //
+
+import { image_scaled_pad } from '../../util/image.js?v=413';
+
 export default class eff_text {
   static meta_props = {
     size: [16, 30, 40, 45, 60, 90],

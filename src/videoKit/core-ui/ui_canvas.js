@@ -51,13 +51,14 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
 
   let icanvas_lock = window.icanvas_lock;
   icanvas_lock.checked = this.a_.canvas_size_lock;
+  let nthis = this;
   icanvas_lock.addEventListener('change', check_lock_change);
 
   function check_lock_change() {
     // console.log('icanvas_lock change this', this);
     let state = this.checked;
-    this.a_.canvas_size_lock = state ? 1 : 0;
-    this.store_set('this.a_.canvas_size_lock', this.a_.canvas_size_lock + '');
+    nthis.a_.canvas_size_lock = state ? 1 : 0;
+    nthis.store_set('this.a_.canvas_size_lock', nthis.a_.canvas_size_lock + '');
   }
 };
 

@@ -94,7 +94,7 @@ function patch_remove_at(ipatch) {
   // if (ipatch === 0) {
   //   return;
   // }
-  patch_inst_update(ipatch);
+  this.patch_inst_update(ipatch);
   this.a_.ui.patches.splice(ipatch, 1);
   this.a_.patch_instances.splice(ipatch, 1);
   this.ui_div_empty('patch_' + ipatch);
@@ -122,7 +122,7 @@ p5videoKit.prototype.patch_instances_clear_all = function () {
   // All patch instances will be re-created on next draw
   console.log('patch_instances_clear_all');
   for (let ipatch = 0; ipatch < this.a_.patch_instances.length; ipatch++) {
-    patch_inst_update(ipatch);
+    this.patch_inst_update(ipatch);
   }
   this.a_.patch_instances = [];
 };

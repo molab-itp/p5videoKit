@@ -97,7 +97,7 @@ export default class eff_face_mesh {
     this.predictions = [];
     this.iupdate = 0;
     this.videoKit.ui_message('loading model...');
-    this.facemesh = ml5.facemesh(this.video, function () {
+    this.facemesh = ml5.facemesh(this.video, () => {
       // console.log('eff_facetrian Model ready!');
 
       // Report model load time

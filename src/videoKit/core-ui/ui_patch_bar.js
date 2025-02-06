@@ -77,10 +77,11 @@ p5videoKit.prototype.ui_patch_bar = function () {
   let isettings = window.isettings;
   isettings.selectedIndex = this.a_.settings.findIndex((ent) => ent.setting === this.a_.ui.setting);
   isettings.addEventListener('change', settings_change);
+  let nthis = this;
   function settings_change() {
     let index = parseFloat(this.value);
-    let ent = this.a_.settings[index];
-    this.store_restore_from(ent);
+    let ent = nthis.a_.settings[index];
+    nthis.store_restore_from(ent);
   }
 
   // iexport

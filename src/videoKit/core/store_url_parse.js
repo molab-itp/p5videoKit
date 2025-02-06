@@ -115,24 +115,24 @@ p5videoKit.prototype.location_noquery = function () {
 };
 
 // Return current location this.a_.store_prefix
-function location_url() {
-  let loc = location_noquery();
+p5videoKit.prototype.location_url = function () {
+  let loc = this.location_noquery();
   loc += '?';
   if (this.a_.store_prefix) {
     let ustr = encodeURIComponent(this.a_.store_prefix);
     loc += 'u=' + ustr + '&';
   }
   return loc;
-}
+};
 
 p5videoKit.prototype.store_export_json = function () {
-  store_export(0);
+  this.store_export(0);
 };
 p5videoKit.prototype.store_export_url = function () {
-  store_export(1);
+  this.store_export(1);
 };
 
-function store_export(updateUrl) {
+p5videoKit.prototype.store_export = function (updateUrl) {
   this.pad_layout_update();
   // let fn = this.a_.ui.setting || 'setting';
   let fn = this.ui_save_fn();
@@ -141,13 +141,13 @@ function store_export(updateUrl) {
   // console.log('store_export str');
   // console.log(str);
   str = encodeURIComponent(str);
-  let loc = location_url();
+  let loc = this.location_url();
   loc += 'a=' + str;
   // console.log('loc', loc);
   if (updateUrl) {
     window.location = loc;
   }
-}
+};
 
 p5videoKit.prototype.store_name_restore = function () {
   let nstore = localStorage.getItem('this.a_.store_name');
@@ -158,14 +158,14 @@ p5videoKit.prototype.store_name_restore = function () {
 p5videoKit.prototype.store_name_update = function (name) {
   console.log('store_name_update', name);
   localStorage.setItem('this.a_.store_name', name);
-  let loc = location_url();
+  let loc = this.location_url();
   window.location = loc;
 };
 
 p5videoKit.prototype.store_restore_from = function (ent) {
   console.log('store_restore_from ent', ent);
-  store_save_ent(ent);
-  let loc = location_url();
+  this.store_save_ent(ent);
+  let loc = this.location_url();
   console.log('store_restore_from loc', loc);
   window.location = loc;
 };
