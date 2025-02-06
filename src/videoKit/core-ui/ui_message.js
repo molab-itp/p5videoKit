@@ -4,6 +4,9 @@ import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
 // import { ui_message as u_ui_message } from '../core-ui/ui_message.js?v=413';
 
+// for progress message from tasks like facemesh that may take time to load
+// imsg in index.html <div id="imsg" ....
+
 //
 // videoKit.ui_message(msg, opt)
 //
