@@ -44,10 +44,18 @@ p5videoKit.prototype.liveMedia_attach = function (mediaDiv) {
   console.log('liveMedia_attach room_name', room_name);
   livem = new p5LiveMedia(nthis, type, stream, room_name);
   if (!this.a_.livem) {
-    livem.on('stream', gotStream);
-    livem.on('data', gotData);
-    livem.on('disconnect', gotDisconnect);
-    livem.on('connect', gotConnect);
+    livem.on('stream', () => {
+      gotStream();
+    });
+    livem.on('data', () => {
+      gotData;
+    });
+    livem.on('disconnect', () => {
+      gotDisconnect;
+    });
+    livem.on('connect', () => {
+      gotConnect;
+    });
     this.a_.livem = livem;
     // console.log('liveMedia_attach SET this.a_.livem', this.a_.livem);
   }
@@ -64,7 +72,7 @@ p5videoKit.prototype.liveMedia_detach = function (mediaDiv) {
 let otherVideo;
 
 // We got a new stream!
-function gotStream(capture, id) {
+p5videoKit.prototype.gotStream = function (capture, id) {
   console.log('gotStream id', id);
   console.log('gotStream width', capture.width, 'height', capture.height);
   // This is just like a video/stream from createCapture(VIDEO)
@@ -77,24 +85,24 @@ function gotStream(capture, id) {
   this.create_mediaDiv(mediaDevice, { live: 1 });
   this.ui_refresh();
   // livem_send('Hello');
-}
+};
 
 // loadedmetadata
 
-function gotData(theData, id) {
+p5videoKit.prototype.gotData = function (theData, id) {
   console.log('gotData theData', theData, 'id', id);
   this.ui_chat_receive(theData, id);
-}
+};
 
-function gotDisconnect(id) {
+p5videoKit.prototype.gotDisconnect = function (id) {
   console.log('gotDisconnect id', id);
   this.ui_chat_receive('', id);
   this.remove_mediaDiv(id);
-}
+};
 
-function gotConnect(id) {
+p5videoKit.prototype.gotConnect = function (id) {
   console.log('gotConnect id', id);
-}
+};
 
 p5videoKit.prototype.livem_send = function (text) {
   console.log('livem_send text', text);

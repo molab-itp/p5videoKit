@@ -84,7 +84,7 @@ p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, is
         break;
       case 'textInput':
       case 'text_input': // legacy
-        create_textInput(ent);
+        create_textInput(this, ent);
         break;
       case 'span':
       case 'message': // legacy
@@ -92,10 +92,10 @@ p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, is
         ent.div.child(ent.elm);
         break;
       case 'slider':
-        create_slider(ent);
+        create_slider(this, ent);
         break;
       case 'selection':
-        create_selection(ent);
+        create_selection(this, ent);
         break;
       case 'prop':
         break;
@@ -137,7 +137,7 @@ function create_default_label(ent) {
   }
 }
 
-function create_textInput(ent) {
+function create_textInput(nthis, ent) {
   // console.log('createTextInput ent', ent);
   let { item, aPatch, div, prop } = ent;
   create_default_label(ent);
@@ -146,7 +146,6 @@ function create_textInput(ent) {
     oldVal = '' + item;
     aPatch.eff_props[prop] = oldVal;
   }
-  let nthis = this;
   ent.elm = createInput(oldVal).input(function () {
     let aVal = this.value();
     console.log('text_input ' + aVal);
@@ -156,7 +155,7 @@ function create_textInput(ent) {
   ent.div.child(ent.elm);
 }
 
-function create_selection(ent) {
+function create_selection(nthis, ent) {
   // console.log('create_selection ent', ent);
   let { item, aPatch, div, prop } = ent;
   create_default_label(ent);
@@ -178,7 +177,6 @@ function create_selection(ent) {
     aVal = '';
   }
   aSel.selected(aVal);
-  let nthis = this;
   aSel.changed(function () {
     let aVal = this.value();
     if (isNum) aVal = parseFloat(aVal);
@@ -190,7 +188,7 @@ function create_selection(ent) {
 
 // ent = { aPatch, div, prop, item };
 // item = {min: 0, max: 100}
-function create_slider(ent) {
+function create_slider(nthis, ent) {
   // console.log('create_slider ent', ent);
   let { item, aPatch, div, prop } = ent;
   create_default_label(ent);
@@ -212,7 +210,6 @@ function create_slider(ent) {
   let valSpan = createSpan(formatNumber(oldVal));
   // console.log('create_slider valSpan', valSpan);
   // createSlider(min, max, [value], [step])
-  let nthis = this;
   ent.elm = createSlider(min, max, oldVal, step).input(function () {
     let aVal = this.value();
     // console.log('create_slider aVal ', aVal, 'type', typeof aVal);

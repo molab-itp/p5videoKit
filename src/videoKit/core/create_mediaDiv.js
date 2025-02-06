@@ -94,7 +94,7 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
     // No live media yet, Add at end
     arr.push(ent);
     this.a_.lastMediaDivIndex = arr.length;
-    // console.log('this.a_.lastMediaDivIndex', this.a_.lastMediaDivIndex);
+    // console.log('a_.lastMediaDivIndex', this.a_.lastMediaDivIndex);
   } else {
     // For live media, add the new entry in sort order by id
     //  to keep entries in same order between reloads
@@ -106,10 +106,10 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
     }
     arr.splice(index, 0, ent);
     if (!this.a_.ui.hold_create_media_clear) {
-      console.log('this.a_.ui.hold_create_media_clear OFF');
+      console.log('a_.ui.hold_create_media_clear OFF');
       this.patch_instances_clear_all();
     } else {
-      console.log('this.a_.ui.hold_create_media_clear ON');
+      console.log('a_.ui.hold_create_media_clear ON');
     }
   }
 

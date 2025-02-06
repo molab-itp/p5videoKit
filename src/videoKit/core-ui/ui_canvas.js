@@ -32,7 +32,7 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
   icanvas_size.selectedIndex = se.index;
   // Can not use arrow funtion here to get this
   icanvas_size.addEventListener('change', canvs_size_change);
-
+  let nthis = this;
   function canvs_size_change() {
     let index = this.selectedIndex;
     // console.log('icanvas_size change this', this);
@@ -41,24 +41,23 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
     if (se.func) {
       se.func();
     } else if (se.width) {
-      this.ui_prop_set('canvas_size', se.label);
+      nthis.ui_prop_set('canvas_size', se.label);
       resizeCanvas(se.width, se.height);
     } else {
       console.log('No canvas size in se', se);
     }
-    this.ui_window_refresh();
+    nthis.ui_window_refresh();
   }
 
   let icanvas_lock = window.icanvas_lock;
   icanvas_lock.checked = this.a_.canvas_size_lock;
-  let nthis = this;
   icanvas_lock.addEventListener('change', check_lock_change);
 
   function check_lock_change() {
     // console.log('icanvas_lock change this', this);
     let state = this.checked;
     nthis.a_.canvas_size_lock = state ? 1 : 0;
-    nthis.store_set('this.a_.canvas_size_lock', nthis.a_.canvas_size_lock + '');
+    nthis.store_set('a_.canvas_size_lock', nthis.a_.canvas_size_lock + '');
   }
 };
 

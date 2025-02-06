@@ -33,12 +33,12 @@ p5videoKit.prototype.store_url_parse = async function () {
     // settings encoded as json string, if present return true to avoid other settings init
     let a_str = params['a'];
     if (a_str) {
-      uiSet = url_a_restore(a_str);
+      uiSet = this.url_a_restore(a_str);
     }
     let u_str = params['u'];
     if (u_str) {
       this.a_.store_prefix = u_str;
-      // console.log('this.a_.store_prefix', a_s.tore_prefix);
+      // console.log('a_.store_prefix', a_s.tore_prefix);
     }
     let s_str = params['s'];
     if (s_str) {
@@ -83,7 +83,7 @@ async function loadJSONAsync(url) {
   });
 }
 
-function url_a_restore(str) {
+p5videoKit.prototype.url_a_restore = function (str) {
   // decode not Needed
   // str = decodeURIComponent(str);
   if (str) {
@@ -103,7 +103,7 @@ function url_a_restore(str) {
     }
   }
   return 0;
-}
+};
 
 p5videoKit.prototype.location_noquery = function () {
   let loc = window.location.href;
@@ -150,14 +150,14 @@ p5videoKit.prototype.store_export = function (updateUrl) {
 };
 
 p5videoKit.prototype.store_name_restore = function () {
-  let nstore = localStorage.getItem('this.a_.store_name');
+  let nstore = localStorage.getItem('a_.store_name');
   if (nstore) this.a_.store_name = nstore;
   return nstore;
 };
 
 p5videoKit.prototype.store_name_update = function (name) {
   console.log('store_name_update', name);
-  localStorage.setItem('this.a_.store_name', name);
+  localStorage.setItem('a_.store_name', name);
   let loc = this.location_url();
   window.location = loc;
 };

@@ -12,39 +12,6 @@ import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 import { image_scaled_pad } from '../util/image.js?v=413';
 
 //
-// called by init
-// videoKit.setup(options)
-//
-p5videoKit.prototype.setup = async function (options) {
-  //
-  this.ui_message('loading...');
-  //
-  this.videoKit = this;
-  //
-  // this.ui_restore_store(effects, settings, (sizeResult) => {
-  let sizeResult = await this.ui_restore_store(options);
-
-  console.log('videoKit setup sizeResult', sizeResult);
-  resizeCanvas(sizeResult.width, sizeResult.height);
-
-  this.init_mediaDivs();
-
-  this.ui_create();
-
-  // console.log('this.a_.ui.hold_capture', this.a_.ui.hold_capture);
-  if (!this.a_.ui.hold_capture) {
-    // console.log('this.a_.ui.hold_capture media_enum', this.a_.ui.hold_capture);
-    this.media_enum();
-  }
-
-  this.livem_restore();
-
-  this.ui_message('');
-
-  this.a_initDone = 1;
-};
-
-//
 // called by main sketch.js draw function
 // videoKit.draw()
 //
@@ -69,6 +36,52 @@ p5videoKit.prototype.draw = function () {
     prior = this.draw_patch(ipatch, prior);
   }
   this.update_ui();
+};
+
+//
+// called by videoKit.draw once only based on this.a_initStarted
+// videoKit.init()
+//
+p5videoKit.prototype.init = async function () {
+  //
+  await this.setup(this.config);
+
+  // Report startup lapse time
+  let init_lapse = window.performance.now() - dice.startTime;
+  dice.dapi('stats', { init_lapse });
+};
+
+//
+// called by init
+// videoKit.setup(options)
+//
+p5videoKit.prototype.setup = async function (options) {
+  //
+  this.ui_message('loading...');
+  //
+  // this.videoKit = this;
+  //
+  // this.ui_restore_store(effects, settings, (sizeResult) => {
+  let sizeResult = await this.ui_restore_store(options);
+
+  console.log('videoKit setup sizeResult', sizeResult);
+  resizeCanvas(sizeResult.width, sizeResult.height);
+
+  this.init_mediaDivs();
+
+  this.ui_create();
+
+  // console.log('a_.ui.hold_capture', this.a_.ui.hold_capture);
+  if (!this.a_.ui.hold_capture) {
+    // console.log('a_.ui.hold_capture media_enum', this.a_.ui.hold_capture);
+    this.media_enum();
+  }
+
+  this.livem_restore();
+
+  this.ui_message('');
+
+  this.a_initDone = 1;
 };
 
 // {
@@ -98,7 +111,7 @@ p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   let eff_spec = uiPatch.eff_spec;
   let { eff_label, imedia } = eff_spec;
   // if (imedia >= this.a_.mediaDivs.length) {
-  //   console.log('draw_patch zeroing imedia', imedia, 'this.a_.mediaDivs.length', this.a_.mediaDivs.length);
+  //   console.log('draw_patch zeroing imedia', imedia, 'a_.mediaDivs.length', this.a_.mediaDivs.length);
   //   imedia = 0;
   // }
   let inst = this.patch_inst_create(eff_label, imedia, ipatch, eff_spec, uiPatch.eff_props);

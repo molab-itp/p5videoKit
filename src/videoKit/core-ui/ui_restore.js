@@ -113,7 +113,7 @@ p5videoKit.prototype.setting_import = function (sete, index) {
 };
 
 // function store_restore_mo_dbase_flag() {
-//   let val = store_get('this.a_.mo_dbase_flag');
+//   let val = store_get('a_.mo_dbase_flag');
 //   if (val) {
 //     this.a_.mo_dbase_flag = parseFloat(val);
 //     console.log('store_restore_mo_dbase_flag ', this.a_.mo_dbase_flag);
@@ -121,7 +121,7 @@ p5videoKit.prototype.setting_import = function (sete, index) {
 // }
 
 p5videoKit.prototype.store_restore_canvas_lock = function () {
-  let val = this.store_get('this.a_.canvas_size_lock');
+  let val = this.store_get('a_.canvas_size_lock');
   if (val) {
     this.a_.canvas_size_lock = parseFloat(val);
   }
@@ -133,7 +133,7 @@ p5videoKit.prototype.store_restore_ui = function (settings) {
   this.a_.ui.urects_count = 0;
   this.a_.ui.urects_lock = 0;
   if (settings) {
-    store_restore_settings(settings);
+    this.store_restore_settings(settings);
   } else {
     this.store_restore_store_get();
   }
@@ -155,7 +155,7 @@ p5videoKit.prototype.store_restore_settings = function (settings) {
 
 p5videoKit.prototype.store_restore_store_get = function () {
   for (let prop in this.a_.ui) {
-    let valu = this.store_get('this.a_.ui_' + prop);
+    let valu = this.store_get('a_.ui_' + prop);
     if (valu !== null) {
       valu = JSON.parse(valu);
       if (Array.isArray(valu)) {
@@ -170,10 +170,10 @@ p5videoKit.prototype.store_restore_store_get = function () {
 };
 
 p5videoKit.prototype.store_restore_ver = function () {
-  let ver = this.store_get('this.a_.store_ver');
+  let ver = this.store_get('a_.store_ver');
   if (ver !== this.a_.store_ver) {
     console.log('store_restore_ver reset ver=' + ver);
-    this.store_set('this.a_.store_ver', this.a_.store_ver);
+    this.store_set('a_.store_ver', this.a_.store_ver);
     // Version diff, clear out all properties
     for (let prop in this.a_.ui) {
       this.store_remove(prop);

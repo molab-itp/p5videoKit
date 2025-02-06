@@ -84,6 +84,7 @@ let a_config = {
     { label: 'skin-tone-guest', import_path: 'settings/skin-tone-guest.json' },
     { label: 'skin-tone-main-qr', import_path: 'settings/skin-tone-main-qr.json' },
     { label: 'slit scan circle', import_path: 'settings/slit scan circle.json' },
+    { label: 'slitscan-mazespin', import_path: 'settings/slitscan-mazespin.json' },
     { label: 'test-pattern-maze_sping-truchet', import_path: 'settings/test-pattern-maze_sping-truchet.json' },
     { label: 'videoKit', import_path: 'settings/videoKit.json' },
     { label: 'bbtest', import_path: 'settings/bbtest.json' },

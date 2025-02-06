@@ -12,19 +12,6 @@ export function p5videoKit_init(config, p5_instance = p5.instance) {
 globalThis.p5videoKit_init = p5videoKit_init;
 // p5videoKit_init explict global needed for browser non-module reference
 
-//
-// called by videoKit.draw once only based on this.a_initStarted
-// videoKit.init()
-//
-p5videoKit.prototype.init = async function () {
-  //
-  await this.setup(this.config);
-
-  // Report startup lapse time
-  let init_lapse = window.performance.now() - dice.startTime;
-  dice.dapi('stats', { init_lapse });
-};
-
 import '../a/a_setup.js?v=413';
 import '../a/createEffect.js?v=413';
 import '../a/createEffect.js?v=413';

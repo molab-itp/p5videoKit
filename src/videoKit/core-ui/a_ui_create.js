@@ -84,8 +84,8 @@ p5videoKit.prototype.ui_top_pane = function () {
     //   console.log('mo_dbase_change change this', this);
     //   let state = this.checked;
     //   this.a_.mo_dbase_flag = state ? 1 : 0;
-    //   store_set('this.a_.mo_dbase_flag', this.a_.mo_dbase_flag + '');
-    //   // store_set('this.a_.canvas_size_lock', this.a_.canvas_size_lock + '');
+    //   store_set('a_.mo_dbase_flag', this.a_.mo_dbase_flag + '');
+    //   // store_set('a_.canvas_size_lock', this.a_.canvas_size_lock + '');
     // }
     // store_restore_mo_dbase_flag
     // window.isave

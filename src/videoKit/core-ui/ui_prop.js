@@ -9,7 +9,7 @@ import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 p5videoKit.prototype.ui_prop_set = function (prop, value) {
   this.a_.ui[prop] = value;
   let str = JSON.stringify([value]);
-  this.store_set('this.a_.ui_' + prop, str);
+  this.store_set('a_.ui_' + prop, str);
 };
 
 // Get or set a ui property that's stored into local storage
@@ -19,7 +19,7 @@ function ui_prop_ref(prop, value) {
   } else {
     this.a_.ui[prop] = value;
     let str = JSON.stringify([value]);
-    this.store_set('this.a_.ui_' + prop, str);
+    this.store_set('a_.ui_' + prop, str);
   }
 }
 

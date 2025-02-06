@@ -57,11 +57,12 @@ p5videoKit.prototype.ui_patch_bar = function () {
   let ilayout = window.ilayout;
   ilayout.selectedIndex = layout_options.findIndex((ent) => ent === this.a_.ui.patch_layout);
   ilayout.addEventListener('change', layout_change);
+  let nthis = this;
   function layout_change() {
     console.log('layout_change');
-    this.ui_prop_set('patch_layout', this.value);
-    pad_layout_update();
-    this.patch_instances_clear_all();
+    nthis.ui_prop_set('patch_layout', this.value);
+    nthis.pad_layout_update();
+    nthis.patch_instances_clear_all();
   }
 
   // this.a_.ui.back_color
@@ -70,14 +71,13 @@ p5videoKit.prototype.ui_patch_bar = function () {
   iback_color.addEventListener('change', back_color_change);
   function back_color_change() {
     let valu = parseFloat(this.value);
-    this.ui_prop_set('back_color', valu);
+    nthis.ui_prop_set('back_color', valu);
   }
 
   // this.a_.ui.setting
   let isettings = window.isettings;
   isettings.selectedIndex = this.a_.settings.findIndex((ent) => ent.setting === this.a_.ui.setting);
   isettings.addEventListener('change', settings_change);
-  let nthis = this;
   function settings_change() {
     let index = parseFloat(this.value);
     let ent = nthis.a_.settings[index];
@@ -86,12 +86,12 @@ p5videoKit.prototype.ui_patch_bar = function () {
 
   // iexport
   window.iexport.addEventListener('mousedown', function () {
-    this.store_export_json();
+    nthis.store_export_json();
   });
 
   // ixurl named to avoid spurious warning
   window.ixurl.addEventListener('mousedown', function () {
-    this.store_export_url();
+    nthis.store_export_url();
   });
 };
 
