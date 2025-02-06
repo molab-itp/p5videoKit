@@ -57,7 +57,7 @@ p5videoKit.prototype.ui_div_empty = function (id) {
 };
 
 p5videoKit.prototype.ui_hide = function () {
-  this.a_.my_canvas.elt.style.cursor = 'none';
+  this.my_canvas.elt.style.cursor = 'none';
   let m = select('main').elt;
   while (m.nextSibling) {
     // elt.nodeName VIDEO

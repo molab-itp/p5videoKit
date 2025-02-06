@@ -78,7 +78,7 @@ p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, is
         ent.div.child(createSpan(' '));
         let label = ent.defaultLabel || prop;
         ent.elm = createButton(label).mousePressed(() => {
-          button_action(item, aPatch);
+          this.button_action(item, aPatch);
         });
         ent.div.child(ent.elm);
         break;
@@ -122,6 +122,11 @@ p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, is
   }
 };
 
+p5videoKit.prototype.button_action = function (item, aPatch) {
+  let inst = this.a_.patch_instances[aPatch.eff_spec.ipatch];
+  item(inst, aPatch);
+};
+
 function create_default_label(ent) {
   let { div, prop, defaultLabel } = ent;
   defaultLabel = defaultLabel || prop;
@@ -146,7 +151,7 @@ function create_textInput(ent) {
     let aVal = this.value();
     console.log('text_input ' + aVal);
     aPatch.eff_props[prop] = aVal;
-    this.ui_patch_update(aPatch);
+    nthis.ui_patch_update(aPatch);
   });
   ent.div.child(ent.elm);
 }
@@ -222,9 +227,4 @@ function create_slider(ent) {
 function formatNumber(num) {
   let prec = 1000;
   return int(num * prec) / prec;
-}
-
-function button_action(item, aPatch) {
-  let inst = this.a_.patch_instances[aPatch.eff_spec.ipatch];
-  item(inst, aPatch);
 }

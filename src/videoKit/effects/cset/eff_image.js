@@ -110,7 +110,7 @@ export default class eff_image_show {
     this.zoom_init();
     this.align_center = this.image_align === 'center';
     // console.log('eff_image_show pad', this.eff_spec.urect);
-    this.a_.my_canvas.mousePressed(() => {
+    this.videoKit.my_canvas.mousePressed(() => {
       this.mousePressed();
     });
     this.output = createGraphics(this.eff_spec.urect.width, this.eff_spec.urect.height);
@@ -271,17 +271,17 @@ export default class eff_image_show {
     if (!aPatch.eff_props.iimage) aPatch.eff_props.iimage = 0;
     aPatch.eff_props.iimage = (aPatch.eff_props.iimage + 1) % this.images.length;
     // if (aPatch.eff_props.iimage < 0 || aPatch.eff_props.iimage >= this.images.length - 1) aPatch.eff_props.iimage = 0;
-    this.ui_patch_update(aPatch);
+    this.videoKit.ui_patch_update(aPatch);
   }
   previous_action(aPatch) {
     if (!aPatch.eff_props.iimage) aPatch.eff_props.iimage = 0;
     aPatch.eff_props.iimage--;
     // if (aPatch.eff_props.iimage < 0) aPatch.eff_props.iimage = this.images.length - 1;
-    this.ui_patch_update(aPatch);
+    this.videoKit.ui_patch_update(aPatch);
   }
   reset_action(aPatch) {
     delete aPatch.iimage;
-    this.ui_patch_update(aPatch);
+    this.videoKit.ui_patch_update(aPatch);
   }
   period_next() {
     if (!this.iimage) this.iimage = 0;

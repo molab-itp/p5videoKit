@@ -179,7 +179,7 @@ p5videoKit.prototype.init_mediaDivs = function () {
   this.a_.mediaDivs = [
     {
       label: 'Canvas',
-      capture: this.a_.my_canvas,
+      capture: this.my_canvas,
       ready: function () {
         return 1;
       },

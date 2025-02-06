@@ -19,8 +19,7 @@ p5videoKit.prototype.setup = async function (options) {
   //
   this.ui_message('loading...');
   //
-  this.a_.videoKit = this;
-  this.a_.my_canvas = this.my_canvas;
+  this.videoKit = this;
   //
   // this.ui_restore_store(effects, settings, (sizeResult) => {
   let sizeResult = await this.ui_restore_store(options);
