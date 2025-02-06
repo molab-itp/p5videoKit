@@ -1,5 +1,6 @@
 {
-  "setting": "",
+  "setting": "slitscan-mazespin",
+  "comment": "slitscan-mazespin",
   "back_color": 1,
   "room_name": "VideoKit-Room-1",
   "patch_layout": "Single",

@@ -7,8 +7,6 @@ import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 // import { ui_refresh } from '../core-ui/ui_patch_bar.js?v=413';
 // import { ui_chat_receive } from '../core-ui/ui_chat.js?v=413';
 
-// let a_livem;
-
 p5videoKit.prototype.liveMedia_attach = function (mediaDiv) {
   // console.log('liveMedia_attach mediaDiv=', mediaDiv);
   let type;
@@ -35,28 +33,32 @@ p5videoKit.prototype.liveMedia_attach = function (mediaDiv) {
     console.log('liveMedia_attach livem', livem);
     return;
   }
+  //
+  // 'this' refers to pre-class based p5videoKit
   // console.log('liveMedia_attach this=', this);
   // console.log('liveMedia_attach type=' + type + ' this.a_.ui.room_name=' + this.a_.ui.room_name);
   // this is nulll in modules
-  let nthis = this || window;
-  console.log('liveMedia_attach this', this, 'nthis', nthis);
-  let room_name = this.a_.videoKit.room_name_prefix + this.a_.ui.room_name;
+  //
+  let nthis = this;
+  let gthis = globalThis || window;
+  console.log('liveMedia_attach this', this, 'gthis', gthis);
+  let room_name = this.room_name_prefix + this.a_.ui.room_name;
   console.log('liveMedia_attach room_name', room_name);
-  livem = new p5LiveMedia(nthis, type, stream, room_name);
-  if (!this.a_.livem) {
-    livem.on('stream', () => {
-      gotStream();
+  livem = new p5LiveMedia(gthis, type, stream, room_name);
+  if (!nthis.a_.livem) {
+    livem.on('stream', function (capture, id) {
+      nthis.gotStream(capture, id);
     });
-    livem.on('data', () => {
-      gotData;
+    livem.on('data', function (theData, id) {
+      nthis.gotData(theData, id);
     });
-    livem.on('disconnect', () => {
-      gotDisconnect;
+    livem.on('disconnect', function (id) {
+      nthis.gotDisconnect(id);
     });
-    livem.on('connect', () => {
-      gotConnect;
+    livem.on('connect', function (id) {
+      nthis.gotConnect(id);
     });
-    this.a_.livem = livem;
+    nthis.a_.livem = livem;
     // console.log('liveMedia_attach SET this.a_.livem', this.a_.livem);
   }
   mediaDiv.livem = livem;
@@ -69,14 +71,14 @@ p5videoKit.prototype.liveMedia_detach = function (mediaDiv) {
 };
 
 // For debugging
-let otherVideo;
+globalThis.otherVideo = 0;
 
 // We got a new stream!
 p5videoKit.prototype.gotStream = function (capture, id) {
   console.log('gotStream id', id);
   console.log('gotStream width', capture.width, 'height', capture.height);
   // This is just like a video/stream from createCapture(VIDEO)
-  otherVideo = capture;
+  globalThis.otherVideo = capture;
   //otherVideo.id and id are the same and unique identifiers
   capture.elt.muted = true;
   let stream = capture.elt.srcObject;
