@@ -6,6 +6,7 @@ import { a_init } from '../core/a_init.js';
 //
 export class p5videoKit {
   constructor(config, p5_instance) {
+    //
     // console.log('p5videoKit p5_instance', p5_instance);
     // To work in p5 instance mode we need to use this.p5_instance on all p5 globals
     //

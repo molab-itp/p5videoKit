@@ -27,28 +27,7 @@
       let a_start_now = window.performance.now();
     </script>
 
-    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> 
-    jht doesn't want clutter of external css file
-    hence the minimal css inside this file
-    -->
-    <style>
-      @media only screen and (max-width: 600px) {
-        body,
-        button,
-        select,
-        input {
-          font-size: 4vw;
-        }
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      canvas {
-        display: block;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="utf-8" />
   </head>
 
@@ -60,10 +39,13 @@
 
     <script type="module" src="./videoKit/a/a_lib.js?v={{vers}}"></script>
 
+    <!-- firebase cloud services library -->
     <script type="module" src="https://unpkg.com/itp-molib@0.2.16/dist/moLib.esm.js?v=413"></script>
 
     <script src="setup_dbase.js?v={{vers}}"></script>
     <script src="sketch.js?v={{vers}}"></script>
-    <!-- <div id="imsg" style="font-size: 7vw; display: none"></div> -->
+
+    <!-- for progress message from tasks like facemesh that may take time to load -->
+    <div id="imsg" style="font-size: 7vw; display: none"></div>
   </body>
 </html>
