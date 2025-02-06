@@ -73,14 +73,14 @@ export default class eff_tile_live {
     if (!this.livem_cycle) return;
     let ipatch = this.eff_spec.ipatch;
     // console.log('livem_step ipatch', ipatch);
-    let uiPatch = this.a_.ui.patches[ipatch];
+    let uiPatch = this.videoKit.a_.ui.patches[ipatch];
     let imedia = uiPatch.eff_spec.imedia;
-    if (imedia >= this.a_.mediaDivs.length) {
+    if (imedia >= this.videoKit.a_.mediaDivs.length) {
       imedia = this.ifirst;
     }
-    imedia = (imedia + 1) % this.a_.mediaDivs.length;
+    imedia = (imedia + 1) % this.videoKit.a_.mediaDivs.length;
     if (imedia < this.ifirst) imedia = this.ifirst;
-    if (imedia >= this.a_.mediaDivs.length) imedia = uiPatch.eff_spec.imedia;
+    if (imedia >= this.videoKit.a_.mediaDivs.length) imedia = uiPatch.eff_spec.imedia;
     let change = uiPatch.eff_spec.imedia !== imedia;
     if (change) {
       // console.log('livem_step draw_step old imedia', uiPatch.eff_spec.imedia, 'new', imedia);
@@ -91,12 +91,12 @@ export default class eff_tile_live {
   }
   check_mediaDivs() {
     let omp_len = this.old_mediaDivs_length;
-    if (omp_len != this.a_.mediaDivs.length) {
-      this.old_mediaDivs_length = this.a_.mediaDivs.length;
+    if (omp_len != this.videoKit.a_.mediaDivs.length) {
+      this.old_mediaDivs_length = this.videoKit.a_.mediaDivs.length;
       // 0 = Canvas
       // 1 = local camera
       // 2 = first livemedia source
-      let nsrc = this.a_.mediaDivs.length - this.ifirst;
+      let nsrc = this.videoKit.a_.mediaDivs.length - this.ifirst;
       // if (nsrc <= 1) {
       //   this.cells = [1, 1];
       // } else if (nsrc <= 2) {
@@ -147,21 +147,21 @@ export default class eff_tile_live {
   draw_all() {
     this.check_mediaDivs();
     let ipatch = this.eff_spec.ipatch;
-    let uiPatch = this.a_.ui.patches[ipatch];
-    let imedia = uiPatch.eff_spec.imedia % this.a_.mediaDivs.length;
+    let uiPatch = this.videoKit.a_.ui.patches[ipatch];
+    let imedia = uiPatch.eff_spec.imedia % this.videoKit.a_.mediaDivs.length;
     if (imedia != uiPatch.eff_spec.imedia) {
       return;
     }
-    let more = this.a_.mediaDivs.length - this.ifirst;
+    let more = this.videoKit.a_.mediaDivs.length - this.ifirst;
     let input = this.input;
     let savex = this.x;
     let savey = this.y;
     let nimedia = imedia;
     while (more > 0) {
       this.draw_single(input);
-      nimedia = (nimedia + 1) % this.a_.mediaDivs.length;
+      nimedia = (nimedia + 1) % this.videoKit.a_.mediaDivs.length;
       if (nimedia < this.ifirst) nimedia = this.ifirst;
-      let media = this.a_.mediaDivs[nimedia];
+      let media = this.videoKit.a_.mediaDivs[nimedia];
       input = media.capture;
       //more = nimedia != imedia;
       more--;

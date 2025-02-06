@@ -50,7 +50,7 @@ export default class eff_pose_net {
 
     this.videoKit.ui_message('loading model...');
     let options = { flipHorizontal: this.hflip, maxPoseDetections: this.ndetect };
-    this.poseNet = ml5.poseNet(this.video, options, function () {
+    this.poseNet = ml5.poseNet(this.video, options, () => {
       // console.log('eff_pose_net Model ready!');
       this.videoKit.ui_message('');
     });
