@@ -1,19 +1,20 @@
 //
 //
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { create_mediaDiv, remove_mediaDivs } from '../core/create_mediaDiv.js?v=413';
-import { get_capture_size } from '../core-ui/ui_capture.js?v=413';
-import { livem_restore } from '../core-ui/ui_live.js?v=413';
-import { ui_refresh } from '../core-ui/ui_patch_bar.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
+// import { create_mediaDiv, remove_mediaDivs } from '../core/create_mediaDiv.js?v=413';
+// import { get_capture_size } from '../core-ui/ui_capture.js?v=413';
+// import { livem_restore } from '../core-ui/ui_live.js?v=413';
+// import { ui_refresh } from '../core-ui/ui_patch_bar.js?v=413';
 
-export let a_mediaDevices = [];
+// export let a_mediaDevices = [];
 
 // mediaDevice
 //  { label, deviceId, capture, stream }
 
-export function media_enum() {
-  a_mediaDevices = [];
+p5videoKit.prototype.media_enum = function () {
+  this.a_.mediaDevices = [];
   if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
     console.log('enumerateDevices() not supported.');
     return;
@@ -21,8 +22,8 @@ export function media_enum() {
   // List cameras and microphones.
   navigator.mediaDevices
     .enumerateDevices()
-    .then(function (devices) {
-      devices.forEach(function (device) {
+    .then((devices) => {
+      devices.forEach((device) => {
         // console.log('device', device);
         // console.log(
         //   device.kind + ': ' + device.label + ' id=|' + device.deviceId + '|'
@@ -34,59 +35,59 @@ export function media_enum() {
           if (!deviceId) {
             label = 'No-id-' + random();
           }
-          a_mediaDevices.push({ label, deviceId });
+          this.a_.mediaDevices.push({ label, deviceId });
         }
       });
       // console.log('a_mediaDevices', a_mediaDevices);
-      create_mediaDevices();
+      this.create_mediaDevices();
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.log(err.name + ': ' + err.message);
     });
-}
+};
 
-export function media_reset() {
+p5videoKit.prototype.media_reset = function () {
   console.log('media_reset');
-  remove_mediaDivs();
-  media_enum();
-}
+  this.remove_mediaDivs();
+  this.media_enum();
+};
 
-function create_mediaDevices() {
-  for (let mediaDevice of a_mediaDevices) {
-    init_device_capture(mediaDevice);
-    create_mediaDiv(mediaDevice, { live: 0 });
+p5videoKit.prototype.create_mediaDevices = function () {
+  for (let mediaDevice of this.a_.mediaDevices) {
+    this.init_device_capture(mediaDevice);
+    this.create_mediaDiv(mediaDevice, { live: 0 });
   }
-  ui_refresh();
+  this.ui_refresh();
+};
 
-  function init_device_capture(mediaDevice) {
-    let vcap = {
-      audio: true,
-      video: {
-        deviceId: { exact: mediaDevice.deviceId },
-      },
-    };
-    let dim = get_capture_size();
-    if (dim && dim.width && dim.height) {
-      vcap.video.width = { exact: dim.width };
-      vcap.video.height = { exact: dim.height };
-    }
-    console.log('create_mediaDevices dim', dim);
-    console.log('create_mediaDevices vcap', vcap);
-    let capture = createCapture(vcap, function (stream) {
-      mediaDevice.stream = stream;
-      livem_restore();
-    });
-    console.log('create_mediaDevices capture width height', capture.width, capture.height);
-    capture.elt.muted = true;
-    mediaDevice.capture = capture;
+p5videoKit.prototype.init_device_capture = function (mediaDevice) {
+  let vcap = {
+    audio: true,
+    video: {
+      deviceId: { exact: mediaDevice.deviceId },
+    },
+  };
+  let dim = this.get_capture_size();
+  if (dim && dim.width && dim.height) {
+    vcap.video.width = { exact: dim.width };
+    vcap.video.height = { exact: dim.height };
   }
-}
+  console.log('create_mediaDevices dim', dim);
+  console.log('create_mediaDevices vcap', vcap);
+  let capture = createCapture(vcap, (stream) => {
+    mediaDevice.stream = stream;
+    this.livem_restore();
+  });
+  console.log('create_mediaDevices capture width height', capture.width, capture.height);
+  capture.elt.muted = true;
+  mediaDevice.capture = capture;
+};
 
 // Save image of each media device = camera or live stream
 function save_others(fn) {
-  // a_.ui.patches.imedia
+  // this.a_.ui.patches.imedia
   let imd = {};
-  for (let ent of a_.ui.patches) {
+  for (let ent of this.a_.ui.patches) {
     let imedia = ent.eff_spec.imedia;
     if (imd[imedia]) {
       continue;
@@ -98,7 +99,7 @@ function save_others(fn) {
 
 function save_other(fn, imedia) {
   console.log('save_other idev', imedia);
-  let vent = a_.mediaDivs[imedia];
+  let vent = this.a_.mediaDivs[imedia];
   if (!vent) return;
   let vin = vent.capture;
   if (!vin) return;

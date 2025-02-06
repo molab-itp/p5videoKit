@@ -1,7 +1,7 @@
 //
 //
 
-import { ui_message } from '../../core-ui/ui_prop.js?v=413';
+// import { ui_message } from '../../core-ui/ui_prop.js?v=413';
 import { image_copy_to } from '../../util/image.js?v=413';
 
 export default class eff_pose_net {
@@ -48,11 +48,11 @@ export default class eff_pose_net {
       this.init_input = this.input;
     }
 
-    ui_message('loading model...');
+    this.videoKit.ui_message('loading model...');
     let options = { flipHorizontal: this.hflip, maxPoseDetections: this.ndetect };
     this.poseNet = ml5.poseNet(this.video, options, function () {
       // console.log('eff_pose_net Model ready!');
-      ui_message('');
+      this.videoKit.ui_message('');
     });
     this.poseNet.on('pose', (results) => {
       // console.log('eff_pose_net pose results.length', results.length);

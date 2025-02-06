@@ -1,7 +1,8 @@
-import { a_ } from '../let/a_state.js?v=413';
+//
+// import { a_ } from '../let/a_state.js?v=413';
 
 export class PadLayout {
-  constructor() {
+  constructor(a_) {
     this.tiled = a_.ui.patch_layout !== 'Single';
     let iurect = { width, height, x0: 0, y0: 0 };
     this.io = Object.assign({}, iurect);

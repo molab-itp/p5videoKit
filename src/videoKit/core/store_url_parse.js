@@ -1,10 +1,11 @@
 //
 //
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
-import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-import { ui_save_fn } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
+// import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
+// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
+// import { ui_save_fn } from '../core-ui/ui_tools.js?v=413';
 
 // Are we setting up store from our url query?
 // url parm
@@ -14,8 +15,7 @@ import { ui_save_fn } from '../core-ui/ui_tools.js?v=413';
 //  al/d = settings from json file
 //  h = 0/1, explicit setting for hide ui
 //
-export async function store_url_parse() {
-  // export async function store_url_parse(urlResult) {
+p5videoKit.prototype.store_url_parse = async function () {
   let uiSet = 0;
   let settings;
   let loc = window.location.href;
@@ -28,7 +28,7 @@ export async function store_url_parse() {
 
     let hide_option = params.hide;
     if (hide_option) {
-      a_.hide_ui_option = parseFloat(hide_option);
+      this.a_.hide_ui_option = parseFloat(hide_option);
     }
     // settings encoded as json string, if present return true to avoid other settings init
     let a_str = params['a'];
@@ -37,24 +37,24 @@ export async function store_url_parse() {
     }
     let u_str = params['u'];
     if (u_str) {
-      a_.store_prefix = u_str;
-      // console.log('a_.store_prefix', a_s.tore_prefix);
+      this.a_.store_prefix = u_str;
+      // console.log('this.a_.store_prefix', a_s.tore_prefix);
     }
     let s_str = params['s'];
     if (s_str) {
       console.log('store_url_parse s_str', s_str);
-      let ent = a_.settings.find((ent) => ent.setting === s_str);
+      let ent = this.a_.settings.find((ent) => ent.setting === s_str);
       settings = ent;
       console.log('store_url_parse settings', settings);
-      a_.hideui = 1;
+      this.a_.hideui = 1;
     }
     let h_str = params['h'];
     if (h_str) {
-      a_.hideui = parseFloat(h_str);
+      this.a_.hideui = parseFloat(h_str);
     }
     let c_str = params['c'];
     if (c_str) {
-      a_.chat_name = c_str;
+      this.a_.chat_name = c_str;
     }
     // ?d=settings-sound/face-graph.json
     // ?d=settings-sound/face-posenet.json
@@ -74,7 +74,7 @@ export async function store_url_parse() {
   }
   // console.log('store_url_parse returning settings', settings);
   return { uiSet, settings };
-}
+};
 
 async function loadJSONAsync(url) {
   console.log('loadJSONAsync url', url);
@@ -94,10 +94,10 @@ function url_a_restore(str) {
       // console.log('store_url_parse parse failed');
     } else {
       // console.log('store_url_parse ui', ui);
-      a_.ui = ui;
+      this.a_.ui = ui;
       // Reflect url parameters in local storage
-      for (let prop in a_.ui) {
-        ui_prop_set(prop, a_.ui[prop]);
+      for (let prop in this.a_.ui) {
+        this.ui_prop_set(prop, this.a_.ui[prop]);
       }
       return 1;
     }
@@ -105,39 +105,39 @@ function url_a_restore(str) {
   return 0;
 }
 
-export function location_noquery() {
+p5videoKit.prototype.location_noquery = function () {
   let loc = window.location.href;
   let ii = loc.indexOf('?');
   if (ii >= 0) {
     loc = loc.substring(0, ii);
   }
   return loc;
-}
+};
 
-// Return current location a_.store_prefix
+// Return current location this.a_.store_prefix
 function location_url() {
   let loc = location_noquery();
   loc += '?';
-  if (a_.store_prefix) {
-    let ustr = encodeURIComponent(a_.store_prefix);
+  if (this.a_.store_prefix) {
+    let ustr = encodeURIComponent(this.a_.store_prefix);
     loc += 'u=' + ustr + '&';
   }
   return loc;
 }
 
-export function store_export_json() {
+p5videoKit.prototype.store_export_json = function () {
   store_export(0);
-}
-export function store_export_url() {
+};
+p5videoKit.prototype.store_export_url = function () {
   store_export(1);
-}
+};
 
 function store_export(updateUrl) {
-  pad_layout_update();
-  // let fn = a_.ui.setting || 'setting';
-  let fn = ui_save_fn();
-  saveJSON(a_.ui, fn);
-  let str = JSON.stringify(a_.ui);
+  this.pad_layout_update();
+  // let fn = this.a_.ui.setting || 'setting';
+  let fn = this.ui_save_fn();
+  saveJSON(this.a_.ui, fn);
+  let str = JSON.stringify(this.a_.ui);
   // console.log('store_export str');
   // console.log(str);
   str = encodeURIComponent(str);
@@ -149,30 +149,30 @@ function store_export(updateUrl) {
   }
 }
 
-export function store_name_restore() {
-  let nstore = localStorage.getItem('a_.store_name');
-  if (nstore) a_.store_name = nstore;
+p5videoKit.prototype.store_name_restore = function () {
+  let nstore = localStorage.getItem('this.a_.store_name');
+  if (nstore) this.a_.store_name = nstore;
   return nstore;
-}
+};
 
-export function store_name_update(name) {
+p5videoKit.prototype.store_name_update = function (name) {
   console.log('store_name_update', name);
-  localStorage.setItem('a_.store_name', name);
+  localStorage.setItem('this.a_.store_name', name);
   let loc = location_url();
   window.location = loc;
-}
+};
 
-export function store_restore_from(ent) {
+p5videoKit.prototype.store_restore_from = function (ent) {
   console.log('store_restore_from ent', ent);
   store_save_ent(ent);
   let loc = location_url();
   console.log('store_restore_from loc', loc);
   window.location = loc;
-}
-globalThis.store_restore_from = store_restore_from;
+};
+// globalThis.store_restore_from = store_restore_from;
 
-export function store_save_ent(ent) {
-  if (a_.canvas_size_lock) {
+p5videoKit.prototype.store_save_ent = function (ent) {
+  if (this.a_.canvas_size_lock) {
     // Canvas size is locked
     // Save reference pad per patch before we save in local storage
     console.log('store_save_ent ent', ent);
@@ -185,26 +185,26 @@ export function store_save_ent(ent) {
   // Save settings to local storage
   for (let prop in ent) {
     let nprop = prop;
-    if (a_.canvas_size_lock) {
+    if (this.a_.canvas_size_lock) {
       if (prop === 'canvas_size') {
-        // ui.canvas_size is replaced by a_.ui.canvas_resize_ref
+        // ui.canvas_size is replaced by this.a_.ui.canvas_resize_ref
         // to enable scaling relative to original canvas size
         nprop = 'canvas_resize_ref';
       } else if (prop === 'canvas_resize_ref') {
         continue;
       }
     }
-    ui_prop_set(nprop, ent[prop]);
+    this.ui_prop_set(nprop, ent[prop]);
   }
-  if (a_.canvas_size_lock) {
+  if (this.a_.canvas_size_lock) {
     // Force pad_layout_update
-    ui_prop_set('urects_count', 0);
+    this.ui_prop_set('urects_count', 0);
   } else {
     // Canvas is not locked
-    // clear a_.ui.canvas_resize_ref to prevent scaling
-    ui_prop_set('canvas_resize_ref', '');
+    // clear this.a_.ui.canvas_resize_ref to prevent scaling
+    this.ui_prop_set('canvas_resize_ref', '');
   }
-}
+};
 
 // "patches": [
 //   {

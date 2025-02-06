@@ -1,179 +1,173 @@
 //
 //
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { ui_div_empty } from '../core-ui/ui_tools.js?v=413';
-import { effectMeta_find } from '../core/effectMeta.js?v=413';
-import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
-import { patch_remove_ipatch, patch_update_effIndex } from '../a/patch_inst.js?v=413';
-import { patch_create_other } from '../core-ui/ui_patch_create.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
+// import { effectMeta_find } from '../core/effectMeta.js?v=413';
+// import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
+// import { patch_remove_ipatch, patch_update_effIndex } from '../a/patch_inst.js?v=413';
+// import { patch_create_other } from '../core-ui/ui_patch_create.js?v=413';
 
-export function ui_patch_eff_panes() {
+// import { ui_div_empty } from '../core-ui/ui_tools.js?v=413';
+
+p5videoKit.prototype.ui_patch_eff_panes = function () {
   //
-  // if (a_.hide_ui_option) return;
+  // if (this.a_.hide_ui_option) return;
+  let droot = this.ui_div_empty('ipatch_eff');
+  for (let ipatch = 0; ipatch < this.a_.ui.patches.length; ipatch++) {
+    this.create_patch(droot, ipatch);
+  }
+};
 
-  let droot = ui_div_empty('ipatch_eff');
-  for (let ipatch = 0; ipatch < a_.ui.patches.length; ipatch++) {
-    create_patch(ipatch);
+p5videoKit.prototype.create_patch = function (droot, ipatch) {
+  let div = this.ui_div_empty('patch_' + ipatch);
+  droot.child(div);
+  let aPatch = this.a_.ui.patches[ipatch];
+  if (!aPatch.eff_props) {
+    aPatch.eff_props = {};
+  }
+  // this.a_.ui.patches: [{ eff_spec: { ipatch: 0, imedia: 1, eff_label: 'show' } }],
+
+  this.create_patch_selection(aPatch, ipatch, div);
+
+  this.create_media_selection(aPatch, div);
+
+  this.create_checkbox(aPatch, div, 'pipe', 'ipipe');
+
+  this.create_checkbox(aPatch, div, 'hide', 'ihide');
+
+  this.create_remove_patch(ipatch, div);
+
+  this.create_settings(aPatch, div);
+};
+
+p5videoKit.prototype.create_remove_patch = function (ipatch, div) {
+  let btn = createButton('Remove').mousePressed(function () {
+    this.patch_remove_ipatch(ipatch);
+  });
+  div.child(btn);
+};
+
+p5videoKit.prototype.create_checkbox = function (aPatch, div, label, prop) {
+  let chk = createCheckbox(label, aPatch.eff_spec[prop]);
+  div.child(chk);
+  chk.style('display:inline');
+  let nthis = this;
+  chk.changed(function () {
+    let state = this.checked() ? 1 : 0;
+    aPatch.eff_spec[prop] = state;
+    nthis.ui_patch_update(aPatch);
+  });
+};
+
+p5videoKit.prototype.create_patch_selection = function (aPatch, ipatch, div) {
+  let span = createSpan(`Effect${ipatch + 1}: `);
+  div.child(span);
+  let aSel = createSelect();
+  div.child(aSel);
+  // let lastGroup;
+  for (let ii = 0; ii < this.a_.effectMetas.length; ii++) {
+    let ent = this.a_.effectMetas[ii];
+    let label = ent.ui_label || ent.label;
+    let isel = ii;
+    if (ent.ui_label) {
+      isel = ii;
+      label = ent.ui_label;
+    } else {
+      isel = -1;
+      label = ent.label;
+    }
+    aSel.option(label, ii);
+  }
+  let effIndex = this.effectMeta_find(aPatch.eff_spec.eff_label).index;
+  aSel.selected(effIndex);
+  let nthis = this;
+  aSel.changed(function () {
+    let effIndex = parseFloat(this.value());
+    if (effIndex >= 0) {
+      nthis.patch_update_effIndex(aPatch, effIndex);
+    }
+  });
+};
+
+p5videoKit.prototype.create_media_selection = function (aPatch, div) {
+  // let span = createSpan(` Device${ipatch}: `);
+  let span = createSpan(` Source: `);
+  div.child(span);
+  let aSel = createSelect();
+  div.child(aSel);
+  for (let ii = 0; ii < this.a_.mediaDivs.length; ii++) {
+    aSel.option(this.a_.mediaDivs[ii].label, ii);
+  }
+  aSel.selected(aPatch.eff_spec.imedia);
+  let nthis = this;
+  aSel.changed(function () {
+    let ii = this.value();
+    aPatch.eff_spec.imedia = parseFloat(ii);
+    nthis.ui_patch_update(aPatch);
+  });
+};
+
+p5videoKit.prototype.create_settings = function (aPatch, div) {
+  // console.log('create_settings aPatch', aPatch);
+  let effMeta = this.effectMeta_find(aPatch.eff_spec.eff_label);
+  if (effMeta.factory) {
+    this.create_ui_for_meta(div, effMeta.factory.meta_props);
+  } else {
+    console.log('create_settings MISSING factory effMeta', effMeta);
   }
 
-  function create_patch(ipatch) {
-    let div = ui_div_empty('patch_' + ipatch);
-    droot.child(div);
+  // Get props for imported module via import_factory
+  // if (aPatch.import_factory) {
+  //   create_ui_for_meta(aPatch.import_factory.meta_props);
+  // }
+  this.div_break(div);
+  this.div_break(div);
+};
 
-    let aPatch = a_.ui.patches[ipatch];
-    if (!aPatch.eff_props) {
-      aPatch.eff_props = {};
+p5videoKit.prototype.create_ui_for_meta = function (div, meta) {
+  if (Array.isArray(meta)) {
+    this.create_ui_for_meta_arr(div, meta);
+  } else {
+    this.create_ui_for_meta_dict(div, meta);
+  }
+};
+
+p5videoKit.prototype.create_ui_for_meta_arr = function (div, arr) {
+  let issueBreak = 1;
+  for (let ent of arr) {
+    if (issueBreak) {
+      this.div_break(div);
     }
-    // a_.ui.patches: [{ eff_spec: { ipatch: 0, imedia: 1, eff_label: 'show' } }],
+    let prop = ent.prop;
+    issueBreak = this.patch_create_other(aPatch, div, prop, ent, issueBreak);
+  }
+};
 
-    create_patch_selection();
-
-    create_media_selection();
-
-    create_checkbox('pipe', 'ipipe');
-
-    create_checkbox('hide', 'ihide');
-
-    create_remove_patch();
-
-    create_settings();
-
-    function create_remove_patch() {
-      let btn = createButton('Remove').mousePressed(function () {
-        patch_remove_ipatch(ipatch);
-      });
-      div.child(btn);
+p5videoKit.prototype.create_ui_for_meta_dict = function (aPatch, div, dict) {
+  let issueBreak = 1;
+  for (let prop in dict) {
+    // eg. items = factor: [10, 50, 100 ... ]
+    let items = dict[prop];
+    if (prop.substring(0, 1) === '_') {
+      prop = prop.substring(1);
+      issueBreak = 1;
     }
-
-    function create_checkbox(label, prop) {
-      let chk = createCheckbox(label, aPatch.eff_spec[prop]);
-      div.child(chk);
-      chk.style('display:inline');
-      chk.changed(function () {
-        let state = this.checked() ? 1 : 0;
-        aPatch.eff_spec[prop] = state;
-        ui_patch_update(aPatch);
-      });
+    if (issueBreak) {
+      this.div_break(div);
     }
-
-    function create_patch_selection() {
-      let span = createSpan(`Effect${ipatch + 1}: `);
-      div.child(span);
-      let aSel = createSelect();
-      div.child(aSel);
-      // let lastGroup;
-      for (let ii = 0; ii < a_.effectMetas.length; ii++) {
-        let ent = a_.effectMetas[ii];
-        // console.log('ent', ent);
-        // let ui_label = ent.ui_label || 'import/';
-        // let label = ent.label;
-        // let parts = ui_label.split('/');
-        // let newGroup = parts[0];
-        // if (lastGroup !== newGroup) {
-        //   aSel.option('-------- ' + newGroup, -1);
-        // }
-        // lastGroup = newGroup;
-        let label = ent.ui_label || ent.label;
-        let isel = ii;
-        if (ent.ui_label) {
-          isel = ii;
-          label = ent.ui_label;
-        } else {
-          isel = -1;
-          label = ent.label;
-        }
-        aSel.option(label, ii);
-      }
-      let effIndex = effectMeta_find(aPatch.eff_spec.eff_label).index;
-      aSel.selected(effIndex);
-      aSel.changed(function () {
-        let effIndex = parseFloat(this.value());
-        if (effIndex >= 0) {
-          patch_update_effIndex(aPatch, effIndex);
-        }
-      });
-    }
-
-    function create_media_selection() {
-      // let span = createSpan(` Device${ipatch}: `);
-      let span = createSpan(` Source: `);
-      div.child(span);
-      let aSel = createSelect();
-      div.child(aSel);
-      for (let ii = 0; ii < a_.mediaDivs.length; ii++) {
-        aSel.option(a_.mediaDivs[ii].label, ii);
-      }
-      aSel.selected(aPatch.eff_spec.imedia);
-      aSel.changed(function () {
-        let ii = this.value();
-        aPatch.eff_spec.imedia = parseFloat(ii);
-        ui_patch_update(aPatch);
-      });
-    }
-
-    function create_settings() {
-      // console.log('create_settings aPatch', aPatch);
-      let effMeta = effectMeta_find(aPatch.eff_spec.eff_label);
-      if (effMeta.factory) {
-        create_ui_for_meta(effMeta.factory.meta_props);
-      } else {
-        console.log('create_settings MISSING factory effMeta', effMeta);
-      }
-
-      // Get props for imported module via import_factory
-      // if (aPatch.import_factory) {
-      //   create_ui_for_meta(aPatch.import_factory.meta_props);
-      // }
-      div_break(div);
-      div_break(div);
-    }
-
-    function create_ui_for_meta(meta) {
-      if (Array.isArray(meta)) {
-        create_ui_for_meta_arr(meta);
-      } else {
-        create_ui_for_meta_dict(meta);
-      }
-    }
-
-    function create_ui_for_meta_arr(arr) {
-      let issueBreak = 1;
-      for (let ent of arr) {
-        if (issueBreak) {
-          div_break(div);
-        }
-        let prop = ent.prop;
-        issueBreak = patch_create_other(aPatch, div, prop, ent, issueBreak);
-      }
-    }
-
-    function create_ui_for_meta_dict(dict) {
-      let issueBreak = 1;
-      for (let prop in dict) {
-        // eg. items = factor: [10, 50, 100 ... ]
-        let items = dict[prop];
-        if (prop.substring(0, 1) === '_') {
-          prop = prop.substring(1);
-          issueBreak = 1;
-        }
-        if (issueBreak) {
-          div_break(div);
-        }
-        if (Array.isArray(items)) {
-          // eg. items = factor: [10, 50, 100 ... ]
-          patch_create_selection(aPatch, div, prop, items, issueBreak);
-          issueBreak = 0;
-        } else {
-          // eg: _next: { button: next_action }
-          issueBreak = patch_create_other(aPatch, div, prop, items, issueBreak);
-        }
-      }
+    if (Array.isArray(items)) {
+      // eg. items = factor: [10, 50, 100 ... ]
+      patch_create_selection(aPatch, div, prop, items, issueBreak);
+      issueBreak = 0;
+    } else {
+      // eg: _next: { button: next_action }
+      issueBreak = this.patch_create_other(aPatch, div, prop, items, issueBreak);
     }
   }
-}
+};
 
-function patch_create_selection(aPatch, div, prop, arr, issueBreak, defaultLabel) {
+p5videoKit.prototype.patch_create_selection = function (aPatch, div, prop, arr, issueBreak, defaultLabel) {
   // console.log('patch_create_selection prop', prop, 'arr', arr);
   let label = defaultLabel || prop;
   let span = createSpan(` ${label}:`);
@@ -195,19 +189,20 @@ function patch_create_selection(aPatch, div, prop, arr, issueBreak, defaultLabel
   let isNum = typeof aVal === 'number';
   // console.log('patch_create_selection prop', prop, 'aVal', aVal, 'isNum', isNum);
   aSel.selected(aVal);
+  let nthis = this;
   aSel.changed(function () {
     let aVal = this.value();
     if (isNum) aVal = parseFloat(aVal);
     aPatch.eff_props[prop] = aVal;
-    ui_patch_update(aPatch);
+    nthis.ui_patch_update(aPatch);
   });
   return aSel;
-}
+};
 
-export function patch_index1(ind) {
-  return a_.patch_instances[ind - 1];
-}
+p5videoKit.prototype.patch_index1 = function (ind) {
+  return this.a_.patch_instances[ind - 1];
+};
 
-export function div_break(div) {
+p5videoKit.prototype.div_break = function (div) {
   div.child(createElement('br'));
-}
+};

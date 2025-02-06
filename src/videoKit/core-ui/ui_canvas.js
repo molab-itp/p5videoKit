@@ -1,13 +1,14 @@
 //
 //
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-import { store_set } from '../core-ui/ui_prop.js?v=413';
-import { ui_window_refresh } from '../core-ui/a_ui_create.js?v=413';
-import { ui_div_append } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
+// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
+// import { store_set } from '../core-ui/ui_prop.js?v=413';
+// import { ui_window_refresh } from '../core-ui/a_ui_create.js?v=413';
+// import { ui_div_append } from '../core-ui/ui_tools.js?v=413';
 
-export function ui_canvas_div(div) {
+p5videoKit.prototype.ui_canvas_div = function (div) {
   let html = `
   <span>[Canvas Size: </span>
   <select id=icanvas_size>
@@ -24,10 +25,10 @@ export function ui_canvas_div(div) {
     return arr.join('');
   }
 
-  ui_div_append(div, html);
+  this.ui_div_append(div, html);
 
   let icanvas_size = window.icanvas_size;
-  let se = canvas_size_default();
+  let se = this.canvas_size_default();
   icanvas_size.selectedIndex = se.index;
   // Can not use arrow funtion here to get this
   icanvas_size.addEventListener('change', canvs_size_change);
@@ -40,25 +41,25 @@ export function ui_canvas_div(div) {
     if (se.func) {
       se.func();
     } else if (se.width) {
-      ui_prop_set('canvas_size', se.label);
+      this.ui_prop_set('canvas_size', se.label);
       resizeCanvas(se.width, se.height);
     } else {
       console.log('No canvas size in se', se);
     }
-    ui_window_refresh();
+    this.ui_window_refresh();
   }
 
   let icanvas_lock = window.icanvas_lock;
-  icanvas_lock.checked = a_.canvas_size_lock;
+  icanvas_lock.checked = this.a_.canvas_size_lock;
   icanvas_lock.addEventListener('change', check_lock_change);
 
   function check_lock_change() {
     // console.log('icanvas_lock change this', this);
     let state = this.checked;
-    a_.canvas_size_lock = state ? 1 : 0;
-    store_set('a_.canvas_size_lock', a_.canvas_size_lock + '');
+    this.a_.canvas_size_lock = state ? 1 : 0;
+    this.store_set('this.a_.canvas_size_lock', this.a_.canvas_size_lock + '');
   }
-}
+};
 
 // <option value="320x240">320x240</option>
 // <option value="480x270">480x270</option>
@@ -72,18 +73,19 @@ export function ui_canvas_div(div) {
 // <option value="Full Screen">Full Screen</option>
 //
 
-export function ui_canvas_init() {
-  a_canvas_sizes_dict = init_size_in(a_canvas_sizes);
-}
+p5videoKit.prototype.ui_canvas_init = function () {
+  a_canvas_sizes_dict = this.init_size_in(a_canvas_sizes);
+};
 
-export function canvas_size_default() {
-  let sz = a_canvas_sizes_dict[a_.ui.canvas_size];
-  // console.log('canvas_sizei canvas_size', a_.ui.canvas_size, 'sz', sz);
+p5videoKit.prototype.canvas_size_default = function () {
+  let sz = a_canvas_sizes_dict[this.a_.ui.canvas_size];
+  // console.log('canvas_sizei canvas_size', this.a_.ui.canvas_size, 'sz', sz);
   if (sz) return sz;
   return a_canvas_sizes[0];
-}
+};
 
-export function init_size_in(sizes) {
+// not this, but allow access in other files
+p5videoKit.prototype.init_size_in = function (sizes) {
   let dict = {};
   let index = 0;
   for (let se of sizes) {
@@ -96,17 +98,17 @@ export function init_size_in(sizes) {
     index++;
   }
   return dict;
-}
+};
 
 // 1920x1080 --> { width: 1920, height: 1080 }
-export function str_to_width_height(str) {
+p5videoKit.prototype.str_to_width_height = function (str) {
   let pl = str.split('x');
   let width = parseFloat(pl[0]);
   let height = parseFloat(pl[1]);
   return { width, height };
-}
+};
 
-export function toggleFullScreen() {
+p5videoKit.prototype.toggleFullScreen = function () {
   if (!document.documentElement.requestFullscreen) {
     console.log('NO document.documentElement.requestFullscreen');
     return;
@@ -118,7 +120,7 @@ export function toggleFullScreen() {
       document.exitFullscreen();
     }
   }
-}
+};
 
 // {
 //   width: 1280,
@@ -210,46 +212,9 @@ let a_canvas_sizes = [
   },
   {
     label: 'Full Screen',
-    func: function () {
-      toggleFullScreen();
+    func: () => {
+      this.toggleFullScreen();
       resizeCanvas(windowWidth, windowHeight);
     },
   },
 ];
-
-// !!@ retired p5dom style for ui creation
-//
-// canvas_size();
-// canvas_lock();
-// function canvas_size() {
-//   div.child(createSpan('[Canvas Size: '));
-//   let aSel = createSelect();
-//   div.child(aSel);
-//   for (let se of a_canvas_sizes) {
-//     aSel.option(se.label);
-//   }
-//   aSel.selected(a_.ui.canvas_size);
-//   aSel.changed(function () {
-//     let label = this.value();
-//     let se = a_canvas_sizes_dict[label];
-//     if (se.func) {
-//       se.func();
-//     } else if (se.width) {
-//       ui_prop_set('canvas_size', se.label);
-//       resizeCanvas(se.width, se.height);
-//     } else {
-//       console.log('No canvas size in se', se);
-//     }
-//     ui_window_refresh();
-//   });
-// }
-// function canvas_lock() {
-//   let chk = createCheckbox('Lock]', a_.canvas_size_lock);
-//   div.child(chk);
-//   chk.style('display:inline');
-//   chk.changed(function () {
-//     let state = this.checked();
-//     a_.canvas_size_lock = state ? 1 : 0;
-//     store_set('a_.canvas_size_lock', a_.canvas_size_lock + '');
-//   });
-// }

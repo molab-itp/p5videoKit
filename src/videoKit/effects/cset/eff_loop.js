@@ -1,10 +1,10 @@
 //
 //
 
-import { effectMeta_find, factory_prop_inits } from '../../core/effectMeta.js?v=413';
+// import {  factory_prop_inits } from '../../core/effectMeta.js?v=413';
 import { image_scaled_pad } from '../../util/image.js?v=413';
 import { PeriodTimer } from '../../util/PeriodTimer.js?v=413';
-import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
+// import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
 
 export default class eff_loop {
   static meta_props = {
@@ -61,7 +61,7 @@ export default class eff_loop {
       }
     });
     if (0) {
-      let src = patch_index1(1);
+      let src = this.videoKit.patch_index1(1);
       if (src) {
         src.draw = 'mesh';
       }
@@ -97,7 +97,7 @@ export default class eff_loop {
   }
   trigger_step() {
     if (!this.step_patch) return;
-    let src = patch_index1(this.step_patch);
+    let src = this.vidoeKit.patch_index1(this.step_patch);
     // console.log(  'trigger_step src', src, 'src.patch_stepper', src.patch_stepper );
     if (src && src.patch_stepper) {
       src.patch_stepper();
@@ -108,7 +108,7 @@ export default class eff_loop {
   }
   advance_check() {
     if (this.freeze_patch) {
-      let src = patch_index1(this.freeze_patch);
+      let src = this.videoKit.patch_index1(this.freeze_patch);
       if (src) {
         // console.log('src.frozen', src.frozen);
         // if (!this.wasFrozen && src.frozen) {
@@ -145,13 +145,13 @@ export default class eff_loop {
     let eff_names = this.eff_names;
     let label = eff_names[this.index];
     this.index = (this.index + 1) % eff_names.length;
-    let effMeta = effectMeta_find(label);
+    let effMeta = this.videoKit.effectMeta_find(label);
     // console.log('next_eff effMeta', effMeta);
     if (effMeta) {
       console.log('next_eff effMeta', effMeta.label);
       // let iprops = this.eff_prop_inits(effMeta.factory.meta_props);
       // let inits = this.eff_prop_inits(effMeta.factory.meta_props);
-      let inits = factory_prop_inits(effMeta.factory, this.basic_props);
+      let inits = this.videoKit.factory_prop_inits(effMeta.factory, this.basic_props);
       // Set input on inits for eff_inst.init
       this.prepare_input(inits);
       let eff_inst = this.eff_inst_arr[this.index];

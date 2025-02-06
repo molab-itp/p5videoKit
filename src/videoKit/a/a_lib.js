@@ -1,11 +1,5 @@
 //
 import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
-
-import '../a/a_setup.js?v=413';
-import '../a/createEffect.js?v=413';
-import '../a/patch_inst.js?v=413';
-import '../a/record_video.js?v=413';
-
 //
 // videoKit = await p5videoKit_init(config, p5_instance)
 //
@@ -19,50 +13,6 @@ globalThis.p5videoKit_init = p5videoKit_init;
 // p5videoKit_init explict global needed for browser non-module reference
 
 //
-// dice.dapi
-//  used on mobile device to communicate with native code
-//
-let dice = { warning: 0 };
-window.dice = dice;
-
-dice.dapi = function (arg, arg2, result) {
-  if (dice.debug) console.log('dice arg=' + arg + ' arg2=' + JSON.stringify(arg2));
-  var opt = arg;
-  if (typeof arg2 != 'undefined') {
-    opt = {};
-    opt[arg] = arg2;
-  }
-  if (typeof result == 'string') {
-    opt._result_str = result;
-  } else if (typeof result == 'function') {
-    var rtag = dice.result_rtag + '';
-    opt._result_rtag = rtag;
-    dice.result_rtag++;
-    dice.result_funcs[rtag] = result;
-  }
-  if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.dice) {
-    window.webkit.messageHandlers.dice.postMessage(opt);
-  } else {
-    if (dice.warning) {
-      console.log('dice opt=' + JSON.stringify(opt));
-    }
-  }
-};
-dice.result_funcs = {};
-dice.result_rtag = 1;
-dice.result_rvalue = function (rtag, value) {
-  var func = dice.result_funcs[rtag];
-  if (func) {
-    delete dice.result_funcs[rtag];
-    func(value);
-  } else {
-    console.log('dice.result_rvalue missing rtag=' + rtag);
-  }
-};
-
-dice.startTime = window.performance.now();
-
-//
 // called by videoKit.draw once only based on this.a_initStarted
 // videoKit.init()
 //
@@ -74,3 +24,33 @@ p5videoKit.prototype.init = async function () {
   let init_lapse = window.performance.now() - dice.startTime;
   dice.dapi('stats', { init_lapse });
 };
+
+import '../a/a_setup.js?v=413';
+import '../a/createEffect.js?v=413';
+import '../a/createEffect.js?v=413';
+import '../a/dice_dapi.js?v=413';
+import '../a/patch_inst.js?v=413';
+import '../a/record_video.js?v=413';
+
+import '../core/a_init.js?=v413';
+import '../core/create_mediaDevices.js?=v413';
+import '../core/create_mediaDiv.js?=v413';
+import '../core/effectMeta.js?=v413';
+import '../core/liveMedia_attach.js?=v413';
+import '../core/reset_video_clear_locals.js?=v413';
+import '../core/store_url_parse.js?=v413';
+
+import '../core-ui/a_ui_create.js?=v413';
+import '../core-ui/PadLayout.js?=v413';
+import '../core-ui/ui_canvas.js?=v413';
+import '../core-ui/ui_capture.js?=v413';
+import '../core-ui/ui_chat.js?=v413';
+import '../core-ui/ui_live.js?=v413';
+import '../core-ui/ui_message.js?=v413';
+import '../core-ui/ui_patch_bar.js?=v413';
+import '../core-ui/ui_patch_create.js?=v413';
+import '../core-ui/ui_patch_eff.js?=v413';
+import '../core-ui/ui_prop.js?=v413';
+import '../core-ui/ui_render.js?=v413';
+import '../core-ui/ui_restore.js?=v413';
+import '../core-ui/ui_tools.js?=v413';

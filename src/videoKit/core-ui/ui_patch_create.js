@@ -1,10 +1,10 @@
 //
 //
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
-import { div_break } from '../core-ui/ui_patch_eff.js?v=413';
-// static meta_props = {
+// import { a_ } from '../let/a_state.js?v=413';
+// import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
+// import { div_break } from '../core-ui/ui_patch_eff.js?v=413';
 
 // style:
 // text_input:
@@ -39,7 +39,7 @@ import { div_break } from '../core-ui/ui_patch_eff.js?v=413';
 //   selection: ['red', 'green', 'yellow'],
 // };
 
-export function patch_create_other(aPatch, div, prop, items, issueBreak) {
+p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, issueBreak) {
   // console.log('create_other prop', prop, 'items', items);
   let breakSeen = 0;
   let ent = { aPatch, div, prop };
@@ -77,7 +77,7 @@ export function patch_create_other(aPatch, div, prop, items, issueBreak) {
       case 'button':
         ent.div.child(createSpan(' '));
         let label = ent.defaultLabel || prop;
-        ent.elm = createButton(label).mousePressed(function () {
+        ent.elm = createButton(label).mousePressed(() => {
           button_action(item, aPatch);
         });
         ent.div.child(ent.elm);
@@ -120,7 +120,7 @@ export function patch_create_other(aPatch, div, prop, items, issueBreak) {
     // items = {} for break on next entry
     return 1; // issueBreak
   }
-}
+};
 
 function create_default_label(ent) {
   let { div, prop, defaultLabel } = ent;
@@ -141,11 +141,12 @@ function create_textInput(ent) {
     oldVal = '' + item;
     aPatch.eff_props[prop] = oldVal;
   }
+  let nthis = this;
   ent.elm = createInput(oldVal).input(function () {
     let aVal = this.value();
     console.log('text_input ' + aVal);
     aPatch.eff_props[prop] = aVal;
-    ui_patch_update(aPatch);
+    this.ui_patch_update(aPatch);
   });
   ent.div.child(ent.elm);
 }
@@ -172,11 +173,12 @@ function create_selection(ent) {
     aVal = '';
   }
   aSel.selected(aVal);
+  let nthis = this;
   aSel.changed(function () {
     let aVal = this.value();
     if (isNum) aVal = parseFloat(aVal);
     aPatch.eff_props[prop] = aVal;
-    ui_patch_update(aPatch);
+    nthis.ui_patch_update(aPatch);
   });
   ent.elm = aSel;
 }
@@ -205,11 +207,12 @@ function create_slider(ent) {
   let valSpan = createSpan(formatNumber(oldVal));
   // console.log('create_slider valSpan', valSpan);
   // createSlider(min, max, [value], [step])
+  let nthis = this;
   ent.elm = createSlider(min, max, oldVal, step).input(function () {
     let aVal = this.value();
     // console.log('create_slider aVal ', aVal, 'type', typeof aVal);
     aPatch.eff_props[prop] = aVal;
-    ui_patch_update(aPatch);
+    nthis.ui_patch_update(aPatch);
     valSpan.elt.innerHTML = formatNumber(aVal) + '';
   });
   div.child(ent.elm);
@@ -222,6 +225,6 @@ function formatNumber(num) {
 }
 
 function button_action(item, aPatch) {
-  let inst = a_.patch_instances[aPatch.eff_spec.ipatch];
+  let inst = this.a_.patch_instances[aPatch.eff_spec.ipatch];
   item(inst, aPatch);
 }

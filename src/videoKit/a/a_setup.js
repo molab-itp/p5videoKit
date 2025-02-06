@@ -1,16 +1,15 @@
 //
 import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { ui_restore_store } from '../core-ui/ui_restore.js?v=413';
-import { init_mediaDivs } from '../core/create_mediaDiv.js?v=413';
-import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=413';
-import { media_enum } from '../core/create_mediaDevices.js?v=413';
-import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
-import { livem_restore } from '../core-ui/ui_live.js?v=413';
-import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=413';
-import { image_scaled_pad } from '../util/image.js?v=413';
-import { ui_message } from '../core-ui/ui_prop.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
+// import { ui_restore_store } from '../core-ui/ui_restore.js?v=413';
+// import { init_mediaDivs } from '../core/create_mediaDiv.js?v=413';
+// import { ui_create, update_ui } from '../core-ui/a_ui_create.js?v=413';
+// import { media_enum } from '../core/create_mediaDevices.js?v=413';
+// import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
+// import { livem_restore } from '../core-ui/ui_live.js?v=413';
+// import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=413';
+// import { image_scaled_pad } from '../util/image.js?v=413';
 
 //
 // called by init
@@ -18,30 +17,30 @@ import { ui_message } from '../core-ui/ui_prop.js?v=413';
 //
 p5videoKit.prototype.setup = async function (options) {
   //
-  ui_message('loading...');
+  this.ui_message('loading...');
   //
-  a_.videoKit = this;
-  a_.my_canvas = this.my_canvas;
+  this.a_.videoKit = this;
+  this.a_.my_canvas = this.my_canvas;
   //
-  // ui_restore_store(effects, settings, (sizeResult) => {
-  let sizeResult = await ui_restore_store(options);
+  // this.ui_restore_store(effects, settings, (sizeResult) => {
+  let sizeResult = await this.ui_restore_store(options);
 
   console.log('videoKit setup sizeResult', sizeResult);
   resizeCanvas(sizeResult.width, sizeResult.height);
 
-  init_mediaDivs();
+  this.init_mediaDivs();
 
-  ui_create();
+  this.ui_create();
 
-  // console.log('a_.ui.hold_capture', a_.ui.hold_capture);
-  if (!a_.ui.hold_capture) {
-    // console.log('a_.ui.hold_capture media_enum', a_.ui.hold_capture);
-    media_enum();
+  // console.log('this.a_.ui.hold_capture', this.a_.ui.hold_capture);
+  if (!this.a_.ui.hold_capture) {
+    // console.log('this.a_.ui.hold_capture media_enum', this.a_.ui.hold_capture);
+    this.media_enum();
   }
 
-  livem_restore();
+  this.livem_restore();
 
-  ui_message('');
+  this.ui_message('');
 
   this.a_initDone = 1;
 };
@@ -62,15 +61,15 @@ p5videoKit.prototype.draw = function () {
   }
   this.set_background();
   stroke(255);
-  if (!a_.ui.urects_count) {
-    console.log('draw a_.ui.urects_count', a_.ui.urects_count);
-    pad_layout_update();
+  if (!this.a_.ui.urects_count) {
+    console.log('draw this.a_.ui.urects_count', this.a_.ui.urects_count);
+    this.pad_layout_update();
   }
   let prior;
-  for (let ipatch = 0; ipatch < a_.ui.patches.length; ipatch++) {
+  for (let ipatch = 0; ipatch < this.a_.ui.patches.length; ipatch++) {
     prior = this.draw_patch(ipatch, prior);
   }
-  update_ui();
+  this.update_ui();
 };
 
 // {
@@ -95,12 +94,12 @@ p5videoKit.prototype.draw = function () {
 // videoKit.draw_patch(ipatch, prior)
 //
 p5videoKit.prototype.draw_patch = function (ipatch, prior) {
-  let uiPatch = a_.ui.patches[ipatch];
+  let uiPatch = this.a_.ui.patches[ipatch];
   // console.log('draw ipatch', ipatch, 'uiPatch', uiPatch);
   let eff_spec = uiPatch.eff_spec;
   let { eff_label, imedia } = eff_spec;
-  // if (imedia >= a_.mediaDivs.length) {
-  //   console.log('draw_patch zeroing imedia', imedia, 'a_.mediaDivs.length', a_.mediaDivs.length);
+  // if (imedia >= this.a_.mediaDivs.length) {
+  //   console.log('draw_patch zeroing imedia', imedia, 'this.a_.mediaDivs.length', this.a_.mediaDivs.length);
   //   imedia = 0;
   // }
   let inst = this.patch_inst_create(eff_label, imedia, ipatch, eff_spec, uiPatch.eff_props);
@@ -113,7 +112,7 @@ p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   }
   inst.prepareOutput();
   if (!eff_spec.ihide && inst.output) {
-    image_scaled_pad(inst.output, eff_spec.urect);
+    this.image_scaled_pad(inst.output, eff_spec.urect);
   }
   return inst;
 };
@@ -122,14 +121,14 @@ p5videoKit.prototype.draw_patch = function (ipatch, prior) {
 // videoKit.set_background()
 //
 p5videoKit.prototype.set_background = function () {
-  let bg = a_.ui.back_color;
-  // console.log('set_background a_.ui.back_color', a_.ui.back_color);
+  let bg = this.a_.ui.back_color;
+  // console.log('set_background this.a_.ui.back_color', this.a_.ui.back_color);
   if (!bg) {
     clear();
     return;
   }
   if (bg < 0) {
-    let src = patch_index1(-bg);
+    let src = this.patch_index1(-bg);
     if (src && src.avg_color) {
       bg = src.avg_color;
     }

@@ -2,8 +2,8 @@
 //
 
 import { image_scaled_pad, image_copy_to } from '../../util/image.js?v=413';
-import { ui_message } from '../../core-ui/ui_prop.js?v=413';
 import { FFT_analyser } from '../../util/FFT_analyser.js?v=413';
+// import { ui_message } from '../../core-ui/ui_prop.js?v=413';
 
 export default class eff_face_band {
   static meta_props = {
@@ -40,10 +40,10 @@ export default class eff_face_band {
       // console.log('ml5 undefined');
       return;
     }
-    ui_message('loading model...');
+    this.videoKit.ui_message('loading model...');
     this.facemesh = ml5.facemesh(this.video, function () {
       // console.log('eff_facemesh Model ready!');
-      ui_message('');
+      this.videoKit.ui_message('');
     });
     this.facemesh.on('predict', (results) => {
       // console.log('facemesh predict results.length', results.length);

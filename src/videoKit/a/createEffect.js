@@ -1,13 +1,12 @@
 //
 import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
-import { patch_inst_deinit } from '../a/patch_inst.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
-import { effectMeta_find, factory_prop_inits } from '../core/effectMeta.js?v=413';
-import { image_scaled_pad } from '../util/image.js?v=413';
-import { PeriodTimer } from '../util/PeriodTimer.js?v=413';
-
-p5videoKit.prototype.PeriodTimer = PeriodTimer;
+// import { patch_inst_deinit } from '../a/patch_inst.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
+// import { effectMeta_find, factory_prop_inits } from '../core/effectMeta.js?v=413';
+// import { image_scaled_pad } from '../util/image.js?v=413';
+// import { PeriodTimer } from '../util/PeriodTimer.js?v=413';
+// p5videoKit.prototype.PeriodTimer = PeriodTimer;
 
 // "urect": {
 //   "width": 1920,
@@ -19,6 +18,7 @@ p5videoKit.prototype.PeriodTimer = PeriodTimer;
 //
 // let eff = videoKit.createEffect( 'bestill', 1, urect, {factor: 20} )
 // imedia is mediaDiv indext or effect.output
+//
 // videoKit.createEffect({ eff_label, imedia, urect, props, eff_spec })
 //
 p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
@@ -29,17 +29,8 @@ p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
   if (media) {
     input = media.capture;
   }
-  // if (typeof imedia === 'number') {
-  //   // select input by number
-  //   media = this.mediaDivAt(imedia);
-  //   if (media) {
-  //     input = media.capture;
-  //   }
-  // } else {
-  //   input = imedia;
-  // }
-  let effMeta = effectMeta_find(eff_label);
-  let defaultProps = factory_prop_inits(effMeta.factory);
+  let effMeta = this.effectMeta_find(eff_label);
+  let defaultProps = this.factory_prop_inits(effMeta.factory);
   let videoKit = this;
   let init = Object.assign(defaultProps, { videoKit, eff_spec, input, media }, props);
   // !!@ From patch_inst_create
@@ -136,13 +127,13 @@ p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
 //   }
 
 // p5videoKit.prototype.factoryPropInits = function (eff_label, init_props = {}) {
-//   let effMeta = effectMeta_find(eff_label);
+//   let effMeta = this.effectMeta_find(eff_label);
 //   if (!effMeta) {
 //     console.log('factory_prop_inits no effMeta');
 //     return init_props;
 //   }
 //   // console.log('factory_prop_inits effMeta', effMeta);
-//   return factory_prop_inits(effMeta.factory, init_props);
+//   return this.factory_prop_inits(effMeta.factory, init_props);
 // };
 
 //
@@ -155,7 +146,7 @@ p5videoKit.prototype.prepareOutput = function (eff) {
 
 // videoKit.deinitEffect
 p5videoKit.prototype.deinitEffect = function (eff) {
-  patch_inst_deinit(eff);
+  this.patch_inst_deinit(eff);
 };
 
 //
@@ -163,7 +154,7 @@ p5videoKit.prototype.deinitEffect = function (eff) {
 //
 p5videoKit.prototype.ouputToCanvas = function (eff) {
   if (eff.output) {
-    image_scaled_pad(eff.output, eff.eff_spec.urect);
+    this.image_scaled_pad(eff.output, eff.eff_spec.urect);
   }
 };
 
@@ -171,22 +162,22 @@ p5videoKit.prototype.ouputToCanvas = function (eff) {
 // let n = videoKit.mediaDivCount()
 //
 p5videoKit.prototype.mediaDivCount = function () {
-  return a_.mediaDivs.length;
+  return this.a_.mediaDivs.length;
 };
 
 //
 // videoKit.mediaDivLiveIndex()
 //
 p5videoKit.prototype.mediaDivLiveIndex = function () {
-  console.log('mediaDivLiveIndex lastMediaDivIndex', a_.lastMediaDivIndex);
-  return a_.lastMediaDivIndex || 0;
+  console.log('mediaDivLiveIndex lastMediaDivIndex', this.a_.lastMediaDivIndex);
+  return this.a_.lastMediaDivIndex || 0;
 };
 
 //
 // mediaDiv = videoKit.mediaDeviceAt(index)
 //
 p5videoKit.prototype.mediaDivAt = function (index) {
-  return a_.mediaDivs[index];
+  return this.a_.mediaDivs[index];
 };
 
 p5videoKit.prototype.mouse_event_check = function (inst) {

@@ -1,10 +1,10 @@
 //
 //
 
-import { ui_message } from '../../core-ui/ui_prop.js?v=413';
+// import { ui_message } from '../../core-ui/ui_prop.js?v=413';
 import { PeriodTimer } from '../../util/PeriodTimer.js?v=413';
 import { image_copy_to } from '../../util/image.js?v=413';
-import { face_mesh_draw } from '../../core/face_mesh_draw.js?v=413';
+import { face_mesh_draw } from '../../util/face_mesh_draw.js?v=413';
 
 export default class eff_face_mesh {
   static meta_props = {
@@ -96,7 +96,7 @@ export default class eff_face_mesh {
     this.video = this.input.elt;
     this.predictions = [];
     this.iupdate = 0;
-    ui_message('loading model...');
+    this.videoKit.ui_message('loading model...');
     this.facemesh = ml5.facemesh(this.video, function () {
       // console.log('eff_facetrian Model ready!');
 
@@ -105,7 +105,7 @@ export default class eff_face_mesh {
       console.log('eff_face_mesh load_lapse', load_lapse);
       dice.dapi('stats', { load_lapse });
 
-      ui_message('');
+      this.videoKit.ui_message('');
     });
     this.facemesh.on('predict', (results) => {
       // console.log('facemesh predict results.length', results.length);

@@ -1,9 +1,9 @@
 //
 //
 
-import { ui_message } from '../../core-ui/ui_prop.js?v=413';
+// import { ui_message } from '../../core-ui/ui_prop.js?v=413';
+// import { ui_patch_update } from '../../core-ui/ui_patch_bar.js?v=413';
 import { PeriodTimer } from '../../util/PeriodTimer.js?v=413';
-import { ui_patch_update } from '../../core-ui/ui_patch_bar.js?v=413';
 import { a_images } from '../../let/a_images.js?v=413';
 import { layer_image_scaled_pad } from '../../util/image.js?v=413';
 
@@ -110,7 +110,7 @@ export default class eff_image_show {
     this.zoom_init();
     this.align_center = this.image_align === 'center';
     // console.log('eff_image_show pad', this.eff_spec.urect);
-    a_.my_canvas.mousePressed(() => {
+    this.a_.my_canvas.mousePressed(() => {
       this.mousePressed();
     });
     this.output = createGraphics(this.eff_spec.urect.width, this.eff_spec.urect.height);
@@ -271,17 +271,17 @@ export default class eff_image_show {
     if (!aPatch.eff_props.iimage) aPatch.eff_props.iimage = 0;
     aPatch.eff_props.iimage = (aPatch.eff_props.iimage + 1) % this.images.length;
     // if (aPatch.eff_props.iimage < 0 || aPatch.eff_props.iimage >= this.images.length - 1) aPatch.eff_props.iimage = 0;
-    ui_patch_update(aPatch);
+    this.ui_patch_update(aPatch);
   }
   previous_action(aPatch) {
     if (!aPatch.eff_props.iimage) aPatch.eff_props.iimage = 0;
     aPatch.eff_props.iimage--;
     // if (aPatch.eff_props.iimage < 0) aPatch.eff_props.iimage = this.images.length - 1;
-    ui_patch_update(aPatch);
+    this.ui_patch_update(aPatch);
   }
   reset_action(aPatch) {
     delete aPatch.iimage;
-    ui_patch_update(aPatch);
+    this.ui_patch_update(aPatch);
   }
   period_next() {
     if (!this.iimage) this.iimage = 0;
@@ -356,11 +356,11 @@ export default class eff_image_show {
   }
   load_model() {
     if (this.load_msg) {
-      ui_message('loading model...');
+      this.videoKit.ui_message('loading model...');
     }
     this.facemesh = ml5.facemesh(() => {
       // console.log('eff_image_show Model ready!');
-      ui_message('');
+      this.videoKit.ui_message('');
       this.facemesh.predict(this.img);
       // console.log('eff_image_show 2');
     });

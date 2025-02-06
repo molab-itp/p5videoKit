@@ -1,9 +1,10 @@
 //
 //
 
+// import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
+
 import { PeriodTimer } from '../../util/PeriodTimer.js?v=413';
-import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
-import { face_mesh_draw } from '../../core/face_mesh_draw.js?v=413';
+import { face_mesh_draw } from '../../util/face_mesh_draw.js?v=413';
 
 export default class eff_tile_clock {
   static meta_props = {
@@ -138,7 +139,7 @@ export default class eff_tile_clock {
   }
   check_patches() {
     if (this.freeze_patch) {
-      let src = patch_index1(this.freeze_patch);
+      let src = this.videoKit.patch_index1(this.freeze_patch);
       if (src) {
         // console.log('src.frozen', src.frozen);
         if (this.advancePendingTime) {

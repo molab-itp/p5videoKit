@@ -1,10 +1,15 @@
 //
 import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { ui_message } from '../core-ui/ui_prop.js?v=413';
+// import { ui_message } from '../core-ui/ui_prop.js?v=413';
 
-// props { save_name, fps, duration }
+//
+//
+// videoKit.recordVideo({ save_name, fps, duration })
+//
 p5videoKit.prototype.recordVideo = function (props) {
+  //
+  // props { save_name, fps, duration }
   //
   // console.log('recordVideo props', props, 'recVideoInst', this.recVideoInst);
   if (this.recVideoInst) {
@@ -18,7 +23,9 @@ p5videoKit.prototype.recordVideo = function (props) {
 };
 
 class RecordVideo {
+  //
   // props { save_name, fps, duration, doneFunc, sourceElt }
+  //
   constructor(props) {
     // console.log('RecordVideo props', props);
     Object.assign(this, props);
@@ -47,7 +54,7 @@ class RecordVideo {
       let lapseSec = (Date.now() - this.start_time) / 100;
       lapseSec = Math.trunc(lapseSec) / 10;
       if (lapseSec != this.lapseSec) {
-        ui_message('Recording ' + lapseSec + ' secs');
+        this.videoKit.ui_message('Recording ' + lapseSec + ' secs');
         this.lapseSec = lapseSec;
       }
     }
@@ -89,7 +96,7 @@ class RecordVideo {
     if (this.recording) {
       // console.log('record_stop recorder.stop');
       this.recorder.stop();
-      ui_message('');
+      this.videoKit.ui_message('');
     }
     this.recording = 0;
   }

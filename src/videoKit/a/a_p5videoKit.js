@@ -1,4 +1,9 @@
 //
+import { a_init } from '../core/a_init.js';
+
+//
+// videoKit = new p5videoKit(config, p5_instance)
+//
 export class p5videoKit {
   constructor(config, p5_instance) {
     // console.log('p5videoKit p5_instance', p5_instance);
@@ -6,6 +11,7 @@ export class p5videoKit {
     //
     this.room_name_prefix = '';
     // this.room_name_prefix = 'dev-';
+    //
     if (!p5_instance) {
       console.log('p5videoKit !!@ no p5_instance');
       return;
@@ -16,6 +22,7 @@ export class p5videoKit {
       console.log('p5videoKit !!@ no my_canvas');
     }
     this.config = config;
+    this.a_ = a_init();
   }
 
   draw() {

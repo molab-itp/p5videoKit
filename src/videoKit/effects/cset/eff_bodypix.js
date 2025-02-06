@@ -1,7 +1,7 @@
 //
 //
 
-import { ui_message } from '../../core-ui/ui_prop.js?v=413';
+// import { ui_message } from '../../core-ui/ui_prop.js?v=413';
 
 export default class eff_bodypix {
   static meta_props = {
@@ -21,7 +21,7 @@ export default class eff_bodypix {
     }
   }
   init() {
-    ui_message('loading model...');
+    this.videoKit.ui_message('loading model...');
     this.video = this.input.elt;
     const options = {
       outputStride: 8, // 8, 16, or 32, default is 16
@@ -30,7 +30,7 @@ export default class eff_bodypix {
     this.bodypix = ml5.bodyPix(options);
   }
   gotResults(error, result) {
-    ui_message('');
+    this.videoKit.ui_message('');
     if (this.eff_spec.ihide) return;
     if (error) {
       console.log('eff_body_pix', error);

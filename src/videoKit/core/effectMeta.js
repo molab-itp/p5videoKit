@@ -1,16 +1,17 @@
 //
 //
+import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
-import { a_ } from '../let/a_state.js?v=413';
+// import { a_ } from '../let/a_state.js?v=413';
 
 let a_effectMetaDict;
 let a_import_err;
 
-export async function effectMeta_init() {
+p5videoKit.prototype.effectMeta_init = async function () {
   a_effectMetaDict = {};
   let imports = [];
   let index = 0;
-  for (let effMeta of a_.effectMetas) {
+  for (let effMeta of this.a_.effectMetas) {
     a_effectMetaDict[effMeta.label] = effMeta;
     effMeta.index = index;
     if (!effMeta.factory) {
@@ -19,9 +20,9 @@ export async function effectMeta_init() {
     index++;
   }
   await Promise.allSettled(imports);
-}
+};
 
-export async function effectMeta_import(effMeta) {
+async function effectMeta_import(effMeta) {
   if (!effMeta.import_path) {
     // console.log('effectMeta_import no import_path', effMeta);
     return null;
@@ -55,21 +56,21 @@ export async function effectMeta_import(effMeta) {
   });
 }
 
-export function effectMeta_find(label) {
+p5videoKit.prototype.effectMeta_find = function (label) {
   if (!label) {
     console.log('effectMeta_find no label', label);
     label = 'show';
-    // return a_.effectMetas[0];
+    // return this.a_.effectMetas[0];
   }
   let effMeta = a_effectMetaDict[label];
   if (!effMeta) {
     console.log('effectMeta_find label not found', label);
-    effMeta = a_.effectMetas[0];
+    effMeta = this.a_.effectMetas[0];
   }
   return effMeta;
-}
+};
 
-export function factory_prop_inits(factory, init_props = {}) {
+p5videoKit.prototype.factory_prop_inits = function (factory, init_props = {}) {
   let dict = factory.meta_props;
   // console.log('factory_prop_inits dict', dict);
   let inits = Object.assign({}, init_props);
@@ -88,4 +89,4 @@ export function factory_prop_inits(factory, init_props = {}) {
   }
   // console.log('factory_prop_inits inits', inits);
   return inits;
-}
+};

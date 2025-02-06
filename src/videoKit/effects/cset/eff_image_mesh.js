@@ -1,8 +1,8 @@
 //
 //
 
-import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
-import { face_mesh_draw } from '../../core/face_mesh_draw.js?v=413';
+// import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
+import { face_mesh_draw } from '../../util/face_mesh_draw.js?v=413';
 
 export default class eff_image_mesh {
   static meta_props = {
@@ -19,7 +19,7 @@ export default class eff_image_mesh {
   }
   prepareOutput() {
     //
-    let nthis = patch_index1(this.image_patch);
+    let nthis = this.patch_index1(this.image_patch);
     // console.log('eff_image_mesh nthis.predictions', nthis.predictions);
     // console.log('eff_image_mesh nthis.img', nthis.img);
     if (nthis && nthis.predictions && nthis.img) {

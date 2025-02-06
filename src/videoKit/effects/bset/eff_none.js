@@ -1,7 +1,7 @@
 //
 //
 
-import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
+// import { patch_index1 } from '../../core-ui/ui_patch_eff.js?v=413';
 
 export default class eff_show_none {
   static meta_props = {
@@ -12,7 +12,7 @@ export default class eff_show_none {
   }
   prepareOutput() {
     if (this.back_color_patch) {
-      let src = patch_index1(this.back_color_patch);
+      let src = this.videoKit.patch_index1(this.back_color_patch);
       if (src && src.avg_color) {
         noStroke();
         fill(src.avg_color);

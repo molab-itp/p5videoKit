@@ -2,7 +2,7 @@
 //
 
 import { image_scaled_pad } from '../../util/image.js?v=413';
-import { ui_message } from '../../core-ui/ui_prop.js?v=413';
+// import { ui_message } from '../../core-ui/ui_prop.js?v=413';
 
 export default class eff_show_pad {
   //
@@ -47,7 +47,7 @@ export default class eff_show_pad {
       let lapseSec = (Date.now() - this.start_time) / 100;
       lapseSec = Math.trunc(lapseSec) / 10;
       if (lapseSec != this.lapseSec) {
-        ui_message('Recording ' + lapseSec + ' secs');
+        // this.video.ui_message('Recording ' + lapseSec + ' secs');
         this.lapseSec = lapseSec;
       }
     }
@@ -74,7 +74,7 @@ export default class eff_show_pad {
     if (this.recording) {
       console.log('record_stop recorder.stop');
       this.recorder.stop();
-      ui_message('');
+      // this.videoKit.ui_message('');
     }
     this.recording = 0;
   }
