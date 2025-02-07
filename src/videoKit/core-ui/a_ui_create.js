@@ -1,21 +1,21 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
 //
-// import { a_ } from '../let/a_state.js?v=413';
-// import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js?v=413';
-// import { ui_capture_size } from '../core-ui/ui_capture.js?v=413';
-// import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
-// import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=413';
-// import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js?v=413';
-// import { ui_live_selection } from '../core-ui/ui_live.js?v=413';
-// import { ui_chat_pane } from '../core-ui/ui_chat.js?v=413';
-// import { store_restore_from } from '../core/store_url_parse.js?v=413';
-// import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=413';
-// import { patch_instances_clear_all } from '../a/patch_inst.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { ui_div_append, ui_createElement, ui_div_empty } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { ui_canvas_div, toggleFullScreen } from '../core-ui/ui_canvas.js';
+// import { ui_capture_size } from '../core-ui/ui_capture.js';
+// import { ui_patch_bar, pad_layout_update } from '../core-ui/ui_patch_bar.js';
+// import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
+// import { ui_patch_buttons } from '../core-ui/ui_patch_bar.js';
+// import { ui_live_selection } from '../core-ui/ui_live.js';
+// import { ui_chat_pane } from '../core-ui/ui_chat.js';
+// import { store_restore_from } from '../core/store_url_parse.js';
+// import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js';
+// import { patch_instances_clear_all } from '../a/patch_inst.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { ui_div_append, ui_createElement, ui_div_empty } from '../core-ui/ui_tools.js';
 
 p5videoKit.prototype.ui_create = function () {
   console.log('ui_create this.a_.hide_ui_option', this.a_.hide_ui_option);

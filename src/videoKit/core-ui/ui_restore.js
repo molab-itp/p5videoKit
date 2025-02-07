@@ -1,25 +1,25 @@
 //
 //
 
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { a_settingMetas } from '../let/a_settingMetas.js?v=413';
-// import { effectMeta_init } from '../core/effectMeta.js?v=413';
-// import { ui_capture_init } from '../core-ui/ui_capture.js?v=413';
-// import { ui_canvas_init } from '../core-ui/ui_canvas.js?v=413';
-// import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js?v=413';
-// import { canvas_size_default } from '../core-ui/ui_canvas.js?v=413';
-// import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js?v=413';
-// import { store_set, store_get, store_remove } from '../core-ui/ui_prop.js?v=413';
-// import { ui_present_window } from '../core-ui/a_ui_create.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { a_settingMetas } from '../let/a_settingMetas.js';
+// import { effectMeta_init } from '../core/effectMeta.js';
+// import { ui_capture_init } from '../core-ui/ui_capture.js';
+// import { ui_canvas_init } from '../core-ui/ui_canvas.js';
+// import { store_name_restore, store_url_parse, store_save_ent } from '../core/store_url_parse.js';
+// import { canvas_size_default } from '../core-ui/ui_canvas.js';
+// import { reset_video_clear_locals } from '../core/reset_video_clear_locals.js';
+// import { store_set, store_get, store_remove } from '../core-ui/ui_prop.js';
+// import { ui_present_window } from '../core-ui/a_ui_create.js';
 
-// import { ui_render_size_init } from '../core-ui/ui_render.js?v=413';
+// import { ui_render_size_init } from '../core-ui/ui_render.js';
 //
 // let effects = [
 //   { label: 'example', import_path: 'module/eff_example', menu: 1 },
 
-import { a_effectMetas } from '../let/a_effectMetas.js?v=413';
+import { a_effectMetas } from '../let/a_effectMetas.js';
 
 // Restore this.a_.ui settings from local storage
 p5videoKit.prototype.ui_restore_store = async function ({ effects, settings, hide_ui }) {

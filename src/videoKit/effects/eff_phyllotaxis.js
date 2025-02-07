@@ -1,7 +1,7 @@
 //
 //
 
-import { image_copy_to } from '../util/image.js?v=413';
+import { image_copy_to } from '../util/image.js';
 
 export default class eff_phyllotaxis {
   static meta_props = {

@@ -1,9 +1,9 @@
 //
 //
 
-// import { a_ } from '../let/a_state.js?v=413';
-import { PeriodTimer } from '../util/PeriodTimer.js?v=413';
-// import { patch_index1 } from '../core-ui/ui_patch_eff.js?v=413';
+// import { a_ } from '../let/a_state.js';
+import { PeriodTimer } from '../util/PeriodTimer.js';
+// import { patch_index1 } from '../core-ui/ui_patch_eff.js';
 
 export default class eff_tile_live {
   static meta_props = {

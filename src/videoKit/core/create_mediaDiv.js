@@ -1,10 +1,10 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { patch_instances_clear_all } from '../a/patch_inst.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { patch_instances_clear_all } from '../a/patch_inst.js';
 
 // this.a_mediaDivs = []
 // { imedia, mediaDevice, id, label, div, chk, vis, capture, info, ready, livem }

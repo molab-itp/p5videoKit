@@ -1,9 +1,9 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { location_noquery } from '../core/store_url_parse.js?v=413';
-// import { ui_message } from '../core-ui/ui_prop.js?v=413';
+// import { location_noquery } from '../core/store_url_parse.js';
+// import { ui_message } from '../core-ui/ui_prop.js';
 
 // On first use in browser sometimes camera permissions
 // are not requested and no video is displayed.

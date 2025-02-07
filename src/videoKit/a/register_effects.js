@@ -1,5 +1,5 @@
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
 import eff_bestill from '../effects/eff_bestill.js';
 import eff_bright from '../effects/eff_bright.js';

@@ -1,5 +1,5 @@
 //
-// import { a_ } from '../let/a_state.js?v=413';
+// import { a_ } from '../let/a_state.js';
 
 export class PadLayout {
   constructor(a_) {

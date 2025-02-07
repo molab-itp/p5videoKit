@@ -1,12 +1,12 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { store_set } from '../core-ui/ui_prop.js?v=413';
-// import { ui_window_refresh } from '../core-ui/a_ui_create.js?v=413';
-// import { ui_div_append } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { store_set } from '../core-ui/ui_prop.js';
+// import { ui_window_refresh } from '../core-ui/a_ui_create.js';
+// import { ui_div_append } from '../core-ui/ui_tools.js';
 
 p5videoKit.prototype.ui_canvas_div = function (div) {
   let html = `

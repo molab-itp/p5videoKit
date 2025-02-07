@@ -5,7 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 
 export default {
-  input: 'src/videoKit/a_lib.js', // Entry point of your library
+  input: 'src/videoKit/a/a_lib.js', // Entry point of your library
   output: [
     {
       file: 'dist/p5videoKit.cjs.js',

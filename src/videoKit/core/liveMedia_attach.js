@@ -1,11 +1,11 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { create_mediaDiv, remove_mediaDiv } from '../core/create_mediaDiv.js?v=413';
-// import { ui_refresh } from '../core-ui/ui_patch_bar.js?v=413';
-// import { ui_chat_receive } from '../core-ui/ui_chat.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { create_mediaDiv, remove_mediaDiv } from '../core/create_mediaDiv.js';
+// import { ui_refresh } from '../core-ui/ui_patch_bar.js';
+// import { ui_chat_receive } from '../core-ui/ui_chat.js';
 
 p5videoKit.prototype.liveMedia_attach = function (mediaDiv) {
   // console.log('liveMedia_attach mediaDiv=', mediaDiv);

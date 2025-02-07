@@ -1,13 +1,13 @@
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { patch_inst_deinit } from '../a/patch_inst.js?v=413';
-// import { a_ } from '../let/a_state.js?v=413';
-// import { effectMeta_find, factory_prop_inits } from '../core/effectMeta.js?v=413';
+// import { patch_inst_deinit } from '../a/patch_inst.js';
+// import { a_ } from '../let/a_state.js';
+// import { effectMeta_find, factory_prop_inits } from '../core/effectMeta.js';
 
-import { image_scaled_pad } from '../util/image.js?v=413';
+import { image_scaled_pad } from '../util/image.js';
 
-import { PeriodTimer } from '../util/PeriodTimer.js?v=413';
+import { PeriodTimer } from '../util/PeriodTimer.js';
 p5videoKit.prototype.PeriodTimer = PeriodTimer;
 
 // "urect": {

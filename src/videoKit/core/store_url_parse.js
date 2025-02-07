@@ -1,11 +1,11 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { pad_layout_update } from '../core-ui/ui_patch_bar.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { ui_save_fn } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { pad_layout_update } from '../core-ui/ui_patch_bar.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { ui_save_fn } from '../core-ui/ui_tools.js';
 
 // Are we setting up store from our url query?
 // url parm

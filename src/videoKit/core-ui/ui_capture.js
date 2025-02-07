@@ -1,13 +1,13 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { init_size_in } from '../core-ui/ui_canvas.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { media_reset } from '../core/create_mediaDevices.js?v=413';
-// import { patch_instances_clear_all } from '../a/patch_inst.js?v=413';
-// import { ui_div_append } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { init_size_in } from '../core-ui/ui_canvas.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { media_reset } from '../core/create_mediaDevices.js';
+// import { patch_instances_clear_all } from '../a/patch_inst.js';
+// import { ui_div_append } from '../core-ui/ui_tools.js';
 
 p5videoKit.prototype.ui_capture_size = function (div) {
   let html = `

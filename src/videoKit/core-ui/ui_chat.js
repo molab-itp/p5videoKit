@@ -1,11 +1,11 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { attach_media_nlabel } from '../core/create_mediaDiv.js?v=413';
-// import { livem_send } from '../core/liveMedia_attach.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { attach_media_nlabel } from '../core/create_mediaDiv.js';
+// import { livem_send } from '../core/liveMedia_attach.js';
 
 p5videoKit.prototype.ui_chat_pane = function () {
   // ichat_blk

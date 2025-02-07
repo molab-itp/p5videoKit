@@ -1,8 +1,8 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
+// import { a_ } from '../let/a_state.js';
 
 //
 // this.a_.effectMetaDict

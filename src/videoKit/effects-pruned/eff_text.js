@@ -1,6 +1,6 @@
 //
 
-import { image_scaled_pad } from '../../util/image.js?v=413';
+import { image_scaled_pad } from '../../util/image.js';
 
 export default class eff_text {
   static meta_props = {

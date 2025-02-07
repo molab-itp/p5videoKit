@@ -1,12 +1,12 @@
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { pad_layout_update, ui_refresh, ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
-// import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=413';
-// import { effectMeta_find } from '../core/effectMeta.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { pad_layout_update, ui_refresh, ui_patch_update } from '../core-ui/ui_patch_bar.js';
+// import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
+// import { effectMeta_find } from '../core/effectMeta.js';
 
-// import { ui_div_empty } from '../core-ui/ui_tools.js?v=413';
+// import { ui_div_empty } from '../core-ui/ui_tools.js';
 
 //
 // videoKit.patch_inst_create(eff_label, imedia, ipatch, eff_spec, eff_props)

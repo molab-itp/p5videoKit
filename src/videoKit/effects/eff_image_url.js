@@ -1,7 +1,7 @@
 //
 //
 
-import { layer_image_scaled_pad } from '../util/image.js?v=413';
+import { layer_image_scaled_pad } from '../util/image.js';
 
 export default class eff_image_url {
   static meta_props = {

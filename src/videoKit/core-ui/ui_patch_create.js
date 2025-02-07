@@ -1,10 +1,10 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
-// import { div_break } from '../core-ui/ui_patch_eff.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { ui_patch_update } from '../core-ui/ui_patch_bar.js';
+// import { div_break } from '../core-ui/ui_patch_eff.js';
 
 // style:
 // text_input:

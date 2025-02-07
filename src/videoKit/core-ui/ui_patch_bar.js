@@ -1,19 +1,19 @@
 //
 //
 
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js?v=413';
-// import { ui_live_selection } from '../core-ui/ui_live.js?v=413';
-// import { ui_prop_set } from '../core-ui/ui_prop.js?v=413';
-// import { store_restore_from } from '../core/store_url_parse.js?v=413';
-// import { str_to_width_height } from '../core-ui/ui_canvas.js?v=413';
-// import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js?v=413';
-// import { patch_add, patch_instances_clear_all, patch_inst_update } from '../a/patch_inst.js?v=413';
-// import { ui_createButton, ui_createElement, ui_div_empty } from '../core-ui/ui_tools.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { ui_patch_eff_panes } from '../core-ui/ui_patch_eff.js';
+// import { ui_live_selection } from '../core-ui/ui_live.js';
+// import { ui_prop_set } from '../core-ui/ui_prop.js';
+// import { store_restore_from } from '../core/store_url_parse.js';
+// import { str_to_width_height } from '../core-ui/ui_canvas.js';
+// import { store_export_json, store_export_url, store_name_update } from '../core/store_url_parse.js';
+// import { patch_add, patch_instances_clear_all, patch_inst_update } from '../a/patch_inst.js';
+// import { ui_createButton, ui_createElement, ui_div_empty } from '../core-ui/ui_tools.js';
 
-import { PadLayout } from '../core-ui/PadLayout.js?v=413';
+import { PadLayout } from '../core-ui/PadLayout.js';
 
 let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
 let back_color_options = [0, 1, 50, 100, 200, 255, -1];

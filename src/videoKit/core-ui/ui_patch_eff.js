@@ -1,14 +1,14 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
+import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js?v=413';
-// import { effectMeta_find } from '../core/effectMeta.js?v=413';
-// import { ui_patch_update } from '../core-ui/ui_patch_bar.js?v=413';
-// import { patch_remove_ipatch, patch_update_effIndex } from '../a/patch_inst.js?v=413';
-// import { patch_create_other } from '../core-ui/ui_patch_create.js?v=413';
+// import { a_ } from '../let/a_state.js';
+// import { effectMeta_find } from '../core/effectMeta.js';
+// import { ui_patch_update } from '../core-ui/ui_patch_bar.js';
+// import { patch_remove_ipatch, patch_update_effIndex } from '../a/patch_inst.js';
+// import { patch_create_other } from '../core-ui/ui_patch_create.js';
 
-// import { ui_div_empty } from '../core-ui/ui_tools.js?v=413';
+// import { ui_div_empty } from '../core-ui/ui_tools.js';
 
 p5videoKit.prototype.ui_patch_eff_panes = function () {
   //
