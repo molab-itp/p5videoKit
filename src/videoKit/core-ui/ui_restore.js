@@ -54,6 +54,8 @@ p5videoKit.prototype.ui_restore_store = async function ({ effects, settings, hid
 
   await this.settingMetas_init();
 
+  this.register_effects();
+
   this.ui_capture_init();
 
   this.ui_canvas_init();

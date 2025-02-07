@@ -18,6 +18,7 @@ import '../a/createEffect.js?v=413';
 import '../a/dice_dapi.js?v=413';
 import '../a/patch_inst.js?v=413';
 import '../a/record_video.js?v=413';
+import '../a/register_effects.js?v=413';
 
 import '../core/a_init.js?=v413';
 import '../core/create_mediaDevices.js?=v413';

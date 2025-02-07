@@ -4,15 +4,21 @@ import { p5videoKit } from '../a/a_p5videoKit.js?v=413';
 
 // import { a_ } from '../let/a_state.js?v=413';
 
-let a_effectMetaDict;
+//
+// this.a_.effectMetaDict
+//    { label, import_path, factory, index }
+//
+// { label: 'bestill', import_path: '../eff_bestill.js', factory: eff_bestill }
+//
+// let a_effectMetaDict;
 let a_import_err;
 
 p5videoKit.prototype.effectMeta_init = async function () {
-  a_effectMetaDict = {};
+  this.a_.effectMetaDict = {};
   let imports = [];
   let index = 0;
   for (let effMeta of this.a_.effectMetas) {
-    a_effectMetaDict[effMeta.label] = effMeta;
+    this.a_.effectMetaDict[effMeta.label] = effMeta;
     effMeta.index = index;
     if (!effMeta.factory) {
       imports.push(effectMeta_import(effMeta));
@@ -62,7 +68,7 @@ p5videoKit.prototype.effectMeta_find = function (label) {
     label = 'show';
     // return this.a_.effectMetas[0];
   }
-  let effMeta = a_effectMetaDict[label];
+  let effMeta = this.a_.effectMetaDict[label];
   if (!effMeta) {
     console.log('effectMeta_find label not found', label);
     effMeta = this.a_.effectMetas[0];
