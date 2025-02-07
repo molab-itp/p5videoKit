@@ -213,7 +213,7 @@ let a_canvas_sizes = [
   {
     label: 'Full Screen',
     func: () => {
-      this.toggleFullScreen();
+      // this.toggleFullScreen();
       resizeCanvas(windowWidth, windowHeight);
     },
   },

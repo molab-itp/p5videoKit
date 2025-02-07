@@ -10,16 +10,16 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 
 // import { ui_div_empty } from '../core-ui/ui_tools.js';
 
-p5videoKit.prototype.ui_patch_eff_panes = function () {
+p5videoKit.prototype.ui_patch_eff_panes = async function () {
   //
   // if (this.a_.hide_ui_option) return;
   let droot = this.ui_div_empty('ipatch_eff');
   for (let ipatch = 0; ipatch < this.a_.ui.patches.length; ipatch++) {
-    this.create_patch(droot, ipatch);
+    await this.create_patch(droot, ipatch);
   }
 };
 
-p5videoKit.prototype.create_patch = function (droot, ipatch) {
+p5videoKit.prototype.create_patch = async function (droot, ipatch) {
   let div = this.ui_div_empty('patch_' + ipatch);
   droot.child(div);
   let aPatch = this.a_.ui.patches[ipatch];
@@ -38,7 +38,7 @@ p5videoKit.prototype.create_patch = function (droot, ipatch) {
 
   this.create_remove_patch(ipatch, div);
 
-  this.create_settings(aPatch, div);
+  await this.create_settings(aPatch, div);
 };
 
 p5videoKit.prototype.create_remove_patch = function (ipatch, div) {
@@ -60,7 +60,7 @@ p5videoKit.prototype.create_checkbox = function (aPatch, div, label, prop) {
   });
 };
 
-p5videoKit.prototype.create_patch_selection = function (aPatch, ipatch, div) {
+p5videoKit.prototype.create_patch_selection = async function (aPatch, ipatch, div) {
   let span = createSpan(`Effect${ipatch + 1}: `);
   div.child(span);
   let aSel = createSelect();
@@ -79,7 +79,9 @@ p5videoKit.prototype.create_patch_selection = function (aPatch, ipatch, div) {
     }
     aSel.option(label, ii);
   }
-  let effIndex = this.effectMeta_find(aPatch.eff_spec.eff_label).index;
+  let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
+  let effIndex = effMeta.index;
+  console.log('create_patch_selection effIndex', effIndex);
   aSel.selected(effIndex);
   let nthis = this;
   aSel.changed(function () {
@@ -108,15 +110,14 @@ p5videoKit.prototype.create_media_selection = function (aPatch, div) {
   });
 };
 
-p5videoKit.prototype.create_settings = function (aPatch, div) {
+p5videoKit.prototype.create_settings = async function (aPatch, div) {
   // console.log('create_settings aPatch', aPatch);
-  let effMeta = this.effectMeta_find(aPatch.eff_spec.eff_label);
+  let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
   if (effMeta.factory) {
     this.create_ui_for_meta(aPatch, div, effMeta.factory.meta_props);
   } else {
     console.log('create_settings MISSING factory effMeta', effMeta);
   }
-
   // Get props for imported module via import_factory
   // if (aPatch.import_factory) {
   //   create_ui_for_meta(aPatch.import_factory.meta_props);

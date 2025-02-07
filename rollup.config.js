@@ -8,19 +8,24 @@ export default {
   input: 'src/videoKit/a/a_lib.js', // Entry point of your library
   output: [
     {
+      // inlineDynamicImports: true,
       file: 'dist/p5videoKit.cjs.js',
+      // dir: 'dist/p5videoKit.cjs',
       format: 'cjs', // CommonJS for Node.js
       sourcemap: true,
     },
     {
+      // inlineDynamicImports: true,
       file: 'dist/p5videoKit.esm.js',
+      // dir: 'dist/p5videoKit.esm',
       format: 'es', // ES Module for modern bundlers
       sourcemap: true,
     },
     {
       file: 'dist/p5videoKit.umd.js',
+      // dir: 'dist/p5videoKit.umd',
       format: 'umd', // UMD for browsers and Node.js
-      name: 'moLib_', // Global variable name when used in browsers
+      name: 'videoKit_', // Global variable name when used in browsers
       sourcemap: true,
     },
   ],

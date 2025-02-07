@@ -1,6 +1,6 @@
 //
 //
-import { p5videoKit } from '../a/a_p5videoKit.js';
+import { p5videoKit } from './a_p5videoKit.js';
 
 // import { a_ } from '../let/a_state.js';
 
@@ -13,22 +13,25 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 // let a_effectMetaDict;
 let a_import_err;
 
-p5videoKit.prototype.effectMeta_init = async function () {
+p5videoKit.prototype.effectMeta_init = function () {
+  console.log('effectMeta_init this.a_.effectMetas.length', this.a_.effectMetas.length);
   this.a_.effectMetaDict = {};
   let imports = [];
   let index = 0;
   for (let effMeta of this.a_.effectMetas) {
     this.a_.effectMetaDict[effMeta.label] = effMeta;
     effMeta.index = index;
-    if (!effMeta.factory) {
-      imports.push(effectMeta_import(effMeta));
-    }
+    // if (!effMeta.factory) {
+    //   imports.push(effectMeta_import(effMeta));
+    // }
     index++;
   }
-  await Promise.allSettled(imports);
+  // await Promise.allSettled(imports);
 };
 
 async function effectMeta_import(effMeta) {
+  console.log('effectMeta_import effMeta.import_path', effMeta.import_path);
+  console.log('effectMeta_import effMeta', effMeta);
   if (!effMeta.import_path) {
     // console.log('effectMeta_import no import_path', effMeta);
     return null;
@@ -47,22 +50,23 @@ async function effectMeta_import(effMeta) {
   }
   // console.log('effectMeta_import inpath', inpath);
   return new Promise((resolve, reject) => {
-    import(inpath + '')
-      .then((module) => {
-        // console.log('effectMeta_import module', module, '\n effMeta.import_path', effMeta.import_path);
-        // console.log('effMeta.import_path', effMeta.import_path);
-        effMeta.factory = module.default;
-        resolve();
-      })
-      .catch((err) => {
-        console.log('effectMeta_import err', err, '\n inpath', inpath);
-        a_import_err = err;
-        reject();
-      });
+    // import(inpath + '')
+    //   .then((module) => {
+    //     // console.log('effectMeta_import module', module, '\n effMeta.import_path', effMeta.import_path);
+    //     // console.log('effMeta.import_path', effMeta.import_path);
+    //     effMeta.factory = module.default;
+    //     resolve();
+    //   })
+    //   .catch((err) => {
+    //     console.log('effectMeta_import err', err, '\n inpath', inpath);
+    //     a_import_err = err;
+    //     reject();
+    //   });
+    resolve();
   });
 }
 
-p5videoKit.prototype.effectMeta_find = function (label) {
+p5videoKit.prototype.effectMeta_find = async function (label) {
   if (!label) {
     console.log('effectMeta_find no label', label);
     label = 'show';
@@ -71,6 +75,18 @@ p5videoKit.prototype.effectMeta_find = function (label) {
   let effMeta = this.a_.effectMetaDict[label];
   if (!effMeta) {
     console.log('effectMeta_find label not found', label);
+    effMeta = this.a_.effectMetas[0];
+  }
+  if (!effMeta.factory && this.import_effect) {
+    // Ask host to import effect using import_effect
+    try {
+      console.log('effectMeta_find import_effect', effMeta);
+      effMeta.factory = await this.import_effect(effMeta);
+    } catch (err) {
+      console.log('effectMeta_find err', err);
+    }
+  }
+  if (!effMeta.factory) {
     effMeta = this.a_.effectMetas[0];
   }
   return effMeta;

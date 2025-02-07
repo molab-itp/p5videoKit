@@ -140,12 +140,12 @@ export default class eff_loop {
     console.log('eff_loop d index', this.index);
     this.next_eff();
   }
-  next_eff() {
+  async next_eff() {
     // console.log('eff_loop a index', this.index);
     let eff_names = this.eff_names;
     let label = eff_names[this.index];
     this.index = (this.index + 1) % eff_names.length;
-    let effMeta = this.videoKit.effectMeta_find(label);
+    let effMeta = await this.videoKit.effectMeta_find(label);
     // console.log('next_eff effMeta', effMeta);
     if (effMeta) {
       console.log('next_eff effMeta', effMeta.label);

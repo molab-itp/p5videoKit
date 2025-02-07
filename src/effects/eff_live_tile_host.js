@@ -64,7 +64,7 @@ export default class eff_live_tile_host {
     this.output.remove();
     this.videoKit.deinitEffect(this.eff_qr);
   }
-  init() {
+  async init() {
     this.fitWidth = this.fit == 'width';
     this.qr_image_index = -1;
     let urmain = this.eff_spec.urect;
@@ -97,7 +97,7 @@ export default class eff_live_tile_host {
       if (index == qrIndex) {
         let eff_label = 'image_url';
         props = { image_url: this.image_url };
-        this.eff_qr = videoKit.createEffect({ eff_label, imedia, urect, props });
+        this.eff_qr = await videoKit.createEffect({ eff_label, imedia, urect, props });
       }
       this.urects.push({ urect });
       x0 += xstep;

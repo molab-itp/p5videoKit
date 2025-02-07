@@ -105,7 +105,7 @@ p5videoKit.prototype.setup = async function (options) {
 //
 // videoKit.draw_patch(ipatch, prior)
 //
-p5videoKit.prototype.draw_patch = function (ipatch, prior) {
+p5videoKit.prototype.draw_patch = async function (ipatch, prior) {
   let uiPatch = this.a_.ui.patches[ipatch];
   // console.log('draw ipatch', ipatch, 'uiPatch', uiPatch);
   let eff_spec = uiPatch.eff_spec;
@@ -114,7 +114,7 @@ p5videoKit.prototype.draw_patch = function (ipatch, prior) {
   //   console.log('draw_patch zeroing imedia', imedia, 'a_.mediaDivs.length', this.a_.mediaDivs.length);
   //   imedia = 0;
   // }
-  let inst = this.patch_inst_create(eff_label, imedia, ipatch, eff_spec, uiPatch.eff_props);
+  let inst = await this.patch_inst_create(eff_label, imedia, ipatch, eff_spec, uiPatch.eff_props);
 
   if (!inst) return;
   if (eff_spec.ipipe && prior && prior.output) {

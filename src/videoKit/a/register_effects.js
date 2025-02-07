@@ -16,7 +16,7 @@ import eff_show from '../effects/eff_show.js';
 import eff_sketchy from '../effects/eff_sketchy.js';
 import eff_slant_scan from '../effects/eff_slant_scan.js';
 import eff_triangle from '../effects/eff_triangle.js';
-import eff_ticker from '../effects/ticker/eff_ticker.js';
+// import eff_ticker from '../effects/ticker/eff_ticker.js';
 
 //
 // videoKit.recordVideo({ save_name, fps, duration })
@@ -39,7 +39,7 @@ p5videoKit.prototype.register_effects = function () {
   this.register_effect('sketchy', eff_sketchy);
   this.register_effect('slant_scan', eff_slant_scan);
   this.register_effect('triangle', eff_triangle);
-  this.register_effect('ticker', eff_ticker);
+  // this.register_effect('ticker', eff_ticker);
 };
 
 p5videoKit.prototype.register_effect = function (label, factory) {

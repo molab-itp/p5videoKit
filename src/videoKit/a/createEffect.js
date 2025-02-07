@@ -23,7 +23,7 @@ p5videoKit.prototype.PeriodTimer = PeriodTimer;
 //
 // videoKit.createEffect({ eff_label, imedia, urect, props, eff_spec })
 //
-p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
+p5videoKit.prototype.createEffect = async function ({ eff_label, imedia, urect, props, eff_spec }) {
   if (!eff_spec) eff_spec = { eff_label, imedia, urect };
   let media;
   let input;
@@ -31,7 +31,7 @@ p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props,
   if (media) {
     input = media.capture;
   }
-  let effMeta = this.effectMeta_find(eff_label);
+  let effMeta = await this.effectMeta_find(eff_label);
   let defaultProps = this.factory_prop_inits(effMeta.factory);
   let videoKit = this;
   let init = Object.assign(defaultProps, { videoKit, eff_spec, input, media }, props);
