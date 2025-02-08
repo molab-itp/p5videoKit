@@ -14,9 +14,9 @@ git push $quiet
 
 npm version patch
 
-npm run build > doc/publish.txt
+npm run build > docs/publish.txt
 
-npm publish 2>> doc/publish.txt
+npm publish 2>> docs/publish.txt
 
 git push $quiet
 
