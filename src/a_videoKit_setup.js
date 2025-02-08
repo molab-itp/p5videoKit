@@ -78,8 +78,11 @@ function ui_verbose(...args) {
 // for debugging
 let a_import_err;
 
-//    { label, import_path, factory, index }
+// eff_meta
+// { label, import_path, factory, index }
 
+// importing of effects must be done outside of the library with this call-back
+//
 function import_effect(eff_meta) {
   console.log('import_effect label', eff_meta.label);
   console.log('import_effect import_path', eff_meta.import_path);
