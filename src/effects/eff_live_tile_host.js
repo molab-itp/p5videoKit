@@ -68,7 +68,7 @@ export default class eff_live_tile_host {
     this.fitWidth = this.fit == 'width';
     this.qr_image_index = -1;
     let urmain = this.eff_spec.urect;
-    console.log('urmain', urmain);
+    console.log('eff_live_tile_host urmain', urmain);
     this.output = createGraphics(urmain.width, urmain.height);
     let videoKit = this.videoKit;
     this.period_timer = new videoKit.PeriodTimer(this.period);
