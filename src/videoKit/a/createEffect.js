@@ -102,6 +102,14 @@ p5videoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, f
 //
 p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
   // console.log('layerCopyEffect eff', eff);
+  if (!layer) {
+    console.log('layerCopyEffect no layer');
+    return;
+  }
+  if (!eff) {
+    console.log('layerCopyEffect no eff');
+    return;
+  }
   eff.prepareOutput();
   if (!eff.output) return;
   let input = eff.output;

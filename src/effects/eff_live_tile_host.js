@@ -45,7 +45,7 @@ export default class eff_live_tile_host {
       videoKit.layerCopyInput(layer, { imedia, urect, fitWidth });
       sindex = (sindex + 1) % nshow;
     }
-    if (this.showQRCode) {
+    if (this.showQRCode && this.eff_qr) {
       videoKit.layerCopyEffect(layer, this.eff_qr);
     }
     if (this.period_timer.check()) {

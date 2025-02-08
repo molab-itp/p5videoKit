@@ -9,6 +9,7 @@ import eff_diff from '../effects/eff_diff.js';
 import eff_face_mesh from '../effects/eff_face_mesh.js';
 import eff_grid from '../effects/eff_grid.js';
 import eff_maze from '../effects/eff_maze.js';
+import eff_image_url from '../effects/eff_image_url.js';
 import eff_none from '../effects/eff_none.js';
 import eff_phyllotaxis from '../effects/eff_phyllotaxis.js';
 import eff_pose_net from '../effects/eff_pose_net.js';
@@ -31,6 +32,7 @@ p5videoKit.prototype.register_effects = function () {
   this.register_effect('diff', eff_diff);
   this.register_effect('face_mesh', eff_face_mesh);
   this.register_effect('grid', eff_grid);
+  this.register_effect('image_url', eff_image_url);
   this.register_effect('maze', eff_maze);
   this.register_effect('none', eff_none);
   this.register_effect('phyllotaxis', eff_phyllotaxis);
@@ -58,6 +60,7 @@ let effs = [
   { label: 'diff', import_path: 'videoKit/effects/eff_diff.js' },
   { label: 'face_mesh', import_path: 'videoKit/effects/bset/eff_face_mesh.js' },
   { label: 'grid', import_path: 'videoKit/effects/eff_grid.js' },
+  { label: 'image_url', import_path: 'videoKit/effects/eff_image_url.js' },
   { label: 'maze', import_path: 'videoKit/effects/eff_maze.js' },
   { label: 'none', import_path: 'videoKit/effects/eff_none.js' },
   { label: 'phyllotaxis', import_path: 'videoKit/effects/eff_phyllotaxis.js' },
