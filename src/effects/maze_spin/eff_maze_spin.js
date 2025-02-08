@@ -1,6 +1,6 @@
 // maze with rotating transition
 
-import MazeSpin from './MazeSpin.js?v={{vers}}';
+import MazeSpin from './MazeSpin.js';
 
 export default class eff_maze_spin {
   static meta_props = [

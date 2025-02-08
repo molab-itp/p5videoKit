@@ -2,10 +2,10 @@
 
 // https://editor.p5js.org/jht9629-gmail/sketches/-FuOH_EE4
 
-import SpiralWalker from './sub/SpiralWalker.js?v={{vers}}';
-import SecondsTimer from './sub/SecondsTimer.js?v={{vers}}';
-import { report_1ofn, div_report } from './sub/report.js?v={{vers}}';
-import { array_zero, array_add, array_random } from './sub/array.js?v={{vers}}';
+import SpiralWalker from './sub/SpiralWalker.js';
+import SecondsTimer from './sub/SecondsTimer.js';
+import { report_1ofn, div_report } from './sub/report.js';
+import { array_zero, array_add, array_random } from './sub/array.js';
 
 export default class MazeSpin {
   // this.ncells

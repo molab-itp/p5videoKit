@@ -285,10 +285,10 @@ export default class eff_live_gallery {
 
 Uncaught TypeError: Cannot read properties of undefined (reading 'toBlob')
     at k.default.saveCanvas (p5.min.js:3:552605)
-    at eff_live_gallery.prepareOutput (eff_live_gallery.js?v={{vers}}:34:19)
-    at p5videoKit.draw_patch (apex.js?v={{vers}}:218:8)
-    at p5videoKit.draw (apex.js?v={{vers}}:47:18)
-    at draw (sketch.js?v={{vers}}:47:12)
+    at eff_live_gallery.prepareOutput (eff_live_gallery.js:34:19)
+    at p5videoKit.draw_patch (apex.js:218:8)
+    at p5videoKit.draw (apex.js:47:18)
+    at draw (sketch.js:47:12)
     at o.default.redraw (p5.min.js:3:487659)
     at _draw (p5.min.js:3:424542)
 */
