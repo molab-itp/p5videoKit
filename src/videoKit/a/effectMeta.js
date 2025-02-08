@@ -16,7 +16,7 @@ let a_import_err;
 p5videoKit.prototype.effectMeta_init = function () {
   console.log('effectMeta_init this.a_.effectMetas.length', this.a_.effectMetas.length);
   this.a_.effectMetaDict = {};
-  let imports = [];
+  // let imports = [];
   let index = 0;
   for (let effMeta of this.a_.effectMetas) {
     this.a_.effectMetaDict[effMeta.label] = effMeta;
@@ -84,6 +84,8 @@ p5videoKit.prototype.effectMeta_find = async function (label) {
       effMeta.factory = await this.import_effect(effMeta);
     } catch (err) {
       console.log('effectMeta_find err', err);
+      // Prevent repeated failure message using eff_null
+      effMeta.factory = eff_null;
     }
   }
   if (!effMeta.factory) {
@@ -113,3 +115,9 @@ p5videoKit.prototype.factory_prop_inits = function (factory, init_props = {}) {
   // console.log('factory_prop_inits inits', inits);
   return inits;
 };
+
+class eff_null {
+  static meta_props = [];
+  constructor() {}
+  prepareOutput() {}
+}
