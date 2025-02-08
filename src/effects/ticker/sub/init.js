@@ -20,9 +20,9 @@ eff_ticker.prototype.init = function () {
   this.begin_day();
   this.load_json();
   this.setup_period_reload();
-  if (this.display_copy_right) this.show_copyright();
-
-  this.a_initDone = 1;
+  if (this.display_copy_right) {
+    this.show_copyright();
+  }
 };
 
 // overwrite stub prepareOutput in eff_ticker.js
