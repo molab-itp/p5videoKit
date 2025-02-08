@@ -35,6 +35,7 @@ let videoKit_config = {
     { label: 'shader_ripple', import_path: 'effects/eff_shader_ripple.js' },
     { label: 'skin_tone_main', import_path: 'effects/eff_skin_tone_main.js' },
     { label: 'bbtest', import_path: 'effects/eff_bbtest.js', ui_label: 'bbtest' },
+    { label: 'ticker', import_path: 'effects/ticker/eff_ticker.js', ui_label: 'ticker' },
   ],
 
   // settings for import, will appear in the settings menu

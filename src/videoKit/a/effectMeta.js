@@ -80,7 +80,7 @@ p5videoKit.prototype.effectMeta_find = async function (label) {
   if (!effMeta.factory && this.import_effect) {
     // Ask host to import effect using import_effect
     try {
-      console.log('effectMeta_find import_effect', effMeta);
+      console.log('effectMeta_find import_effect effMeta', effMeta);
       effMeta.factory = await this.import_effect(effMeta);
     } catch (err) {
       console.log('effectMeta_find err', err);
