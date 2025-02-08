@@ -42,8 +42,9 @@ p5videoKit.prototype.create_patch = async function (droot, ipatch) {
 };
 
 p5videoKit.prototype.create_remove_patch = function (ipatch, div) {
+  let nthis = this;
   let btn = createButton('Remove').mousePressed(function () {
-    this.patch_remove_ipatch(ipatch);
+    nthis.patch_remove_ipatch(ipatch);
   });
   div.child(btn);
 };

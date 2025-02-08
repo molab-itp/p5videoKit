@@ -4,8 +4,6 @@ function videoKit_setup() {
   //
   videoKit = p5videoKit_init(videoKit_config);
 
-  // videoKit_settings_init();
-
   videoKit.save_canvas_handler = save_canvas_handler;
 
   videoKit.import_effect = import_effect;
@@ -81,6 +79,7 @@ let a_import_err;
 // eff_meta
 // { label, import_path, factory, index }
 
+//
 // importing of effects must be done outside of the library with this call-back
 //
 function import_effect(eff_meta) {

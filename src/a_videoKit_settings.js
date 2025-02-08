@@ -1,5 +1,6 @@
 //
 
+// establish settings and reload page
 function videoKit_settings_init() {
   console.log('videoKit_settings');
   //

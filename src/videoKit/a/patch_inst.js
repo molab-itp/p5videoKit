@@ -85,15 +85,11 @@ p5videoKit.prototype.patch_add = function (aPatch) {
 };
 
 p5videoKit.prototype.patch_remove_ipatch = function (ipatch) {
-  patch_remove_at(ipatch);
+  this.patch_remove_at(ipatch);
 };
 
 // Remove patch by index
-function patch_remove_at(ipatch) {
-  // Don't delete first patch
-  // if (ipatch === 0) {
-  //   return;
-  // }
+p5videoKit.prototype.patch_remove_at = function (ipatch) {
   this.patch_inst_update(ipatch);
   this.a_.ui.patches.splice(ipatch, 1);
   this.a_.patch_instances.splice(ipatch, 1);
@@ -101,13 +97,13 @@ function patch_remove_at(ipatch) {
   this.ui_patch_update();
   this.ui_refresh();
   this.pad_layout_update();
-}
+};
 
 // Remove the last patch
-function patch_remove_last() {
-  let ipatch = this.a_.ui.patches.length - 1;
-  patch_remove_at(ipatch);
-}
+// function patch_remove_last() {
+//   let ipatch = this.a_.ui.patches.length - 1;
+//   patch_remove_at(ipatch);
+// }
 
 p5videoKit.prototype.patch_update_effIndex = function (aPatch, effIndex) {
   console.log('patch_update_effIndex effIndex', effIndex);
