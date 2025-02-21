@@ -103,13 +103,14 @@ p5videoKit.prototype.ui_top_pane = function () {
     this.reset_video_clear_locals(this.a_.store_name);
   });
 
+  let nthis = this;
   window.isave.addEventListener('mousedown', () => {
     // if (this.a_.mo_dbase_flag) {
     //   mo_store_add_photo();
     // } else {
-    if (videoKit.save_canvas_handler) {
-      console.log('videoKit.save_canvas_handler');
-      videoKit.save_canvas_handler();
+    if (nthis.save_canvas_handler) {
+      console.log('nthis.save_canvas_handler');
+      nthis.save_canvas_handler();
     } else {
       let fn = this.ui_save_fn();
       saveCanvas(fn, 'png');
