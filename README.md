@@ -31,7 +31,7 @@ Screen shots of p5videoKit in action:
 
 ![facet](docs/media/0-facet-hd_2021-08-25.jpeg)
 
-[Colored Portraits Installation @ 370 Jay St. Brooklyn 2021](https://jht1493.github.io/2021-NYU-ITP-Installation/colored.html)
+[Colored Portraits Installation @ 370 Jay St. Brooklyn 2021](https://jht1493-gmail.github.io/2021-NYU-ITP-Installation/colored.html)
 
 ## Demo
 
