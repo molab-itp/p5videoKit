@@ -14,7 +14,7 @@ export function image_copy_from(img, fromImg) {
 }
 
 // Is this more descriptive?
-export function image_copy_spread({ to, from }) {
+export function image_copy_spread({ from, to }) {
   to.copy(from, 0, 0, from.width, from.height, 0, 0, to.width, to.height);
 }
 
