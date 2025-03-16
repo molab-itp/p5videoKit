@@ -1,7 +1,4 @@
-//
-//
-
-import { image_copy_to } from '../util/image.js';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_sketchy {
   static meta_props = {
@@ -22,7 +19,7 @@ export default class eff_sketchy {
     this.sketchy_draw();
   }
   sketchy_draw() {
-    image_copy_to(this.a_image, this.input);
+    image_copy({ to: this.a_image, from: this.input });
     let n = this.output.width;
     if (this.speed) {
       n = Math.floor(n * (this.speed / 100));

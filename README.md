@@ -13,7 +13,7 @@ p5videoKit - a Library and dashboard for mixing video in the browser.
 The code and documentation is in development.
 We welcome your feedback and help to improve the user interface and documentation.
 
-- started as code for interactive installation at [NYU-ITP Brooklyn 2021](https://jht1493.github.io/2021-NYU-ITP-Installation)
+- started as code for interactive installation at [NYU-ITP Brooklyn 2021](https://jht1493-gmail.github.io/2021-NYU-ITP-Installation)
 
 - re-mixing effects code from
   [DICE mobile app](https://jht1493.net/johnhenrythompson/3-dice.html) and
@@ -31,7 +31,7 @@ Screen shots of p5videoKit in action:
 
 ![facet](docs/media/0-facet-hd_2021-08-25.jpeg)
 
-[Colored Portraits Installation @ 370 Jay St. Brooklyn 2021](https://jht1493.github.io/2021-NYU-ITP-Installation/colored.html)
+[Colored Portraits Installation @ 370 Jay St. Brooklyn 2021](https://jht1493-gmail.github.io/2021-NYU-ITP-Installation/colored.html)
 
 ## Demo
 

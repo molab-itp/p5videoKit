@@ -1,7 +1,4 @@
-//
-//
-
-import { image_copy_to } from '../util/image.js';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_triangle {
   static meta_props = {
@@ -13,7 +10,7 @@ export default class eff_triangle {
     this.init();
   }
   prepareOutput() {
-    image_copy_to(this.img, this.input);
+    image_copy({ to: this.img, from: this.input });
     while (!this.scan_draw_step()) {}
   }
   init() {

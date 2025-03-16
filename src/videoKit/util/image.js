@@ -1,6 +1,6 @@
 //
 // copies the image to the src at full dimensions
-export function image_copy_to(to, from) {
+export function image_copy({ to, from }) {
   // console.log('image_copy to', to, 'from', from);
   // !!@ post p5js 1.8.0 in src/image/pixels.js/_copyHelper
   // loadPixels removed
@@ -9,25 +9,16 @@ export function image_copy_to(to, from) {
 }
 // image.copy(fromImage, sx, sy, sw, sh, dx, dy, dw, dh)
 
-export function image_copy_from(img, fromImg) {
-  img.copy(fromImg, 0, 0, fromImg.width, fromImg.height, 0, 0, img.width, img.height);
-}
-
-// Is this more descriptive?
-export function image_copy_spread({ from, to }) {
-  to.copy(from, 0, 0, from.width, from.height, 0, 0, to.width, to.height);
-}
-
 // Copy the pixels from src to dest.
 // Use when src has alpha that you want to preserve in dest
-export function image_move_to(dest, src) {
+export function image_move({ to: dest, from: src }) {
   dest.loadPixels();
   src.loadPixels();
   let dpixels = dest.pixels;
   let spixels = src.pixels;
   let n = dpixels.length;
   if (n != spixels.length) {
-    console.log('image_move_to !!@ lengths differ', n, spixels.length);
+    console.log('image_move!!@ lengths differ', n, spixels.length);
     return;
   }
   while (n-- > 0) dpixels[n] = spixels[n];

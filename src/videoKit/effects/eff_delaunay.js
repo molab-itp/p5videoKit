@@ -1,10 +1,6 @@
-//
-//
-
-import { PeriodTimer } from '../util/PeriodTimer.js';
-import { image_copy_to } from '../util/image.js';
-// import * as DelaunayStub from '../util/delaunay.js';
-import '../util/delaunay.js';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
+import { image_copy } from '../../util/image.js?v={{vers}}';
+import * as DelaunayStub from '../../util/delaunay.js';
 
 export default class eff_delaunay {
   static meta_props = {
@@ -20,7 +16,7 @@ export default class eff_delaunay {
     this.init();
   }
   prepareOutput() {
-    image_copy_to(this.img, this.input);
+    image_copy({ to: this.img, from: this.input });
     while (!this.draw_step()) {}
     this.period_timer.check(() => {
       // this.output.clear();

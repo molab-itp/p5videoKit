@@ -1,7 +1,4 @@
-//
-//
-
-import { image_copy_to } from '../util/image.js';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_bright {
   static meta_props = {
@@ -29,7 +26,7 @@ export default class eff_bright {
     // console.log('eff_bright xstep', this.xstep, this.ystep);
   }
   draw_it() {
-    image_copy_to(this.src, this.input);
+    image_copy({ to: this.src, from: this.input });
     let layer = this.output;
     if (this.back_color < 0) {
       layer.clear();

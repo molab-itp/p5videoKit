@@ -1,8 +1,5 @@
-//
-//
-
-import { PeriodTimer } from '../util/PeriodTimer.js';
-import { image_copy_to } from '../util/image.js';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_maze {
   static meta_props = {
@@ -16,7 +13,7 @@ export default class eff_maze {
     this.init();
   }
   prepareOutput() {
-    image_copy_to(this.src, this.input);
+    image_copy({ to: this.src, from: this.input });
     while (!this.draw_one()) {}
     this.period_timer.check(() => {
       this.period_next();

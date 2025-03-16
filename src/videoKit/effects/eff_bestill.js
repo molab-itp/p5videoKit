@@ -1,7 +1,4 @@
-//
-//
-
-import { image_copy_to } from '../util/image.js';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_bestill {
   static meta_props = {
@@ -34,7 +31,7 @@ export default class eff_bestill {
       return;
     }
     let { output, srcimage, buf } = this;
-    image_copy_to(srcimage, this.input);
+    image_copy({ to: srcimage, from: this.input });
     srcimage.loadPixels();
     output.loadPixels();
     let rf = this.stillf[0];
@@ -65,7 +62,7 @@ export default class eff_bestill {
       return;
     }
     let { output, srcimage, buf } = this;
-    image_copy_to(srcimage, this.input);
+    image_copy({ to: srcimage, from: this.input });
     srcimage.loadPixels();
     output.loadPixels();
     let rf = this.stillf[0];
@@ -95,7 +92,7 @@ export default class eff_bestill {
     let { buf, output } = this;
     let w = output.width;
     let h = output.height;
-    image_copy_to(output, this.input);
+    image_copy({ to: output, from: this.input });
     output.loadPixels();
     for (let y = 0; y < h; y += 1) {
       for (let x = 0; x < w; x += 1) {

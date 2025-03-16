@@ -1,9 +1,6 @@
-//
-//
-
-import { PeriodTimer } from '../util/PeriodTimer.js';
-import { image_copy_to, image_move_to } from '../util/image.js';
-import eff_bestill from '../effects/eff_bestill.js';
+import { PeriodTimer } from '../../util/PeriodTimer.js?v={{vers}}';
+import { image_copy, image_move } from '../../util/image.js?v={{vers}}';
+import eff_bestill from '../../effects/aset/eff_bestill.js?v={{vers}}';
 
 export default class eff_diff {
   static meta_props = {
@@ -62,7 +59,7 @@ export default class eff_diff {
     }
     // console.log('diff_render iimage', this.iimage);
     let image1 = this.images[this.iimage];
-    image_copy_to(image1, this.input);
+    image_copy({ to: image1, from: this.input });
     this.iimage = (this.iimage + 1) % 2;
     let image2 = this.images[this.iimage];
     let diffimage = this.diffimage;
@@ -101,8 +98,8 @@ export default class eff_diff {
       let r = round(ndiff / this.maxdiff, 4);
       // console.log('diff_render r', r, 'hold_level', this.hold_level);
       if (r > this.hold_level) {
-        // image_copy_to(this.output, this.diffimage);
-        image_move_to(this.output, this.diffimage);
+        // image_copy(this.output, this.diffimage);
+        image_move({ to: this.output, from: this.diffimage });
       }
     }
     if (this.smooth) {
@@ -113,7 +110,7 @@ export default class eff_diff {
     this.inited = 1;
     let image2 = this.images[(this.iimage + 1) % 2];
     // console.log('image_init iimage', this.iimage, 'image2', image2);
-    image_copy_to(image2, this.input);
+    image_copy({ to: image2, from: this.input });
   }
   // -- smooth --
   smooth_init() {
@@ -126,6 +123,6 @@ export default class eff_diff {
   }
   smooth_prepareOutput() {
     this.bestill.bestill_prepareOutput();
-    image_copy_to(this.output, this.bestill.output);
+    image_copy(this.output, this.bestill.output);
   }
 }
