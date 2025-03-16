@@ -1,4 +1,4 @@
-import { image_copy_to } from '../../util/image.js?v={{vers}}';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_phyllotaxis {
   static meta_props = {
@@ -39,7 +39,7 @@ export default class eff_phyllotaxis {
     this.off_margin = width * 0.1;
   }
   draw_it() {
-    image_copy_to(this.src, this.input);
+    image_copy({ to: this.src, from: this.input });
     let layer = this.output;
     // if (this.back_color < 0) {
     //   layer.clear();

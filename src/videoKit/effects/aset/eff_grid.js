@@ -1,4 +1,4 @@
-import { image_copy_to } from '../../util/image.js?v={{vers}}';
+import { image_copy } from '../../util/image.js?v={{vers}}';
 
 export default class eff_grid {
   static meta_props = {
@@ -11,7 +11,7 @@ export default class eff_grid {
     this.init();
   }
   prepareOutput() {
-    image_copy_to(this.src, this.input);
+    image_copy({ to: this.src, from: this.input });
     while (!this.draw_one()) {}
     this.output.image(this.src, 0, 0);
     this.output.image(this.glayer, 0, 0);
