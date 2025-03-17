@@ -326,5 +326,6 @@ An implementation of Guibas & Stolfi's O(nlogn) Delaunay triangulation algorithm
     });
   else if (typeof module !== 'undefined') module.exports = Delaunay;
   else if (typeof self !== 'undefined') self.Delaunay = Delaunay;
-  else window.Delaunay = Delaunay;
+  // else window.Delaunay = Delaunay;
+  else globalThis.Delaunay = Delaunay;
 })();

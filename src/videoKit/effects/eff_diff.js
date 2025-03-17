@@ -98,7 +98,6 @@ export default class eff_diff {
       let r = round(ndiff / this.maxdiff, 4);
       // console.log('diff_render r', r, 'hold_level', this.hold_level);
       if (r > this.hold_level) {
-        // image_copy(this.output, this.diffimage);
         image_move({ to: this.output, from: this.diffimage });
       }
     }
@@ -123,6 +122,6 @@ export default class eff_diff {
   }
   smooth_prepareOutput() {
     this.bestill.bestill_prepareOutput();
-    image_copy(this.output, this.bestill.output);
+    image_copy({ to: this.output, from: this.bestill.output });
   }
 }
