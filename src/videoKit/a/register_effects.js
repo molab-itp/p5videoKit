@@ -16,15 +16,24 @@ import eff_pose_net from '../effects/eff_pose_net.js';
 import eff_show from '../effects/eff_show.js';
 import eff_sketchy from '../effects/eff_sketchy.js';
 import eff_slant_scan from '../effects/eff_slant_scan.js';
+import eff_slit_scan from '../effects/eff_slit_scan.js';
 import eff_triangle from '../effects/eff_triangle.js';
-// import eff_ticker from '../effects/ticker/eff_ticker.js';
 
-//
-// videoKit.recordVideo({ save_name, fps, duration })
-//
+// retire pending
+import eff_bestill_mo from '../effects/eff_bestill_mo.js';
+import eff_bodypix from '../effects/eff_bodypix.js';
+import eff_tile_clock from '../effects/eff_tile_clock.js';
+import eff_tile_live from '../effects/eff_tile_live.js';
+import eff_image from '../effects/eff_image.js';
+import eff_image_mesh from '../effects/eff_image_mesh.js';
+import eff_face_band from '../effects/eff_face_band.js';
+import eff_fft_graph from '../effects/eff_fft_graph.js';
+import eff_fft_polar from '../effects/eff_fft_polar.js';
+import eff_loop from '../effects/eff_loop.js';
+
 p5videoKit.prototype.register_effects = function () {
   //
-  console.log('register_effect_base');
+  console.log('register_effects --- ');
   this.register_effect('bestill', eff_bestill);
   this.register_effect('bright', eff_bright);
   this.register_effect('circle', eff_circle);
@@ -40,8 +49,20 @@ p5videoKit.prototype.register_effects = function () {
   this.register_effect('show', eff_show);
   this.register_effect('sketchy', eff_sketchy);
   this.register_effect('slant_scan', eff_slant_scan);
+  this.register_effect('slit_scan', eff_slit_scan);
   this.register_effect('triangle', eff_triangle);
-  // this.register_effect('ticker', eff_ticker);
+  //
+  // retire pending
+  this.register_effect('eff_bestill_mo', eff_bestill_mo);
+  this.register_effect('eff_bodypix', eff_bodypix);
+  this.register_effect('eff_tile_clock', eff_tile_clock);
+  this.register_effect('eff_tile_live', eff_tile_live);
+  this.register_effect('eff_image', eff_image);
+  this.register_effect('eff_image_mesh', eff_image_mesh);
+  this.register_effect('eff_face_band', eff_face_band);
+  this.register_effect('eff_fft_graph', eff_fft_graph);
+  this.register_effect('eff_fft_polar', eff_fft_polar);
+  this.register_effect('eff_loop', eff_loop);
 };
 
 p5videoKit.prototype.register_effect = function (label, factory) {
@@ -50,41 +71,11 @@ p5videoKit.prototype.register_effect = function (label, factory) {
   let effMeta = { label, factory, index };
   this.a_.effectMetaDict[label] = effMeta;
   this.a_.effectMetas.push(effMeta);
+  console.log('register_effect index', index, label);
 };
 
-let effs = [
-  { label: 'bestill', import_path: 'videoKit/effects/eff_bestill.js' },
-  { label: 'bright', import_path: 'videoKit/effects/eff_bright.js' },
-  { label: 'circle', import_path: 'videoKit/effects/eff_circle.js' },
-  { label: 'delaunay', import_path: 'videoKit/effects/eff_delaunay.js' },
-  { label: 'diff', import_path: 'videoKit/effects/eff_diff.js' },
-  { label: 'face_mesh', import_path: 'videoKit/effects/bset/eff_face_mesh.js' },
-  { label: 'grid', import_path: 'videoKit/effects/eff_grid.js' },
-  { label: 'image_url', import_path: 'videoKit/effects/eff_image_url.js' },
-  { label: 'maze', import_path: 'videoKit/effects/eff_maze.js' },
-  { label: 'none', import_path: 'videoKit/effects/eff_none.js' },
-  { label: 'phyllotaxis', import_path: 'videoKit/effects/eff_phyllotaxis.js' },
-  { label: 'pose_net', import_path: 'videoKit/effects/eff_pose_net.js' },
-  { label: 'show', import_path: 'videoKit/effects/eff_show.js' },
-  { label: 'sketchy', import_path: 'videoKit/effects/eff_sketchy.js' },
-  { label: 'slant_scan', import_path: 'videoKit/effects/eff_slant_scan.js' },
-  { label: 'slit_scan', import_path: 'videoKit/effects/eff_slit_scan.js' },
-  { label: 'triangle', import_path: 'videoKit/effects/eff_triangle.js' },
-  { label: 'ticker', import_path: 'videoKit/effects/ticker/eff_ticker.js' },
+// not used - for reference
+let unsed_eff = [
+  // { label: 'ticker', import_path: 'videoKit/effects/ticker/eff_ticker.js' },
   // { label: 'mov', import_path: 'videoKit/effects/eff_mov.js' },
-  // { label: 'bestill_mo', import_path: 'videoKit/effects/eff_bestill_mo.js' },
-  // { label: 'bodypix', import_path: 'videoKit/effects/eff_bodypix.js' },
-  // { label: 'tile_clock', import_path: 'videoKit/effects/eff_tile_clock.js' },
-  // { label: 'tile_live', import_path: 'videoKit/effects/eff_tile_live.js' },
-  // { label: 'image', import_path: 'videoKit/effects/eff_image.js' },
-  // { label: 'image_mesh', import_path: 'videoKit/effects/eff_image_mesh.js' },
-  // { label: 'image_url', import_path: 'videoKit/effects/eff_image_url.js' },
-  // { label: 'face_band', import_path: 'videoKit/effects/fft/eff_face_band.js' },
-  // { label: 'fft_graph', import_path: 'videoKit/effects/fft/eff_fft_graph.js' },
-  // { label: 'fft_polar', import_path: 'videoKit/effects/fft/eff_fft_polar.js' },
-  // { label: 'loop', import_path: 'videoKit/effects/eff_loop.js' },
 ];
-
-// export let a_effectMetas = [
-//   { label: 'bestill', import_path: xx, factory: xxx },
-// ];

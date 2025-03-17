@@ -41,7 +41,7 @@ async function effectMeta_import(effMeta) {
   let inpath;
   let videoKitPrefix = 'videoKit/';
   if (import_path.startsWith(videoKitPrefix)) {
-    // effectMeta_import ../../videoKit/effects/aset/eff_bestill.js
+    // effectMeta_import ../../videoKit/effects/eff_bestill.js
     inpath = '../' + import_path.substring(videoKitPrefix.length);
   } else {
     // effectMeta_import ../../effects/eff_a_example_props.js
