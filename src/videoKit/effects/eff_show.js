@@ -35,9 +35,11 @@ export default class eff_show_pad {
   }
 
   prepareOutput() {
+    // console.log('eff_show_pad prepareOutput');
     if (!this.eff_spec.ihide) {
       if (this.input) {
         let img = this.input.get();
+        // console.log('eff_show_pad prepareOutput img', img);
         image_scaled_pad(img, this.eff_spec.urect);
       }
     } else {

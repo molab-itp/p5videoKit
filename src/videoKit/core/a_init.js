@@ -27,6 +27,7 @@ export function a_init() {
       urects_count: 0,
       canvas_resize_ref: '',
       canvas_data_chk: 0,
+      audio_enabled: 0,
       mediaDiv_states: [],
       patches: [{ eff_spec: { ipatch: 0, imedia: 1, eff_label: 'show' } }],
     },

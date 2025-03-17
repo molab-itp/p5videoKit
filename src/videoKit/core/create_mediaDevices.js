@@ -62,7 +62,8 @@ p5videoKit.prototype.create_mediaDevices = function () {
 
 p5videoKit.prototype.init_device_capture = function (mediaDevice) {
   let vcap = {
-    audio: true,
+    // audio: true,
+    audio: this.a_.ui.audio_enabled,
     video: {
       deviceId: { exact: mediaDevice.deviceId },
     },

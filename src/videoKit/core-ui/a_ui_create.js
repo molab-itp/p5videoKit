@@ -136,7 +136,31 @@ p5videoKit.prototype.ui_size_pane = function () {
   let div = this.ui_div_empty('isize_bar');
   this.ui_canvas_div(div);
   this.ui_capture_size(div);
+  this.ui_audio_checkbox(div);
   // ui_render_size(div);
+};
+
+p5videoKit.prototype.ui_audio_checkbox = function (div) {
+  let html = `
+  <div style="display: inline">
+    [<input type="checkbox" id="id_audio_checkbox" />
+    <label for="id_audio_checkbox">Audio]</label>
+  </div>
+  `;
+  this.ui_div_append(div, html);
+
+  let id_audio_checkbox = window.id_audio_checkbox;
+  id_audio_checkbox.checked = this.a_.ui.audio_enabled;
+  id_audio_checkbox.addEventListener('change', check_audio_change);
+
+  let nthis = this;
+  function check_audio_change() {
+    console.log('check_audio_change change nthis', nthis);
+    let state = this.checked;
+    nthis.a_.ui.audio_enabled = state ? 1 : 0;
+    console.log('check_audio_change change nthis.a_.ui.audio_enabled', nthis.a_.ui.audio_enabled);
+    nthis.ui_prop_set('audio_enabled', nthis.a_.ui.audio_enabled);
+  }
 };
 
 p5videoKit.prototype.ui_create_comment_field = function () {
