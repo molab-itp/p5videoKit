@@ -84,22 +84,22 @@ let a_import_err;
 //
 // importing of effects must be done outside of the library with this call-back
 //
-function import_effect(eff_meta) {
-  console.log('import_effect label', eff_meta.label);
-  console.log('import_effect import_path', eff_meta.import_path);
-  return new Promise((resolve, reject) => {
-    import('./' + eff_meta.import_path)
-      .then((module) => {
-        console.log('import_effect label', eff_meta.label, 'module', module);
-        resolve(module.default);
-      })
-      .catch((err) => {
-        console.log('import_effect label', eff_meta.label, '\n err', err);
-        a_import_err = err;
-        reject(err);
-      });
-  });
-}
+// function import_effect(eff_meta) {
+//   console.log('import_effect label', eff_meta.label);
+//   console.log('import_effect import_path', eff_meta.import_path);
+//   return new Promise((resolve, reject) => {
+//     import('./' + eff_meta.import_path)
+//       .then((module) => {
+//         console.log('import_effect label', eff_meta.label, 'module', module);
+//         resolve(module.default);
+//       })
+//       .catch((err) => {
+//         console.log('import_effect label', eff_meta.label, '\n err', err);
+//         a_import_err = err;
+//         reject(err);
+//       });
+//   });
+// }
 
 function import_effect_handler(eff_meta) {
   return import('./' + eff_meta.import_path);
