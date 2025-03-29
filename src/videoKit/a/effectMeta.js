@@ -14,7 +14,7 @@ import { p5videoKit } from './a_p5videoKit.js';
 let a_import_err;
 
 p5videoKit.prototype.effectMeta_init = function () {
-  console.log('effectMeta_init this.a_.effectMetas.length', this.a_.effectMetas.length);
+  // console.log('effectMeta_init this.a_.effectMetas.length', this.a_.effectMetas.length);
   this.a_.effectMetaDict = {};
   // let imports = [];
   let index = 0;
@@ -77,7 +77,7 @@ p5videoKit.prototype.effectMeta_find = async function (label) {
     console.log('effectMeta_find label not found', label);
     effMeta = this.a_.effectMetas[0];
   }
-  if (!effMeta.factory && this.import_effect) {
+  if (!effMeta.factory && this.import_effect_handler) {
     // Ask host to import effect using import_effect
     try {
       console.log('effectMeta_find import_effect effMeta', effMeta);
@@ -92,6 +92,24 @@ p5videoKit.prototype.effectMeta_find = async function (label) {
     effMeta = this.a_.effectMetas[0];
   }
   return effMeta;
+};
+
+p5videoKit.prototype.import_effect = function (effMeta) {
+  console.log('p5videoKit import_effect label', effMeta.label);
+  console.log('p5videoKit import_effect import_path', effMeta.import_path);
+  return new Promise((resolve, reject) => {
+    // import('./' + effMeta.import_path)
+    this.import_effect_handler(effMeta)
+      .then((module) => {
+        console.log('import_effect label', effMeta.label, 'module', module);
+        resolve(module.default);
+      })
+      .catch((err) => {
+        console.log('import_effect label', effMeta.label, '\n err', err);
+        a_import_err = err;
+        reject(err);
+      });
+  });
 };
 
 p5videoKit.prototype.factory_prop_inits = function (factory, init_props = {}) {

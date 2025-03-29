@@ -30,7 +30,8 @@ export default class eff_ncell {
     this.effs = [];
     // let eff_labels = ['circle', 'maze', 'bright', 'grid'];
     // console.log('eff_ncell effect_labels', this.effect_labels);
-    let eff_labels = this.effect_labels.split(',');
+    let effect_labels = this.effect_labels || '';
+    let eff_labels = effect_labels.split(',');
     // let eff_labels = ['circle'];
     let videoKit = this.videoKit;
     let imedia = 1;

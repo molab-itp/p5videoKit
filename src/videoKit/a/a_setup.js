@@ -22,7 +22,7 @@ p5videoKit.prototype.draw = function () {
     this.init();
   }
   if (!this.a_initDone) {
-    console.log('p5videoKit draw init not done');
+    // console.log('p5videoKit draw init not done');
     return;
   }
   this.set_background();
@@ -64,7 +64,7 @@ p5videoKit.prototype.setup = async function (options) {
   // this.ui_restore_store(effects, settings, (sizeResult) => {
   let sizeResult = await this.ui_restore_store(options);
 
-  console.log('videoKit setup sizeResult', sizeResult);
+  // console.log('videoKit setup sizeResult', sizeResult);
   resizeCanvas(sizeResult.width, sizeResult.height);
 
   this.init_mediaDivs();

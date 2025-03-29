@@ -25,7 +25,9 @@ export default class eff_a_slit_scan {
     this.vh = this.input.height;
     console.log('eff_a_slit_scan constructor input vw vh', this.vw, this.vh);
 
-    this.output = createGraphics(this.vw * this.expand, this.vh);
+    // !!@ needed after reset
+    let expand = this.expand || 1;
+    this.output = createGraphics(this.vw * expand, this.vh);
     // this.output.background(255);
 
     this.x = 0;

@@ -59,7 +59,7 @@ export default class eff_skin_tone_main {
     this.output.remove();
     this.videoKit.deinitEffect(this.eff_qr);
   }
-  init() {
+  async init() {
     this.fitWidth = this.fit == 'width';
     let videoKit = this.videoKit;
     this.qr_image_index = -1;
@@ -93,7 +93,7 @@ export default class eff_skin_tone_main {
       if (index == qrIndex) {
         let eff_label = 'image_url';
         props = { image_url: this.image_url };
-        this.eff_qr = videoKit.createEffect({ eff_label, imedia, urect, props });
+        this.eff_qr = await videoKit.createEffect({ eff_label, imedia, urect, props });
       }
       this.urects.push({ urect });
       x0 += xstep;

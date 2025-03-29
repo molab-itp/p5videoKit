@@ -18,7 +18,7 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 // import { ui_div_append, ui_createElement, ui_div_empty } from '../core-ui/ui_tools.js';
 
 p5videoKit.prototype.ui_create = function () {
-  console.log('ui_create this.a_.hide_ui_option', this.a_.hide_ui_option);
+  // console.log('ui_create this.a_.hide_ui_option', this.a_.hide_ui_option);
   this.a_.top_dash_div = this.ui_div_empty('id_top_dash');
   if (this.a_.hide_ui_option) {
     this.a_.top_dash_div.style('display:none');

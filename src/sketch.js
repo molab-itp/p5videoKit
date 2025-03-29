@@ -26,7 +26,7 @@ function setup() {
   // sets videoKit
   videoKit_setup();
 
-  setup_dbase();
+  // setup_dbase();
 }
 
 function draw() {

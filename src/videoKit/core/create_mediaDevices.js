@@ -73,13 +73,13 @@ p5videoKit.prototype.init_device_capture = function (mediaDevice) {
     vcap.video.width = { exact: dim.width };
     vcap.video.height = { exact: dim.height };
   }
-  console.log('create_mediaDevices dim', dim);
-  console.log('create_mediaDevices vcap', vcap);
+  // console.log('create_mediaDevices dim', dim);
+  // console.log('create_mediaDevices vcap', vcap);
   let capture = createCapture(vcap, (stream) => {
     mediaDevice.stream = stream;
     this.livem_restore();
   });
-  console.log('create_mediaDevices capture width height', capture.width, capture.height);
+  // console.log('create_mediaDevices capture width height', capture.width, capture.height);
   capture.elt.muted = true;
   mediaDevice.capture = capture;
 };

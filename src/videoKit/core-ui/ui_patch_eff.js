@@ -82,7 +82,7 @@ p5videoKit.prototype.create_patch_selection = async function (aPatch, ipatch, di
   }
   let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
   let effIndex = effMeta.index;
-  console.log('create_patch_selection effIndex', effIndex);
+  // console.log('create_patch_selection effIndex', effIndex);
   aSel.selected(effIndex);
   let nthis = this;
   aSel.changed(function () {

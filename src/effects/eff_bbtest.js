@@ -1,7 +1,7 @@
 // converting video slit scan to a effect pluging example
 //
 // effects have to be declared as a class
-// convention is that properties in UI 
+// convention is that properties in UI
 // appear in meta_props array as drop-downs
 // goal: you don't have to write the code
 // you just have to select the drop-downs
@@ -24,8 +24,9 @@ export default class eff_bbtest {
     this.vw = this.input.width;
     this.vh = this.input.height;
     console.log('eff_bbtest constructor input vw vh', this.vw, this.vh);
-
-    this.output = createGraphics(this.vw * this.expand, this.vh);
+    // !!@ needed after reset
+    let expand = this.expand || 1;
+    this.output = createGraphics(this.vw * expand, this.vh);
     // this.output.background(255);
 
     this.x = 0;
@@ -33,6 +34,7 @@ export default class eff_bbtest {
     this.period_timer = new this.videoKit.PeriodTimer(this.period);
   }
   prepareOutput() {
+    // console.log('eff_bbtest vw', this.vw, this.vh);
     // this.input.loadPixels();
     this.output.copy(this.input, this.vw / 2, 0, 1, this.vh, this.x, 0, 1, this.vh);
     this.x = this.x + this.step;
@@ -42,14 +44,16 @@ export default class eff_bbtest {
     if (this.period_timer.check()) {
       this.output.clear();
     }
-    this.output.fill(240,0,0);
-    this.output.circle(width/2, height/2, 100);
+    this.output.fill(240, 0, 0);
+    let w = this.output.width;
+    let h = this.output.height;
+    this.output.circle(w / 2, h / 2, 100);
   }
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/hw8qkUuAw
 // https://editor.p5js.org/codingtrain/sketches/B1L5j8uk4
-// Slit Scan 
+// Slit Scan
 // this is original code that would work in p5js editor
 // and is adapted to the VideoKit plug-in model
 // the sketches in the effects directory plug-in
@@ -60,7 +64,6 @@ export default class eff_bbtest {
 // analogous to setup only called once
 // 3. prepareOutput() analogous to draw
 // repeatedly called for every frame
-
 
 // let video;
 // let x = 0;

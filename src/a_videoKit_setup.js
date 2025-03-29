@@ -6,7 +6,8 @@ function videoKit_setup() {
 
   videoKit.save_canvas_handler = save_canvas_handler;
 
-  videoKit.import_effect = import_effect;
+  // videoKit.import_effect = import_effect;
+  videoKit.import_effect_handler = import_effect_handler;
 }
 
 let videoKit_config = {
@@ -98,4 +99,8 @@ function import_effect(eff_meta) {
         reject(err);
       });
   });
+}
+
+function import_effect_handler(eff_meta) {
+  return import('./' + eff_meta.import_path);
 }
