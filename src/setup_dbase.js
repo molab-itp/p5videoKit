@@ -10,8 +10,8 @@ async function setup_dbase() {
   // my.fireb_config = 'jht1493';
   // my.fireb_config = 'jhtitp';
 
-  my.mo_app = 'mo-bestill';
-  my.mo_room = 'm0-bestill';
+  my.mo_app = 'mo-example';
+  my.mo_room = 'm0-example';
   my.mo_group = 's0';
 
   // my.nameDevice = '';
