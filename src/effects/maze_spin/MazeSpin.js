@@ -66,6 +66,10 @@ export default class MazeSpin {
 
   prepareOutput() {
     // console.log('MazeSpin prepareOutput');
+    // console.log('MazeSpin prepareOutput video_color', this.video_color);
+    // console.log('MazeSpin prepareOutput input_copy', this.input_copy);
+    // console.log('MazeSpin prepareOutput input', this.input);
+
     if (this.video_color) {
       // copy(srcImage, sx, sy, sw, sh, dx, dy, dw, dh)
       this.input_copy.copy(this.input, 0, 0, this.width, this.height, 0, 0, this.width, this.height);

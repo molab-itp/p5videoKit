@@ -42,3 +42,7 @@ import '../core-ui/ui_prop.js';
 import '../core-ui/ui_render.js';
 import '../core-ui/ui_restore.js';
 import '../core-ui/ui_tools.js';
+
+// import 'p5';
+
+// console.log('a_lib p5', p5);

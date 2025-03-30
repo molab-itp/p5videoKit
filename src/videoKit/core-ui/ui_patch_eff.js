@@ -53,7 +53,7 @@ p5videoKit.prototype.create_remove_patch = function (ipatch, div) {
 };
 
 p5videoKit.prototype.create_checkbox = function (aPatch, div, label, prop) {
-  let chk = createCheckbox(label, aPatch.eff_spec[prop]);
+  let chk = createCheckbox(label, aPatch.eff_spec[prop] || false);
   div.child(chk);
   chk.style('display:inline');
   let nthis = this;

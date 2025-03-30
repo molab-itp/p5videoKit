@@ -3,12 +3,17 @@
 //
 let videoKit; // home for videoKit library routines
 
-p5.disableFriendlyErrors = true; // disables FES to improve performance
+// p5.disableFriendlyErrors = true; // disables FES to improve performance
 
 let my = {};
 globalThis.my = my;
 
+console.log('sketch globalThis.p5', globalThis.p5);
+
 function setup() {
+  console.log('sketch setup globalThis.p5', globalThis.p5);
+  p5.disableFriendlyErrors = true; // disables FES to improve performance
+
   // Report startup time for debugging
   let lapse = window.performance.now() - a_start_now;
   console.log('setup lapse', lapse);
