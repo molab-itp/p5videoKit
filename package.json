@@ -1,6 +1,6 @@
 {
   "name": "p5-video-kit",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Library and dashboard for mixing video in the browser",
   "homepage": "https://github.com/molab-itp/p5videoKit.git#readme",
   "repository": {
