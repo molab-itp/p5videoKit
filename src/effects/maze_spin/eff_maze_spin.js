@@ -35,6 +35,9 @@ export default class eff_maze_spin {
     // console.log('eff_maze_spin props', props);
     // console.log('eff_maze_spin meta_props', eff_maze_spin.meta_props);
 
+    // !!@ eff_maze_spin init error
+    this.ncells = this.ncells || 31;
+
     let my = {
       input: this.input,
       width: this.input.width,
