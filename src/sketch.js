@@ -1,7 +1,7 @@
 // p5LiveVideo example dashboard
 // https://github.com/jht1493/p5videoKit
 //
-let videoKit; // home for library routines
+let videoKit; // home for videoKit library routines
 
 p5.disableFriendlyErrors = true; // disables FES to improve performance
 
@@ -26,7 +26,7 @@ function setup() {
   // sets videoKit
   videoKit_setup();
 
-  // setup_dbase();
+  setup_dbase();
 }
 
 function draw() {

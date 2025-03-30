@@ -124,7 +124,8 @@ p5videoKit.prototype.draw_patch = async function (ipatch, prior) {
   }
   inst.prepareOutput();
   if (!eff_spec.ihide && inst.output) {
-    image_scaled_pad(inst.output, eff_spec.urect);
+    let opt = { fliph: eff_spec.ifliph, flipv: eff_spec.iflipv };
+    image_scaled_pad(inst.output, eff_spec.urect, opt);
   }
   return inst;
 };

@@ -117,7 +117,7 @@ p5videoKit.prototype.patch_update_effIndex = function (aPatch, effIndex) {
 
 p5videoKit.prototype.patch_instances_clear_all = function () {
   // All patch instances will be re-created on next draw
-  console.log('patch_instances_clear_all');
+  // console.log('patch_instances_clear_all');
   for (let ipatch = 0; ipatch < this.a_.patch_instances.length; ipatch++) {
     this.patch_inst_update(ipatch);
   }

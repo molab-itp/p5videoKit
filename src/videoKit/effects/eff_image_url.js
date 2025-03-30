@@ -1,7 +1,7 @@
 //
 //
 
-import { layer_image_scaled_pad } from '../util/image.js';
+import { image_scaled_layer } from '../util/image.js';
 
 export default class eff_image_url {
   static meta_props = {
@@ -28,7 +28,7 @@ export default class eff_image_url {
   show_image() {
     if (!this.img) return;
     let centered = this.image_align === 'center';
-    layer_image_scaled_pad(this.output, this.img, this.eff_spec.urect, centered);
+    image_scaled_layer(this.output, this.img, this.eff_spec.urect, centered);
   }
   load_image() {
     // add version for cache busting

@@ -4,7 +4,7 @@
 import { image_scaled_pad } from '../util/image.js';
 // import { ui_message } from '../core-ui/ui_prop.js';
 
-export default class eff_show_pad {
+export default class eff_show {
   //
   static meta_props = {
     record_fps: [4, 6, 12, 24, 30, 60],
@@ -40,7 +40,9 @@ export default class eff_show_pad {
       if (this.input) {
         let img = this.input.get();
         // console.log('eff_show_pad prepareOutput img', img);
-        image_scaled_pad(img, this.eff_spec.urect);
+        let eff_spec = this.eff_spec;
+        let opt = { fliph: eff_spec.ifliph, flipv: eff_spec.iflipv };
+        image_scaled_pad(img, this.eff_spec.urect, opt);
       }
     } else {
       this.output = this.input;

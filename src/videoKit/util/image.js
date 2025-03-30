@@ -39,7 +39,12 @@ function image_scaled(img) {
   image(img, 0, 0, w, h, 0, 0, w2, h2);
 }
 
-export function image_scaled_pad(img, urect, flush_right) {
+// image_scaled_pad(img, urect, { flushRight })
+export function image_scaled_pad(img, urect, opts) {
+  opts = opts || {};
+  let flushRight = opts.flushRight;
+  let fliph = opts.fliph;
+  let flipv = opts.flipv;
   if (!urect) urect = { width, height, x0: 0, y0: 0 };
   let pw = urect.width;
   let ph = urect.height;
@@ -57,13 +62,23 @@ export function image_scaled_pad(img, urect, flush_right) {
   // urect.width 270 iw 640 ih 480 pw 270 ph 480
   let dx = urect.x0;
   let dy = urect.y0;
-  if (flush_right) {
+  if (flushRight) {
     dx = dx + (urect.width - pw) / 2;
   }
-  image(img, dx, dy, pw, ph, 0, 0, iw, ih);
+  if (fliph || flipv) {
+    push();
+    translate(fliph ? dx + pw : 0, flipv ? dy + ph : 0);
+    scale(fliph ? -1 : 1, flipv ? -1 : 1);
+    if (fliph) dx = 0;
+    if (flipv) dy = 0;
+    image(img, dx, dy, pw, ph, 0, 0, iw, ih);
+    pop();
+  } else {
+    image(img, dx, dy, pw, ph, 0, 0, iw, ih);
+  }
 }
 
-export function layer_image_scaled_pad(layer, img, urect, align_center, flip_h) {
+export function image_scaled_layer(layer, img, urect, align_center, flip_h) {
   if (!img) return;
   if (!urect) urect = { width, height, x0: 0, y0: 0 };
   let pw = urect.width;

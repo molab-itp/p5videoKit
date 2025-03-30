@@ -16,29 +16,25 @@ p5videoKit.prototype.ui_capture_size = function (div) {
     ${capture_size_options(a_capture_sizes)}
   </select>
   `;
-
   function capture_size_options(sizes) {
     let arr = sizes.map((se) => `<option value="${se.label}">${se.label}</option>`);
     return arr.join('');
   }
-
   this.ui_div_append(div, html);
 
   let icapture_size = window.icapture_size;
   let se = this.get_capture_size();
   icapture_size.selectedIndex = se.index;
   // Can not use arrow funtion here to get this
-  icapture_size.addEventListener('change', () => {
-    this.capture_size_change();
-  });
-};
-
-p5videoKit.prototype.capture_size_change = function () {
-  console.log('capture_size change value', this.value);
-  let value = this.value;
-  this.ui_prop_set('capture_size', value);
-  this.media_reset();
-  this.patch_instances_clear_all();
+  icapture_size.addEventListener('change', capture_size_change);
+  let nthis = this;
+  function capture_size_change() {
+    console.log('capture_size change value', this.value);
+    let value = this.value;
+    nthis.ui_prop_set('capture_size', value);
+    nthis.media_reset();
+    nthis.patch_instances_clear_all();
+  }
 };
 
 // <span> Capture Size: </span>

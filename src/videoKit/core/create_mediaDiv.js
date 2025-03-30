@@ -158,7 +158,7 @@ p5videoKit.prototype.remove_mediaDiv = function (id) {
   // console.log('remove_mediaDiv id=', id, !id);
   // Remove the div associated with id
   let ent = this.find_media_by_id(id);
-  console.log('remove_mediaDiv ent', ent);
+  // console.log('remove_mediaDiv ent', ent);
   if (ent) {
     ent.div.remove();
     ent.capture.remove();

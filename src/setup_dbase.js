@@ -41,6 +41,10 @@ function observe_item(my) {
 
 async function save_canvas_handler() {
   console.log('save_canvas_handler my.canvas', my.canvas);
+  if (!my.dbase) {
+    console.log('no setup_dbase');
+    return;
+  }
   let layer = my.canvas;
   await add_photo(layer);
 }

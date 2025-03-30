@@ -165,7 +165,9 @@ p5videoKit.prototype.deinitEffect = function (eff) {
 //
 p5videoKit.prototype.ouputToCanvas = function (eff) {
   if (eff.output) {
-    image_scaled_pad(eff.output, eff.eff_spec.urect);
+    let eff_spec = eff.eff_spec;
+    let opt = { fliph: eff_spec.ifliph, flipv: eff_spec.iflipv };
+    image_scaled_pad(eff.output, eff.eff_spec.urect, opt);
   }
 };
 

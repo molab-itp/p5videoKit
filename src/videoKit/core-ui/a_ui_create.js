@@ -105,17 +105,13 @@ p5videoKit.prototype.ui_top_pane = function () {
 
   let nthis = this;
   window.isave.addEventListener('mousedown', () => {
-    // if (this.a_.mo_dbase_flag) {
-    //   mo_store_add_photo();
-    // } else {
     if (nthis.save_canvas_handler) {
-      console.log('nthis.save_canvas_handler');
+      // console.log('nthis.save_canvas_handler');
       nthis.save_canvas_handler();
     } else {
       let fn = this.ui_save_fn();
       saveCanvas(fn, 'png');
     }
-    // }
     // save_others(fn);
   });
 
@@ -169,14 +165,13 @@ p5videoKit.prototype.ui_create_comment_field = function () {
   <input id="icomment_input" value="" type="text" style="width: 80%;">
   `;
   this.ui_div_append(div, html);
-
   let val = this.a_.ui.comment || this.a_.ui.setting;
-
   window.icomment_input.value = val;
-  window.icomment_input.addEventListener('input', () => {
+  let nthis = this;
+  window.icomment_input.addEventListener('input', function () {
     let val = this.value;
     // console.log('ui_create_comment_field val', val);
-    this.ui_prop_set('comment', val);
+    nthis.ui_prop_set('comment', val);
   });
 };
 

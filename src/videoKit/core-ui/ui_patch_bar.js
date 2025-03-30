@@ -59,7 +59,7 @@ p5videoKit.prototype.ui_patch_bar = function () {
   ilayout.addEventListener('change', layout_change);
   let nthis = this;
   function layout_change() {
-    console.log('layout_change');
+    // console.log('layout_change');
     nthis.ui_prop_set('patch_layout', this.value);
     nthis.pad_layout_update();
     nthis.patch_instances_clear_all();

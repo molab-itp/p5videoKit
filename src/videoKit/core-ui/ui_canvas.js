@@ -19,12 +19,10 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
     <label for="icanvas_lock">Lock]</label>
   </div>
   `;
-
   function canvas_size_options(sizes) {
     let arr = sizes.map((se) => `<option value="${se.label}">${se.label}</option>`);
     return arr.join('');
   }
-
   this.ui_div_append(div, html);
 
   let icanvas_size = window.icanvas_size;
@@ -48,11 +46,9 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
     }
     nthis.ui_window_refresh();
   }
-
   let icanvas_lock = window.icanvas_lock;
   icanvas_lock.checked = this.a_.canvas_size_lock;
   icanvas_lock.addEventListener('change', check_lock_change);
-
   function check_lock_change() {
     // console.log('icanvas_lock change this', this);
     let state = this.checked;

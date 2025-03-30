@@ -5,7 +5,7 @@
 // import { ui_patch_update } from '../core-ui/ui_patch_bar.js';
 import { PeriodTimer } from '../util/PeriodTimer.js';
 import { a_images } from '../let/a_images.js';
-import { layer_image_scaled_pad } from '../util/image.js';
+import { image_scaled_layer } from '../util/image.js';
 
 let g_image_groups = [
   'group',
@@ -133,7 +133,7 @@ export default class eff_image_show {
   }
   show_image() {
     if (!this.zoomed) {
-      layer_image_scaled_pad(this.output, this.img, this.eff_spec.urect, this.align_center, this.flip_h);
+      image_scaled_layer(this.output, this.img, this.eff_spec.urect, this.align_center, this.flip_h);
     } else {
       this.show_zoomed(this.img, this.eff_spec.urect);
     }

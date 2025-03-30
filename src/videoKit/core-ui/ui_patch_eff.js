@@ -36,6 +36,9 @@ p5videoKit.prototype.create_patch = async function (droot, ipatch) {
 
   this.create_checkbox(aPatch, div, 'hide', 'ihide');
 
+  this.create_checkbox(aPatch, div, 'fliph', 'ifliph');
+  this.create_checkbox(aPatch, div, 'flipv', 'iflipv');
+
   this.create_remove_patch(ipatch, div);
 
   await this.create_settings(aPatch, div);
