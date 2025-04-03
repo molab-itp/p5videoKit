@@ -67,7 +67,7 @@ p5videoKit.prototype.setup = async function (options) {
   // console.log('videoKit setup sizeResult', sizeResult);
   resizeCanvas(sizeResult.width, sizeResult.height);
 
-  this.init_mediaDivs();
+  this.init_mediaDivs(options);
 
   this.ui_create();
 

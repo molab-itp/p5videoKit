@@ -63,6 +63,13 @@ let videoKit_config = {
     { label: 'videoKit', import_path: 'settings/videoKit.json' },
     { label: 'bbtest', import_path: 'settings/bbtest.json' },
   ],
+
+  videos: [
+    { label: '360video_256crop_v2', import_path: 'videos/360video_256crop_v2.mp4' },
+    { label: 'fingers', import_path: 'videos/fingers.mov' },
+    { label: 'jht', import_path: 'videos/jht-IMG_6031.mov' },
+    { label: 'small', import_path: 'videos/small.mp4' },
+  ],
 };
 
 function ui_log(...args) {

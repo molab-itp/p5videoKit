@@ -2,10 +2,6 @@
 //
 import { p5videoKit } from '../a/a_p5videoKit.js';
 
-// import { a_ } from '../let/a_state.js';
-// import { ui_prop_set } from '../core-ui/ui_prop.js';
-// import { patch_instances_clear_all } from '../a/patch_inst.js';
-
 // this.a_mediaDivs = []
 // { imedia, mediaDevice, id, label, div, chk, vis, capture, info, ready, livem }
 // 0: canvas
@@ -174,7 +170,9 @@ p5videoKit.prototype.attach_media_nlabel = function (id, nlabel) {
   }
 };
 
-p5videoKit.prototype.init_mediaDivs = function () {
+p5videoKit.prototype.init_mediaDivs = function ({ videos }) {
+  console.log('init_mediaDivs', videos);
+  videos = videos || [];
   // First media pane is canvas
   this.a_.mediaDivs = [
     {
@@ -185,7 +183,40 @@ p5videoKit.prototype.init_mediaDivs = function () {
       },
     },
   ];
+  // { label: '360video_256crop_v2', import_path: 'video/360video_256crop_v2.mp4' },
+  for (let videoMeta of videos) {
+    let entry = this.create_video_Div(videoMeta);
+    this.a_.mediaDivs.push(entry);
+  }
 };
+
+// { label: '360video_256crop_v2', import_path: 'video/360video_256crop_v2.mp4' },
+// returns { label, capture, ready  }
+p5videoKit.prototype.create_video_Div = function (videoMeta) {
+  let { label, import_path } = videoMeta;
+  let capture = createVideo(import_path, create_video_callback);
+  let playIssued = false;
+  capture.hide();
+  let ready = () => {
+    // console.log('create_video_Div ready', label, capture.loadedmetadata);
+    let isReady = capture.loadedmetadata;
+    if (isReady && !playIssued) {
+      console.log('create_video_Div ready label=', label);
+      capture.play();
+      capture.loop();
+      capture.volume(0);
+      playIssued = true;
+    }
+    return isReady;
+  };
+  function create_video_callback() {
+    // console.log('create_video_callback import_path', import_path);
+  }
+  return { label, capture, ready };
+};
+
+// https://editor.p5js.org/jht9629-nyu/sketches/uAk60oX6b
+// createVideo v0
 
 // return a reference to mediaDiv_state entry, ui will modify directly
 p5videoKit.prototype.ui_media_state_default = function (imedia, vis) {

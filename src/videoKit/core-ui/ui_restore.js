@@ -22,7 +22,7 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 import { a_effectMetas } from '../let/a_effectMetas.js';
 
 // Restore this.a_.ui settings from local storage
-p5videoKit.prototype.ui_restore_store = async function ({ effects, settings, hide_ui }) {
+p5videoKit.prototype.ui_restore_store = async function ({ effects, settings }) {
   //
   // if (!effects || !settings) {
   //   console.log('ui_restore_store INVALID args');
