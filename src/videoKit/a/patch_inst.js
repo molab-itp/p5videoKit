@@ -106,7 +106,7 @@ p5videoKit.prototype.patch_remove_at = function (ipatch) {
 // }
 
 p5videoKit.prototype.patch_update_effIndex = function (aPatch, effIndex) {
-  console.log('patch_update_effIndex effIndex', effIndex);
+  // console.log('patch_update_effIndex effIndex', effIndex);
   let eff_spec = aPatch.eff_spec;
   let ipatch = eff_spec.ipatch;
   eff_spec.eff_label = this.a_.effectMetas[effIndex].label;
