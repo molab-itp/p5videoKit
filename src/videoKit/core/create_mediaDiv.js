@@ -136,8 +136,9 @@ p5videoKit.prototype.find_media_by_id = function (id) {
 };
 
 p5videoKit.prototype.remove_media_by_id = function (id) {
-  this.a_.mediaDivs = this.a_.mediaDivs.filter((item) => item.id !== id);
   console.log('remove_media_by_id id=', id);
+  if (!id) return;
+  this.a_.mediaDivs = this.a_.mediaDivs.filter((item) => item.id !== id);
   // console.log('remove_media_by_id id=', id, 'this.a_mediaDivs', this.a_mediaDivs);
   // tile_notify_media_update({ remove: id });
 };
@@ -146,6 +147,8 @@ p5videoKit.prototype.remove_mediaDivs = function () {
   // Remove all but first
   for (let index = this.a_.mediaDivs.length - 1; index > 0; index--) {
     let ent = this.a_.mediaDivs[index];
+    console.log('remove_mediaDivs index', index, 'ent', ent);
+    if (!ent) continue;
     this.remove_mediaDiv(ent.id);
   }
 };
