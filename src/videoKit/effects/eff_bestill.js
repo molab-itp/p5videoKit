@@ -23,10 +23,10 @@ export default class eff_bestill {
     this.output = createImage(input.width, input.height);
     this.srcimage = createImage(this.output.width, this.output.height);
     this.buf = [];
-    // console.log('eff_bestill stillf', this.stillf);
+    // ui_log('eff_bestill stillf', this.stillf);
   }
   bestill_prepareOutput() {
-    // console.log('bestill_render this', this);
+    // ui_log('bestill_render this', this);
     if (!this.inited) {
       this.buf_init();
       return;
@@ -57,7 +57,7 @@ export default class eff_bestill {
     output.updatePixels();
   }
   bestill_render_mirror() {
-    // console.log('bestill_render this', this);
+    // ui_log('bestill_render this', this);
     if (!this.inited) {
       this.buf_init();
       return;

@@ -22,9 +22,9 @@ p5videoKit.prototype.store_url_parse = async function () {
   let ind = loc.indexOf('?');
   if (ind >= 0) {
     let query = loc.substring(ind + 1);
-    // console.log('store_url_parse query', query);
+    // ui_log('store_url_parse query', query);
     let params = params_query(query);
-    console.log('store_url_parse params', params);
+    ui_log('store_url_parse params', params);
 
     let hide_option = params.hide;
     if (hide_option) {
@@ -38,14 +38,14 @@ p5videoKit.prototype.store_url_parse = async function () {
     let u_str = params['u'];
     if (u_str) {
       this.a_.store_prefix = u_str;
-      // console.log('a_.store_prefix', a_s.tore_prefix);
+      // ui_log('a_.store_prefix', a_s.tore_prefix);
     }
     let s_str = params['s'];
     if (s_str) {
-      console.log('store_url_parse s_str', s_str);
+      ui_log('store_url_parse s_str', s_str);
       let ent = this.a_.settings.find((ent) => ent.setting === s_str);
       settings = ent;
-      console.log('store_url_parse settings', settings);
+      ui_log('store_url_parse settings', settings);
       this.a_.hideui = 1;
     }
     let h_str = params['h'];
@@ -68,16 +68,16 @@ p5videoKit.prototype.store_url_parse = async function () {
           settings.setting = d_str;
         }
       } catch (err) {
-        console.log('loadJSON err', err);
+        ui_log('loadJSON err', err);
       }
     }
   }
-  // console.log('store_url_parse returning settings', settings);
+  // ui_log('store_url_parse returning settings', settings);
   return { uiSet, settings };
 };
 
 async function loadJSONAsync(url) {
-  console.log('loadJSONAsync url', url);
+  ui_log('loadJSONAsync url', url);
   return new Promise((resolve, reject) => {
     loadJSON(url, resolve, reject);
   });
@@ -87,13 +87,13 @@ p5videoKit.prototype.url_a_restore = function (str) {
   // decode not Needed
   // str = decodeURIComponent(str);
   if (str) {
-    // console.log('store_url_parse str');
-    // console.log(str);
+    // ui_log('store_url_parse str');
+    // ui_log(str);
     let ui = JSON.parse(str);
     if (!ui) {
-      // console.log('store_url_parse parse failed');
+      // ui_log('store_url_parse parse failed');
     } else {
-      // console.log('store_url_parse ui', ui);
+      // ui_log('store_url_parse ui', ui);
       this.a_.ui = ui;
       // Reflect url parameters in local storage
       for (let prop in this.a_.ui) {
@@ -138,12 +138,12 @@ p5videoKit.prototype.store_export = function (updateUrl) {
   let fn = this.ui_save_fn();
   saveJSON(this.a_.ui, fn);
   let str = JSON.stringify(this.a_.ui);
-  // console.log('store_export str');
-  // console.log(str);
+  // ui_log('store_export str');
+  // ui_log(str);
   str = encodeURIComponent(str);
   let loc = this.location_url();
   loc += 'a=' + str;
-  // console.log('loc', loc);
+  // ui_log('loc', loc);
   if (updateUrl) {
     window.location = loc;
   }
@@ -156,17 +156,17 @@ p5videoKit.prototype.store_name_restore = function () {
 };
 
 p5videoKit.prototype.store_name_update = function (name) {
-  console.log('store_name_update', name);
+  ui_log('store_name_update', name);
   localStorage.setItem('a_.store_name', name);
   let loc = this.location_url();
   window.location = loc;
 };
 
 p5videoKit.prototype.store_restore_from = function (ent) {
-  console.log('store_restore_from ent', ent);
+  ui_log('store_restore_from ent', ent);
   this.store_save_ent(ent);
   let loc = this.location_url();
-  console.log('store_restore_from loc', loc);
+  ui_log('store_restore_from loc', loc);
   window.location = loc;
 };
 // globalThis.store_restore_from = store_restore_from;
@@ -175,7 +175,7 @@ p5videoKit.prototype.store_save_ent = function (ent) {
   if (this.a_.canvas_size_lock) {
     // Canvas size is locked
     // Save reference pad per patch before we save in local storage
-    console.log('store_save_ent ent', ent);
+    ui_log('store_save_ent ent', ent);
     if (ent.patches) {
       for (let patch of ent.patches) {
         patch.eff_spec.urect_ref = Object.assign({}, patch.eff_spec.urect);

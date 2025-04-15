@@ -20,8 +20,8 @@ export default class eff_image_mesh {
   prepareOutput() {
     //
     let nthis = this.videoKit.patch_index1(this.image_patch);
-    // console.log('eff_image_mesh nthis.predictions', nthis.predictions);
-    // console.log('eff_image_mesh nthis.img', nthis.img);
+    // ui_log('eff_image_mesh nthis.predictions', nthis.predictions);
+    // ui_log('eff_image_mesh nthis.img', nthis.img);
     if (nthis && nthis.predictions && nthis.img) {
       this.ddraw = this.draw;
       let layer = this.output;

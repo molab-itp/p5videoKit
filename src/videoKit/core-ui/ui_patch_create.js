@@ -40,13 +40,13 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 // };
 
 p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, issueBreak) {
-  // console.log('create_other prop', prop, 'items', items);
+  // ui_log('create_other prop', prop, 'items', items);
   let breakSeen = 0;
   let ent = { aPatch, div, prop };
   for (let iprop in items) {
     let item = items[iprop];
     ent.item = item;
-    // console.log('create_other iprop', iprop, 'item', item);
+    // ui_log('create_other iprop', iprop, 'item', item);
     switch (iprop) {
       case 'style':
         ent.defaultStyle = item;
@@ -62,7 +62,7 @@ p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, is
   for (let iprop in items) {
     let item = items[iprop];
     ent.item = item;
-    // console.log('create_other iprop', iprop, 'item', item);
+    // ui_log('create_other iprop', iprop, 'item', item);
     switch (iprop) {
       case 'style':
       case 'label':
@@ -103,7 +103,7 @@ p5videoKit.prototype.patch_create_other = function (aPatch, div, prop, items, is
         breakSeen = 1;
         break;
       default:
-        console.log('create_other !!@ Unkown type=' + iprop);
+        ui_log('create_other !!@ Unkown type=' + iprop);
         break;
     }
   }
@@ -138,7 +138,7 @@ function create_default_label(ent) {
 }
 
 function create_textInput(nthis, ent) {
-  // console.log('createTextInput ent', ent);
+  // ui_log('createTextInput ent', ent);
   let { item, aPatch, div, prop } = ent;
   create_default_label(ent);
   let oldVal = aPatch.eff_props[prop];
@@ -148,7 +148,7 @@ function create_textInput(nthis, ent) {
   }
   ent.elm = createInput(oldVal).input(function () {
     let aVal = this.value();
-    console.log('text_input ' + aVal);
+    ui_log('text_input ' + aVal);
     aPatch.eff_props[prop] = aVal;
     nthis.ui_patch_update(aPatch);
   });
@@ -156,7 +156,7 @@ function create_textInput(nthis, ent) {
 }
 
 function create_selection(nthis, ent) {
-  // console.log('create_selection ent', ent);
+  // ui_log('create_selection ent', ent);
   let { item, aPatch, div, prop } = ent;
   create_default_label(ent);
   let arr = item;
@@ -172,7 +172,7 @@ function create_selection(nthis, ent) {
     aPatch.eff_props[prop] = aVal;
   }
   let isNum = typeof aVal === 'number';
-  // console.log('patch_create_selection prop', prop, 'aVal', aVal, 'isNum', isNum);
+  // ui_log('patch_create_selection prop', prop, 'aVal', aVal, 'isNum', isNum);
   if (aVal === null) {
     aVal = '';
   }
@@ -189,14 +189,14 @@ function create_selection(nthis, ent) {
 // ent = { aPatch, div, prop, item };
 // item = {min: 0, max: 100}
 function create_slider(nthis, ent) {
-  // console.log('create_slider ent', ent);
+  // ui_log('create_slider ent', ent);
   let { item, aPatch, div, prop } = ent;
   create_default_label(ent);
   let min = item.min || 0;
   let max = item.max || 1.0;
   let step = item.step || 0; // could be undefined
   let oldVal = aPatch.eff_props[prop];
-  // console.log('create_slider oldVal', oldVal);
+  // ui_log('create_slider oldVal', oldVal);
   if (oldVal === undefined) {
     if (ent.defaultValue !== undefined) {
       oldVal = ent.defaultValue;
@@ -205,14 +205,14 @@ function create_slider(nthis, ent) {
     }
     aPatch.eff_props[prop] = oldVal;
   }
-  // console.log('create_slider oldVal ', oldVal, 'type', typeof oldVal);
+  // ui_log('create_slider oldVal ', oldVal, 'type', typeof oldVal);
 
   let valSpan = createSpan(formatNumber(oldVal));
-  // console.log('create_slider valSpan', valSpan);
+  // ui_log('create_slider valSpan', valSpan);
   // createSlider(min, max, [value], [step])
   ent.elm = createSlider(min, max, oldVal, step).input(function () {
     let aVal = this.value();
-    // console.log('create_slider aVal ', aVal, 'type', typeof aVal);
+    // ui_log('create_slider aVal ', aVal, 'type', typeof aVal);
     aPatch.eff_props[prop] = aVal;
     nthis.ui_patch_update(aPatch);
     valSpan.elt.innerHTML = formatNumber(aVal) + '';

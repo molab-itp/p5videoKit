@@ -45,7 +45,7 @@ export default class eff_loop {
     let other = this.prepare_input(this.eff_inst);
     if (other) {
       if (this.freeze_patch && this.wasFrozen && this.got_freeze) {
-        // console.log('eff_loop  ', this.got_freeze);
+        // ui_log('eff_loop  ', this.got_freeze);
         this.draw_freeze();
       } else {
         other.prepareOutput();
@@ -98,7 +98,7 @@ export default class eff_loop {
   trigger_step() {
     if (!this.step_patch) return;
     let src = this.vidoeKit.patch_index1(this.step_patch);
-    // console.log(  'trigger_step src', src, 'src.patch_stepper', src.patch_stepper );
+    // ui_log(  'trigger_step src', src, 'src.patch_stepper', src.patch_stepper );
     if (src && src.patch_stepper) {
       src.patch_stepper();
     }
@@ -110,7 +110,7 @@ export default class eff_loop {
     if (this.freeze_patch) {
       let src = this.videoKit.patch_index1(this.freeze_patch);
       if (src) {
-        // console.log('src.frozen', src.frozen);
+        // ui_log('src.frozen', src.frozen);
         // if (!this.wasFrozen && src.frozen) {
         //   this.advancePending = 1;
         // }
@@ -126,29 +126,29 @@ export default class eff_loop {
     }
   }
   patch_step() {
-    // console.log('eff_loop step');
+    // ui_log('eff_loop step');
     this.next_eff();
   }
   next_action(aPatch) {
     this.next_eff();
   }
   prev_action(aPatch) {
-    console.log('eff_loop c index', this.index);
+    ui_log('eff_loop c index', this.index);
     this.index = this.index - 2;
     let eff_names = this.eff_names;
     this.index = (eff_names.length + this.index) % eff_names.length;
-    console.log('eff_loop d index', this.index);
+    ui_log('eff_loop d index', this.index);
     this.next_eff();
   }
   async next_eff() {
-    // console.log('eff_loop a index', this.index);
+    // ui_log('eff_loop a index', this.index);
     let eff_names = this.eff_names;
     let label = eff_names[this.index];
     this.index = (this.index + 1) % eff_names.length;
     let effMeta = await this.videoKit.effectMeta_find(label);
-    // console.log('next_eff effMeta', effMeta);
+    // ui_log('next_eff effMeta', effMeta);
     if (effMeta) {
-      console.log('next_eff effMeta', effMeta.label);
+      ui_log('next_eff effMeta', effMeta.label);
       // let iprops = this.eff_prop_inits(effMeta.factory.meta_props);
       // let inits = this.eff_prop_inits(effMeta.factory.meta_props);
       let inits = this.videoKit.factory_prop_inits(effMeta.factory, this.basic_props);
@@ -161,7 +161,7 @@ export default class eff_loop {
       eff_inst = new effMeta.factory(inits);
       this.eff_inst_arr[this.index] = eff_inst;
       // } else {
-      //   // console.log('next_eff init eff_inst', eff_inst);
+      //   // ui_log('next_eff init eff_inst', eff_inst);
       //   eff_inst.init();
       // }
       this.eff_inst = eff_inst;

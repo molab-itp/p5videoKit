@@ -37,7 +37,7 @@ p5videoKit.prototype.ui_live_selection = function () {
   aSel.selected(this.a_.ui.live_index);
   aSel.changed(function () {
     let index = parseFloat(this.value());
-    console.log('ui_live_selection index', index);
+    ui_log('ui_live_selection index', index);
     nthis.ui_prop_set('live_index', index);
     let ent = nthis.media_for_livem_index(index);
     if (nthis.a_.ui.live_chk) nthis.liveMedia_attach(ent);
@@ -68,9 +68,9 @@ p5videoKit.prototype.media_for_livem_index = function (index) {
 
 p5videoKit.prototype.livem_restore = function () {
   if (!this.a_.livem && this.a_.ui.live_chk) {
-    console.log('livem_restore this.a_.ui.live_index', this.a_.ui.live_index);
+    ui_log('livem_restore this.a_.ui.live_index', this.a_.ui.live_index);
     let mediaDiv = this.media_for_livem_index(this.a_.ui.live_index);
-    console.log('livem_restore mediaDiv', mediaDiv);
+    ui_log('livem_restore mediaDiv', mediaDiv);
     if (mediaDiv) this.liveMedia_attach(mediaDiv);
   }
 };

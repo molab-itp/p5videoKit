@@ -10,12 +10,12 @@ p5videoKit.prototype.recordVideo = function (props) {
   //
   // props { save_name, fps, duration }
   //
-  // console.log('recordVideo props', props, 'recVideoInst', this.recVideoInst);
+  // ui_log('recordVideo props', props, 'recVideoInst', this.recVideoInst);
   if (this.recVideoInst) {
     this.recVideoInst.record_flush();
     // return;
   }
-  // console.log('recordVideo props', props, 'recVideoInst', this.recVideoInst);
+  // ui_log('recordVideo props', props, 'recVideoInst', this.recVideoInst);
   this.recVideoInst = new RecordVideo(props);
   this.recVideoInst.videoKit = this;
   this.recVideoInst.record_start();
@@ -26,9 +26,9 @@ class RecordVideo {
   // props { save_name, fps, duration, doneFunc, sourceElt }
   //
   constructor(props) {
-    // console.log('RecordVideo props', props);
+    // ui_log('RecordVideo props', props);
     Object.assign(this, props);
-    // console.log('RecordVideo sourceElt', this.sourceElt);
+    // ui_log('RecordVideo sourceElt', this.sourceElt);
     this.chunks = [];
     this.recording = 0;
     this.end_time = Number.MAX_SAFE_INTEGER;
@@ -41,14 +41,14 @@ class RecordVideo {
       }
     };
     this.recorder.onstop = (evt) => {
-      // console.log('recorder.onstop', evt);
+      // ui_log('recorder.onstop', evt);
       this.exportVideo();
     };
     this.requestID = window.requestAnimationFrame((timestamp) => this.record_check_done(timestamp));
   }
 
   record_check_done(timestamp) {
-    // console.log('record_check_done timestamp', timestamp, 'lapse', Date.now() - this.start_time);
+    // ui_log('record_check_done timestamp', timestamp, 'lapse', Date.now() - this.start_time);
     if (this.recording) {
       let lapseSec = (Date.now() - this.start_time) / 100;
       lapseSec = Math.trunc(lapseSec) / 10;
@@ -58,7 +58,7 @@ class RecordVideo {
       }
     }
     if (this.end_time < Date.now()) {
-      // console.log('record_check_done record_stop');
+      // ui_log('record_check_done record_stop');
       this.end_time = Number.MAX_SAFE_INTEGER;
       this.record_stop();
       window.cancelAnimationFrame(this.requestID);
@@ -72,7 +72,7 @@ class RecordVideo {
   }
 
   record_flush() {
-    console.log('RecordVideo record_flush', this.requestID, this.recording);
+    ui_log('RecordVideo record_flush', this.requestID, this.recording);
     if (this.requestID) {
       window.cancelAnimationFrame(this.requestID);
     }
@@ -82,7 +82,7 @@ class RecordVideo {
   }
 
   record_start() {
-    // console.log('record_start');
+    // ui_log('record_start');
     this.recorder.start();
     this.recording = 1;
     this.start_time = Date.now();
@@ -91,9 +91,9 @@ class RecordVideo {
   }
 
   record_stop() {
-    // console.log('record_stop recording', this.recording);
+    // ui_log('record_stop recording', this.recording);
     if (this.recording) {
-      // console.log('record_stop recorder.stop');
+      // ui_log('record_stop recorder.stop');
       this.recorder.stop();
       this.videoKit.ui_message('');
     }

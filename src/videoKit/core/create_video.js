@@ -12,5 +12,5 @@ p5videoKit.prototype.video_enum = function () {
 };
 
 p5videoKit.prototype.video_reset = function () {
-  console.log('video_reset');
+  ui_log('video_reset');
 };

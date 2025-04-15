@@ -109,7 +109,7 @@ export default class eff_image_show {
     this.init();
     this.zoom_init();
     this.align_center = this.image_align === 'center';
-    // console.log('eff_image_show pad', this.eff_spec.urect);
+    // ui_log('eff_image_show pad', this.eff_spec.urect);
     this.videoKit.my_canvas.mousePressed(() => {
       this.mousePressed();
     });
@@ -186,7 +186,7 @@ export default class eff_image_show {
     image(img, urect.x0, urect.y0, dw, dh, this.zx0, this.zy0, iw, ih);
     // image(img, dx,     dy,     dWidth, dHeight, sx, sy, [sWidth], [sHeight])
     //       img, urect.x0, urect.y0, dw,     dh,      0,  0,  iw,       ih
-    // console.log('rr', rr);
+    // ui_log('rr', rr);
   }
   mouseDragged() {
     // this.mousePressed();
@@ -196,16 +196,16 @@ export default class eff_image_show {
     this.zy0 = (this.mouseY - mouseY) * this.zscale;
   }
   mousePressed() {
-    console.log('eff_image_show mousePressed');
+    ui_log('eff_image_show mousePressed');
     if (keyIsPressed && keyCode == SHIFT) {
       this.zscale /= 2;
     }
     this.mouseX = this.zx0 / this.zscale + mouseX;
     this.mouseY = this.zy0 / this.zscale + mouseY;
-    // console.log('eff_image_show mouseX', mouseX, 'mouseY', mouseY);
+    // ui_log('eff_image_show mouseX', mouseX, 'mouseY', mouseY);
   }
   mouseReleased() {
-    // console.log('> zx0', this.zx0, 'zy0', this.zy0, 'zscale', this.zscale);
+    // ui_log('> zx0', this.zx0, 'zy0', this.zy0, 'zscale', this.zscale);
   }
   zoom_init() {
     this.show = !this.zoomed;
@@ -217,7 +217,7 @@ export default class eff_image_show {
     this.pan_index = 0;
   }
   pan_action() {
-    console.log('pan_action', this.image_name);
+    ui_log('pan_action', this.image_name);
     let cus = a_closeup[this.image_name];
     if (!cus) return 1;
     let cu = cus[this.pan_index];
@@ -247,14 +247,14 @@ export default class eff_image_show {
     }
     cus.push(cu);
     let str = JSON.stringify(a_closeup, null, 2);
-    console.log(str);
+    ui_log(str);
   }
   zoom_out_action() {
     let zscale = this.zscale * 2;
     this.zoom_init();
     // this.zscale = zscale;
     this.zscale = this.zscale_org;
-    console.log('this.zscale', this.zscale);
+    ui_log('this.zscale', this.zscale);
   }
   face_prepareOutput() {
     noStroke();
@@ -286,7 +286,7 @@ export default class eff_image_show {
   period_next() {
     if (!this.iimage) this.iimage = 0;
     this.iimage = (this.iimage + 1) % this.images.length;
-    // console.log('period_next this.iimage', this.iimage);
+    // ui_log('period_next this.iimage', this.iimage);
     this.load_image();
   }
   load_image() {
@@ -295,13 +295,13 @@ export default class eff_image_show {
     // if (!this.group) this.group = 'group';
     this.images = a_images[this.group];
     // if (!this.images) this.images = a_images['group'];
-    // console.log('load_image images', this.images, 'group', this.group);
+    // ui_log('load_image images', this.images, 'group', this.group);
     if (this.shuffle) {
       this.images = shuffle(this.images);
     }
     let image_name = this.image_name;
     if (this.iimage !== undefined) {
-      // console.log('eff_image_show this.iimage=' + this.iimage);
+      // ui_log('eff_image_show this.iimage=' + this.iimage);
       if (this.iimage >= this.images.length) {
         this.iimage = this.images.length - 1;
       }
@@ -309,16 +309,16 @@ export default class eff_image_show {
     }
     let ipath = './external/media/webdb/' + image_name;
     loadImage(ipath, (img) => {
-      console.log('eff_image_show img.width', img.width, 'height', img.height);
-      console.log('eff_image_show output width', this.output.width, 'height', this.output.height);
-      console.log('eff_image_show pad width', this.eff_spec.urect.width, 'height', this.eff_spec.urect.height);
+      ui_log('eff_image_show img.width', img.width, 'height', img.height);
+      ui_log('eff_image_show output width', this.output.width, 'height', this.output.height);
+      ui_log('eff_image_show pad width', this.eff_spec.urect.width, 'height', this.eff_spec.urect.height);
 
       if (this.zoomed) {
         this.zscale = img.width / this.eff_spec.urect.width;
         this.zscale_org = this.zscale;
-        console.log('eff_image_show this.zscale', this.zscale);
+        ui_log('eff_image_show this.zscale', this.zscale);
       }
-      console.log('ipatch', this.eff_spec.ipatch, 'image_name', image_name);
+      ui_log('ipatch', this.eff_spec.ipatch, 'image_name', image_name);
       this.imageReady(img, image_name);
     });
   }
@@ -329,19 +329,19 @@ export default class eff_image_show {
     if (this.face === 'none') return;
     let jname = this.replace_ext(this.image_name, '.json');
     let jpath = './external/media/webdb/' + jname;
-    console.log('eff_image_show jpath', jpath);
-    // console.log('eff_image_show export_on', this.export_on);
+    ui_log('eff_image_show jpath', jpath);
+    // ui_log('eff_image_show export_on', this.export_on);
     if (this.export_on) {
       this.load_model();
     } else {
       loadJSON(
         jpath,
         (obj) => {
-          // console.log('loadJSON obj', obj);
+          // ui_log('loadJSON obj', obj);
           this.predictions = obj;
         },
         (err) => {
-          console.log('loadJSON err', err);
+          ui_log('loadJSON err', err);
           this.load_model();
         }
       );
@@ -359,13 +359,13 @@ export default class eff_image_show {
       this.videoKit.ui_message('loading model...');
     }
     this.facemesh = ml5.facemesh(() => {
-      // console.log('eff_image_show Model ready!');
+      // ui_log('eff_image_show Model ready!');
       this.videoKit.ui_message('');
       this.facemesh.predict(this.img);
-      // console.log('eff_image_show 2');
+      // ui_log('eff_image_show 2');
     });
     this.facemesh.on('predict', (results) => {
-      // console.log('eff_image_show predict');
+      // ui_log('eff_image_show predict');
       this.predictions = results;
       if (this.export_on) {
         this.export_action();

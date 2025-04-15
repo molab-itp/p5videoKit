@@ -24,14 +24,14 @@ export function face_mesh_draw(nthis, img, predictions) {
   let ncol = 0;
   let from = nthis.from;
   let to = nthis.to;
-  // console.log('face_mesh_draw from', from, ' to', to);
+  // ui_log('face_mesh_draw from', from, ' to', to);
   if (to > predictions.length) {
     to = predictions.length;
-    // console.log('face_mesh_draw to predictions.length', predictions.length);
+    // ui_log('face_mesh_draw to predictions.length', predictions.length);
   }
   for (let i = from; i < to; i++) {
     const pred = predictions[i];
-    // console.log('face_mesh_draw pred', pred);
+    // ui_log('face_mesh_draw pred', pred);
     const keypoints = pred.scaledMesh;
     let [x1k, y1k] = keypoints[10];
     let [x2k, y2k] = keypoints[152];
@@ -190,7 +190,7 @@ export function face_mesh_draw(nthis, img, predictions) {
       let tri_dir = nthis.constructor.tri_dir;
       // let itp = nthis.tri_phase;
       let itp = 0;
-      // console.log('tri_dir', tri_dir);
+      // ui_log('tri_dir', tri_dir);
       let slen = Math.floor(layer.width * (nthis.slen / 100));
       for (let j = 0; j < n; j += 1) {
         let [x, y] = keypoints[mesh_nits[j]];
@@ -202,14 +202,14 @@ export function face_mesh_draw(nthis, img, predictions) {
           col_sum[2] += col[2];
           ncol++;
         }
-        // console.log('itp', itp);
+        // ui_log('itp', itp);
         let td = tri_dir[itp];
-        // console.log('td', td);
+        // ui_log('td', td);
         // if (j % 10 == 0) {
         itp = (itp + 1) % tri_dir.length;
         // }
         let [t1, t2] = td;
-        // console.log('t1', t1, 't2', t2);
+        // ui_log('t1', t1, 't2', t2);
         let x1 = (x - x1k0) * r1 + x0;
         let y1 = (y - y1k0) * r1 + y0;
         let x2 = x1 + slen * t1[0];

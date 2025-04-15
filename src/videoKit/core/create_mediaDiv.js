@@ -46,12 +46,12 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
     let isReady = capture.loadedmetadata && capture.width > 0 && capture.height > 0;
     if (!isReady) {
       if (!notReadyWarningIssued) {
-        console.log(note + ' NOT Ready imedia', imedia);
+        ui_log(note + ' NOT Ready imedia', imedia);
         notReadyWarningIssued = 1;
       }
     } else {
       if (notReadyWarningIssued) {
-        console.log(note + ' Ready imedia', imedia);
+        ui_log(note + ' Ready imedia', imedia);
         notReadyWarningIssued = 0;
       }
     }
@@ -90,7 +90,7 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
     // No live media yet, Add at end
     arr.push(ent);
     this.a_.lastMediaDivIndex = arr.length;
-    // console.log('a_.lastMediaDivIndex', this.a_.lastMediaDivIndex);
+    // ui_log('a_.lastMediaDivIndex', this.a_.lastMediaDivIndex);
   } else {
     // For live media, add the new entry in sort order by id
     //  to keep entries in same order between reloads
@@ -102,10 +102,10 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
     }
     arr.splice(index, 0, ent);
     if (!this.a_.ui.hold_create_media_clear) {
-      console.log('a_.ui.hold_create_media_clear OFF');
+      ui_log('a_.ui.hold_create_media_clear OFF');
       this.patch_instances_clear_all();
     } else {
-      console.log('a_.ui.hold_create_media_clear ON');
+      ui_log('a_.ui.hold_create_media_clear ON');
     }
   }
 
@@ -120,9 +120,9 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
 
   chk_mute.changed(function () {
     ent.media_state.mute = this.checked() ? 1 : 0;
-    // console.log(ent.imedia, 'chk_mute.changed ent.capture.elt.muted', ent.capture.elt.muted);
+    // ui_log(ent.imedia, 'chk_mute.changed ent.capture.elt.muted', ent.capture.elt.muted);
     ent.capture.elt.muted = ent.media_state.mute;
-    // console.log(ent.imedia, 'chk_mute.changed ent.media_state.mute', ent.media_state.mute);
+    // ui_log(ent.imedia, 'chk_mute.changed ent.media_state.mute', ent.media_state.mute);
     nthis.ui_media_state_update(ent.imedia);
   });
 
@@ -136,10 +136,10 @@ p5videoKit.prototype.find_media_by_id = function (id) {
 };
 
 p5videoKit.prototype.remove_media_by_id = function (id) {
-  console.log('remove_media_by_id id=', id);
+  ui_log('remove_media_by_id id=', id);
   if (!id) return;
   this.a_.mediaDivs = this.a_.mediaDivs.filter((item) => item.id !== id);
-  // console.log('remove_media_by_id id=', id, 'this.a_mediaDivs', this.a_mediaDivs);
+  // ui_log('remove_media_by_id id=', id, 'this.a_mediaDivs', this.a_mediaDivs);
   // tile_notify_media_update({ remove: id });
 };
 
@@ -147,17 +147,17 @@ p5videoKit.prototype.remove_mediaDivs = function () {
   // Remove all but first
   for (let index = this.a_.mediaDivs.length - 1; index > 0; index--) {
     let ent = this.a_.mediaDivs[index];
-    console.log('remove_mediaDivs index', index, 'ent', ent);
+    ui_log('remove_mediaDivs index', index, 'ent', ent);
     if (!ent) continue;
     this.remove_mediaDiv(ent.id);
   }
 };
 
 p5videoKit.prototype.remove_mediaDiv = function (id) {
-  // console.log('remove_mediaDiv id=', id, !id);
+  // ui_log('remove_mediaDiv id=', id, !id);
   // Remove the div associated with id
   let ent = this.find_media_by_id(id);
-  // console.log('remove_mediaDiv ent', ent);
+  // ui_log('remove_mediaDiv ent', ent);
   if (ent) {
     ent.div.remove();
     ent.capture.remove();
@@ -174,7 +174,7 @@ p5videoKit.prototype.attach_media_nlabel = function (id, nlabel) {
 };
 
 p5videoKit.prototype.init_mediaDivs = function ({ videos }) {
-  console.log('init_mediaDivs', videos);
+  ui_log('init_mediaDivs', videos);
   videos = videos || [];
   // First media pane is canvas
   this.a_.mediaDivs = [
@@ -201,10 +201,10 @@ p5videoKit.prototype.create_video_Div = function (videoMeta) {
   let playIssued = false;
   capture.hide();
   let ready = () => {
-    // console.log('create_video_Div ready', label, capture.loadedmetadata);
+    // ui_log('create_video_Div ready', label, capture.loadedmetadata);
     let isReady = capture.loadedmetadata;
     if (isReady && !playIssued) {
-      console.log('create_video_Div ready label=', label);
+      ui_log('create_video_Div ready label=', label);
       capture.play();
       capture.loop();
       capture.volume(0);
@@ -213,7 +213,7 @@ p5videoKit.prototype.create_video_Div = function (videoMeta) {
     return isReady;
   };
   function create_video_callback() {
-    // console.log('create_video_callback import_path', import_path);
+    // ui_log('create_video_callback import_path', import_path);
   }
   return { label, capture, ready };
 };

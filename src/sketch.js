@@ -7,7 +7,7 @@ let videoKit; // home for videoKit library routines
 
 let my = {};
 
-console.log('sketch globalThis.p5', globalThis.p5);
+// console.log('sketch globalThis.p5', globalThis.p5);
 // console.log('p5', p5);
 
 function setup() {

@@ -56,7 +56,7 @@ export default class eff_tile_live {
       // this.trigger_index = (this.trigger_index + 1) % this.trigger_count;
       this.advancePending = 0;
     }
-    // console.log( 'this.wasFrozen', this.wasFrozen, 'advancePending', this.advancePending, 'got_freeze', this.got_freeze );
+    // ui_log( 'this.wasFrozen', this.wasFrozen, 'advancePending', this.advancePending, 'got_freeze', this.got_freeze );
     this.period_timer.check(() => {
       this.iperiod++;
       if (this.freeze_patch) {
@@ -72,7 +72,7 @@ export default class eff_tile_live {
   livem_step() {
     if (!this.livem_cycle) return;
     let ipatch = this.eff_spec.ipatch;
-    // console.log('livem_step ipatch', ipatch);
+    // ui_log('livem_step ipatch', ipatch);
     let uiPatch = this.videoKit.a_.ui.patches[ipatch];
     let imedia = uiPatch.eff_spec.imedia;
     if (imedia >= this.videoKit.a_.mediaDivs.length) {
@@ -83,7 +83,7 @@ export default class eff_tile_live {
     if (imedia >= this.videoKit.a_.mediaDivs.length) imedia = uiPatch.eff_spec.imedia;
     let change = uiPatch.eff_spec.imedia !== imedia;
     if (change) {
-      // console.log('livem_step draw_step old imedia', uiPatch.eff_spec.imedia, 'new', imedia);
+      // ui_log('livem_step draw_step old imedia', uiPatch.eff_spec.imedia, 'new', imedia);
       uiPatch.eff_spec.imedia = imedia;
       this.draw_step();
     }
@@ -117,11 +117,11 @@ export default class eff_tile_live {
     this.iperiod = 0;
     this.period_timer = new PeriodTimer(this.period);
     let { width, height } = this.eff_spec.urect;
-    // console.log('eff_tile_live width, height', width, height);
+    // ui_log('eff_tile_live width, height', width, height);
     this.twidth = width;
     this.theight = height;
     this.output = createGraphics(this.twidth, this.theight);
-    // console.log('eff_tile_live twidth theight', this.twidth, this.theight);
+    // ui_log('eff_tile_live twidth theight', this.twidth, this.theight);
     this.x = 0;
     this.y = 0;
     this.init_step();
@@ -130,11 +130,11 @@ export default class eff_tile_live {
     // let [xn, yn] = this.cells;
     let xn = this.ncell;
     let yn = this.ncell;
-    // console.log('eff_tile_live this.ncell', this.ncell);
+    // ui_log('eff_tile_live this.ncell', this.ncell);
     this.xstep = Math.floor(this.twidth / xn);
     this.ystep = Math.floor(this.theight / yn);
-    // console.log('eff_tile_live xn yn', xn, yn);
-    // console.log('eff_tile_live xstep ystep', this.xstep, this.ystep);
+    // ui_log('eff_tile_live xn yn', xn, yn);
+    // ui_log('eff_tile_live xstep ystep', this.xstep, this.ystep);
     this.img_freeze = createImage(this.xstep, this.ystep);
   }
   draw_frame() {
@@ -166,7 +166,7 @@ export default class eff_tile_live {
       //more = nimedia != imedia;
       more--;
       this.draw_step();
-      // console.log('draw_all more', more, 'nimedia', nimedia);
+      // ui_log('draw_all more', more, 'nimedia', nimedia);
     }
     this.x = savex;
     this.y = savey;
@@ -176,7 +176,7 @@ export default class eff_tile_live {
     // let simg = this.input;
     if (this.advancePending) return;
     if (!this.media.ready()) {
-      console.log('draw_single NOT Ready imedia', this.eff_spec.imedia);
+      ui_log('draw_single NOT Ready imedia', this.eff_spec.imedia);
       return;
     }
     let sx = 0;
@@ -194,7 +194,7 @@ export default class eff_tile_live {
     // copy(srcImage, sx, sy, sw, sh, dx, dy, dw, dh)
     this.last_x = x;
     this.last_y = y;
-    // console.log('eff_tile_live last x y', this.last_x, this.last_y);
+    // ui_log('eff_tile_live last x y', this.last_x, this.last_y);
   }
 
   patch_stepper() {
@@ -221,8 +221,8 @@ export default class eff_tile_live {
         this.y = 0;
       }
     }
-    // console.log('eff_tile_live x y', this.x, this.y);
-    // console.log('eff_tile_live xstep ystep', this.xstep, this.ystep);
+    // ui_log('eff_tile_live x y', this.x, this.y);
+    // ui_log('eff_tile_live xstep ystep', this.xstep, this.ystep);
   }
   src_image() {
     return this.input;
@@ -237,7 +237,7 @@ export default class eff_tile_live {
     if (this.freeze_patch) {
       let src = this.videoKit.patch_index1(this.freeze_patch);
       if (src) {
-        // console.log('src.frozen', src.frozen);
+        // ui_log('src.frozen', src.frozen);
         if (!this.wasFrozen && src.frozen) {
           this.advancePending = 1;
         }
@@ -269,7 +269,7 @@ export default class eff_tile_live {
   //   let opt = tile_op_que.splice(0, 1);
   //   if (opt.length < 1) return;
   //   let op = opt[0];
-  //   console.log('check_tile_op_que op', op);
+  //   ui_log('check_tile_op_que op', op);
   // }
 }
 

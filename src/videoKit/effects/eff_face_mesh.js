@@ -68,14 +68,14 @@ export default class eff_face_mesh {
     }
     this.period_timer.check(() => {
       this.iperiod++;
-      // console.log('eff_face_mesh this.iperiod ', this.iperiod);
+      // ui_log('eff_face_mesh this.iperiod ', this.iperiod);
     });
   }
   patch_stepper() {
-    console.log('eff_face_mesh patch_stepper', this.draw_index, '', this.draw);
+    ui_log('eff_face_mesh patch_stepper', this.draw_index, '', this.draw);
     this.draw_index = (this.draw_index + 1) % this.draw_mod;
     this.draw = this.constructor.meta_props.draw[this.draw_index];
-    // console.log('eff_face_mesh draw_index', this.draw_index, '', this.draw);
+    // ui_log('eff_face_mesh draw_index', this.draw_index, '', this.draw);
   }
   init() {
     // this.hi_rez = 1; // Process at output pad resolution
@@ -95,17 +95,17 @@ export default class eff_face_mesh {
     this.iupdate = 0;
     this.videoKit.ui_message('loading model...');
     this.facemesh = ml5.facemesh(this.video, () => {
-      // console.log('eff_facetrian Model ready!');
+      // ui_log('eff_facetrian Model ready!');
 
       // Report model load time
       let load_lapse = window.performance.now() - dice.startTime;
-      console.log('eff_face_mesh load_lapse', load_lapse);
+      ui_log('eff_face_mesh load_lapse', load_lapse);
       dice.dapi('stats', { load_lapse });
 
       this.videoKit.ui_message('');
     });
     this.facemesh.on('predict', (results) => {
-      // console.log('facemesh predict results.length', results.length);
+      // ui_log('facemesh predict results.length', results.length);
       if (this.draw == 'cycle') {
         this.iperiod_next = this.iperiod + 1;
       }
@@ -122,13 +122,13 @@ export default class eff_face_mesh {
     this.avg_color = [255, 255, 255, 255];
     let w = this.input.width;
     let h = this.input.height;
-    console.log('eff_face_mesh input w', w, 'h', h);
+    ui_log('eff_face_mesh input w', w, 'h', h);
     this.img = createImage(w, h);
     if (this.hi_rez) {
       w = this.eff_spec.urect.width;
       h = this.eff_spec.urect.height;
     }
-    console.log('eff_face_mesh hi_rez', this.hi_rez, 'w', w, 'h', h);
+    ui_log('eff_face_mesh hi_rez', this.hi_rez, 'w', w, 'h', h);
     this.output = createGraphics(w, h);
     this.draw_index = 0;
     w = this.pixd_n;

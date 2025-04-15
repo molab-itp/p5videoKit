@@ -10,7 +10,7 @@ export default class eff_sketchy {
     edgeY: [0, 1],
   };
   constructor(props) {
-    // console.log('eff_sketchy constructor props ', props);
+    // ui_log('eff_sketchy constructor props ', props);
     Object.assign(this, props);
     this.init();
   }
@@ -43,7 +43,7 @@ export default class eff_sketchy {
   init_phase() {
     this.phase_down = this.phase_max;
     this.phase = 0;
-    // console.log('eff_sketchy phase_max', this.phase_max);
+    // ui_log('eff_sketchy phase_max', this.phase_max);
   }
   completed_phase() {
     return this.phase;
@@ -62,7 +62,7 @@ export default class eff_sketchy {
   init() {
     let w = this.input.width;
     let h = this.input.height;
-    // console.log('eff_sketchy w', w, 'h', h);
+    // ui_log('eff_sketchy w', w, 'h', h);
     this.init_phase();
     this.output = createGraphics(w, h);
     this.output.noStroke();

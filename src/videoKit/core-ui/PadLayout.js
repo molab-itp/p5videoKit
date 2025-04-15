@@ -15,7 +15,7 @@ export class PadLayout {
     io.ys = Math.floor(io.height / dh);
     io.x = 0;
     io.y = 0;
-    // console.log('pad_layout io', io);
+    // ui_log('pad_layout io', io);
   }
   next() {
     let io = this.io;

@@ -61,6 +61,6 @@ export default class eff_text {
     layer.text(str, x, y);
     // this.image = layer.get();
     // this.image.mask(this.image);
-    // console.log('tw', tw, 'cx', cx);
+    // ui_log('tw', tw, 'cx', cx);
   }
 }

@@ -33,8 +33,8 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
   let nthis = this;
   function canvs_size_change() {
     let index = this.selectedIndex;
-    // console.log('icanvas_size change this', this);
-    // console.log('icanvas_size change index', index);
+    // ui_log('icanvas_size change this', this);
+    // ui_log('icanvas_size change index', index);
     let se = a_canvas_sizes[index];
     if (se.func) {
       se.func();
@@ -42,7 +42,7 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
       nthis.ui_prop_set('canvas_size', se.label);
       resizeCanvas(se.width, se.height);
     } else {
-      console.log('No canvas size in se', se);
+      ui_log('No canvas size in se', se);
     }
     nthis.ui_window_refresh();
   }
@@ -50,7 +50,7 @@ p5videoKit.prototype.ui_canvas_div = function (div) {
   icanvas_lock.checked = this.a_.canvas_size_lock;
   icanvas_lock.addEventListener('change', check_lock_change);
   function check_lock_change() {
-    // console.log('icanvas_lock change this', this);
+    // ui_log('icanvas_lock change this', this);
     let state = this.checked;
     nthis.a_.canvas_size_lock = state ? 1 : 0;
     nthis.store_set('a_.canvas_size_lock', nthis.a_.canvas_size_lock + '');
@@ -75,7 +75,7 @@ p5videoKit.prototype.ui_canvas_init = function () {
 
 p5videoKit.prototype.canvas_size_default = function () {
   let sz = a_canvas_sizes_dict[this.a_.ui.canvas_size];
-  // console.log('canvas_sizei canvas_size', this.a_.ui.canvas_size, 'sz', sz);
+  // ui_log('canvas_sizei canvas_size', this.a_.ui.canvas_size, 'sz', sz);
   if (sz) return sz;
   return a_canvas_sizes[0];
 };
@@ -106,7 +106,7 @@ p5videoKit.prototype.str_to_width_height = function (str) {
 
 p5videoKit.prototype.toggleFullScreen = function () {
   if (!document.documentElement.requestFullscreen) {
-    console.log('NO document.documentElement.requestFullscreen');
+    ui_log('NO document.documentElement.requestFullscreen');
     return;
   }
   if (!document.fullscreenElement) {

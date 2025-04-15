@@ -8,7 +8,7 @@ let dice = { warning: 0 };
 window.dice = dice;
 
 dice.dapi = function (arg, arg2, result) {
-  if (dice.debug) console.log('dice arg=' + arg + ' arg2=' + JSON.stringify(arg2));
+  if (dice.debug) ui_log('dice arg=' + arg + ' arg2=' + JSON.stringify(arg2));
   var opt = arg;
   if (typeof arg2 != 'undefined') {
     opt = {};
@@ -26,7 +26,7 @@ dice.dapi = function (arg, arg2, result) {
     window.webkit.messageHandlers.dice.postMessage(opt);
   } else {
     if (dice.warning) {
-      console.log('dice opt=' + JSON.stringify(opt));
+      ui_log('dice opt=' + JSON.stringify(opt));
     }
   }
 };
@@ -38,7 +38,7 @@ dice.result_rvalue = function (rtag, value) {
     delete dice.result_funcs[rtag];
     func(value);
   } else {
-    console.log('dice.result_rvalue missing rtag=' + rtag);
+    ui_log('dice.result_rvalue missing rtag=' + rtag);
   }
 };
 

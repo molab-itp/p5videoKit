@@ -25,9 +25,9 @@ import { a_effectMetas } from '../let/a_effectMetas.js';
 p5videoKit.prototype.ui_restore_store = async function ({ effects, settings }) {
   //
   // if (!effects || !settings) {
-  //   console.log('ui_restore_store INVALID args');
-  //   console.log('ui_restore_store effects', effects);
-  //   console.log('ui_restore_store settings', settings);
+  //   ui_log('ui_restore_store INVALID args');
+  //   ui_log('ui_restore_store effects', effects);
+  //   ui_log('ui_restore_store settings', settings);
   // }
   effects = effects || [];
   settings = settings || [];
@@ -40,7 +40,7 @@ p5videoKit.prototype.ui_restore_store = async function ({ effects, settings }) {
   if (!this.store_name_restore() && !window.location.search) {
     // First session init
     if (!this.a_.store_name) this.a_.store_name = 'Store-A';
-    console.log('ui_restore_store this.a_.store_name', this.a_.store_name);
+    ui_log('ui_restore_store this.a_.store_name', this.a_.store_name);
     this.reset_video_clear_locals(this.a_.store_name);
     return;
   }
@@ -73,7 +73,7 @@ p5videoKit.prototype.ui_restore_store = async function ({ effects, settings }) {
   let sizeResult = this.canvas_size_default();
 
   let lapse = window.performance.now() - start;
-  console.log('ui_restore lapse', lapse);
+  ui_log('ui_restore lapse', lapse);
 
   return sizeResult;
 };
@@ -86,7 +86,7 @@ p5videoKit.prototype.settingMetas_init = async function () {
     imports.push(this.setting_import(sete, index));
     index++;
   }
-  // console.log('settingMetas_init imports', imports);
+  // ui_log('settingMetas_init imports', imports);
   await Promise.allSettled(imports);
 };
 
@@ -94,19 +94,19 @@ p5videoKit.prototype.settingMetas_init = async function () {
 //
 p5videoKit.prototype.setting_import = function (sete, index) {
   let url = './' + sete.import_path + '';
-  // console.log('setting_import url', url);
+  // ui_log('setting_import url', url);
   return new Promise((resolve, reject) => {
     loadJSON(
       url,
       (setting) => {
-        // console.log('setting_import setting', setting);
+        // ui_log('setting_import setting', setting);
         setting.setting = sete.label;
         this.a_.settings[index] = setting;
         resolve();
       },
       (err) => {
-        console.log('setting_import error url', url, 'error', err);
-        console.log('setting_import error index', index);
+        ui_log('setting_import error url', url, 'error', err);
+        ui_log('setting_import error index', index);
         this.a_.settings[index] = { setting: 'Missing' };
         reject(err);
       }
@@ -118,7 +118,7 @@ p5videoKit.prototype.setting_import = function (sete, index) {
 //   let val = store_get('a_.mo_dbase_flag');
 //   if (val) {
 //     this.a_.mo_dbase_flag = parseFloat(val);
-//     console.log('store_restore_mo_dbase_flag ', this.a_.mo_dbase_flag);
+//     ui_log('store_restore_mo_dbase_flag ', this.a_.mo_dbase_flag);
 //   }
 // }
 
@@ -130,7 +130,7 @@ p5videoKit.prototype.store_restore_canvas_lock = function () {
 };
 
 p5videoKit.prototype.store_restore_ui = function (settings) {
-  // console.log('store_restore_ui settings', settings);
+  // ui_log('store_restore_ui settings', settings);
   // Force pads to be re-calculated
   this.a_.ui.urects_count = 0;
   this.a_.ui.urects_lock = 0;
@@ -164,9 +164,9 @@ p5videoKit.prototype.store_restore_store_get = function () {
         valu = valu[0];
         this.a_.ui[prop] = valu;
       } else {
-        console.log('store_restore_store_get skipping prop=' + prop + ' valu=' + valu);
+        ui_log('store_restore_store_get skipping prop=' + prop + ' valu=' + valu);
       }
-      // console.log('store_restore_store_get prop', prop, 'valu', valu);
+      // ui_log('store_restore_store_get prop', prop, 'valu', valu);
     }
   }
 };
@@ -174,7 +174,7 @@ p5videoKit.prototype.store_restore_store_get = function () {
 p5videoKit.prototype.store_restore_ver = function () {
   let ver = this.store_get('a_.store_ver');
   if (ver !== this.a_.store_ver) {
-    console.log('store_restore_ver reset ver=' + ver);
+    ui_log('store_restore_ver reset ver=' + ver);
     this.store_set('a_.store_ver', this.a_.store_ver);
     // Version diff, clear out all properties
     for (let prop in this.a_.ui) {

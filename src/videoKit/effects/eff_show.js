@@ -35,11 +35,11 @@ export default class eff_show {
   }
 
   prepareOutput() {
-    // console.log('eff_show_pad prepareOutput');
+    // ui_log('eff_show_pad prepareOutput');
     if (!this.eff_spec.ihide) {
       if (this.input) {
         let img = this.input.get();
-        // console.log('eff_show_pad prepareOutput img', img);
+        // ui_log('eff_show_pad prepareOutput img', img);
         let eff_spec = this.eff_spec;
         let opt = { fliph: eff_spec.ifliph, flipv: eff_spec.iflipv };
         image_scaled_pad(img, this.eff_spec.urect, opt);
@@ -62,21 +62,21 @@ export default class eff_show {
   }
 
   record_start() {
-    console.log('record_start');
+    ui_log('record_start');
     this.recorder.start();
     this.recording = 1;
     this.start_time = Date.now();
     this.end_time = Date.now() + this.record_duration * 1000;
     this.lapseSec = -1;
-    // console.log('record_start Date.now()', Date.now());
-    // console.log('record_start record_duration', this.record_duration);
-    // console.log('record_start end_time', this.end_time);
+    // ui_log('record_start Date.now()', Date.now());
+    // ui_log('record_start record_duration', this.record_duration);
+    // ui_log('record_start end_time', this.end_time);
   }
 
   record_stop() {
-    console.log('record_stop recording', this.recording);
+    ui_log('record_stop recording', this.recording);
     if (this.recording) {
-      console.log('record_stop recorder.stop');
+      ui_log('record_stop recorder.stop');
       this.recorder.stop();
       // this.videoKit.ui_message('');
     }
@@ -95,7 +95,7 @@ export default class eff_show {
       }
     };
     this.recorder.onstop = (evt) => {
-      // console.log('recorder.onstop', evt);
+      // ui_log('recorder.onstop', evt);
       this.exportVideo();
     };
   }

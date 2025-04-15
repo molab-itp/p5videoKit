@@ -5,7 +5,8 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 //
 export function p5videoKit_init(config, p5_instance = p5.instance) {
   //
-  console.log('p5videoKit_init config', config, 'p5_instance', p5_instance);
+  ui_log('p5videoKit_init config', config, 'p5_instance', !!p5_instance);
+  // ui_log('p5videoKit_init config', config, 'p5_instance', p5_instance);
   let videoKit = new p5videoKit(config, p5_instance);
   return videoKit;
 }
@@ -45,4 +46,16 @@ import '../core-ui/ui_tools.js';
 
 // import 'p5';
 
-// console.log('a_lib p5', p5);
+// ui_log('a_lib p5', p5);
+
+// id_console_ul
+
+function ui_log(...args) {
+  console.log(...args);
+}
+globalThis.ui_log = ui_log;
+
+function ui_verbose(...args) {
+  // ui_log(...args);
+}
+globalThis.ui_verbose = ui_verbose;

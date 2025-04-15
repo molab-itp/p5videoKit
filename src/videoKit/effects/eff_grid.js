@@ -29,8 +29,8 @@ export default class eff_grid {
     this.xs = w / this.ncell;
 
     this.ys = h / this.ncell;
-    // console.log('eff_grid w', w, h);
-    // console.log('eff_grid xs', this.xs, this.ys);
+    // ui_log('eff_grid w', w, h);
+    // ui_log('eff_grid xs', this.xs, this.ys);
 
     if (this.xs > this.ys) {
       this.ys = this.xs;

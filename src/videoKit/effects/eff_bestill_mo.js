@@ -30,10 +30,10 @@ export default class eff_bestill_mo {
     this.srcimage2 = createImage(this.output.width, this.output.height);
     this.buf = [];
     this.msum = 1 / (this.srcimage.width * this.srcimage.height);
-    // console.log('eff_bestill stillf', this.stillf);
+    // ui_log('eff_bestill stillf', this.stillf);
   }
   bestill_prepareOutput() {
-    // console.log('bestill_render this', this);
+    // ui_log('bestill_render this', this);
     if (!this.inited) {
       this.buf_init();
       return;
@@ -73,14 +73,14 @@ export default class eff_bestill_mo {
     if (abs(sum) > this.activitySumLevel) {
       globalThis.eff_bestill_mo_activitySum = sum;
       if (this.report) {
-        console.log('eff_bestill_mo sum', sum, 'frameCount', frameCount);
+        ui_log('eff_bestill_mo sum', sum, 'frameCount', frameCount);
       }
     } else {
       globalThis.eff_bestill_mo_activitySum = 0;
     }
   }
   bestill_render_mirror() {
-    // console.log('bestill_render this', this);
+    // ui_log('bestill_render this', this);
     if (!this.inited) {
       this.buf_init();
       return;
@@ -120,7 +120,7 @@ export default class eff_bestill_mo {
     if (abs(sum) > this.activitySumLevel) {
       globalThis.eff_bestill_mo_activitySum = sum;
       if (this.report) {
-        console.log('eff_bestill_mo sum', sum, 'frameCount', frameCount);
+        ui_log('eff_bestill_mo sum', sum, 'frameCount', frameCount);
       }
     } else {
       globalThis.eff_bestill_mo_activitySum = 0;

@@ -40,7 +40,7 @@ p5videoKit.prototype.ui_div_append = function (div, str) {
 // Create empty div or empty it if already exists
 p5videoKit.prototype.ui_div_empty = function (id) {
   let div = select('#' + id);
-  // console.log('ui_device_selection div', div);
+  // ui_log('ui_device_selection div', div);
   if (!div) {
     div = createDiv().id(id);
     if (this.a_.top_dash_div) {

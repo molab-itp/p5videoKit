@@ -4,12 +4,12 @@ export class FFT_analyser {
   constructor(props) {
     // { media }
     Object.assign(this, props);
-    // console.log('fft_anal this', this);
+    // ui_log('fft_anal this', this);
     this.init_analyser();
   }
 
   init_analyser() {
-    // console.log('FFT_analyser media', this.media);
+    // ui_log('FFT_analyser media', this.media);
     let aAudioContext = getAudioContext();
     aAudioContext.resume();
     // sound_AudioContext_resume();
@@ -20,10 +20,10 @@ export class FFT_analyser {
       let source = aAudioContext.createMediaStreamSource(stream);
       source.connect(this.analyser);
     } catch (err) {
-      console.log('createMediaStreamSource err', err);
+      ui_log('createMediaStreamSource err', err);
     }
     this.spectrum_arr = new Uint8Array(this.analyser.frequencyBinCount);
-    // console.log('fft_anal this.spectrum_arr.length', this.spectrum_arr.length);
+    // ui_log('fft_anal this.spectrum_arr.length', this.spectrum_arr.length);
   }
 
   spectrum() {
@@ -34,7 +34,7 @@ export class FFT_analyser {
 }
 
 export function sound_AudioContext_resume() {
-  console.log('getAudioContext().state', getAudioContext().state);
+  ui_log('getAudioContext().state', getAudioContext().state);
   if (getAudioContext().state !== 'running') {
     getAudioContext().resume();
   }

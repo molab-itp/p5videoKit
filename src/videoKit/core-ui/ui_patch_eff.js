@@ -77,7 +77,7 @@ p5videoKit.prototype.create_patch_selection = async function (aPatch, ipatch, di
   }
   let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
   let effIndex = effMeta.index;
-  // console.log('create_patch_selection effIndex', effIndex);
+  // ui_log('create_patch_selection effIndex', effIndex);
   aSel.selected(effIndex);
   let nthis = this;
   aSel.changed(function () {
@@ -107,12 +107,12 @@ p5videoKit.prototype.create_media_selection = function (aPatch, div) {
 };
 
 p5videoKit.prototype.create_settings = async function (aPatch, div) {
-  // console.log('create_settings aPatch', aPatch);
+  // ui_log('create_settings aPatch', aPatch);
   let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
   if (effMeta.factory) {
     this.create_ui_for_meta(aPatch, div, effMeta.factory.meta_props);
   } else {
-    console.log('create_settings MISSING factory effMeta', effMeta);
+    ui_log('create_settings MISSING factory effMeta', effMeta);
   }
   // Get props for imported module via import_factory
   // if (aPatch.import_factory) {
@@ -165,7 +165,7 @@ p5videoKit.prototype.create_ui_for_meta_dict = function (aPatch, div, dict) {
 };
 
 p5videoKit.prototype.patch_create_selection = function (aPatch, div, prop, arr, issueBreak, defaultLabel) {
-  // console.log('patch_create_selection prop', prop, 'arr', arr);
+  // ui_log('patch_create_selection prop', prop, 'arr', arr);
   let label = defaultLabel || prop;
   let span = createSpan(` ${label}:`);
   div.child(span);
@@ -184,7 +184,7 @@ p5videoKit.prototype.patch_create_selection = function (aPatch, div, prop, arr, 
     aPatch.eff_props[prop] = aVal;
   }
   let isNum = typeof aVal === 'number';
-  // console.log('patch_create_selection prop', prop, 'aVal', aVal, 'isNum', isNum);
+  // ui_log('patch_create_selection prop', prop, 'aVal', aVal, 'isNum', isNum);
   aSel.selected(aVal);
   let nthis = this;
   aSel.changed(function () {

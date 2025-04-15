@@ -1,7 +1,7 @@
 //
 // copies the image to the src at full dimensions
 export function image_copy({ to, from }) {
-  // console.log('image_copy to', to, 'from', from);
+  // ui_log('image_copy to', to, 'from', from);
   // !!@ post p5js 1.8.0 in src/image/pixels.js/_copyHelper
   // loadPixels removed
   from.loadPixels();
@@ -18,7 +18,7 @@ export function image_move({ to: dest, from: src }) {
   let spixels = src.pixels;
   let n = dpixels.length;
   if (n != spixels.length) {
-    console.log('image_move!!@ lengths differ', n, spixels.length);
+    ui_log('image_move!!@ lengths differ', n, spixels.length);
     return;
   }
   while (n-- > 0) dpixels[n] = spixels[n];
@@ -58,7 +58,7 @@ export function image_scaled_pad(img, urect, opts) {
   } else {
     pw = ph / rr;
   }
-  // console.log('urect.width', urect.width, 'iw', iw, 'ih', ih, 'pw', pw, 'ph', ph);
+  // ui_log('urect.width', urect.width, 'iw', iw, 'ih', ih, 'pw', pw, 'ph', ph);
   // urect.width 270 iw 640 ih 480 pw 270 ph 480
   let dx = urect.x0;
   let dy = urect.y0;
@@ -99,7 +99,7 @@ export function image_scaled_layer(layer, img, urect, align_center, flip_h) {
       dx = dx + (urect.width - pw) / 2;
     }
   }
-  // console.log('layer iw', iw, 'ih', ih, 'pw', pw, 'ph', ph);
+  // ui_log('layer iw', iw, 'ih', ih, 'pw', pw, 'ph', ph);
   if (flip_h) {
     layer.push();
     layer.scale(-1, 1);
@@ -118,7 +118,7 @@ export function image_scaled_layer(layer, img, urect, align_center, flip_h) {
 }
 
 function image_scaled_pad_source(img, urect, src) {
-  console.log('image_scaled_pad_source src', JSON.stringify(src));
+  ui_log('image_scaled_pad_source src', JSON.stringify(src));
   if (!urect) urect = { width, height, x0: 0, y0: 0 };
   let pw = urect.width;
   let ph = urect.height;

@@ -18,7 +18,7 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 // import { ui_div_append, ui_createElement, ui_div_empty } from '../core-ui/ui_tools.js';
 
 p5videoKit.prototype.ui_create = function () {
-  // console.log('ui_create this.a_.hide_ui_option', this.a_.hide_ui_option);
+  // ui_log('ui_create this.a_.hide_ui_option', this.a_.hide_ui_option);
   this.a_.top_dash_div = this.ui_div_empty('id_top_dash');
   if (this.a_.hide_ui_option) {
     this.a_.top_dash_div.style('display:none');
@@ -81,7 +81,7 @@ p5videoKit.prototype.ui_top_pane = function () {
     //   mo_store_prepare();
     // }
     // function mo_dbase_change() {
-    //   console.log('mo_dbase_change change this', this);
+    //   ui_log('mo_dbase_change change this', this);
     //   let state = this.checked;
     //   this.a_.mo_dbase_flag = state ? 1 : 0;
     //   store_set('a_.mo_dbase_flag', this.a_.mo_dbase_flag + '');
@@ -106,7 +106,7 @@ p5videoKit.prototype.ui_top_pane = function () {
   let nthis = this;
   window.isave.addEventListener('mousedown', () => {
     if (nthis.save_canvas_handler) {
-      // console.log('nthis.save_canvas_handler');
+      // ui_log('nthis.save_canvas_handler');
       nthis.save_canvas_handler();
     } else {
       let fn = this.ui_save_fn();
@@ -151,10 +151,10 @@ p5videoKit.prototype.ui_audio_checkbox = function (div) {
 
   let nthis = this;
   function check_audio_change() {
-    console.log('check_audio_change change nthis', nthis);
+    ui_log('check_audio_change change nthis', nthis);
     let state = this.checked;
     nthis.a_.ui.audio_enabled = state ? 1 : 0;
-    console.log('check_audio_change change nthis.a_.ui.audio_enabled', nthis.a_.ui.audio_enabled);
+    ui_log('check_audio_change change nthis.a_.ui.audio_enabled', nthis.a_.ui.audio_enabled);
     nthis.ui_prop_set('audio_enabled', nthis.a_.ui.audio_enabled);
   }
 };
@@ -170,14 +170,14 @@ p5videoKit.prototype.ui_create_comment_field = function () {
   let nthis = this;
   window.icomment_input.addEventListener('input', function () {
     let val = this.value;
-    // console.log('ui_create_comment_field val', val);
+    // ui_log('ui_create_comment_field val', val);
     nthis.ui_prop_set('comment', val);
   });
 };
 
 function reload_action() {
   let ent = this.a_.settings.find((ent) => ent.setting === this.a_.ui.setting);
-  console.log('reload_action ent', ent);
+  ui_log('reload_action ent', ent);
   if (!ent) {
     ent = this.a_.ui;
   }
@@ -199,7 +199,7 @@ p5videoKit.prototype.present_action = function () {
 };
 
 p5videoKit.prototype.ui_window_refresh = function () {
-  console.log('ui_window_refresh');
+  ui_log('ui_window_refresh');
   this.pad_layout_update();
   this.patch_instances_clear_all();
 };

@@ -45,7 +45,7 @@ export default class eff_mov_show {
         this.period_next();
       });
     }
-    // console.log('eff_mov_show', this.vid.duration(), this.vid.time());
+    // ui_log('eff_mov_show', this.vid.duration(), this.vid.time());
     // image(this.vid, 0, 0, width, height);
     image_scaled_pad(this.vid, this.eff_spec.urect);
   }
@@ -56,10 +56,10 @@ export default class eff_mov_show {
   }
   load_from_group() {
     let ipath = this.load_movie_options();
-    console.log('eff_mov_show ipath=' + ipath);
-    // console.log('eff_mov_show vid', this.vid);
+    ui_log('eff_mov_show ipath=' + ipath);
+    // ui_log('eff_mov_show vid', this.vid);
     this.vid = createVideo(ipath, () => {
-      // console.log('eff_mov_show loaded');
+      // ui_log('eff_mov_show loaded');
       // this.vid.loop();
       this.vid.volume(0);
       this.vid.speed(this.speed);
@@ -68,7 +68,7 @@ export default class eff_mov_show {
     this.vid.onended(() => {
       // Chrome fails to play in reverse
       // this.ispeed = this.ispeed == 1 ? -1 : 1;
-      console.log('eff_mov_show onended');
+      ui_log('eff_mov_show onended');
       // this.vid.speed(this.speed);
       this.vid.play();
     });
@@ -77,7 +77,7 @@ export default class eff_mov_show {
     // this.vid.position(0, 0);
   }
   deinit() {
-    console.log('eff_mov_show deinit vid', this.vid);
+    ui_log('eff_mov_show deinit vid', this.vid);
     if (this.vid) {
       this.vid.remove();
     }
@@ -94,7 +94,7 @@ export default class eff_mov_show {
     }
     let file_name = this.file_name;
     if (this.ifile !== undefined) {
-      console.log('eff_mov_show this.ifile=' + this.ifile);
+      ui_log('eff_mov_show this.ifile=' + this.ifile);
       if (this.ifile >= this.files.length) {
         this.ifile = this.files.length - 1;
       }

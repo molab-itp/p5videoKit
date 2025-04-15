@@ -7,7 +7,7 @@
 
 // !!@ Unused
 export function ui_render_size(div) {
-  // console.log('ui_canvas');
+  // ui_log('ui_canvas');
   render_size();
 
   function render_size() {
@@ -37,7 +37,7 @@ export function ui_render_size_init() {
 // !!@ Unused
 function render_size_default() {
   let sz = a_render_sizes_dict[this.a_.ui.render_size];
-  // console.log('render_sizei index', this.a_.ui.render_sizei, 'size', sz);
+  // ui_log('render_sizei index', this.a_.ui.render_sizei, 'size', sz);
   if (sz) return sz;
   return a_render_sizes[0];
 }

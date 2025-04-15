@@ -29,7 +29,7 @@ p5videoKit.prototype.ui_capture_size = function (div) {
   icapture_size.addEventListener('change', capture_size_change);
   let nthis = this;
   function capture_size_change() {
-    console.log('capture_size change value', this.value);
+    ui_log('capture_size change value', this.value);
     let value = this.value;
     nthis.ui_prop_set('capture_size', value);
     nthis.media_reset();
@@ -58,7 +58,7 @@ p5videoKit.prototype.ui_capture_init = function () {
 
 p5videoKit.prototype.get_capture_size = function () {
   let se = a_capture_sizes_dict[this.a_.ui.capture_size];
-  // console.log('get_capture_size index', this.a_.ui.capture_sizei, 'se', se);
+  // ui_log('get_capture_size index', this.a_.ui.capture_sizei, 'se', se);
   if (se) return se;
   return a_capture_sizes[1];
 };

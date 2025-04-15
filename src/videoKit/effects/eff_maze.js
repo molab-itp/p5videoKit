@@ -39,7 +39,7 @@ export default class eff_maze {
     this.y = 0;
     this.rs = [];
     this.ri = 0;
-    // console.log('this.xs=' + this.xs);
+    // ui_log('this.xs=' + this.xs);
   }
   period_next() {
     this.output.clear();

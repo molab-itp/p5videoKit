@@ -123,6 +123,6 @@ export default class eff_slant_scan {
     this.scan.yend = this.scan.ystart + this.scan.ydim;
     this.scan.x = this.scan.xstart;
     this.scan.y = this.scan.ystart;
-    // console.log('xstep', this.scan.xstep, 'ystep', this.scan.ystep);
+    // ui_log('xstep', this.scan.xstep, 'ystep', this.scan.ystep);
   }
 }

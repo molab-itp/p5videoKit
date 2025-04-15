@@ -61,7 +61,7 @@ export default class eff_circle {
         if (c.r <= 0) deadCount++;
       }
     }
-    // console.log('circle  n', this.circles.length, 'd', deadCount);
+    // ui_log('circle  n', this.circles.length, 'd', deadCount);
     if (this.circles.length == deadCount) {
       this.full = 0;
       this.fullPending = 0;
@@ -86,10 +86,10 @@ export default class eff_circle {
     }
     // We can't make any more
     if (count < 1) {
-      // console.log('circle finished');
+      // ui_log('circle finished');
       this.fullPending = 1;
     }
-    // console.log('circle count', count, 'n', this.circles.length, 'd', deadCount);
+    // ui_log('circle count', count, 'n', this.circles.length, 'd', deadCount);
   }
   // Add one circle
   addCircle() {

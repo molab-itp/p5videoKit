@@ -131,7 +131,7 @@ export default class eff_tile_clock {
   }
   draw_step(dir) {
     let [xpos, ypos] = this.constructor.clock_wise_pos[this.index];
-    // console.log('draw_step index', this.index, xpos, ypos);
+    // ui_log('draw_step index', this.index, xpos, ypos);
     let n = this.constructor.clock_wise_pos.length;
     this.index = (this.index + dir + n) % n;
     this.x = this.xstep * xpos;
@@ -141,7 +141,7 @@ export default class eff_tile_clock {
     if (this.freeze_patch) {
       let src = this.videoKit.patch_index1(this.freeze_patch);
       if (src) {
-        // console.log('src.frozen', src.frozen);
+        // ui_log('src.frozen', src.frozen);
         if (this.advancePendingTime) {
           let ntime = new Date().getTime();
           let lapse = (ntime - this.advancePendingTime) / 1000;
@@ -190,7 +190,7 @@ export default class eff_tile_clock {
     this.last_y = y;
   }
   draw_live() {
-    // console.log('draw_live');
+    // ui_log('draw_live');
     let simg = this.img_live;
     let sx = 0;
     let sy = 0;
@@ -206,7 +206,7 @@ export default class eff_tile_clock {
     this.output.copy(simg, sx, sy, sw, sh, x, y, xstep, ystep);
   }
   capture_live() {
-    // console.log('capture_live');
+    // ui_log('capture_live');
     let dimg = this.img_live;
     let { xstep, ystep } = this;
     let sx = this.last_x;

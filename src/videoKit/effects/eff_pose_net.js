@@ -17,12 +17,12 @@ export default class eff_pose_net {
     show_head: [1, 0],
   };
   constructor(props) {
-    // console.log('eff_pose_net init');
+    // ui_log('eff_pose_net init');
     Object.assign(this, props);
     this.init(this);
   }
   prepareOutput() {
-    // console.log('eff_pose_net prepareOutput poseNet', this.poseNet);
+    // ui_log('eff_pose_net prepareOutput poseNet', this.poseNet);
     if (this.poseNet) {
       this.poseNet.video = this.video;
     }
@@ -32,7 +32,7 @@ export default class eff_pose_net {
     this.drawFigure(this.poses);
   }
   init() {
-    // console.log('eff_pose_net this.input.elt', this.input.elt);
+    // ui_log('eff_pose_net this.input.elt', this.input.elt);
 
     this.video = this.input.elt;
     this.poses = [];
@@ -48,11 +48,11 @@ export default class eff_pose_net {
     this.videoKit.ui_message('loading model...');
     let options = { flipHorizontal: this.hflip, maxPoseDetections: this.ndetect };
     this.poseNet = ml5.poseNet(this.video, options, () => {
-      // console.log('eff_pose_net Model ready!');
+      // ui_log('eff_pose_net Model ready!');
       this.videoKit.ui_message('');
     });
     this.poseNet.on('pose', (results) => {
-      // console.log('eff_pose_net pose results.length', results.length);
+      // ui_log('eff_pose_net pose results.length', results.length);
       this.poses = results;
     });
   }

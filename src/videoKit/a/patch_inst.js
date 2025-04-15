@@ -14,41 +14,41 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 p5videoKit.prototype.patch_inst_create = async function (eff_label, imedia, ipatch, eff_spec, eff_props) {
   let effMeta = await this.effectMeta_find(eff_label);
   if (!effMeta) {
-    console.log('patch_inst_create !!@ No eff_label', eff_label);
+    ui_log('patch_inst_create !!@ No eff_label', eff_label);
     return;
   }
   if (!effMeta.factory) {
-    console.log('patch_inst_create !!@ No factory', effMeta);
+    ui_log('patch_inst_create !!@ No factory', effMeta);
     return;
   }
   let media = this.a_.mediaDivs[imedia];
   if (!media) {
-    // console.log('NO media imedia', imedia);
+    // ui_log('NO media imedia', imedia);
   } else if (!media.ready('patch_inst')) {
     // if (!media.notReadyWarningIssued) {
-    //   console.log('imedia', imedia, 'NOT media.ready');
+    //   ui_log('imedia', imedia, 'NOT media.ready');
     //   media.notReadyWarningIssued = 1;
     // }
     let inst = this.a_.patch_instances[ipatch];
-    // console.log('NOT media.ready inst', inst);
+    // ui_log('NOT media.ready inst', inst);
     if (inst && inst.livem_step) {
-      console.log('livem_step imedia', imedia);
+      ui_log('livem_step imedia', imedia);
       inst.livem_step();
     }
     return;
   }
   // else if (media.notReadyWarningIssued) {
-  //   console.log('imedia', imedia, 'media.ready');
+  //   ui_log('imedia', imedia, 'media.ready');
   //   media.notReadyWarningIssued = 0;
   // }
   let inst = this.a_.patch_instances[ipatch];
   if (!inst) {
     if (!media) {
-      // console.log('NO media for init imedia', imedia);
+      // ui_log('NO media for init imedia', imedia);
       if (this.a_.mediaDivs.length > 1) {
         // Wait for input to be ready if there are more than 1
         // possible live inputs
-        console.log('Exit - NO media for init imedia', imedia);
+        ui_log('Exit - NO media for init imedia', imedia);
         return;
       }
       // !!@ Bug - will allow inst before input ready
@@ -56,7 +56,7 @@ p5videoKit.prototype.patch_inst_create = async function (eff_label, imedia, ipat
       // media = this.a_.mediaDivs[0];
 
       // Exit until media ready
-      console.log('Exit until media ready', imedia);
+      ui_log('Exit until media ready', imedia);
       return;
     }
     // !!@ TODO replace with createEffect
@@ -106,7 +106,7 @@ p5videoKit.prototype.patch_remove_at = function (ipatch) {
 // }
 
 p5videoKit.prototype.patch_update_effIndex = function (aPatch, effIndex) {
-  // console.log('patch_update_effIndex effIndex', effIndex);
+  // ui_log('patch_update_effIndex effIndex', effIndex);
   let eff_spec = aPatch.eff_spec;
   let ipatch = eff_spec.ipatch;
   eff_spec.eff_label = this.a_.effectMetas[effIndex].label;
@@ -117,7 +117,7 @@ p5videoKit.prototype.patch_update_effIndex = function (aPatch, effIndex) {
 
 p5videoKit.prototype.patch_instances_clear_all = function () {
   // All patch instances will be re-created on next draw
-  // console.log('patch_instances_clear_all');
+  // ui_log('patch_instances_clear_all');
   for (let ipatch = 0; ipatch < this.a_.patch_instances.length; ipatch++) {
     this.patch_inst_update(ipatch);
   }
@@ -126,7 +126,7 @@ p5videoKit.prototype.patch_instances_clear_all = function () {
 
 p5videoKit.prototype.patch_inst_update = function (ipatch) {
   let inst = this.a_.patch_instances[ipatch];
-  // console.log('ui_patch_update inst', inst);
+  // ui_log('ui_patch_update inst', inst);
   // Clean up old instance before it's zaped
   this.patch_inst_deinit(inst);
 };
@@ -136,7 +136,7 @@ p5videoKit.prototype.patch_inst_deinit = function (inst) {
   if (inst.deinit) {
     inst.deinit();
   } else if (inst.output && inst.output.remove) {
-    // console.log('patch_inst_deinit REMOVING inst.output', inst.output);
+    // ui_log('patch_inst_deinit REMOVING inst.output', inst.output);
     inst.output.remove();
   }
 };

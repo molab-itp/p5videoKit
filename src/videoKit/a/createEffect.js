@@ -37,14 +37,14 @@ p5videoKit.prototype.createEffect = async function ({ eff_label, imedia, urect, 
   let init = Object.assign(defaultProps, { videoKit, eff_spec, input, media }, props);
   // !!@ From patch_inst_create
   //     let init = Object.assign({ videoKit, eff_spec, input, media }, eff_props);
-  // console.log('createEffect effMeta', effMeta);
+  // ui_log('createEffect effMeta', effMeta);
   return new effMeta.factory(init);
 };
 
 //
 // videoKit.updateEffect(eff, { imedia, urect });
 // p5videoKit.prototype.updateEffect = function (eff, { imedia, urect }) {
-//   // console.log('updateEffect eff', eff, 'imedia', imedia, 'urect', urect);
+//   // ui_log('updateEffect eff', eff, 'imedia', imedia, 'urect', urect);
 //   let media = this.mediaDivAt(imedia);
 //   if (media) {
 //     let input = media.capture;
@@ -65,13 +65,13 @@ p5videoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, f
   if (imedia !== undefined) {
     let media = this.mediaDivAt(imedia);
     if (!media || !media.ready('layerCopyInput')) {
-      // console.log('layerCopyInput NOT Ready imedia', imedia, 'media', media);
-      // console.log('layerCopyInput NOT Ready imedia', imedia);
+      // ui_log('layerCopyInput NOT Ready imedia', imedia, 'media', media);
+      // ui_log('layerCopyInput NOT Ready imedia', imedia);
       return 0;
     }
     input = media.capture;
   } else if (!input) {
-    console.log('layerCopyInput input MISSING', input);
+    ui_log('layerCopyInput input MISSING', input);
     return 0;
   }
   let sx = 0;
@@ -101,14 +101,14 @@ p5videoKit.prototype.layerCopyInput = function (layer, { imedia, input, urect, f
 // videoKit.layerCopyEffect( layer, eff  )
 //
 p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
-  // console.log('layerCopyEffect eff', layer);
-  // console.log('layerCopyEffect eff', eff);
+  // ui_log('layerCopyEffect eff', layer);
+  // ui_log('layerCopyEffect eff', eff);
   if (!layer) {
-    console.log('layerCopyEffect no layer');
+    ui_log('layerCopyEffect no layer');
     return;
   }
   if (!eff) {
-    console.log('layerCopyEffect no eff');
+    ui_log('layerCopyEffect no eff');
     return;
   }
   eff.prepareOutput();
@@ -140,10 +140,10 @@ p5videoKit.prototype.layerCopyEffect = function (layer, eff) {
 // p5videoKit.prototype.factoryPropInits = function (eff_label, init_props = {}) {
 //   let effMeta = this.effectMeta_find(eff_label);
 //   if (!effMeta) {
-//     console.log('factory_prop_inits no effMeta');
+//     ui_log('factory_prop_inits no effMeta');
 //     return init_props;
 //   }
-//   // console.log('factory_prop_inits effMeta', effMeta);
+//   // ui_log('factory_prop_inits effMeta', effMeta);
 //   return this.factory_prop_inits(effMeta.factory, init_props);
 // };
 
@@ -182,7 +182,7 @@ p5videoKit.prototype.mediaDivCount = function () {
 // videoKit.mediaDivLiveIndex()
 //
 p5videoKit.prototype.mediaDivLiveIndex = function () {
-  console.log('mediaDivLiveIndex lastMediaDivIndex', this.a_.lastMediaDivIndex);
+  ui_log('mediaDivLiveIndex lastMediaDivIndex', this.a_.lastMediaDivIndex);
   return this.a_.lastMediaDivIndex || 0;
 };
 

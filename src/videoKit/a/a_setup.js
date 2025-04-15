@@ -16,19 +16,19 @@ import { image_scaled_pad } from '../util/image.js';
 // videoKit.draw()
 //
 p5videoKit.prototype.draw = function () {
-  // console.log('p5videoKit draw');
+  // ui_log('p5videoKit draw');
   if (!this.a_initStarted) {
     this.a_initStarted = 1;
     this.init();
   }
   if (!this.a_initDone) {
-    // console.log('p5videoKit draw init not done');
+    // ui_log('p5videoKit draw init not done');
     return;
   }
   this.set_background();
   stroke(255);
   if (!this.a_.ui.urects_count) {
-    console.log('draw this.a_.ui.urects_count', this.a_.ui.urects_count);
+    ui_log('draw this.a_.ui.urects_count', this.a_.ui.urects_count);
     this.pad_layout_update();
   }
   let prior;
@@ -64,16 +64,16 @@ p5videoKit.prototype.setup = async function (options) {
   // this.ui_restore_store(effects, settings, (sizeResult) => {
   let sizeResult = await this.ui_restore_store(options);
 
-  // console.log('videoKit setup sizeResult', sizeResult);
+  // ui_log('videoKit setup sizeResult', sizeResult);
   resizeCanvas(sizeResult.width, sizeResult.height);
 
   this.init_mediaDivs(options);
 
   this.ui_create();
 
-  // console.log('a_.ui.hold_capture', this.a_.ui.hold_capture);
+  // ui_log('a_.ui.hold_capture', this.a_.ui.hold_capture);
   if (!this.a_.ui.hold_capture) {
-    // console.log('a_.ui.hold_capture media_enum', this.a_.ui.hold_capture);
+    // ui_log('a_.ui.hold_capture media_enum', this.a_.ui.hold_capture);
     this.media_enum();
   }
 
@@ -107,11 +107,11 @@ p5videoKit.prototype.setup = async function (options) {
 //
 p5videoKit.prototype.draw_patch = async function (ipatch, prior) {
   let uiPatch = this.a_.ui.patches[ipatch];
-  // console.log('draw ipatch', ipatch, 'uiPatch', uiPatch);
+  // ui_log('draw ipatch', ipatch, 'uiPatch', uiPatch);
   let eff_spec = uiPatch.eff_spec;
   let { eff_label, imedia } = eff_spec;
   // if (imedia >= this.a_.mediaDivs.length) {
-  //   console.log('draw_patch zeroing imedia', imedia, 'a_.mediaDivs.length', this.a_.mediaDivs.length);
+  //   ui_log('draw_patch zeroing imedia', imedia, 'a_.mediaDivs.length', this.a_.mediaDivs.length);
   //   imedia = 0;
   // }
   let inst = await this.patch_inst_create(eff_label, imedia, ipatch, eff_spec, uiPatch.eff_props);
@@ -135,7 +135,7 @@ p5videoKit.prototype.draw_patch = async function (ipatch, prior) {
 //
 p5videoKit.prototype.set_background = function () {
   let bg = this.a_.ui.back_color;
-  // console.log('set_background this.a_.ui.back_color', this.a_.ui.back_color);
+  // ui_log('set_background this.a_.ui.back_color', this.a_.ui.back_color);
   if (!bg) {
     clear();
     return;

@@ -28,22 +28,22 @@ export default class eff_face_band {
     image_scaled_pad(this.output, this.eff_spec.urect);
   }
   init() {
-    console.log('eff_face_band init', this);
+    ui_log('eff_face_band init', this);
     this.fft_anal = new FFT_analyser({ media: this.media });
     this.video = this.input.elt;
     this.predictions = [];
-    // console.log('this.video', this.video);
+    // ui_log('this.video', this.video);
     if (typeof ml5 == 'undefined') {
-      // console.log('ml5 undefined');
+      // ui_log('ml5 undefined');
       return;
     }
     this.videoKit.ui_message('loading model...');
     this.facemesh = ml5.facemesh(this.video, () => {
-      // console.log('eff_facemesh Model ready!');
+      // ui_log('eff_facemesh Model ready!');
       this.videoKit.ui_message('');
     });
     this.facemesh.on('predict', (results) => {
-      // console.log('facemesh predict results.length', results.length);
+      // ui_log('facemesh predict results.length', results.length);
       if (results.length !== 0) {
         this.predictions = results;
         this.frozen = 0;
@@ -87,7 +87,7 @@ export default class eff_face_band {
       let spectrum = this.fft_anal.spectrum();
       let ns = spectrum.length - 1;
       let nhalf = int(nsil / 2);
-      // console.log('eff_face_band spectrum.length', spectrum.length, 'nsil', nsil);
+      // ui_log('eff_face_band spectrum.length', spectrum.length, 'nsil', nsil);
       // eff_face_band spectrum.length 1024 nsil 36
       let imax = 0;
       for (let i = ns; i >= 0; i--) {
@@ -97,7 +97,7 @@ export default class eff_face_band {
           break;
         }
       }
-      // console.log('eff_face_band imax', imax);
+      // ui_log('eff_face_band imax', imax);
       let nstep = int((imax + 1) / nsil);
       let is = 0;
       for (let i = 0; i <= nhalf; i++) {

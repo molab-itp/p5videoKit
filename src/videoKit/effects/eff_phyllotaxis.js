@@ -32,7 +32,7 @@ export default class eff_phyllotaxis {
     // this.len = 6;
     this.x0 = width / 2;
     this.y0 = height / 2;
-    // console.log('eff_phyllotaxis width, height', width, height);
+    // ui_log('eff_phyllotaxis width, height', width, height);
     this.nmax = this.max;
     if (this.nmax < 0) this.nmax = width * height;
     this.a_offset = 0;
@@ -53,10 +53,10 @@ export default class eff_phyllotaxis {
       let r = this.len * sqrt(i);
       let x = r * cos(a) + this.x0;
       let y = r * sin(a) + this.y0;
-      // console.log('eff_phyllotaxis i', i, x, y);
+      // ui_log('eff_phyllotaxis i', i, x, y);
       let col = this.src.get(x, y);
       layer.fill(col);
-      // console.log('eff_phyllotaxis i', i, x, y, col);
+      // ui_log('eff_phyllotaxis i', i, x, y, col);
       layer.ellipse(x, y, this.len, this.len);
       if (x < -this.off_margin) offLeft = 1;
       if (x > width + this.off_margin) offRight = 1;
@@ -65,7 +65,7 @@ export default class eff_phyllotaxis {
       if (offLeft && offRight && offTop && offBottom) {
         this.nhit = i;
         if (!this.nhit_reported) {
-          console.log('eff_phyllotaxis nhit', this.nhit, 'nmax', this.nmax);
+          ui_log('eff_phyllotaxis nhit', this.nhit, 'nmax', this.nmax);
           this.nhit_reported = 1;
         }
         // eff_phyllotaxis nhit 3619 nmax 129600
@@ -90,7 +90,7 @@ export default class eff_phyllotaxis {
       if (this.ngrid === 0) {
         this.x0 = random(this.off_margin, width - this.off_margin);
         this.y0 = random(this.off_margin, height - this.off_margin);
-        // console.log('eff_phyllotaxis x0 y0', this.x0, this.y0);
+        // ui_log('eff_phyllotaxis x0 y0', this.x0, this.y0);
       } else {
         let w = width / this.ngrid;
         let iw = Math.floor(random(0, this.ngrid));

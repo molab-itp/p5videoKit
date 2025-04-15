@@ -59,7 +59,7 @@ p5videoKit.prototype.ui_patch_bar = function () {
   ilayout.addEventListener('change', layout_change);
   let nthis = this;
   function layout_change() {
-    // console.log('layout_change');
+    // ui_log('layout_change');
     nthis.ui_prop_set('patch_layout', this.value);
     nthis.pad_layout_update();
     nthis.patch_instances_clear_all();
@@ -120,23 +120,23 @@ function ui_patch_save_all() {
 // Write out all patches to local storage
 // and reset given patch
 p5videoKit.prototype.ui_patch_update = function (aPatch) {
-  // console.log('ui_patch_update');
+  // ui_log('ui_patch_update');
   this.ui_prop_set('patches', this.a_.ui.patches);
   if (!aPatch) return;
   let ipatch = aPatch.eff_spec.ipatch;
-  // console.log('ui_patch_update ipatch', ipatch);
+  // ui_log('ui_patch_update ipatch', ipatch);
   this.patch_inst_update(ipatch);
   this.a_.patch_instances[ipatch] = null;
 };
 
 p5videoKit.prototype.pad_layout_update = function () {
   let layout;
-  // console.log('pad_layout_update this.a_.ui.canvas_resize_ref |' + this.a_.ui.canvas_resize_ref + '|');
+  // ui_log('pad_layout_update this.a_.ui.canvas_resize_ref |' + this.a_.ui.canvas_resize_ref + '|');
   if (this.a_.ui.canvas_resize_ref) {
     pads_resize_set_scale();
   } else {
     if (this.a_.ui.urects_lock) {
-      console.log('pad_layout_update this.a_.ui.urects_lock');
+      ui_log('pad_layout_update this.a_.ui.urects_lock');
       return;
     }
     layout = new PadLayout(this.a_);
@@ -149,23 +149,23 @@ p5videoKit.prototype.pad_layout_update = function () {
       let eff_spec = uiPatch.eff_spec;
       if (eff_spec.ipatch != ipatch) {
         // ipatch change due to deletes
-        console.log('!!@ eff_spec.ipatch', eff_spec.ipatch, 'ipatch', ipatch);
+        ui_log('!!@ eff_spec.ipatch', eff_spec.ipatch, 'ipatch', ipatch);
         eff_spec.ipatch = ipatch;
       }
       if (layout) {
         urect = layout.next();
       } else if (eff_spec.urect_ref) {
         urect = Object.assign({}, eff_spec.urect_ref);
-        console.log('pad_layout_ assign pad', JSON.stringify(urect));
+        ui_log('pad_layout_ assign pad', JSON.stringify(urect));
         pads_resize_pad(urect);
       } else {
         // !!@ Error no urects_ref
-        console.log('!!@ pad_layout_update urects_ref missing ipatch', ipatch, 'uiPatch', JSON.stringify(uiPatch));
+        ui_log('!!@ pad_layout_update urects_ref missing ipatch', ipatch, 'uiPatch', JSON.stringify(uiPatch));
       }
       eff_spec.urect = urect;
       urects_count++;
     }
-    // console.log('pad_layout_update uiPatch', JSON.stringify(uiPatch));
+    // ui_log('pad_layout_update uiPatch', JSON.stringify(uiPatch));
   }
   this.ui_prop_set('patches', this.a_.ui.patches);
   this.ui_prop_set('urects_count', urects_count);
@@ -176,9 +176,9 @@ function pads_resize_set_scale() {
   let refsz = this.str_to_width_height(this.a_.ui.canvas_resize_ref);
   let tosz = this.str_to_width_height(this.a_.ui.canvas_size);
   this.a_.ui.urects_scale = tosz.width / refsz.width;
-  console.log('pads_resize_set_scale this.a_.ui.canvas_resize_ref', this.a_.ui.canvas_resize_ref);
-  console.log('pads_resize_set_scale this.a_.ui.canvas_size', this.a_.ui.canvas_size);
-  console.log('pads_resize_set_scale urects_scale', this.a_.ui.urects_scale);
+  ui_log('pads_resize_set_scale this.a_.ui.canvas_resize_ref', this.a_.ui.canvas_resize_ref);
+  ui_log('pads_resize_set_scale this.a_.ui.canvas_size', this.a_.ui.canvas_size);
+  ui_log('pads_resize_set_scale urects_scale', this.a_.ui.urects_scale);
 }
 
 function pads_resize_pad(urect) {

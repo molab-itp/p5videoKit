@@ -40,7 +40,7 @@ export default class eff_diff {
       this.back_color_arr = [0, 0, 0, 0];
     } else {
       let col = color(this.back_color);
-      // console.log('back_color', this.back_color, 'col', col);
+      // ui_log('back_color', this.back_color, 'col', col);
       this.back_color_arr = [];
       this.back_color_arr[0] = red(col);
       this.back_color_arr[1] = green(col);
@@ -57,7 +57,7 @@ export default class eff_diff {
       this.image_init();
       return;
     }
-    // console.log('diff_render iimage', this.iimage);
+    // ui_log('diff_render iimage', this.iimage);
     let image1 = this.images[this.iimage];
     image_copy({ to: image1, from: this.input });
     this.iimage = (this.iimage + 1) % 2;
@@ -96,7 +96,7 @@ export default class eff_diff {
     diffimage.updatePixels();
     if (this.hold) {
       let r = round(ndiff / this.maxdiff, 4);
-      // console.log('diff_render r', r, 'hold_level', this.hold_level);
+      // ui_log('diff_render r', r, 'hold_level', this.hold_level);
       if (r > this.hold_level) {
         image_move({ to: this.output, from: this.diffimage });
       }
@@ -108,7 +108,7 @@ export default class eff_diff {
   image_init() {
     this.inited = 1;
     let image2 = this.images[(this.iimage + 1) % 2];
-    // console.log('image_init iimage', this.iimage, 'image2', image2);
+    // ui_log('image_init iimage', this.iimage, 'image2', image2);
     image_copy({ to: image2, from: this.input });
   }
   // -- smooth --

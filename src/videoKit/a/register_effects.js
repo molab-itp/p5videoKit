@@ -33,7 +33,7 @@ import eff_loop from '../effects/eff_loop.js';
 
 p5videoKit.prototype.register_effects = function () {
   //
-  // console.log('register_effects --- ');
+  // ui_log('register_effects --- ');
   this.register_effect('bestill', eff_bestill);
   this.register_effect('bright', eff_bright);
   this.register_effect('circle', eff_circle);
@@ -71,7 +71,7 @@ p5videoKit.prototype.register_effect = function (label, factory) {
   let effMeta = { label, factory, index };
   this.a_.effectMetaDict[label] = effMeta;
   this.a_.effectMetas.push(effMeta);
-  // console.log('register_effect index', index, label);
+  // ui_log('register_effect index', index, label);
 };
 
 // not used - for reference

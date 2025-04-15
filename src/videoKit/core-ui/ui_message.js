@@ -11,8 +11,8 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 // videoKit.ui_message(msg, opt)
 //
 p5videoKit.prototype.ui_message = function (msg, opt) {
-  // console.log('ui_message msg', msg);
-  // console.log('ui_message msg', msg, 'opt', opt);
+  // ui_log('ui_message msg', msg);
+  // ui_log('ui_message msg', msg, 'opt', opt);
   if (opt && opt.initTimer) {
     dice.startTime = window.performance.now();
   }

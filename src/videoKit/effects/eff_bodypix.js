@@ -33,7 +33,7 @@ export default class eff_bodypix {
     this.videoKit.ui_message('');
     if (this.eff_spec.ihide) return;
     if (error) {
-      console.log('eff_body_pix', error);
+      ui_log('eff_body_pix', error);
       return;
     }
     this.segmentation = result;

@@ -40,7 +40,7 @@ p5videoKit.prototype.ui_chat_pane = function () {
   elm = createInput('')
     .id('ichat_msg')
     .input(function () {
-      console.log('ichat_msg ' + this.value());
+      ui_log('ichat_msg ' + this.value());
       nthis.ui_prop_set('chat_text', this.value());
     });
   blk.child(elm);
@@ -54,7 +54,7 @@ p5videoKit.prototype.ui_chat_pane = function () {
 let a_chat_log;
 
 p5videoKit.prototype.ui_chat_receive = function (str, id) {
-  // console.log('ui_chat_receive', str);
+  // ui_log('ui_chat_receive', str);
   let obj = { name: id, text: 'Bye' };
   if (str) {
     obj = JSON.parse(str);

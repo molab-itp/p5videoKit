@@ -20,9 +20,9 @@ p5videoKit.prototype.reset_video_clear_locals = function (storen) {
     video: true,
   };
   myVideo = createCapture(vconstraints, function (stream) {
-    console.log('reset_video_clear_locals create_video stream', stream);
+    ui_log('reset_video_clear_locals create_video stream', stream);
   });
-  console.log('reset_video_clear_locals create_video myVideo', myVideo);
+  ui_log('reset_video_clear_locals create_video myVideo', myVideo);
   myVideo.muted = true;
   let delay = 2000;
   // let delay = 1000;
@@ -30,7 +30,7 @@ p5videoKit.prototype.reset_video_clear_locals = function (storen) {
     let nref = (random() + '').substring(2);
     nref = this.location_noquery() + '?v=' + nref;
     window.location = nref;
-    // console.log('nref', nref);
+    // ui_log('nref', nref);
   };
   setTimeout(func, delay);
   // function alert_reload() {
