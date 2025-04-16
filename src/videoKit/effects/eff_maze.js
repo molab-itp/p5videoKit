@@ -6,7 +6,7 @@ export default class eff_maze {
     ncell: [32, 64, 128, 16],
     weight: [0.5, 0.6, 0.7, 0.8],
     rate: ['frame', 'line', 'ncell'],
-    period: [5, 10, 20, 30],
+    period: [-1, 5, 10, 20, 30],
   };
   constructor(props) {
     Object.assign(this, props);

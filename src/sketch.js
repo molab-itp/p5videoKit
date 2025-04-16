@@ -11,7 +11,7 @@ let my = {};
 // console.log('p5', p5);
 
 function setup() {
-  console.log('sketch setup globalThis.p5', globalThis.p5);
+  // console.log('sketch setup globalThis.p5', globalThis.p5);
   p5.disableFriendlyErrors = true; // disables FES to improve performance
 
   // Report startup time for debugging
