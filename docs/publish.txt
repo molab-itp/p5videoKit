@@ -1,9 +1,9 @@
 
-> p5-video-kit@0.0.13 build
+> p5-video-kit@0.0.14 build
 > rollup -c
 
 npm notice
-npm notice 📦  p5-video-kit@0.0.13
+npm notice 📦  p5-video-kit@0.0.14
 npm notice Tarball Contents
 npm notice 1.1kB LICENSE
 npm notice 4.5kB README.md
@@ -16,12 +16,12 @@ npm notice 435.8kB dist/p5videoKit.umd.js.map
 npm notice 820B package.json
 npm notice Tarball Details
 npm notice name: p5-video-kit
-npm notice version: 0.0.13
-npm notice filename: p5-video-kit-0.0.13.tgz
+npm notice version: 0.0.14
+npm notice filename: p5-video-kit-0.0.14.tgz
 npm notice package size: 432.4 kB
 npm notice unpacked size: 1.7 MB
-npm notice shasum: e8dc9079bbfaaac42fa3196486688ed2f8a610a4
-npm notice integrity: sha512-k7V8nWZRMKi9O[...]JfTvZTxgYaW1w==
+npm notice shasum: b90984da9937fe2bf416dfed55d962eb311997c9
+npm notice integrity: sha512-fO2XJnbdLqvqU[...]GH1HONknU6jtQ==
 npm notice total files: 9
 npm notice
 npm notice Publishing to https://registry.npmjs.org/ with tag latest and default access
