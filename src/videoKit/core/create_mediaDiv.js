@@ -207,7 +207,9 @@ p5videoKit.prototype.create_video_Div = function (videoMeta) {
       ui_log('create_video_Div ready label=', label);
       capture.play();
       capture.loop();
-      capture.volume(0);
+      if (!this.a_.ui.audio_enabled) {
+        capture.volume(0);
+      }
       playIssued = true;
     }
     return isReady;
