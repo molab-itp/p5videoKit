@@ -37,6 +37,8 @@ p5videoKit.prototype.liveMedia_attach = function (mediaDiv) {
   // 'this' refers to pre-class based p5videoKit
   // ui_log('liveMedia_attach this=', this);
   // ui_log('liveMedia_attach type=' + type + ' this.a_.ui.room_name=' + this.a_.ui.room_name);
+  console.log('liveMedia_attach this=', this);
+  // console.log('liveMedia_attach type=' + type + ' a_.ui.room_name=' + a_.ui.room_name);
   // this is nulll in modules
   //
   let nthis = this;
