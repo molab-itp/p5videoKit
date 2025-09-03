@@ -111,3 +111,9 @@ Built using
 bin/lib-publish.sh
 
 - p5-video-kit@0.0.16
+
+# --
+
+bin/a-release.sh
+
+open https://jht1493.net/p5videoKit/demo2

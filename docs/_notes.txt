@@ -1,0 +1,108 @@
+notes.txt
+
+# --
+
+jht2@10-20-93-88 p5videoKit % og .
+jht2@10-20-93-88 p5videoKit % bin/lib-publish.sh 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+v0.0.16
+
+src/videoKit/a/a_lib.js → dist/p5videoKit.cjs.js, dist/p5videoKit.esm.js, dist/p5videoKit.umd.js...
+created dist/p5videoKit.cjs.js, dist/p5videoKit.esm.js, dist/p5videoKit.umd.js in 695ms
++ p5-video-kit@0.0.16
+jht2@10-20-93-88 p5videoKit % og .              
+jht2@10-20-93-88 p5videoKit % bin/a-release.sh 
+set_updateBuild flag 1
+build_webdb  n 510
+settingMetas.length 86
+gen_settings_index files 98
+gen_settings_index files 18
+videoKit/effects/effs* 28
+build_ver_run updateBuild 1
+build_ver_run nfiles 213
+writeCount 2 skipCount 93 next 414
+build_sketch 
+build_sketch MISSING prefix effects: [
+ suffix ]
+build_sketch MISSING prefix settings: [
+ suffix ]
+-razO --exclude-from to-public-exclude.txt --delete
+rsync from ../src
+        to jhtitp@jht1493.net:/home/bitnami/htdocs/p5videoKit/demo2
+rsync from ../src/../stage
+        to jhtitp@jht1493.net:/home/bitnami/htdocs/p5videoKit/demo2/../stage
+Transfer starting: 15 files
+
+sent 794 bytes  received 20 bytes  31187 bytes/sec
+total size is 265740  speedup is 326.46
+
+Lapse 3
+build_ver 414
+open https://jht1493.net/p5videoKit/demo2
+jht2@10-20-93-88 p5videoKit % 
+
+# --
+2025-02-02 21:14:39
+
+/Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/src/external
+ln -s ../../../../2023/p5videoKit-external_media media
+ls -la
+-rw-r--r--@  1 jht2  staff  8196 Feb  2 21:11 .DS_Store
+drwxr-xr-x  11 jht2  staff   352 Mar 20  2024 lib
+lrwxr-xr-x   1 jht2  staff    42 Feb  2 21:13 media -> ../../../../2023/p5videoKit-external_media
+pwd
+
+# --
+
+2023-12-27 22:00:13
+
+>> Setup for run
+run/run-black-facts.sh
+
+bin/install-electron.sh
+
+# --
+
+bin/build.sh --dev
+# dont update build number
+
+bin/build.sh --prod
+
+# --
+
+>> display big days
+src/videoKit/effects/ticker/sub/sketch.js
+data_index_down
+
+
+# --
+
+[] file playlist
+
+https://blackfacts.com/kiosk?delay=2000&playlist=today
+
+https://www.youtube.com/watch?v=ekthcIHDt3I
+FULL HD PM5644 test pattern - 1920 x 1080 60p - 1 Hour with 1Khz sound.
+
+[] https://www.npmjs.com/package/electron
+
+23.1.1
+
+# --
+
+2x2 live face mesh
+each cell and select eff_label
+
+https://github.com/jht1493/p5videoKit.git
+
+# --
+
+# update build number
+bin/build.sh --prod
+
+bin/build.sh
+
+# --
