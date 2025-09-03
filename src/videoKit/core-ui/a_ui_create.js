@@ -43,7 +43,7 @@ p5videoKit.prototype.ui_create = function () {
 p5videoKit.prototype.ui_top_pane = function () {
   let div = this.ui_div_empty('itop_bar');
   let html = `
-  <button id="ipresent">Present</button>
+  <button id="ipresent">Present?v=415</button>
   <button id="ihideui">HideUI</button>
   <button id="ireset">Reset</button>
   <button id="isave">Save</button>
