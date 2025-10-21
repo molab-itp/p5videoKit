@@ -56,11 +56,12 @@ p5videoKit.prototype.patch_inst_create = async function (eff_label, imedia, ipat
       // media = this.a_.mediaDivs[0];
 
       // Exit until media ready
-      ui_log('Exit until media ready', imedia);
-      return;
+      // ui_log('Exit until media ready', imedia);
+      ui_log('NO media', imedia);
+      // return;
     }
     // !!@ TODO replace with createEffect
-    let input = media.capture;
+    let input = media && media.capture;
     let videoKit = this;
     let init = Object.assign({ videoKit, eff_spec, input, media }, eff_props);
     inst = new effMeta.factory(init);
