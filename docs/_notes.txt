@@ -1,6 +1,43 @@
 notes.txt
 
 # --
+?? Present?v=417
+does not show on demo2
+open https://jht1493.net/p5videoKit/demo2
+
+2025-10-21 17:07:23
++ p5-video-kit@0.0.17
+jht2@10-20-55-237 p5videoKit % bin/a-release.sh
+
+set_updateBuild flag 1
+No webdbPath /Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/src/external/media/webdb
+settingMetas.length 86
+gen_settings_index files 98
+gen_settings_index files 18
+videoKit/effects/effs* 28
+build_ver_run updateBuild 1
+build_ver_run nfiles 213
+writeCount 2 skipCount 93 next 417
+build_sketch 
+build_sketch MISSING prefix effects: [
+ suffix ]
+build_sketch MISSING prefix settings: [
+ suffix ]
+-razO --exclude-from to-public-exclude.txt --delete
+rsync from ../src
+        to jhtitp@jht1493.net:/home/bitnami/htdocs/p5videoKit/demo2
+rsync from ../src/../stage
+        to jhtitp@jht1493.net:/home/bitnami/htdocs/p5videoKit/demo2/../stage
+Transfer starting: 15 files
+
+sent 794 bytes  received 20 bytes  27972 bytes/sec
+total size is 265740  speedup is 326.46
+
+Lapse 1
+build_ver 417
+open https://jht1493.net/p5videoKit/demo2
+
+# --
 
 jht2@10-20-93-88 p5videoKit % og .
 jht2@10-20-93-88 p5videoKit % bin/lib-publish.sh 
