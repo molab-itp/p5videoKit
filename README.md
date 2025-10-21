@@ -106,6 +106,14 @@ Built using
 
 # --
 
+2025-10-21 16:55:10
+
+bin/lib-publish.sh
+
+- p5-video-kit@0.0.17
+
+# --
+
 ?v=415
 
 bin/lib-publish.sh
