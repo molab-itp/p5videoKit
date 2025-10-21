@@ -1,6 +1,12 @@
 notes.txt
 
 # --
+?? Present?v=418
+version lag due to library publishing
+use local include to get version synced
+    <script type="module" src="./videoKit/a/a_lib.js"></script>
+
+# --
 ?? Present?v=417
 does not show on demo2
 open https://jht1493.net/p5videoKit/demo2
