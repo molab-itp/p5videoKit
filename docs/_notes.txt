@@ -5,6 +5,9 @@ notes.txt
 bin/a-release.sh
 build_ver 419
 
+a_videoKit_settings.js?v=421
+need to get empty video config
+
 # --
 ?? Present?v=418
 version lag due to library publishing
