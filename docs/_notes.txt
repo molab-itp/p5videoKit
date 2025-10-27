@@ -1,6 +1,11 @@
 notes.txt
 
 # --
+2025-10-27 11:17:55
+bin/a-release.sh
+build_ver 419
+
+# --
 ?? Present?v=418
 version lag due to library publishing
 use local include to get version synced
