@@ -108,6 +108,11 @@ Built using
 
 ```
 # --
+2025-11-11 18:01:29
+p5-video-kit@0.0.19
+build_ver 423
+
+# --
 2025-10-21 16:55:10
 
 bin/lib-publish.sh
