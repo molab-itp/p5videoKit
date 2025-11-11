@@ -114,6 +114,8 @@ build_ver 423
 bin/a-release.sh
 build_ver 424
 bin/lib-publish.sh
+p5-video-kit@0.0.20
+build_ver 426
 
 # --
 2025-10-21 16:55:10
