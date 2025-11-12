@@ -29,8 +29,8 @@ const src_path = join(root_path, 'src');
 const buildnum_path = 'gen/build_ver.txt';
 let build_ver = get_build_vers(src_path, buildnum_path);
 
-// const webdbPath = '../webdb';
-const webdbPath = 'external/media/webdb';
+const webdbPath = '../webdb/webdb';
+// const webdbPath = 'external/media/webdb';
 const imagesOutPath = 'videoKit/let/a_images.js';
 build_webdb(src_path, webdbPath, imagesOutPath);
 
