@@ -1,6 +1,30 @@
 notes.txt
 
 # --
+2025-11-12 15:38:16
+
+jht2@10-20-55-237 p5videoKit % bin/a-release.sh
+
+set_updateBuild flag 1
+node:fs:1581
+  const result = binding.readdir(
+                         ^
+
+Error: ENOTDIR: not a directory, scandir '/Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/webdb/README.md'
+    at readdirSync (node:fs:1581:26)
+    at build_webdb (file:///Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/node/build_webdb.js:27:18)
+    at file:///Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/node/build.js:34:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:272:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:583:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5) {
+  errno: -20,
+  code: 'ENOTDIR',
+  syscall: 'scandir',
+  path: '/Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/webdb/README.md'
+}
+
+
+# --
 2025-10-27 11:17:55
 bin/a-release.sh
 build_ver 419
