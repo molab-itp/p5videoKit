@@ -174,7 +174,7 @@ p5videoKit.prototype.attach_media_nlabel = function (id, nlabel) {
 };
 
 p5videoKit.prototype.init_mediaDivs = function ({ videos }) {
-  ui_log('init_mediaDivs', videos);
+  ui_log('init_mediaDivs videos', videos);
   videos = videos || [];
   // First media pane is canvas
   this.a_.mediaDivs = [
