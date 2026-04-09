@@ -3,6 +3,20 @@ notes.txt
 # --
 2026-04-09 11:02:38
 
+https://www.npmjs.com/settings/jhtitp/profile
+
+pin: 123456
+jhtitp-seckey
+
+0d2f066dc66ee000918616735e06fce878350b148b68af3f197d7e79a1510de0
+62f1384333104f7e1067328f273b7238632222ed088cce71fefec4a6fcad09ce
+5586e811fa8f5bff1dcbb3f4bd51b32d6eee5a6ead3ec4e597c5ffe58f45568d
+1c26e10bc07c879711cb969a5ad0950c456cc542bfa8845b4223b766c6fbe273
+afb4991c64a910bfae0cb54a183b62993d79cd580d987b1a1af72411ae8d5050
+
+npm error code E403
+npm error 403 403 Forbidden - PUT https://registry.npmjs.org/p5-video-kit - Two-factor authentication or granular access token with bypass 2fa enabled is required to publish packages.
+
           "name": "jhtitp",
           "email": "jhtitp@gmail.com"
 
