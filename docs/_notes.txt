@@ -1,6 +1,16 @@
 notes.txt
 
 # --
+2026-04-09 11:02:38
+
+          "name": "jhtitp",
+          "email": "jhtitp@gmail.com"
+
+CodeFun2026!
+
+bin/lib-publish.sh
+
+# --
 2025-11-12 15:38:16
 
 jht2@10-20-55-237 p5videoKit % bin/a-release.sh
