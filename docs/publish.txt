@@ -1,9 +1,9 @@
 
-> p5-video-kit@0.0.23 build
+> p5-video-kit@0.0.24 build
 > rollup -c
 
 npm notice
-npm notice 📦  p5-video-kit@0.0.23
+npm notice 📦  p5-video-kit@0.0.24
 npm notice Tarball Contents
 npm notice 1.1kB LICENSE
 npm notice 5.0kB README.md
@@ -16,18 +16,12 @@ npm notice 432.3kB dist/p5videoKit.umd.js.map
 npm notice 820B package.json
 npm notice Tarball Details
 npm notice name: p5-video-kit
-npm notice version: 0.0.23
-npm notice filename: p5-video-kit-0.0.23.tgz
+npm notice version: 0.0.24
+npm notice filename: p5-video-kit-0.0.24.tgz
 npm notice package size: 431.9 kB
 npm notice unpacked size: 1.7 MB
-npm notice shasum: ac883e730fd6bcd0d1e461120609c33aeb0d8fda
-npm notice integrity: sha512-RTDDWPo++IDkF[...]8pWhwmTfQpSnw==
+npm notice shasum: b771655700d6e7226062d748a43c747cd853e53e
+npm notice integrity: sha512-IEleJAaiB+PMy[...]xZLEN3ZzgJkWA==
 npm notice total files: 9
 npm notice
 npm notice Publishing to https://registry.npmjs.org/ with tag latest and default access
-npm error code E403
-npm error 403 403 Forbidden - PUT https://registry.npmjs.org/p5-video-kit - Two-factor authentication or granular access token with bypass 2fa enabled is required to publish packages.
-npm error 403 In most cases, you or one of your dependencies are requesting
-npm error 403 a package version that is forbidden by your security policy, or
-npm error 403 on a server you do not have access to.
-npm error A complete log of this run can be found in: /Users/jht2/.npm/_logs/2026-04-09T15_05_30_871Z-debug-0.log

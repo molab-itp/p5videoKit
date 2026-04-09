@@ -21,6 +21,10 @@ p5videoKit.prototype.create_mediaDiv = function (mediaDevice, options) {
   let imedia = this.a_.mediaDivs.length;
   let media_state = this.ui_media_state_default(imedia, vis_in);
 
+  if (!capture) {
+    ui_log('create_mediaDiv no capture for mediaDevice', mediaDevice);
+    return;
+  }
   // Can't re-parent capture, so move div before it
   let div = createDiv();
   capture.elt.parentNode.insertBefore(div.elt, capture.elt);

@@ -65,10 +65,19 @@ p5videoKit.prototype.init_device_capture = function (mediaDevice) {
   let vcap = {
     // audio: true,
     audio: !!this.a_.ui.audio_enabled,
-    video: {
-      deviceId: { exact: mediaDevice.deviceId },
-    },
+    // video: {
+    //   deviceId: { exact: mediaDevice.deviceId },
+    // },
   };
+  if (mediaDevice.deviceId) {
+    vcap.video = {
+      deviceId: { exact: mediaDevice.deviceId },
+    };
+  } else {
+    vcap.video = false;
+    ui_log('create_mediaDevices no deviceId mediaDevice', mediaDevice);
+    return;
+  }
   let dim = this.get_capture_size();
   if (dim && dim.width && dim.height) {
     vcap.video.width = { exact: dim.width };
