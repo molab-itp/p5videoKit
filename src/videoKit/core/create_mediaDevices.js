@@ -61,9 +61,10 @@ p5videoKit.prototype.create_mediaDevices = function () {
 };
 
 p5videoKit.prototype.init_device_capture = function (mediaDevice) {
+  ui_log('create_mediaDevices a_.ui.audio_enabled', this.a_.ui.audio_enabled);
   let vcap = {
     // audio: true,
-    audio: this.a_.ui.audio_enabled,
+    audio: !!this.a_.ui.audio_enabled,
     video: {
       deviceId: { exact: mediaDevice.deviceId },
     },
@@ -73,8 +74,8 @@ p5videoKit.prototype.init_device_capture = function (mediaDevice) {
     vcap.video.width = { exact: dim.width };
     vcap.video.height = { exact: dim.height };
   }
-  // ui_log('create_mediaDevices dim', dim);
-  // ui_log('create_mediaDevices vcap', vcap);
+  ui_log('create_mediaDevices dim', dim);
+  ui_log('create_mediaDevices vcap', vcap);
   let capture = createCapture(vcap, (stream) => {
     mediaDevice.stream = stream;
     this.livem_restore();
