@@ -49,24 +49,24 @@ export default class eff_a_slit_scan {
 
 // https://editor.p5js.org/jht9629-nyu/sketches/hw8qkUuAw
 // https://editor.p5js.org/codingtrain/sketches/B1L5j8uk4
-// Slit Scan
-// Slit Scan
-// this is original code that would work in p5js editor
-// and is adapted to the VideoKit plug-in model
-// the sketches in the effects directory plug-in
-// to the video kit
-// certain requirements in order to plug-in:
-// 1. meta_pro array
-// 2. constructor for the class
-// analogous to setup only called once
-// 3. prepareOutput() analogous to draw
-// repeatedly called for every frame
-// This approach allows you to explore and compare
-// the same effect with different settings
-// side by side
-// The dropdown menus make each effect modular
-// allowing you to define your own settings
-// and create you own version of the effect
+/*
+Slit Scan
+this is original code that would work in p5js editor
+and is adapted to the VideoKit plug-in model
+the sketches in the effects directory plug-in to the video kit
+certain requirements in order to plug-in:
+1. meta_props array
+2. constructor for the class
+analogous to setup only called once
+3. prepareOutput() analogous to draw
+repeatedly called for every frame
+This approach allows you to explore and compare
+the same effect with different settings
+side by side
+The dropdown menus make each effect modular
+allowing you to define your own settings
+and create you own version of the effect
+*/
 
 // let video;
 // let x = 0;
