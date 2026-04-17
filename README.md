@@ -117,6 +117,10 @@ npm login
 p5-video-kit@0.0.27
 bin/a-release.sh
 build_ver 430
+bin/lib-publish.sh
+!!@ Must be done again to get build ver in interface
+p5-video-kit@0.0.28
+!!@ May have to wait few minutes to see new lib
 
 # --
 2025-11-12 15:35:39
