@@ -36,6 +36,7 @@ function str_replace(str, prefix, suffix, ents) {
   let iend = str.indexOf(suffix, ipos);
   if (ipos < 0 || iend < 0) {
     console.log('build_sketch MISSING prefix', prefix, 'suffix', suffix);
+    return str;
   }
   // console.log('str_replace prefix|', prefix, '| ipos', ipos, 'iend', iend);
   ipos += prefix.length;
