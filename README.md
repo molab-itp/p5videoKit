@@ -114,12 +114,16 @@ bin/lib-publish.sh
 v0.0.26
 !!@ Required
 npm login
+p5-video-kit@0.0.27
+bin/a-release.sh
+build_ver 430
 
 # --
 2025-11-12 15:35:39
 bin/a-release.sh
 bin/lib-publish.sh
 + p5-video-kit@0.0.21
+bin/a-release.sh
 
 # --
 2025-11-12 12:56:03
