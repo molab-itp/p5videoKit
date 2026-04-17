@@ -110,6 +110,10 @@ Built using
 2026-04-17 04:55:05
 eff_bestill MISSING input
 Must enable Audio and make noise for face_band, fft_graph, fft_polar
+bin/lib-publish.sh
+v0.0.26
+!!@ Required
+npm login
 
 # --
 2025-11-12 15:35:39
