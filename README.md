@@ -121,6 +121,7 @@ bin/lib-publish.sh
 !!@ Must be done again to get build ver in interface
 p5-video-kit@0.0.28
 !!@ May have to wait few minutes to see new lib
+bin/pub-p5videoKit-html.sh
 
 # --
 2025-11-12 15:35:39
