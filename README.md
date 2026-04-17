@@ -107,6 +107,11 @@ Built using
 
 ```
 # --
+2026-04-17 04:55:05
+
+Must enable Audio and make noise for face_band, fft_graph, fft_polar
+
+# --
 2025-11-12 15:35:39
 
 bin/a-release.sh

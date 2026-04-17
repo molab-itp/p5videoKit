@@ -25,6 +25,10 @@ export default class eff_bestill_mo {
   init() {
     this.stillf = [this.factor, this.factor, this.factor];
     let input = this.input;
+    if (!input) {
+      console.log('eff_bestill MISSING input');
+      input = { width: 100, height: 100 };
+    }
     this.output = createImage(input.width, input.height);
     this.srcimage = createImage(this.output.width, this.output.height);
     this.srcimage2 = createImage(this.output.width, this.output.height);
