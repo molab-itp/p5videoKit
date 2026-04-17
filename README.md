@@ -108,25 +108,18 @@ Built using
 ```
 # --
 2026-04-17 04:55:05
-
+eff_bestill MISSING input
 Must enable Audio and make noise for face_band, fft_graph, fft_polar
 
 # --
 2025-11-12 15:35:39
-
 bin/a-release.sh
-
-
 bin/lib-publish.sh
 + p5-video-kit@0.0.21
 
-
-
 # --
 2025-11-12 12:56:03
-
 webdb
-
 https://github.com/jht1493-gmail/webdb
 745,516,244 bytes (752.9 MB on disk) for 497 items
 
@@ -142,28 +135,20 @@ build_ver 426
 
 # --
 2025-10-21 16:55:10
-
 bin/lib-publish.sh
-
 - p5-video-kit@0.0.17
 
 # --
-
 ?v=415
-
 bin/lib-publish.sh
-
 - p5-video-kit@0.0.16
 
 # --
-
 bin/a-release.sh
-
 open https://jht1493.net/p5videoKit/demo2
 
 # --
 2026-04-09 11:10:12
-
 browser to
 https://www.npmjs.com/settings/jhtitp/profile
 npm login
