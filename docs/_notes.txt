@@ -1,6 +1,22 @@
 notes.txt
 
 # --
+2026-04-18 13:56:39
+
+    <!-- ==[ videoKit: uncomment to test with pre-publish library   -->
+    <!-- src/videoKit/a/a_lib.js mod needed -->
+    <!-- <script type="importmap">
+      {
+        "imports": {
+          "p5": "https://unpkg.com/p5@1.11.3/lib/p5.min.js"
+        }
+      }
+    </script> -->
+    <!-- <script type="module" src="./videoKit/a/a_lib.js"></script> -->
+    <!-- ==] videoKit: entry point of pre-publish library --  ] -->
+
+
+# --
 2026-04-09 11:02:38
 
 https://www.npmjs.com/settings/jhtitp/profile

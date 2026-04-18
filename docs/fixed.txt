@@ -1,0 +1,15 @@
+fixed.txt
+
+- Error after re-init effect:
+          var index = this._pInst._elements.indexOf(this);
+p5videoKit.prototype.patch_inst_deinit = function (inst) {
+
+_pInst._elements
+p5.instance
+  let inst = await this.patch_inst_create(eff_label, imedia, ipatch, eff_spec, uiPatch.eff_props);
+
+      return; // !!@ no media exit patch_instances
+
+    // !!@ Provide dummy input
+    inst.input = { width: 0, height: 0 };
+

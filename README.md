@@ -103,9 +103,31 @@ Built using
 
 ![IM-Screens-Flyer](docs/media/IM-Screens-Flyer-1.jpg)
 
+## TODO
+
+- use CDN
+- protect all input
+- doc all effects with source link
+- eff_pose_net use output layer
+- scrub security key - reset repo
+- revive p5videoKitPrivate
+
+## BUGS
+
+```
+- Error after re-init effect:
+
+
+
+```
+
 # --
 
 ```
+# --
+2026-04-18 14:20:14
+640x480 for pose_net to align with face_mesh
+
 # --
 2026-04-17 04:55:05
 eff_bestill MISSING input

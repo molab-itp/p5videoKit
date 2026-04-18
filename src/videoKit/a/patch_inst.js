@@ -58,7 +58,7 @@ p5videoKit.prototype.patch_inst_create = async function (eff_label, imedia, ipat
       // Exit until media ready
       // ui_log('Exit until media ready', imedia);
       ui_log('NO media', imedia);
-      // return;
+      return; // !!@ no media exit patch_instances
     }
     // !!@ TODO replace with createEffect
     let input = media && media.capture;
@@ -138,6 +138,10 @@ p5videoKit.prototype.patch_inst_deinit = function (inst) {
     inst.deinit();
   } else if (inst.output && inst.output.remove) {
     // ui_log('patch_inst_deinit REMOVING inst.output', inst.output);
-    inst.output.remove();
+    // ui_log('patch_inst_deinit REMOVING inst.output._pInst', inst.output._pInst);
+    ui_log('patch_inst_deinit REMOVING inst.output._pInst._elements.length', inst.output._pInst?._elements?.length);
+    if (inst.output && inst.output.remove) {
+      inst.output.remove();
+    }
   }
 };

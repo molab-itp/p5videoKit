@@ -1,4 +1,6 @@
 //
+// sets globalThis.eff_bestill_mo_activitySum
+
 import { image_copy } from '../util/image.js';
 
 export default class eff_bestill_mo {

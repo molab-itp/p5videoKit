@@ -121,6 +121,9 @@ p5videoKit.prototype.draw_patch = async function (ipatch, prior) {
     // players must use the current value of .input
     // for pipe to work
     inst.input = prior.output;
+  } else if (!inst.input) {
+    console.log('!!@ Provide dummy input');
+    inst.input = { width: 0, height: 0 };
   }
   inst.prepareOutput();
   if (!eff_spec.ihide && inst.output) {

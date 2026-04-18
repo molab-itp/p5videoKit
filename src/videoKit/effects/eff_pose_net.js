@@ -23,6 +23,7 @@ export default class eff_pose_net {
   }
   prepareOutput() {
     // ui_log('eff_pose_net prepareOutput poseNet', this.poseNet);
+    if (!this.input) return;
     if (this.poseNet) {
       this.poseNet.video = this.video;
     }

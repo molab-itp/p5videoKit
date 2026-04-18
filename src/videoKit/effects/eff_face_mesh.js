@@ -1,4 +1,6 @@
-// import { ui_message } from '../core-ui/a_ui_create.js';
+//
+//
+
 import { PeriodTimer } from '../util/PeriodTimer.js';
 import { image_copy } from '../util/image.js';
 import { face_mesh_draw } from '../util/face_mesh_draw.js';
@@ -50,6 +52,7 @@ export default class eff_face_mesh {
     this.init();
   }
   prepareOutput() {
+    if (!this.input) return;
     if (this.facemesh) {
       this.facemesh.video = this.video;
     }
@@ -79,6 +82,7 @@ export default class eff_face_mesh {
   }
   init() {
     // this.hi_rez = 1; // Process at output pad resolution
+    if (!this.input) return;
     this.init_input = this.input;
     this.cycle_period = 0;
     // this.from = 0; // Only use first face detected
