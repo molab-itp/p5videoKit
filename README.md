@@ -105,6 +105,9 @@ Built using
 
 ## TODO
 
+- [] Full test local, then server
+  http://127.0.0.1:5501/src/videoKit/settings.html
+
 - [] npm jhtitp --> jht9629@nyu.edu
 - protect all input
 - doc all effects with source link
@@ -119,6 +122,25 @@ Built using
 ## BUGS
 
 ```
+[] MazeSpin
+https://jht1493.net/p5videoKit/demo2/
+https://jht1493.net/p5videoKit/demo2/index.html?u=2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
+
+[]
+http://127.0.0.1:5501/src/index.html?u=2&d=videoKit/settings/2021/0-facet-hd.json
+Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'patch_index1')
+    at eff_loop.trigger_step (eff_loop.js:100:29)
+
+[]
+http://127.0.0.1:5501/src/index.html?u=8&d=videoKit/settings/2021/covid-ticker.json
+Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
+
+[]
+http://127.0.0.1:5501/src/index.html?u=9&d=videoKit/settings/2021/covid19m.json
+Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'length')
+    at eff_image_show.load_image (eff_image.js:305:38)
+    at eff_image_show.init (eff_image.js:132:10)
+
 [] bodypix.segment fails
     this.bodypix.segment(this.video, (error, results) => {
 
@@ -129,9 +151,20 @@ Built using
 
 ```
 # --
+2026-04-18 15:14:22
+
+src/effects/maze_spin/MazeSpin.js
+added
+input.loadPixels();
+
+# --
 2026-04-18 14:20:14
 ?v=432
 640x480 for pose_net to align with face_mesh
+npm login
+bin/lib-publish.sh
++ p5-video-kit@0.0.30
+bin/pub-p5videoKit-html.sh
 
 # --
 2026-04-17 04:55:05

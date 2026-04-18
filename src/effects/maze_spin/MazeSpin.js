@@ -72,6 +72,7 @@ export default class MazeSpin {
 
     if (this.video_color) {
       // copy(srcImage, sx, sy, sw, sh, dx, dy, dw, dh)
+      this.input.loadPixels();
       this.input_copy.copy(this.input, 0, 0, this.width, this.height, 0, 0, this.width, this.height);
     }
     this[this.draw_step]();

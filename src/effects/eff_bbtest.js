@@ -35,7 +35,7 @@ export default class eff_bbtest {
   }
   prepareOutput() {
     // console.log('eff_bbtest vw', this.vw, this.vh);
-    // this.input.loadPixels();
+    this.input.loadPixels();
     this.output.copy(this.input, this.vw / 2, 0, 1, this.vh, this.x, 0, 1, this.vh);
     this.x = this.x + this.step;
     if (this.x > this.output.width) {

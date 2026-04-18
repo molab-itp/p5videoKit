@@ -35,7 +35,7 @@ export default class eff_a_slit_scan {
     this.period_timer = new this.videoKit.PeriodTimer(this.period);
   }
   prepareOutput() {
-    // this.input.loadPixels();
+    this.input.loadPixels();
     this.output.copy(this.input, this.vw / 2, 0, 1, this.vh, this.x, 0, 1, this.vh);
     this.x = this.x + this.step;
     if (this.x > this.output.width) {
