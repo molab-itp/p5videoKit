@@ -1,27 +1,35 @@
 
-> p5-video-kit@0.0.28 build
+> p5-video-kit@0.0.29 build
 > rollup -c
 
 npm notice
-npm notice 📦  p5-video-kit@0.0.28
+npm notice 📦  p5-video-kit@0.0.29
 npm notice Tarball Contents
 npm notice 1.1kB LICENSE
-npm notice 5.5kB README.md
-npm notice 120.2kB dist/p5videoKit.cjs.js
-npm notice 433.1kB dist/p5videoKit.cjs.js.map
-npm notice 120.1kB dist/p5videoKit.esm.js
-npm notice 433.1kB dist/p5videoKit.esm.js.map
-npm notice 120.4kB dist/p5videoKit.umd.js
-npm notice 433.2kB dist/p5videoKit.umd.js.map
+npm notice 6.2kB README.md
+npm notice 120.4kB dist/p5videoKit.cjs.js
+npm notice 434.1kB dist/p5videoKit.cjs.js.map
+npm notice 120.3kB dist/p5videoKit.esm.js
+npm notice 434.1kB dist/p5videoKit.esm.js.map
+npm notice 120.6kB dist/p5videoKit.umd.js
+npm notice 434.1kB dist/p5videoKit.umd.js.map
 npm notice 820B package.json
 npm notice Tarball Details
 npm notice name: p5-video-kit
-npm notice version: 0.0.28
-npm notice filename: p5-video-kit-0.0.28.tgz
-npm notice package size: 433.2 kB
+npm notice version: 0.0.29
+npm notice filename: p5-video-kit-0.0.29.tgz
+npm notice package size: 434.3 kB
 npm notice unpacked size: 1.7 MB
-npm notice shasum: 564c7443bf2aff4677576fa8b8e9ff9a27d625ef
-npm notice integrity: sha512-/peSf8qaVhAfn[...]0Sw88eZ5lgVjQ==
+npm notice shasum: 9eb027eb227c19445ef6469ec3a3a8134b74c421
+npm notice integrity: sha512-VinqOyLQdWo9R[...]pihAQFkRi2C+Q==
 npm notice total files: 9
 npm notice
 npm notice Publishing to https://registry.npmjs.org/ with tag latest and default access
+npm error code E404
+npm error 404 Not Found - PUT https://registry.npmjs.org/p5-video-kit - Not found
+npm error 404
+npm error 404  'p5-video-kit@0.0.29' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: /Users/jht2/.npm/_logs/2026-04-18T18_39_31_504Z-debug-0.log
