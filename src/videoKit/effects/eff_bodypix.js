@@ -13,6 +13,10 @@ export default class eff_bodypix {
   }
   prepareOutput() {
     if (this.eff_spec.ihide) return;
+    if (!this.bodypix.segment) {
+      ui_log('eff_body_pix prepareOutput !!@ no bodypix segment');
+      return;
+    }
     this.bodypix.segment(this.video, (error, results) => {
       this.gotResults(error, results);
     });

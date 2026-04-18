@@ -95,17 +95,17 @@ p5videoKit.prototype.effectMeta_find = async function (label) {
 };
 
 p5videoKit.prototype.import_effect = function (effMeta) {
-  ui_log('p5videoKit import_effect label', effMeta.label);
-  ui_log('p5videoKit import_effect import_path', effMeta.import_path);
+  // ui_log('p5videoKit import_effect label', effMeta.label);
+  // ui_log('p5videoKit import_effect import_path', effMeta.import_path);
   return new Promise((resolve, reject) => {
     // import('./' + effMeta.import_path)
     this.import_effect_handler(effMeta)
       .then((module) => {
-        ui_log('import_effect label', effMeta.label, 'module', module);
+        // ui_log('import_effect label', effMeta.label, 'module', module);
         resolve(module.default);
       })
       .catch((err) => {
-        ui_log('import_effect label', effMeta.label, '\n err', err);
+        ui_log('catch error import_effect label', effMeta.label, '\n err', err);
         a_import_err = err;
         reject(err);
       });

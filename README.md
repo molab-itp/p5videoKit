@@ -111,12 +111,17 @@ Built using
 - eff_pose_net use output layer
 - scrub security key - reset repo
 - revive p5videoKitPrivate
+- ml5@1.2.0
+    <script src="https://unpkg.com/ml5@1.2.0/dist/ml5.min.js"></script>
 
 ## BUGS
 
 ```
-- Error after re-init effect:
 
+- bodypix.segment fails
+    this.bodypix.segment(this.video, (error, results) => {
+
+- Error after re-init effect
 
 
 ```
@@ -126,6 +131,7 @@ Built using
 ```
 # --
 2026-04-18 14:20:14
+?v=432
 640x480 for pose_net to align with face_mesh
 
 # --
