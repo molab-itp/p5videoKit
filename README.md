@@ -105,25 +105,24 @@ Built using
 
 ## TODO
 
-- use CDN
+- [] npm jhtitp --> jht9629@nyu.edu
 - protect all input
 - doc all effects with source link
 - eff_pose_net use output layer
 - scrub security key - reset repo
 - revive p5videoKitPrivate
 - ml5@1.2.0
-    <script src="https://unpkg.com/ml5@1.2.0/dist/ml5.min.js"></script>
+  <script src="https://unpkg.com/ml5@1.2.0/dist/ml5.min.js"></script>
+
+- [x] use CDN
 
 ## BUGS
 
 ```
-
-- bodypix.segment fails
+[] bodypix.segment fails
     this.bodypix.segment(this.video, (error, results) => {
 
-- Error after re-init effect
-
-
+[] Error after re-init effect
 ```
 
 # --
