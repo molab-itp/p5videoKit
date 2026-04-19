@@ -107,7 +107,6 @@ Built using
 
 - [] Full test local, then server
   http://127.0.0.1:5501/src/videoKit/settings.html
-
 - [] npm jhtitp --> jht9629@nyu.edu
 - protect all input
 - doc all effects with source link
