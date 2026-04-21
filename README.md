@@ -126,14 +126,15 @@ GET http://127.0.0.1:5501/src/external/media/webdb/covid19m/undefined 404 (Not F
 
 [x] MazeSpin
 https://jht1493.net/p5videoKit/demo2/
-https://jht1493.net/p5videoKit/demo2/index.html?u=2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
+https://jht1493.net/p5videoKit/demo2/index.html?u=
+2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
 
 [x]
 http://127.0.0.1:5501/src/index.html?u=2&d=videoKit/settings/2021/0-facet-hd.json
 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'patch_index1')
     at eff_loop.trigger_step (eff_loop.js:100:29)
 
-[]
+[x]
 http://127.0.0.1:5501/src/index.html?u=8&d=videoKit/settings/2021/covid-ticker.json
 Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
 
