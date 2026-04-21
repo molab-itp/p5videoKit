@@ -8,7 +8,7 @@ import { a_images } from '../let/a_images.js';
 import { image_scaled_layer } from '../util/image.js';
 
 let g_image_groups = [
-  'group',
+  // 'group',
   'fmfm',
   'fema',
   'male',
@@ -17,9 +17,9 @@ let g_image_groups = [
   'other',
   'test',
   'jht',
-  'covid19m',
-  '370-img',
-  'screens',
+  // 'covid19m',
+  // '370-img',
+  // 'screens',
 ];
 
 export default class eff_image_show {
@@ -293,7 +293,7 @@ export default class eff_image_show {
     this.nnits = 0;
     // !!@ this.group is string undefined sometimes. not sure why.
     // if (!this.group) this.group = 'group';
-    this.images = a_images[this.group];
+    this.images = a_images[this.group] || [];
     // if (!this.images) this.images = a_images['group'];
     // ui_log('load_image images', this.images, 'group', this.group);
     if (this.shuffle) {
@@ -343,7 +343,7 @@ export default class eff_image_show {
         (err) => {
           ui_log('loadJSON err', err);
           this.load_model();
-        }
+        },
       );
     }
   }
