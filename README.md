@@ -112,7 +112,7 @@ input.loadPixels();
 
 # --
 2026-04-18 14:20:14
-?v=432
+?v=433
 640x480 for pose_net to align with face_mesh
 npm login
 bin/lib-publish.sh
