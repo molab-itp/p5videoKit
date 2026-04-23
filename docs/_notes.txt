@@ -1,6 +1,40 @@
 notes.txt
 
 # --
+2026-04-23 06:22:45
+- [x] npm jhtitp --> jht9629@nyu.edu
+
+# --
+2025-10-21 16:55:10
+bin/lib-publish.sh
+- p5-video-kit@0.0.17
+
+# --
+?v=415
+bin/lib-publish.sh
+- p5-video-kit@0.0.16
+
+# --
+bin/a-release.sh
+open https://jht1493.net/p5videoKit/demo2
+
+# --
+2026-04-09 11:10:12
+browser to
+https://www.npmjs.com/settings/jhtitp/profile
+npm login
+
+# --
+2026-04-09 11:22:23
+
+    ui_log('create_mediaDevices no deviceId mediaDevice', mediaDevice);
+
+    ui_log('create_mediaDiv no capture for mediaDevice', mediaDevice);
+
+# --
+2026-04-22 21:13:10
+
+# --
 2026-04-23 05:24:36
 2026-04-23 06:13:57
 >> init_device_capture: on mobile videoinput device does not have id

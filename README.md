@@ -161,35 +161,7 @@ bin/lib-publish.sh
 p5-video-kit@0.0.20
 build_ver 426
 
-# --
-2025-10-21 16:55:10
-bin/lib-publish.sh
-- p5-video-kit@0.0.17
 
-# --
-?v=415
-bin/lib-publish.sh
-- p5-video-kit@0.0.16
-
-# --
-bin/a-release.sh
-open https://jht1493.net/p5videoKit/demo2
-
-# --
-2026-04-09 11:10:12
-browser to
-https://www.npmjs.com/settings/jhtitp/profile
-npm login
-
-# --
-2026-04-09 11:22:23
-
-    ui_log('create_mediaDevices no deviceId mediaDevice', mediaDevice);
-
-    ui_log('create_mediaDiv no capture for mediaDevice', mediaDevice);
-
-# --
-2026-04-22 21:13:10
 
 ```
 
@@ -211,10 +183,11 @@ Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not 
 
 ## TODO
 
+- [] mobile: fps update causes flicker
 - [] Full test local, then server
   http://127.0.0.1:5501/src/videoKit/settings.html
-- [] npm jhtitp --> jht9629@nyu.edu
-- protect all input
+- inputBlind --> skip ready check
+  - protect all input
 - doc all effects with source link
 - eff_pose_net use output layer
 - scrub security key - reset repo
