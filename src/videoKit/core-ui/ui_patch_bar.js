@@ -15,7 +15,8 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 
 import { PadLayout } from '../core-ui/PadLayout.js';
 
-let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
+let layout_options = ['Single', '1x1', '2x1', '2x2', '3x3', '4x4', '1x2', '1x3', '1x4'];
+// let layout_options = ['Single', '1x1', '2x1', '2x2', '2x3', '3x2', '3x3', '3x1', '4x4', '1x4'];
 let back_color_options = [0, 1, 50, 100, 200, 255, -1];
 
 p5videoKit.prototype.ui_patch_bar = function () {

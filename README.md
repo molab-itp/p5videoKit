@@ -66,9 +66,6 @@ p5videoKit runs best in modern desktop browsers. I've tested primarily in Google
   [p5.vscode+Live Server](https://marketplace.visualstudio.com/items?itemName=samplavigne.p5-vscode)
 - local server starting point:
   - ./src/index.html
-- TODO: running locally setup
-- TODO: adding settings via Export button
-- TODO: adding effects code
 
 ## Live streaming
 
@@ -103,54 +100,7 @@ Built using
 
 ![IM-Screens-Flyer](docs/media/IM-Screens-Flyer-1.jpg)
 
-## TODO
-
-- [] Full test local, then server
-  http://127.0.0.1:5501/src/videoKit/settings.html
-- [] npm jhtitp --> jht9629@nyu.edu
-- protect all input
-- doc all effects with source link
-- eff_pose_net use output layer
-- scrub security key - reset repo
-- revive p5videoKitPrivate
-- ml5@1.2.0
-  <script src="https://unpkg.com/ml5@1.2.0/dist/ml5.min.js"></script>
-
-- [x] use CDN
-
-## BUGS
-
-```
-[] image
-GET http://127.0.0.1:5501/src/external/media/webdb/covid19m/undefined 404 (Not Found)
-
-[x] MazeSpin
-https://jht1493.net/p5videoKit/demo2/
-https://jht1493.net/p5videoKit/demo2/index.html?u=
-2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
-
-[x]
-http://127.0.0.1:5501/src/index.html?u=2&d=videoKit/settings/2021/0-facet-hd.json
-Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'patch_index1')
-    at eff_loop.trigger_step (eff_loop.js:100:29)
-
-[x]
-http://127.0.0.1:5501/src/index.html?u=8&d=videoKit/settings/2021/covid-ticker.json
-Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
-
-[]
-http://127.0.0.1:5501/src/index.html?u=9&d=videoKit/settings/2021/covid19m.json
-Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'length')
-    at eff_image_show.load_image (eff_image.js:305:38)
-    at eff_image_show.init (eff_image.js:132:10)
-
-[] bodypix.segment fails
-    this.bodypix.segment(this.video, (error, results) => {
-
-[] Error after re-init effect
-```
-
-# --
+# NOTES
 
 ```
 # --
@@ -236,4 +186,53 @@ npm login
 
     ui_log('create_mediaDiv no capture for mediaDevice', mediaDevice);
 
+# --
+2026-04-22 21:13:10
+
 ```
+
+## Done
+
+[x] MazeSpin
+https://jht1493.net/p5videoKit/demo2/
+https://jht1493.net/p5videoKit/demo2/index.html?u=
+2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
+
+[x]
+http://127.0.0.1:5501/src/index.html?u=2&d=videoKit/settings/2021/0-facet-hd.json
+Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'patch_index1')
+at eff_loop.trigger_step (eff_loop.js:100:29)
+
+[x]
+http://127.0.0.1:5501/src/index.html?u=8&d=videoKit/settings/2021/covid-ticker.json
+Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
+
+## TODO
+
+- [] Full test local, then server
+  http://127.0.0.1:5501/src/videoKit/settings.html
+- [] npm jhtitp --> jht9629@nyu.edu
+- protect all input
+- doc all effects with source link
+- eff_pose_net use output layer
+- scrub security key - reset repo
+- revive p5videoKitPrivate
+- ml5@1.2.0
+  <script src="https://unpkg.com/ml5@1.2.0/dist/ml5.min.js"></script>
+- TODO: running locally setup
+- TODO: adding settings via Export button
+- TODO: adding effects code
+- [ ] use CDN for libs - confirm load performance
+
+## BUGS
+
+- [] image
+  GET http://127.0.0.1:5501/src/external/media/webdb/covid19m/undefined 404 (Not Found)
+- []
+  http://127.0.0.1:5501/src/index.html?u=9&d=videoKit/settings/2021/covid19m.json
+  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'length')
+  at eff_image_show.load_image (eff_image.js:305:38)
+  at eff_image_show.init (eff_image.js:132:10)
+- [] bodypix.segment fails
+  this.bodypix.segment(this.video, (error, results) => {
+- [] Error after re-init effect
