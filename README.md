@@ -104,13 +104,9 @@ Built using
 
 ```
 # --
-2026-04-18 15:14:22
+2026-04-22 21:54:46
+https://www.npmjs.com/settings/jht9629/profile
 
-src/effects/maze_spin/MazeSpin.js
-added
-input.loadPixels();
-
-# --
 2026-04-18 14:20:14
 ?v=433
 640x480 for pose_net to align with face_mesh

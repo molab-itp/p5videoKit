@@ -24,10 +24,8 @@ p5videoKit.prototype.media_enum = function () {
     .enumerateDevices()
     .then((devices) => {
       devices.forEach((device) => {
-        // ui_log('device', device);
-        // ui_log(
-        //   device.kind + ': ' + device.label + ' id=|' + device.deviceId + '|'
-        // );
+        // ui_log('media_enum device', device);
+        // ui_log(device.kind + ': ' + device.label + ' id=|' + device.deviceId + '|');
         if (device.kind == 'videoinput') {
           // ui_log('media_enumdevice.deviceId=' + device.deviceId);
           ui_log('media_enum label=' + device.label);
@@ -74,9 +72,11 @@ p5videoKit.prototype.init_device_capture = function (mediaDevice) {
       deviceId: { exact: mediaDevice.deviceId },
     };
   } else {
-    vcap.video = false;
+    // vcap.video = false;
+    // ui_log('create_mediaDevices no deviceId mediaDevice', mediaDevice);
+    // return;
     ui_log('create_mediaDevices no deviceId mediaDevice', mediaDevice);
-    return;
+    vcap.video = true;
   }
   let dim = this.get_capture_size();
   if (dim && dim.width && dim.height) {

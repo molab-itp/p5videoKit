@@ -42,11 +42,12 @@ p5videoKit.prototype.liveMedia_attach = function (mediaDiv) {
   // this is nulll in modules
   //
   let nthis = this;
-  let gthis = globalThis || window;
-  ui_log('liveMedia_attach this', this, 'gthis', gthis);
+  // let gthis = globalThis || window;
+  // ui_log('liveMedia_attach this', this, 'gthis', gthis);
   let room_name = this.room_name_prefix + this.a_.ui.room_name;
   ui_log('liveMedia_attach room_name', room_name);
-  livem = new p5LiveMedia(gthis, type, stream, room_name);
+  livem = new p5LiveMedia(this.p5_instance, type, stream, room_name);
+  // livem = new p5LiveMedia(gthis, type, stream, room_name);
   if (!nthis.a_.livem) {
     livem.on('stream', function (capture, id) {
       nthis.gotStream(capture, id);

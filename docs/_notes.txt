@@ -1,6 +1,24 @@
 notes.txt
 
 # --
+2026-04-23 05:24:36
+export function p5videoKit_init(config, p5_instance = p5.instance) {
+src/videoKit/core/liveMedia_attach.js
+  livem = new p5LiveMedia(this.p5_instance, type, stream, room_name);
+
+        ui_log('media_enum device', device);
+src/videoKit/core/create_mediaDevices.js
+
+    // vcap.video = false;
+    // ui_log('create_mediaDevices no deviceId mediaDevice', mediaDevice);
+
+2026-04-18 15:14:22
+
+src/effects/maze_spin/MazeSpin.js
+added
+input.loadPixels();
+
+# --
 2026-04-18 13:56:39
 
     <!-- ==[ videoKit: uncomment to test with pre-publish library   -->
