@@ -107,6 +107,7 @@ Built using
 2026-04-23 05:39:37
 
 bin/build.sh
+npm login
 
 # --
 2026-04-22 21:54:46

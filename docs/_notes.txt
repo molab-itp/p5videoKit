@@ -2,6 +2,9 @@ notes.txt
 
 # --
 2026-04-23 05:24:36
+2026-04-23 06:13:57
+>> init_device_capture: on mobile videoinput device does not have id
+
 export function p5videoKit_init(config, p5_instance = p5.instance) {
 src/videoKit/core/liveMedia_attach.js
   livem = new p5LiveMedia(this.p5_instance, type, stream, room_name);
