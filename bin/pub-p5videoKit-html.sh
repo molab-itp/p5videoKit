@@ -20,7 +20,7 @@ start_time=`date +%s`
 host=jhtitp@jht1493.net
 siteroot=/home/bitnami/htdocs
 # homepage=p5videoKit/demo
-homepage=p5videoKit/demo2
+homepage=p5videoKit/demo3
 rpath="${siteroot}/${homepage}"
 rdest=$host:${rpath}
 

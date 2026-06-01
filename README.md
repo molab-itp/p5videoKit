@@ -108,6 +108,12 @@ Built using
 npm login
 sketch.js?v=433
 bin/build.sh
+bin/lib-publish.sh
++ p5-video-kit@0.0.33
+bin/pub-p5videoKit-html.sh
+!!@ effects are loaded dynamically and thus come from cache
+!!@ not npm lib
+sketch.js?v=435
 
 # --
 2026-04-23 05:39:37
