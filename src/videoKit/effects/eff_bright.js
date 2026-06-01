@@ -70,3 +70,6 @@ export default class eff_bright {
 
 // https://editor.p5js.org/jht1493/sketches/XFKWbV01m
 // 11.4: Brightness getpixel copy
+
+// https://editor.p5js.org/jht9629-nyu/sketches/rLkvbwKr3
+// 11.4: Brightness getpixel v2
