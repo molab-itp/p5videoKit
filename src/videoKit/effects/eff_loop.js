@@ -31,9 +31,11 @@ export default class eff_loop {
   };
   static eff_names = ['bright', 'delaunay', 'grid', 'bright', 'maze', 'sketchy', 'slant_scan', 'slit_scan'];
   constructor(props) {
+    // console.log('eff_loop constructor props', props);
     Object.assign(this, props);
     this.basic_props = Object.assign({}, props);
     this.init();
+    // console.log('eff_loop constructor videoKit', this.videoKit);
   }
   prepareOutput() {
     this.advance_check();
@@ -97,7 +99,8 @@ export default class eff_loop {
   }
   trigger_step() {
     if (!this.step_patch) return;
-    let src = this.vidoeKit.patch_index1(this.step_patch);
+    // console.log('eff_loop trigger_step videoKit', this.videoKit);
+    let src = this.videoKit.patch_index1(this.step_patch);
     // ui_log(  'trigger_step src', src, 'src.patch_stepper', src.patch_stepper );
     if (src && src.patch_stepper) {
       src.patch_stepper();
