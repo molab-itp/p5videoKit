@@ -115,6 +115,14 @@ bin/pub-p5videoKit-html.sh
 !!@ not npm lib
 sketch.js?v=435
 
+bin/build.sh
+Present?v=436
+
+bin/pub-p5videoKit-html.sh
+homepage=p5videoKit/demo3
+
+>> should remove p5videoKit/demo2
+
 # --
 2026-04-23 05:39:37
 
@@ -212,6 +220,10 @@ Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not 
 - [ ] use CDN for libs - confirm load performance
 
 ## BUGS
+
+- [] settings/2021/0-facet-hd.json
+  - tile_clock does not apply effects
+  - tile_color ui appears twice
 
 - [] image
   GET http://127.0.0.1:5501/src/external/media/webdb/covid19m/undefined 404 (Not Found)
