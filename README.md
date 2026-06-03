@@ -104,10 +104,21 @@ Built using
 
 ```
 # --
+2026-06-03 12:05:07
+
+bin/pub-p5videoKit-html.sh
+
+# --
 2026-06-03 11:22:20
 npm login
 bin/build.sh
 Present?v=437
+2026-06-03 11:30:17
+bin/lib-publish.sh
+build_ver 437
+
+!!@ Need to add u=21 to bust cache in demo3
+https://jht1493.net/p5videoKit/demo3/index.html?u=21&d=videoKit/settings/2021/0-facet-hd.json
 
 # --
 2026-06-03 10:39:22
