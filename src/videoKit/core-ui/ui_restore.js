@@ -1,5 +1,4 @@
 //
-//
 
 import { p5videoKit } from '../a/a_p5videoKit.js';
 
@@ -23,12 +22,8 @@ import { a_effectMetas } from '../let/a_effectMetas.js';
 
 // Restore this.a_.ui settings from local storage
 p5videoKit.prototype.ui_restore_store = async function ({ effects, settings }) {
-  //
-  // if (!effects || !settings) {
-  //   ui_log('ui_restore_store INVALID args');
-  //   ui_log('ui_restore_store effects', effects);
-  //   ui_log('ui_restore_store settings', settings);
-  // }
+  // ui_log.log('ui_restore_store effects', effects);
+  // ui_log.log('ui_restore_store settings', settings);
   effects = effects || [];
   settings = settings || [];
 
@@ -45,7 +40,8 @@ p5videoKit.prototype.ui_restore_store = async function ({ effects, settings }) {
     return;
   }
   // this.a_.effectMetas = effects.concat(a_effectMetas);
-  this.a_.effectMetas = effects.concat([{ label: '----' }], a_effectMetas);
+  // this.a_.effectMetas = effects.concat([{ label: '----' }], a_effectMetas);
+  this.a_.effectMetas = effects.concat([{ label: '----' }], []);
 
   // this.a_.settingMetas = settings.concat(a_settingMetas);
   this.a_.settingMetas = settings;
@@ -109,7 +105,7 @@ p5videoKit.prototype.setting_import = function (sete, index) {
         ui_log('setting_import error index', index);
         this.a_.settings[index] = { setting: 'Missing' };
         reject(err);
-      }
+      },
     );
   });
 };

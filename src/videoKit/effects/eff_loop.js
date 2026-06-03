@@ -143,17 +143,15 @@ export default class eff_loop {
     ui_log('eff_loop d index', this.index);
     this.next_eff();
   }
-  async next_eff() {
+  next_eff() {
     // ui_log('eff_loop a index', this.index);
     let eff_names = this.eff_names;
     let label = eff_names[this.index];
     this.index = (this.index + 1) % eff_names.length;
-    let effMeta = await this.videoKit.effectMeta_find(label);
+    let effMeta = this.videoKit.effectMeta_find(label);
     // ui_log('next_eff effMeta', effMeta);
     if (effMeta) {
-      ui_log('next_eff effMeta', effMeta.label);
-      // let iprops = this.eff_prop_inits(effMeta.factory.meta_props);
-      // let inits = this.eff_prop_inits(effMeta.factory.meta_props);
+      // ui_log('next_eff effMeta', effMeta.label);
       let inits = this.videoKit.factory_prop_inits(effMeta.factory, this.basic_props);
       // Set input on inits for eff_inst.init
       this.prepare_input(inits);

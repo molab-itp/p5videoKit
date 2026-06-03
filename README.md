@@ -104,6 +104,22 @@ Built using
 
 ```
 # --
+2026-06-03 10:39:22
+
+// remove async
+p5videoKit.prototype.effectMeta_find = function (label) {
+p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
+p5videoKit.prototype.patch_inst_create =  function (eff_label, imedia, ipatch, eff_spec, eff_props) {
+p5videoKit.prototype.create_patch_selection = function (aPatch, ipatch, div) {
+p5videoKit.prototype.create_settings = function (aPatch, div) {
+p5videoKit.prototype.draw_patch = function (ipatch, prior) {
+p5videoKit.prototype.create_patch = function (droot, ipatch) {
+p5videoKit.prototype.ui_patch_eff_panes = function () {
+
+  ui_log('p5videoKit import_effect label', effMeta.label);
+  ui_log('p5videoKit import_effect import_path', effMeta.import_path);
+
+# --
 2026-06-01 02:51:55
 npm login
 sketch.js?v=433
@@ -187,17 +203,20 @@ build_ver 426
 
 ## Done
 
-[x] MazeSpin
-https://jht1493.net/p5videoKit/demo2/
-https://jht1493.net/p5videoKit/demo2/index.html?u=
-2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
-[x]
-http://127.0.0.1:5501/src/index.html?u=2&d=videoKit/settings/2021/0-facet-hd.json
-Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'patch_index1')
-at eff_loop.trigger_step (eff_loop.js:100:29)
-[x]
-http://127.0.0.1:5501/src/index.html?u=8&d=videoKit/settings/2021/covid-ticker.json
-Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
+- [x] settings/2021/0-facet-hd.json
+  - tile_clock does not apply effects
+  - tile_color ui appears twice
+- [x] MazeSpin
+      https://jht1493.net/p5videoKit/demo2/
+      https://jht1493.net/p5videoKit/demo2/index.html?u=
+      2&d=settings/2x2-maze-spin-alpha-2-line-truchet.json
+- [x]
+  http://127.0.0.1:5501/src/index.html?u=2&d=videoKit/settings/2021/0-facet-hd.json
+  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'patch_index1')
+  at eff_loop.trigger_step (eff_loop.js:100:29)
+- [x]
+  http://127.0.0.1:5501/src/index.html?u=8&d=videoKit/settings/2021/covid-ticker.json
+  Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
 
 - [x] p5videoKit patch_index1 failure
 
@@ -220,10 +239,6 @@ Uncaught (in promise) SyntaxError: Unexpected token '<', "<!doctype "... is not 
 - [ ] use CDN for libs - confirm load performance
 
 ## BUGS
-
-- [] settings/2021/0-facet-hd.json
-  - tile_clock does not apply effects
-  - tile_color ui appears twice
 
 - [] image
   GET http://127.0.0.1:5501/src/external/media/webdb/covid19m/undefined 404 (Not Found)

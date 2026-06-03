@@ -6,10 +6,13 @@ function videoKit_setup() {
 
   videoKit.save_canvas_handler = save_canvas_handler;
 
-  videoKit.import_effect_handler = import_effect_handler;
+  // videoKit.import_effect_handler = import_effect_handler;
 }
 
 let videoKit_config = {
+  // needed in init
+  import_effect_handler: import_effect_handler,
+
   // effects for import, will appear at top of the effect menu
 
   // an EFFECT can have many PROPERTIES specific to the effect
@@ -88,5 +91,6 @@ let a_import_err;
 // { label, import_path, factory, index }
 
 function import_effect_handler(effMeta) {
+  // console.log('import_effect_handler effMeta', effMeta);
   return import('./' + effMeta.import_path);
 }

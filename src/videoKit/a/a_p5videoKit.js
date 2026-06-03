@@ -23,6 +23,7 @@ export class p5videoKit {
       ui_log('p5videoKit !!@ no my_canvas');
     }
     this.config = config;
+    this.import_effect_handler = config.import_effect_handler;
     this.a_ = a_init();
   }
 

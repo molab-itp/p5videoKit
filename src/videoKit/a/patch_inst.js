@@ -11,8 +11,8 @@ import { p5videoKit } from '../a/a_p5videoKit.js';
 //
 // videoKit.patch_inst_create(eff_label, imedia, ipatch, eff_spec, eff_props)
 //
-p5videoKit.prototype.patch_inst_create = async function (eff_label, imedia, ipatch, eff_spec, eff_props) {
-  let effMeta = await this.effectMeta_find(eff_label);
+p5videoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
+  let effMeta = this.effectMeta_find(eff_label);
   if (!effMeta) {
     ui_log('patch_inst_create !!@ No eff_label', eff_label);
     return;

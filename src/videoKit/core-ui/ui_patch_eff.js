@@ -2,16 +2,16 @@
 //
 import { p5videoKit } from '../a/a_p5videoKit.js';
 
-p5videoKit.prototype.ui_patch_eff_panes = async function () {
+p5videoKit.prototype.ui_patch_eff_panes = function () {
   //
   // if (this.a_.hide_ui_option) return;
   let droot = this.ui_div_empty('ipatch_eff');
   for (let ipatch = 0; ipatch < this.a_.ui.patches.length; ipatch++) {
-    await this.create_patch(droot, ipatch);
+    this.create_patch(droot, ipatch);
   }
 };
 
-p5videoKit.prototype.create_patch = async function (droot, ipatch) {
+p5videoKit.prototype.create_patch = function (droot, ipatch) {
   let div = this.ui_div_empty('patch_' + ipatch);
   droot.child(div);
   let aPatch = this.a_.ui.patches[ipatch];
@@ -33,7 +33,7 @@ p5videoKit.prototype.create_patch = async function (droot, ipatch) {
 
   this.create_remove_patch(ipatch, div);
 
-  await this.create_settings(aPatch, div);
+  this.create_settings(aPatch, div);
 };
 
 p5videoKit.prototype.create_remove_patch = function (ipatch, div) {
@@ -56,7 +56,7 @@ p5videoKit.prototype.create_checkbox = function (aPatch, div, label, prop) {
   });
 };
 
-p5videoKit.prototype.create_patch_selection = async function (aPatch, ipatch, div) {
+p5videoKit.prototype.create_patch_selection = function (aPatch, ipatch, div) {
   let span = createSpan(`Effect${ipatch + 1}: `);
   div.child(span);
   let aSel = createSelect();
@@ -75,7 +75,7 @@ p5videoKit.prototype.create_patch_selection = async function (aPatch, ipatch, di
     }
     aSel.option(label, ii);
   }
-  let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
+  let effMeta = this.effectMeta_find(aPatch.eff_spec.eff_label);
   let effIndex = effMeta.index;
   // ui_log('create_patch_selection effIndex', effIndex);
   aSel.selected(effIndex);
@@ -106,9 +106,9 @@ p5videoKit.prototype.create_media_selection = function (aPatch, div) {
   });
 };
 
-p5videoKit.prototype.create_settings = async function (aPatch, div) {
+p5videoKit.prototype.create_settings = function (aPatch, div) {
   // ui_log('create_settings aPatch', aPatch);
-  let effMeta = await this.effectMeta_find(aPatch.eff_spec.eff_label);
+  let effMeta = this.effectMeta_find(aPatch.eff_spec.eff_label);
   if (effMeta.factory) {
     this.create_ui_for_meta(aPatch, div, effMeta.factory.meta_props);
   } else {

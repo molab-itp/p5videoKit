@@ -18,11 +18,11 @@ import eff_sketchy from '../effects/eff_sketchy.js';
 import eff_slant_scan from '../effects/eff_slant_scan.js';
 import eff_slit_scan from '../effects/eff_slit_scan.js';
 import eff_triangle from '../effects/eff_triangle.js';
+import eff_tile_clock from '../effects/eff_tile_clock.js';
 
 // retire pending
 import eff_bestill_mo from '../effects/eff_bestill_mo.js';
 import eff_bodypix from '../effects/eff_bodypix.js';
-import eff_tile_clock from '../effects/eff_tile_clock.js';
 import eff_tile_live from '../effects/eff_tile_live.js';
 import eff_image from '../effects/eff_image.js';
 import eff_image_mesh from '../effects/eff_image_mesh.js';
@@ -51,18 +51,20 @@ p5videoKit.prototype.register_effects = function () {
   this.register_effect('slant_scan', eff_slant_scan);
   this.register_effect('slit_scan', eff_slit_scan);
   this.register_effect('triangle', eff_triangle);
+  this.register_effect('tile_clock', eff_tile_clock);
+  this.register_effect('loop', eff_loop);
   //
   // retire pending
   this.register_effect('eff_bestill_mo', eff_bestill_mo);
   this.register_effect('eff_bodypix', eff_bodypix);
-  this.register_effect('eff_tile_clock', eff_tile_clock);
+  // this.register_effect('eff_tile_clock', eff_tile_clock);
   this.register_effect('eff_tile_live', eff_tile_live);
   this.register_effect('eff_image', eff_image);
   this.register_effect('eff_image_mesh', eff_image_mesh);
   this.register_effect('eff_face_band', eff_face_band);
   this.register_effect('eff_fft_graph', eff_fft_graph);
   this.register_effect('eff_fft_polar', eff_fft_polar);
-  this.register_effect('eff_loop', eff_loop);
+  // this.register_effect('eff_loop', eff_loop);
 };
 
 p5videoKit.prototype.register_effect = function (label, factory) {
