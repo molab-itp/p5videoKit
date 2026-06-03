@@ -104,6 +104,12 @@ Built using
 
 ```
 # --
+2026-06-03 11:22:20
+npm login
+bin/build.sh
+Present?v=437
+
+# --
 2026-06-03 10:39:22
 
 // remove async
