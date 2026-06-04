@@ -71,6 +71,11 @@ p5videoKit runs best in modern desktop browsers. I've tested primarily in Google
 
 - Live Device check box enables live stream to all other instances using the same room name.
 
+## using in p5js
+
+- [lib videoKit v1](https://editor.p5js.org/jht9629-nyu/sketches/CAtSXsCDI)
+  eff_simplix.js is use to mix live video with another effect
+
 ## History
 
 - p5videoKit is based of the code used to create the interactive installation at [NYU-ITP in 2021](https://jht1493.github.io/2021-NYU-ITP-Installation/)
@@ -103,6 +108,21 @@ Built using
 # NOTES
 
 ```
+# --
+2026-06-03 12:15:43
+bin/build.sh
+438
+p5videoKit.prototype.createEffect = function ({ eff_label, imedia, urect, props, eff_spec }) {
+    // !!@ TODO replace with createEffect
+p5videoKit.prototype.patch_inst_create = function (eff_label, imedia, ipatch, eff_spec, eff_props) {
+p5videoKit.prototype.draw_patch = function (ipatch, prior) {
+
+// !!@ does not handle factory.meta_props as array
+p5videoKit.prototype.factory_prop_inits = function (factory, init_props = {}) {
+
+factory.meta_props
+    this.create_ui_for_meta(aPatch, div, effMeta.factory.meta_props);
+
 # --
 2026-06-03 12:05:07
 

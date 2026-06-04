@@ -1,5 +1,15 @@
 notes.txt
 
+// https://editor.p5js.org/jht9629-nyu/sketches/CAtSXsCDI
+// lib videoKit v1
+// eff_simplix.js is use to mix live video with another effect
+
+
+p5videoKit_init config 
+create_mediaDevices dim 
+patch_inst_deinit REMOVING inst.output._pInst._elements.length 
+
+
 # --
 2026-04-23 06:22:45
 - [x] npm jhtitp --> jht9629@nyu.edu
