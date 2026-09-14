@@ -17,13 +17,13 @@ verbose=
 
 start_time=`date +%s`
 
-host=m.jht1493.net
-homepage=p5videoKit/demo
+cd ../src
 
+s3cmd sync . s3://jht1493/p5videoKit/demo/ --acl-public
 
 echo
 echo Lapse $(expr `date +%s` - $start_time) 
 echo build_ver `cat ../src/gen/build_ver.txt`
-echo "open https://m.jht1493.net/${homepage}"
+echo "open https://m.jht1493.net/p5videoKit/demo/index.html"
 
 

@@ -10,8 +10,22 @@ sketch.js?v=433
 bin/build.sh
 bin/lib-publish.sh
 + p5-video-kit@0.0.33
+
+# not confirmed yet 
 bin/pub-p5videoKit-html.sh
 
+>> deploy manually
+
+>> prefer to use rclone but not confirmed yet
+rclone ls jht1493:jht1493/p5videoKit
+
+/Users/jht2/Documents/projects/2024-p5moExamples/p5videoKit/src
+
+s3cmd ls s3://jht1493/p5videoKit/demo/
+
+s3cmd sync . s3://jht1493/p5videoKit/demo/ --acl-public
+
+>> need to honor exclude file list
 
 # --
 
