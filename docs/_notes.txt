@@ -1,14 +1,28 @@
 notes.txt
 
+# --
+2026-09-14 16:13:39
+
+>> build steps
+
+npm login
+sketch.js?v=433
+bin/build.sh
+bin/lib-publish.sh
++ p5-video-kit@0.0.33
+bin/pub-p5videoKit-html.sh
+
+
+# --
+
+
 // https://editor.p5js.org/jht9629-nyu/sketches/CAtSXsCDI
 // lib videoKit v1
 // eff_simplix.js is use to mix live video with another effect
 
-
 p5videoKit_init config 
 create_mediaDevices dim 
 patch_inst_deinit REMOVING inst.output._pInst._elements.length 
-
 
 # --
 2026-04-23 06:22:45
