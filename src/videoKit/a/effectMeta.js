@@ -25,6 +25,25 @@ p5videoKit.prototype.effectMeta_init = async function () {
   await Promise.allSettled(imports);
 };
 
+p5videoKit.prototype.import_effect = function (effMeta) {
+  // ui_log('p5videoKit import_effect label', effMeta.label);
+  // ui_log('p5videoKit import_effect import_path', effMeta.import_path);
+  return new Promise((resolve, reject) => {
+    // import('./' + effMeta.import_path)
+    this.import_effect_handler(effMeta)
+      .then((module) => {
+        // ui_log('import_effect label', effMeta.label, 'module', module);
+        effMeta.factory = module.default;
+        resolve(module.default);
+      })
+      .catch((err) => {
+        ui_log('catch error import_effect label', effMeta.label, '\n err', err);
+        a_import_err = err;
+        reject(err);
+      });
+  });
+};
+
 p5videoKit.prototype.effectMeta_find = function (label) {
   if (!label) {
     ui_log('effectMeta_find no label', label);
@@ -41,24 +60,6 @@ p5videoKit.prototype.effectMeta_find = function (label) {
     effMeta = this.a_.effectMetas[0];
   }
   return effMeta;
-};
-
-p5videoKit.prototype.import_effect = function (effMeta) {
-  // ui_log('p5videoKit import_effect label', effMeta.label);
-  // ui_log('p5videoKit import_effect import_path', effMeta.import_path);
-  return new Promise((resolve, reject) => {
-    // import('./' + effMeta.import_path)
-    this.import_effect_handler(effMeta)
-      .then((module) => {
-        // ui_log('import_effect label', effMeta.label, 'module', module);
-        resolve(module.default);
-      })
-      .catch((err) => {
-        ui_log('catch error import_effect label', effMeta.label, '\n err', err);
-        a_import_err = err;
-        reject(err);
-      });
-  });
 };
 
 // !!@ does not handle factory.meta_props as array

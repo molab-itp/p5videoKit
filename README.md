@@ -109,6 +109,13 @@ Built using
 
 ```
 # --
+2026-09-14 16:04:42
+
+// fix use of import_effect_handler
+p5videoKit.prototype.import_effect = function (effMeta) {
+        effMeta.factory = module.default;
+
+# --
 2026-06-03 12:15:43
 bin/build.sh
 438
