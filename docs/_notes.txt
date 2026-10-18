@@ -7,6 +7,7 @@ bin/build.sh --prod
 npm login
 bin/lib-publish.sh
 + p5-video-kit@0.0.36
+bin/pub-p5videoKit-html.sh
 
 # --
 2026-09-14 16:13:39
