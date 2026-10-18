@@ -328,7 +328,8 @@ export default class eff_image_show {
     this.image_name = image_name;
     if (this.face === 'none') return;
     let jname = this.replace_ext(this.image_name, '.json');
-    let jpath = './external/media/webdb/' + jname;
+    // let jpath = './external/media/webdb/' + jname;
+    let jpath = 'https://jht1493-gmail.github.io/webdb/webdb/' + jname;
     ui_log('eff_image_show jpath', jpath);
     // ui_log('eff_image_show export_on', this.export_on);
     if (this.export_on) {

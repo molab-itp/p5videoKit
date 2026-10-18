@@ -4,6 +4,7 @@ notes.txt
 2026-10-17 23:44:30
 
 bin/build.sh --prod
+npm login
 
 # --
 2026-09-14 16:13:39
