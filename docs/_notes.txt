@@ -5,6 +5,8 @@ notes.txt
 
 bin/build.sh --prod
 npm login
+bin/lib-publish.sh
++ p5-video-kit@0.0.36
 
 # --
 2026-09-14 16:13:39
