@@ -1,6 +1,11 @@
 notes.txt
 
 # --
+2026-10-17 23:44:30
+
+bin/build.sh --prod
+
+# --
 2026-09-14 16:13:39
 
 >> build steps
